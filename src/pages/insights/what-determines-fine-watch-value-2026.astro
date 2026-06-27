@@ -1,0 +1,533 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+
+const slug = "what-determines-fine-watch-value-2026";
+const path = `/insights/${slug}/`;
+const title = "What actually determines the value of a fine watch in 2026 | ALYRA";
+const description =
+  "An asset specialist explains how a fine watch's realisable value is assessed in 2026 — across brand, reference, condition, originality, documentation, provenance, service history, market demand and sale channel.";
+const heroImage = "/assets/hero-watches-patek2.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["advertised", "Price vs value"],
+  ["eight", "The eight factors"],
+  ["channel", "Sale channel"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Does a Rolex always hold its value?", a: "No. Rolex has strong brand recognition and liquidity, but value still depends on reference, condition, completeness, originality, market demand and purchase price." },
+  { q: "Are box and papers essential?", a: "Not always. They matter most for modern collectible watches and high-value examples. Some vintage watches are still highly valuable without papers if condition, originality and rarity are strong." },
+  { q: "Should I service my watch before selling it?", a: "Not automatically. For modern watches, a recent service can help. For vintage or collectible watches, replacing original parts can reduce value. Get specialist advice first." },
+  { q: "Is auction the best way to sell a fine watch?", a: "Only sometimes. Auction can suit rare, important or provenance-led pieces. For more common watches, a dealer sale or consignment may be more predictable." },
+  { q: "What is the difference between market value and insurance value?", a: "Market value usually refers to what the watch may sell for in the current market. Insurance value may reflect replacement cost and may be higher than resale value. They should not be treated as the same number." },
+  { q: "Can a fine watch be used as security for lending?", a: "It may be considered in some private asset or collateral assessments, but this depends on the lender, asset type, documentation, ownership, liquidity, condition, valuation evidence and the borrower's circumstances. This article does not assess lending eligibility or suitability." },
+  { q: "How quickly can a fine watch be assessed?", a: "A broad estimate can often be given from good photos and documentation. A reliable assessment usually requires inspection, authentication and market comparison." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Fine watch value in 2026" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "What actually determines the value of a fine watch in 2026",
+    description,
+    image: absoluteUrl(heroImage),
+    datePublished: "2026-06-24",
+    dateModified: "2026-06-24",
+    inLanguage: "en-AU",
+    articleSection: "Watches",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={heroImage} ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-badge">Featured insight</span>
+        <span class="art-cat">Watches</span>
+      </div>
+      <h1 class="art-h1">What actually determines the value of a fine watch in 2026</h1>
+      <p class="art-lead">
+        Brand and reference are only the beginning. An asset specialist explains how realisable value is
+        assessed across condition, provenance, service history, market demand and sale channel.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <span class="art-avatar" aria-hidden="true">EJ</span>
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>24 June 2026</span><span class="meta-sep" aria-hidden="true"></span><span>11 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><img src={heroImage} alt="Fine watch on a specialist's bench under a loupe" width="1080" height="460" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>A specialist assesses condition, originality and documentation before any figure is given.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <p class="art-intro"><span class="dropcap">A</span> fine watch can be worth a great deal — or far less than its owner imagines. The difference rarely comes down to brand alone. It is decided by condition, originality, documentation, demand and the way the watch is eventually sold.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">The value of a fine watch in 2026 is determined by what a serious buyer would realistically pay for that exact watch, in that exact condition, through that exact sale channel.</p>
+            <p class="answer-sub">Brand matters, but it is only the starting point. The final figure is shaped by reference, rarity, originality, condition, completeness, provenance, service history, market demand and how quickly the owner wants to sell.</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>This guide explains how fine watches are valued in the current market. It covers the difference between advertised prices and realisable value, the factors specialists assess first, why two watches from the same brand can be worth very different amounts, and what owners should prepare before asking for a valuation or sale estimate.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article provides general market information only. It is not a formal valuation, financial advice, tax advice, insurance advice, lending advice, or a guarantee of sale price. Fine watch values change with market conditions, buyer demand, exchange rates, auction results, condition, documentation and sale channel.</p>
+          <p>It also does not assess whether any particular watch is suitable as loan security, investment property, insurance replacement value, estate property or collateral. Those questions require separate advice and assessment.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>Brand and model create the starting range, but condition and originality often decide the final number.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A "full set" can improve buyer confidence and liquidity, but it does not automatically make a watch rare or exceptional.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Service history matters most when it proves proper maintenance without compromising originality.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Market value is not the same as asking price. The figure that matters is the price a real buyer is prepared to pay.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Dealer purchase, private sale, consignment and auction can each produce a different net result.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A photo-based estimate can be useful, but physical inspection is usually needed before relying on a final figure.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>In 2026, the market is more selective than at the speculative peak. Strong examples still attract demand; average examples are judged more carefully.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This guide is written for:</p>
+        <ul class="art-list">
+          <li>owners considering selling a fine watch;</li>
+          <li>collectors reviewing the value of a watch portfolio;</li>
+          <li>beneficiaries or executors dealing with inherited watches;</li>
+          <li>clients considering whether a fine watch may be relevant to a private asset assessment;</li>
+          <li>people comparing dealer offers, auction estimates or online asking prices.</li>
+        </ul>
+        <p>It is not a substitute for physical inspection, authentication, movement review, legal advice, tax advice, insurance advice or a formal written valuation.</p>
+
+        <h2 id="method" class="anchor art-h2">How this guide was prepared</h2>
+        <p>This guide was prepared by reviewing current luxury watch market data, secondary-market reporting, auction and collector guidance, and practical asset-assessment factors used when considering fine watches as realisable private assets.</p>
+        <p>The source base includes official Swiss watch export statistics, industry outlook research, secondary-market index data, marketplace reporting and auction-house guidance. These were considered alongside practical assessment factors including identity, condition, originality, documentation, provenance, liquidity, likely sale channel and time-to-sale.</p>
+        <p>The article focuses on realisable market value: the amount a watch may reasonably achieve after condition, documentation, demand, sale channel, fees, negotiation and timing are considered.</p>
+        <p>In private asset assessment, the first mistake we often see is owners treating the highest public listing as the value of their watch. A more reliable approach is to work backwards from buyer demand, likely sale channel, condition risk, documentation strength and the time available to complete a transaction.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Valuation factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Assessment layer</th><th>What is reviewed</th><th>Why it matters</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Identity</td><td>Brand, model, reference, serial, configuration</td><td>Confirms exactly what the watch is.</td></tr>
+              <tr><td class="tcell-head">Physical condition</td><td>Case, dial, hands, bracelet, crystal, polish, movement</td><td>Determines whether buyers see the watch as sharp, tired or risky.</td></tr>
+              <tr><td class="tcell-head">Originality</td><td>Replacement parts, service parts, period correctness</td><td>Affects collectability, especially for vintage references.</td></tr>
+              <tr><td class="tcell-head">Documentation</td><td>Box, papers, warranty card, receipts, service history</td><td>Supports confidence, provenance and resale liquidity.</td></tr>
+              <tr><td class="tcell-head">Provenance</td><td>Ownership history, archive extracts, auction history</td><td>Can lift value when documented and relevant.</td></tr>
+              <tr><td class="tcell-head">Market demand</td><td>Buyer depth, current demand, comparable examples</td><td>Determines how many buyers compete at the time of sale.</td></tr>
+              <tr><td class="tcell-head">Sale channel</td><td>Dealer purchase, consignment, auction, private sale</td><td>Different channels can produce different net outcomes.</td></tr>
+              <tr><td class="tcell-head">Timeframe</td><td>Urgent sale, planned sale, long-term hold</td><td>Urgency can change the realistic result.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="advertised" class="anchor art-h2">Why advertised prices are not the same as value</h2>
+        <p>A common mistake is to search the reference online, find the highest asking price, and assume that is the value. That rarely gives an accurate result.</p>
+        <p>Online listings show what sellers are asking, not necessarily what buyers are paying. The more useful figure is realisable value: the amount the watch could reasonably achieve after condition, completeness, demand, fees, negotiation, timing and sale channel are taken into account.</p>
+        <p>A dealer offer may be lower than a private sale figure because the dealer is taking stock risk, authentication risk, holding time and resale margin. An auction estimate may be attractive for a rare piece, but commission, timing, reserve strategy and bidder depth all matter. A private sale may deliver a stronger gross price, but it usually requires trust, patience and proper verification.</p>
+        <p>Auction can also produce a lower result than expected if there are too few qualified bidders on the day, if the estimate is too ambitious, or if the reserve strategy discourages bidding.</p>
+        <p>In short: there is no single universal value. There is a market range, and then there is the likely outcome for your watch.</p>
+
+        <h2 id="eight" class="anchor art-h2">The eight factors that matter most</h2>
+
+        <h3 class="art-h3"><span class="fnum">01</span>Brand strength</h3>
+        <p>Brand is the first filter because buyers understand some names more quickly than others. Rolex, Patek Philippe, Audemars Piguet, Cartier, Omega, Vacheron Constantin and a small group of respected independents tend to attract deeper buyer pools than lesser-known names.</p>
+        <p>But brand creates liquidity, not automatic value. A common reference from a top brand in tired condition may be less desirable than a sharper, more complete example from a less hyped maker. In 2026, buyers are less willing to pay blindly for a name. They are looking harder at the exact watch.</p>
+        <blockquote class="pull">Brand creates liquidity, not automatic value.</blockquote>
+
+        <h3 class="art-h3"><span class="fnum">02</span>Reference and configuration</h3>
+        <p>The reference number identifies the model, generation, case size, material, movement, dial configuration and production context. Two watches from the same brand can differ sharply in value because of:</p>
+        <ul class="art-list">
+          <li>steel versus precious metal;</li>
+          <li>bracelet versus strap;</li>
+          <li>original dial versus service dial;</li>
+          <li>rare dial colour or layout;</li>
+          <li>discontinued versus current production;</li>
+          <li>standard versus limited production;</li>
+          <li>desirable generation or case proportions;</li>
+          <li>known collector demand for that exact reference.</li>
+        </ul>
+        <p>For modern watches, the strongest references usually have recognisable demand and high liquidity. For vintage watches, the reference becomes only part of the story; originality and condition often matter more.</p>
+
+        <h3 class="art-h3"><span class="fnum">03</span>Condition</h3>
+        <p>Condition is one of the largest value drivers. Specialists look beyond whether a watch is "working" or "clean." They assess whether the case remains sharp, whether the dial is original, whether the hands match the period, whether the bracelet has stretch, whether the bezel has been replaced, and whether polishing has softened the case.</p>
+        <p>A polished watch is not automatically a poor watch. Many have been polished during normal servicing. The question is whether the work has materially changed the geometry, lugs, bevels, edges or character of the case.</p>
+        <p>For vintage and highly collectible pieces, honest age can be more valuable than cosmetic perfection. Collectors often prefer original surfaces, even with signs of wear, over a watch that looks clean because it has been heavily refinished.</p>
+
+        <h3 class="art-h3"><span class="fnum">04</span>Originality</h3>
+        <p>Originality is closely related to condition, but it is not the same thing. A watch can be in good cosmetic condition and still have value issues if major parts are not original. A specialist may check:</p>
+        <ul class="art-list">
+          <li>dial, hands, bezel, crown, crystal;</li>
+          <li>bracelet or clasp;</li>
+          <li>movement components and caseback;</li>
+          <li>engravings, serial and reference numbers;</li>
+          <li>service replacement parts.</li>
+        </ul>
+        <p>For some watches, a manufacturer service replacement part is acceptable and even reassuring. For others, especially vintage collector pieces, replacement parts can reduce desirability because they alter originality. This is why two watches that look similar in photos can receive very different assessments after inspection.</p>
+
+        <h3 class="art-h3"><span class="fnum">05</span>Box, papers and completeness</h3>
+        <p>A complete set usually gives buyers more confidence. Depending on the watch, completeness may include the original box, warranty card or papers, purchase receipt, service records, booklets, hang tags, spare links, archive extract and accessories supplied at sale.</p>
+        <p>Box and papers do not make a watch mechanically better. Their value is in confidence, provenance and liquidity. For a modern Rolex, Patek Philippe or Audemars Piguet, original papers can make a meaningful difference. For some vintage pieces, missing papers may be normal, and condition or rarity may matter more.</p>
+
+        <h3 class="art-h3"><span class="fnum">06</span>Provenance</h3>
+        <p>Provenance means the documented history of the watch. At a basic level, original purchase documentation and service receipts. At a higher level, a watch linked to a notable owner, collection, event or historical context.</p>
+        <p>Strong provenance can materially increase value when it is real, documented and relevant. Weak or unverifiable stories usually do not. A buyer may enjoy the story, but the market pays for evidence — an original sales invoice, family ownership records, auction history, an archive extract or service history from the manufacturer.</p>
+
+        <h3 class="art-h3"><span class="fnum">07</span>Service history and mechanical state</h3>
+        <p>Service history can help or hurt value depending on the watch. For modern watches, recent authorised servicing reassures buyers that the movement is healthy. For complicated watches, service records can be especially important because repair costs can be high.</p>
+        <p>For vintage pieces, servicing needs more careful interpretation. A service that replaced a dial, hands or bezel may improve usability but reduce collectability. A proper assessment considers both what the watch is worth as it sits, and what a buyer may deduct for future servicing, uncertainty or repair risk.</p>
+
+        <h3 class="art-h3"><span class="fnum">08</span>Market timing and demand</h3>
+        <p>The fine watch market is more disciplined in 2026 than during the speculative period of 2020–2022. Swiss watch export statistics from the <a class="body-link" href="https://www.fhs.swiss/eng/statistics.html" target="_blank" rel="noopener noreferrer">Federation of the Swiss Watch Industry</a> show the primary market remains sensitive to global demand, exchange rates and trade conditions. Deloitte's <a class="body-link" href="https://www.deloitte.com/global/en/Industries/consumer/perspectives/swiss-watch-industry-study.html" target="_blank" rel="noopener noreferrer">Swiss Watch Industry Study 2025</a> provides broader sentiment context, while <a class="body-link" href="https://watchcharts.com/watches/price_index" target="_blank" rel="noopener noreferrer">WatchCharts</a> and <a class="body-link" href="https://about.chrono24.com/en/press/2025-Watch-Market-Review-Stability-Returns-Speculation-Fades-and-%22Elegance%22-Becomes-the-New-Driver-of-Growth" target="_blank" rel="noopener noreferrer">Chrono24</a> provide secondary-market context.</p>
+        <p>In a more selective market, sharper examples with stronger documentation are generally easier to defend than average-condition pieces with optimistic pricing. Collector attention has broadened beyond the most obvious steel sports models into dress watches, neo-vintage pieces, Cartier and independent makers. Market timing does not change the watch itself. It changes how many buyers are actively competing for it.</p>
+
+        <figure class="art-figure reveal">
+          <div class="art-figure-frame"><img src="/assets/fine-watches.jpg" alt="Watch caseback and movement detail" width="1080" height="340" loading="lazy" /></div>
+          <figcaption><span class="cap-rule" aria-hidden="true"></span>Condition and originality are read at the level of the case, dial, movement and bracelet.</figcaption>
+        </figure>
+
+        <h2 id="channel" class="anchor art-h2">The sale channel changes the number</h2>
+        <p>A watch can have several different values at the same time. When assessing a watch as a realisable private asset, we look not only at what similar watches are listed for, but also at how quickly comparable examples appear to move, how much buyer confidence the documentation creates, and which sale channel is most realistic for the owner's timeframe.</p>
+        <blockquote class="pull">A watch can have several different values at the same time.</blockquote>
+        <h3 class="art-h3 art-h3--plain">Dealer purchase value</h3>
+        <p>Usually the fastest and cleanest route. The dealer buys the watch outright, takes resale risk and manages authentication, servicing, photography, warranty and customer acquisition. Because of that, the offer is usually below the final retail resale price.</p>
+        <h3 class="art-h3 art-h3--plain">Consignment value</h3>
+        <p>May produce a higher result than an outright sale, but usually takes longer. The seller keeps ownership until the watch sells, and the dealer or platform takes a commission.</p>
+        <h3 class="art-h3 art-h3--plain">Auction estimate</h3>
+        <p>Auction can work well for rare, important or highly collectible watches, where provenance, scarcity or emotion may drive competitive bidding. It is less predictable for common modern pieces where buyers can compare many similar examples. Fees, sale timing, reserve strategy and the risk of not selling should all be considered.</p>
+        <h3 class="art-h3 art-h3--plain">Private sale value</h3>
+        <p>Can produce a strong gross result, but requires buyer trust, secure payment, authentication and patience. For many owners, the extra effort and risk are not worth the marginal uplift. The right channel depends on the watch, the owner's time horizon and the level of certainty required.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists usually ask for first</h2>
+        <p>Before giving a serious indication, a specialist will usually ask for:</p>
+        <ul class="art-list">
+          <li>brand, model and reference number;</li>
+          <li>serial number, where appropriate;</li>
+          <li>case size and metal;</li>
+          <li>clear photos of the dial, case, caseback, clasp and bracelet;</li>
+          <li>close-ups of the lugs, bezel, crown and clasp;</li>
+          <li>a short video of the watch running, where available;</li>
+          <li>photos of box, papers, receipts and accessories;</li>
+          <li>service history and whether the watch has been polished;</li>
+          <li>whether all parts are believed to be original;</li>
+          <li>current working condition and any known repair issue;</li>
+          <li>the owner's preferred sale timeframe.</li>
+        </ul>
+        <p>A quick estimate can be given from good photos, but a final valuation usually requires physical inspection.</p>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes owners make</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Treating the highest listing as the value</div><p>Completed sales, dealer demand and realistic buyer behaviour matter more than the highest online asking price.</p></div>
+          <div class="mistake"><div class="mistake-h">Ignoring condition</div><p>Small differences in dial, case, bracelet, bezel or polish can change value significantly.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming box and papers fix everything</div><p>Documentation helps, but cannot fully offset poor condition, replacement parts or weak demand.</p></div>
+          <div class="mistake"><div class="mistake-h">Servicing before asking for advice</div><p>For vintage or collectible pieces, the wrong service decision can reduce value. Ask before replacing parts.</p></div>
+          <div class="mistake"><div class="mistake-h">Selling through the wrong channel</div><p>A rare watch may deserve auction or specialist consignment; a common modern watch may suit a direct dealer offer.</p></div>
+          <div class="mistake"><div class="mistake-h">Moving too quickly</div><p>Urgency can reduce the net outcome. If timing allows, compare more than one route before committing.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist before requesting an assessment</h2>
+        <div class="checklist">
+          {[
+            "Clear natural-light photos",
+            "Close-ups of dial, case, bracelet, clasp, caseback",
+            "Reference and serial information",
+            "Box and papers",
+            "Warranty card or purchase receipt",
+            "Service records",
+            "Spare links and accessories",
+            "A short video of the watch running",
+            "Notes on ownership history",
+            "Known repairs, polish or replaced parts",
+            "Any recent service or repair quote",
+            "Your preferred timeframe for sale",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <div class="src-label">Market and industry data</div>
+        <ol class="src-list">
+          <li><a class="body-link" href="https://www.fhs.swiss/eng/statistics.html" target="_blank" rel="noopener noreferrer">Federation of the Swiss Watch Industry — Watch industry statistics</a></li>
+          <li><a class="body-link" href="https://www.fhs.swiss/eng/statistics.html" target="_blank" rel="noopener noreferrer">Federation of the Swiss Watch Industry — Swiss watch exports 2025</a></li>
+          <li><a class="body-link" href="https://www.deloitte.com/global/en/Industries/consumer/perspectives/swiss-watch-industry-study.html" target="_blank" rel="noopener noreferrer">Deloitte — Swiss Watch Industry Study 2025</a></li>
+        </ol>
+        <div class="src-label">Secondary-market data</div>
+        <ol class="src-list" start="4">
+          <li><a class="body-link" href="https://watchcharts.com/watches/price_index" target="_blank" rel="noopener noreferrer">WatchCharts — Watch Market Index</a></li>
+          <li><a class="body-link" href="https://watchcharts.com/watches/price_index" target="_blank" rel="noopener noreferrer">WatchCharts — Full Year 2025 Market Update</a></li>
+          <li><a class="body-link" href="https://about.chrono24.com/en/press/2025-Watch-Market-Review-Stability-Returns-Speculation-Fades-and-%22Elegance%22-Becomes-the-New-Driver-of-Growth" target="_blank" rel="noopener noreferrer">Chrono24 — 2025 Watch Market Review</a></li>
+        </ol>
+        <div class="src-label">Auction and collector guidance</div>
+        <ol class="src-list" start="7">
+          <li><a class="body-link" href="https://www.knightfrank.com/wealthreport" target="_blank" rel="noopener noreferrer">Knight Frank — The Wealth Report</a></li>
+          <li><a class="body-link" href="https://www.sothebys.com/en/departments/watches" target="_blank" rel="noopener noreferrer">Sotheby's — Watches Department</a></li>
+          <li><a class="body-link" href="https://www.phillips.com/watches" target="_blank" rel="noopener noreferrer">Phillips — Watches Department</a></li>
+          <li><a class="body-link" href="https://www.christies.com/en/departments/watches-17-1.aspx" target="_blank" rel="noopener noreferrer">Christie's — Watches Department</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <span class="author-avatar" aria-hidden="true">EJ</span>
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine watches, luxury goods and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential watch assessment</p>
+      <h2 class="art-cta-h2">Want to understand what your watch is worth today?</h2>
+      <p class="art-cta-lead">
+        Submit your watch details for private review. An ALYRA specialist will assess condition,
+        documentation and market demand, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential assessment</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-badge { font: 600 10px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 6px 11px; border-radius: 8px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { background: #e7e0d0; border: 1px solid var(--border-strong); border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 600 15px/1 var(--font-display); color: var(--gold-ink); flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap, .art-figure figcaption { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+  .art-h3 { font: 600 22px/1.32 var(--font-display); color: var(--ink); margin: 48px 0 14px; padding-top: 26px; border-top: 1px solid var(--border); display: flex; gap: 18px; align-items: center; }
+  .art-h3--plain { border-top: none; padding-top: 0; margin: 28px 0 10px; font-size: 19px; }
+  .fnum { font: 700 32px/1 var(--font-display); color: var(--gold); flex: none; font-variant-numeric: tabular-nums; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .art-figure { margin: 46px 0; padding: 0; }
+  .art-figure-frame { border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-figure-frame img { display: block; width: 100%; height: clamp(220px, 30vw, 340px); object-fit: cover; }
+  .art-figure figcaption { margin-top: 12px; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+  .news-cta:hover { background: var(--gold-light); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

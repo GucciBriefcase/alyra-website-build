@@ -1,0 +1,293 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../../config/site";
+import { FEATURED, POSTS, INSIGHT_CATEGORIES } from "../../data/insights";
+
+const path = "/insights/";
+const title = "Insights | ALYRA — Private Asset-Based Lending";
+const description =
+  "Specialist commentary on the markets behind fine watches, art, jewellery, classic cars and gold bullion — and how private clients access liquidity without selling what they value.";
+
+const featuredUrl = `/insights/${FEATURED.slug}/`;
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": absoluteUrl(path) + "#webpage",
+    url: absoluteUrl(path),
+    name: title,
+    description,
+    isPartOf: { "@id": absoluteUrl("/") + "#website" },
+    inLanguage: "en-AU",
+    about: { "@id": absoluteUrl("/") + "#organization" },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <!-- Page header -->
+  <header class="ins-hero">
+    <div class="container">
+      <p class="eyebrow">Insights &amp; perspective</p>
+      <div class="ins-hero-row">
+        <h1 class="ins-h1">Notes on value, liquidity and the assets worth keeping.</h1>
+        <p class="ins-hero-sub">
+          Specialist commentary on the markets behind fine watches, art, jewellery, cars and bullion —
+          and how private clients put them to work.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured article -->
+  <section class="ins-featured-wrap reveal">
+    <div class="container">
+      <a href={featuredUrl} class="feat-card">
+        <div class="feat-img">
+          <img src={FEATURED.image} alt={FEATURED.imageAlt} width="640" height="420" loading="eager" />
+        </div>
+        <div class="feat-body">
+          <div class="feat-tags">
+            <span class="feat-badge">Featured</span>
+            <span class="feat-cat">{FEATURED.category}</span>
+          </div>
+          <h2 class="feat-title">{FEATURED.title}</h2>
+          <p class="feat-excerpt">{FEATURED.excerpt}</p>
+          <div class="feat-meta">
+            <span class="dot-date">{FEATURED.date}</span>
+            <span class="meta-sep" aria-hidden="true"></span>
+            <span>{FEATURED.readTime}</span>
+          </div>
+          <span class="arrow-link feat-read">Read the analysis <span class="arrow">→</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Category filter -->
+  <section class="ins-filter-wrap reveal">
+    <div class="container ins-filter" data-filter>
+      <span class="ins-browse">Browse</span>
+      <button type="button" class="cat-chip is-active" data-cat="All" aria-pressed="true">All</button>
+      {INSIGHT_CATEGORIES.map((c) => (
+        <button type="button" class="cat-chip" data-cat={c} aria-pressed="false">{c}</button>
+      ))}
+    </div>
+  </section>
+
+  <!-- Article grid -->
+  <section class="ins-grid-wrap reveal">
+    <div class="container">
+      <div class="ins-grid" data-grid>
+        {POSTS.map((post) => (
+          <article class="post-card" data-category={post.category}>
+            <div class="post-img">
+              <img src={post.image} alt={post.imageAlt} width="320" height="200" loading="lazy" />
+              <span class="post-soon">Coming soon</span>
+            </div>
+            <div class="post-body">
+              <div class="post-cat">{post.category}</div>
+              <h3 class="post-title">{post.title}</h3>
+              <p class="post-excerpt">{post.excerpt}</p>
+              <div class="post-meta">
+                <span>{post.date}</span>
+                <span class="meta-sep" aria-hidden="true"></span>
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="ins-empty" data-empty hidden>
+        No articles in this category yet.
+        <button type="button" class="ins-reset" data-reset>View all insights</button>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="ins-news reveal">
+    <div class="container news-split">
+      <div>
+        <p class="eyebrow eyebrow--on-dark">The ALYRA brief</p>
+        <h2 class="news-h2">Market notes, privately delivered.</h2>
+        <p class="news-lead">
+          An occasional, discreet note on asset values and liquidity. No noise, no sharing of your
+          details — unsubscribe any time.
+        </p>
+      </div>
+      <div>
+        <form class="news-form" data-newsletter data-endpoint={SITE.newsletterEndpoint}
+          method="POST" action={SITE.newsletterEndpoint || undefined} novalidate>
+          <div class="news-row">
+            <label class="sr-only" for="news-email">Email address</label>
+            <input id="news-email" class="news-input" type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <button type="submit" class="btn news-btn">Subscribe</button>
+          </div>
+          <p class="news-status" data-news-status role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ins-hero { background: var(--cream); padding: calc(var(--nav-offset) + 32px) var(--section-x) clamp(40px, 5vw, 56px); }
+  .ins-hero-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .ins-h1 { font: 600 clamp(36px, 4.6vw, 60px)/1.06 var(--font-display); letter-spacing: -1.3px; margin: 0; max-width: 760px; text-wrap: balance; }
+  .ins-hero-sub { font: 400 16px/1.7 var(--font-body); color: var(--text-muted); margin: 0 0 6px; max-width: 340px; }
+
+  /* Featured */
+  .ins-featured-wrap { padding: 0 var(--section-x) clamp(48px, 6vw, 72px); }
+  .feat-card {
+    display: grid; grid-template-columns: 1fr 1.15fr;
+    align-items: stretch;
+    text-decoration: none; color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color .28s ease, box-shadow .28s ease;
+  }
+  .feat-card:hover { border-color: var(--gold-soft); box-shadow: 0 16px 38px rgba(40,38,30,.13); }
+  .feat-img { overflow: hidden; }
+  .feat-img img { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: cover; transition: transform .7s ease; }
+  .feat-card:hover .feat-img img { transform: scale(1.04); }
+  .feat-body { padding: clamp(32px, 4vw, 56px); display: flex; flex-direction: column; justify-content: center; }
+  .feat-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .feat-badge { font: 600 10px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 6px 11px; border-radius: 8px; }
+  .feat-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .feat-title { font: 600 clamp(26px, 2.8vw, 36px)/1.16 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .feat-excerpt { font: 400 16px/1.75 var(--font-body); color: var(--text-muted); margin: 0 0 28px; max-width: 480px; }
+  .feat-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .dot-date { display: inline-flex; align-items: center; gap: 10px; }
+  .dot-date::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold-ink); }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .feat-read { font: 600 14px/1 var(--font-body); color: var(--ink); border-bottom: 1px solid #c9bfa6; padding-bottom: 6px; align-self: flex-start; }
+
+  /* Filter */
+  .ins-filter-wrap { padding: 0 var(--section-x); }
+  .ins-filter { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .ins-browse { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-right: 6px; }
+  .cat-chip {
+    font: 600 13px/1 var(--font-body);
+    cursor: pointer; white-space: nowrap;
+    padding: 9px 16px; border-radius: var(--radius-control);
+    border: 1px solid var(--border-strong);
+    background: transparent; color: var(--text-muted);
+    transition: all .18s ease;
+  }
+  .cat-chip:hover { border-color: var(--gold-fg); color: var(--ink); }
+  .cat-chip.is-active { border-color: var(--gold); background: rgba(196,165,103,.16); color: var(--ink); }
+
+  /* Grid */
+  .ins-grid-wrap { padding: clamp(44px, 5vw, 64px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .ins-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
+  .post-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .post-card[hidden] { display: none; }
+  .post-img { position: relative; overflow: hidden; }
+  .post-img img { display: block; width: 100%; height: 200px; object-fit: cover; }
+  .post-soon {
+    position: absolute; top: 12px; left: 12px;
+    font: 600 10px/1 var(--font-body); letter-spacing: 1px; text-transform: uppercase;
+    color: var(--ink); background: rgba(244,241,234,.92);
+    padding: 6px 10px; border-radius: 6px;
+  }
+  .post-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+  .post-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .post-title { font: 600 20px/1.28 var(--font-display); letter-spacing: -0.3px; margin: 0 0 11px; text-wrap: balance; }
+  .post-excerpt { font: 400 14px/1.65 var(--font-body); color: var(--text-soft); margin: 0 0 22px; }
+  .post-meta { margin-top: auto; display: flex; align-items: center; gap: 12px; font: 500 12.5px/1 var(--font-body); color: #9a937f; }
+  .ins-empty { text-align: center; padding: 60px 0; font: 400 16px/1.6 var(--font-body); color: #857f6e; }
+  .ins-reset { background: none; border: none; cursor: pointer; color: var(--gold-ink); border-bottom: 1px solid #c9bfa6; font: inherit; padding: 0; }
+
+  /* Newsletter */
+  .ins-news { background: var(--ink); color: #f1ece1; padding: clamp(56px, 7vw, 88px) var(--section-x); }
+  .news-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+  .news-h2 { font: 600 clamp(26px, 3vw, 38px)/1.14 var(--font-display); letter-spacing: -0.6px; margin: 0 0 16px; text-wrap: balance; }
+  .news-lead { font: 400 16px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0; max-width: 440px; }
+  .news-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .news-input { flex: 1; min-width: 200px; padding: 15px 16px; border: 1px solid #3a382f; border-radius: var(--radius-control); font: 400 15px/1.3 var(--font-body); background: #26241c; color: #f1ece1; outline: none; transition: border-color .2s ease; }
+  .news-input:focus { border-color: var(--gold); }
+  .news-btn { background: var(--gold); color: var(--ink-gold-button); border: none; padding: 15px 28px; white-space: nowrap; box-shadow: none; }
+  .news-btn:hover { background: var(--gold-light); }
+  .news-status { font: 400 13px/1.5 var(--font-body); margin: 12px 0 0; }
+  .news-status:empty { display: none; }
+  .news-status[data-tone="error"] { color: #e0a594; }
+  .news-status[data-tone="ok"] { color: var(--text-on-dark); }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  @media (max-width: 880px) {
+    .feat-card { grid-template-columns: 1fr; }
+    .feat-img img { min-height: 280px; }
+  }
+  @media (max-width: 620px) {
+    .news-split { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Category filter — pure DOM, no dependencies.
+  const root = document.querySelector<HTMLElement>("[data-filter]");
+  const grid = document.querySelector<HTMLElement>("[data-grid]");
+  const emptyEl = document.querySelector<HTMLElement>("[data-empty]");
+  if (root && grid) {
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>(".cat-chip"));
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>(".post-card"));
+
+    const apply = (cat: string) => {
+      let shown = 0;
+      cards.forEach((card) => {
+        const match = cat === "All" || card.dataset.category === cat;
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      chips.forEach((c) => {
+        const on = c.dataset.cat === cat;
+        c.classList.toggle("is-active", on);
+        c.setAttribute("aria-pressed", String(on));
+      });
+      if (emptyEl) emptyEl.hidden = shown !== 0;
+    };
+
+    chips.forEach((chip) =>
+      chip.addEventListener("click", () => apply(chip.dataset.cat || "All"))
+    );
+    document
+      .querySelector("[data-reset]")
+      ?.addEventListener("click", () => apply("All"));
+  }
+
+  // Newsletter — honest: never fakes a subscription.
+  const form = document.querySelector<HTMLFormElement>("[data-newsletter]");
+  if (form) {
+    const endpoint = form.dataset.endpoint || "";
+    const statusEl = form.querySelector<HTMLElement>("[data-news-status]");
+    const emailEl = form.querySelector<HTMLInputElement>('input[name="email"]');
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const setStatus = (msg: string, tone: "error" | "ok") => {
+      if (statusEl) { statusEl.textContent = msg; statusEl.dataset.tone = tone; }
+    };
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = emailEl?.value.trim() || "";
+      if (!EMAIL_RE.test(email)) { setStatus("Please enter a valid email address.", "error"); return; }
+      if (!endpoint) {
+        setStatus("Sign-up isn't connected yet — email enquiries@alyra.com.au to be added to the brief.", "ok");
+        return;
+      }
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ email }),
+        });
+        setStatus(res.ok ? "You're on the list. We'll be in touch — discreetly." : "Something went wrong. Please try again.", res.ok ? "ok" : "error");
+        if (res.ok) form.reset();
+      } catch {
+        setStatus("We couldn't reach the server. Please try again later.", "error");
+      }
+    });
+  }
+</script>

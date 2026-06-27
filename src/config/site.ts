@@ -101,6 +101,8 @@ export const SITE = {
    * submission — see src/lib/valuation.ts.
    */
   enquiryEndpoint: "",
+  /** Endpoint for the Insights newsletter sign-up. Empty until connected. */
+  newsletterEndpoint: "",
 
   // ---- Attribution ---------------------------------------------------------
   attribution: {
