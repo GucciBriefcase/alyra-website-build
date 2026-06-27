@@ -397,5 +397,39 @@ const whyFeatures = [
 
   @media (max-width: 900px) { .asset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 640px) { .bos-cards { grid-template-columns: 1fr; } }
-  @media (max-width: 600px) { .asset-grid { grid-template-columns: 1fr; } }
+
+  /* Mobile (matches the ALYRA Mobile composition): full-width hero CTA and the
+     asset categories rendered as compact image + text rows. */
+  @media (max-width: 600px) {
+    .hero-cta { display: block; }
+    .hero-cta .btn { display: block; width: 100%; }
+
+    .asset-grid { grid-template-columns: 1fr; gap: 0; }
+    .cat-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+      padding: 13px 0;
+      background: transparent;
+      border: none;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+    }
+    .cat-card:last-child { border-bottom: 1px solid var(--border); }
+    .cat-card:hover { transform: none; box-shadow: none; }
+    .cat-img-wrap { width: 60px; height: 60px; flex: none; border: none; border-radius: 9px; overflow: hidden; }
+    .cat-img-wrap img { height: 60px; }
+    .cat-card:hover .cat-img-wrap img { transform: none; }
+    .cat-card-body { padding: 0; }
+    .cat-card-title { font-size: 15px; margin-bottom: 3px; }
+    .cat-card-blurb {
+      font-size: 12.5px;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .cat-card-cta { display: none; }
+  }
 </style>

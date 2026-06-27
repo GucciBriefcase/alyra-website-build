@@ -10,6 +10,7 @@ import Seo from "../components/Seo.astro";
 import JsonLd from "../components/JsonLd.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import MobileCta from "../components/MobileCta.astro";
 
 interface Props {
   title: string;
@@ -20,9 +21,11 @@ interface Props {
   ogType?: "website" | "article";
   /** Additional page-specific JSON-LD (Service, FAQPage, WebPage, etc.). */
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Hide the mobile sticky CTA (e.g. on the valuation page). */
+  hideMobileCta?: boolean;
 }
 
-const { title, description, path, image, imageAlt, ogType, schema } = Astro.props;
+const { title, description, path, image, imageAlt, ogType, schema, hideMobileCta } = Astro.props;
 
 const sameAs = Object.values(SITE.social).filter(Boolean);
 
@@ -103,6 +106,7 @@ const websiteSchema = {
       <slot />
     </main>
     <Footer />
+    <MobileCta hidden={hideMobileCta} />
 
     <script>
       // Progressive-enhancement scroll reveal. Sections marked `.reveal` fade up

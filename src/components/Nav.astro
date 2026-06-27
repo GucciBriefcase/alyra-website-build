@@ -27,21 +27,23 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
       {links.map((l) => <a href={l.href}>{l.label}</a>)}
     </div>
 
-    <a class="nav-cta btn" href={cta.href}>{cta.label}</a>
-
-    <button
-      class="nav-burger"
-      data-burger
-      aria-label="Open menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
+    <div class="nav-actions">
+      <a class="nav-cta btn" href={cta.href}>{cta.label}</a>
+      <a class="nav-cta-mobile" href={cta.href}>Enquire</a>
+      <button
+        class="nav-burger"
+        data-burger
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <div class="mobile-menu" id="mobile-menu" data-menu hidden>
@@ -97,6 +99,20 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
   }
   .nav-cta:hover { color: var(--ink); transform: translateY(-1.5px); box-shadow: 0 8px 22px rgba(120,124,130,.4); }
 
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+  .nav-cta-mobile {
+    display: none;
+    font: 600 12.5px/1 var(--font-body);
+    color: #f1ece1;
+    background: var(--ink);
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .3s ease, color .3s ease;
+  }
+
   .nav-burger {
     display: none;
     align-items: center;
@@ -118,6 +134,7 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
   .alyra-nav.is-scrolled .nav-links a:hover { color: #fff; }
   .alyra-nav.is-scrolled .nav-burger { color: #f1ece1; }
   .alyra-nav.is-scrolled .nav-cta { background: var(--gold); color: var(--ink-gold-button); }
+  .alyra-nav.is-scrolled .nav-cta-mobile { background: var(--gold); color: var(--ink-gold-button); }
 
   /* ---- Mobile menu ---- */
   .mobile-menu {
@@ -150,6 +167,7 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
 
   @media (max-width: 1040px) {
     .nav-links, .nav-cta { display: none !important; }
+    .nav-cta-mobile { display: inline-block; }
     .nav-burger { display: inline-flex; }
   }
 </style>

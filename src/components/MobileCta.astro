@@ -1,0 +1,76 @@
+---
+/**
+ * Mobile-only sticky bottom CTA (from the ALYRA Mobile composition). Slides up
+ * after the user scrolls, and hides when an in-page enquiry form (#request) is
+ * near the viewport so it never overlaps the form. Hidden on >760px and on the
+ * dedicated valuation page.
+ */
+import { SITE } from "../config/site";
+
+interface Props {
+  /** Hide entirely (e.g. on the /valuation page, which is the form itself). */
+  hidden?: boolean;
+}
+const { hidden = false } = Astro.props;
+---
+
+{!hidden && (
+  <div class="mcta" data-mobile-cta aria-hidden="true">
+    <div class="mcta-note">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      Confidential · No obligation
+    </div>
+    <a href={SITE.enquiryPath} class="mcta-btn">Request a Confidential Valuation</a>
+  </div>
+)}
+
+<style>
+  .mcta {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) translateY(130%);
+    width: 100%;
+    z-index: 60;
+    padding: 11px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(244, 241, 234, .96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -6px 24px rgba(40, 38, 30, .12);
+    pointer-events: none;
+    transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+    display: none;
+  }
+  .mcta.is-visible { transform: translateX(-50%) translateY(0); pointer-events: auto; }
+  .mcta-note {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    font: 400 11px/1 var(--font-body); color: #6e6d65; margin-bottom: 9px;
+  }
+  .mcta-note svg { flex: none; opacity: .7; }
+  .mcta-btn {
+    display: block; text-align: center; text-decoration: none;
+    font: 600 15px/1 var(--font-body); color: #f1ece1;
+    padding: 15px; border-radius: 9px; background: var(--ink);
+  }
+  @media (max-width: 760px) { .mcta { display: block; } }
+  @media (prefers-reduced-motion: reduce) { .mcta { transition: none; } }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>("[data-mobile-cta]");
+  if (bar) {
+    const form = document.getElementById("request");
+    const update = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      let formInView = false;
+      if (form) {
+        const r = form.getBoundingClientRect();
+        formInView = r.top < window.innerHeight * 0.85;
+      }
+      bar.classList.toggle("is-visible", y > 480 && !formInView);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  }
+</script>
