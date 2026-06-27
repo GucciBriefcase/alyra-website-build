@@ -1,0 +1,218 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../config/site";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import TrustStrip from "../components/sections/TrustStrip.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import SpecialistCard from "../components/sections/SpecialistCard.astro";
+import Faq from "../components/sections/Faq.astro";
+import RequestSection from "../components/sections/RequestSection.astro";
+
+const path = "/how-it-works/";
+const title = "How It Works | ALYRA";
+const description =
+  "How ALYRA's private asset-based lending works — share your asset, receive a specialist assessment, review a written loan offer, and recover your asset once the loan is repaid. Confidential, Australia-wide.";
+
+const steps = [
+  { title: "Share your asset details", body: "Submit photos, key details, and any documents you have. ALYRA reviews your enquiry privately and confirms whether the asset is suitable for assessment." },
+  { title: "Receive a specialist assessment", body: "A specialist reviews the asset's condition, documents, value, market demand, and custody requirements." },
+  { title: "Review your loan offer", body: "If approved, you receive a written offer showing the loan amount, fees, interest, repayment terms, redemption rights, and what happens if you don't repay, before you proceed." },
+  { title: "Repay and retrieve your asset", body: "Your asset is held securely during the loan term and returned once the loan is repaid under the agreed terms." },
+];
+
+const prepare = [
+  { icon: "camera", label: "Clear, natural-light photos of your asset" },
+  { icon: "file", label: "Any documents you have — receipts, certificates, papers" },
+  { icon: "box", label: "Box, papers or provenance, where relevant" },
+  { icon: "fileCheck", label: "Ownership records" },
+  { icon: "value", label: "An estimated value, if you know it" },
+  { icon: "clock", label: "Your preferred loan amount and timeframe" },
+];
+
+const faqs = [
+  { q: "How do I start?", a: "Submit a confidential enquiry with photos and a few details about your asset. ALYRA reviews it privately and lets you know whether it may be suitable for assessment." },
+  { q: "How quickly will I hear back?", a: "A specialist typically responds to enquiries within one business day. Timing for any offer then depends on the asset, documentation, valuation, approval and custody requirements." },
+  { q: "What do I need to provide?", a: "Clear photos and any documents you have are a good start. A specialist will tell you if anything further is needed to complete an assessment." },
+  { q: "Is there any cost or obligation to enquire?", a: "No. Submitting an enquiry is confidential and carries no obligation. You only proceed if you accept a written offer." },
+  { q: "Will my enquiry be kept private?", a: "Yes. Your enquiry is handled confidentially and is not used to publicly list, market or sell your asset." },
+  { q: "When do I get my asset back?", a: "Your asset is held in secure custody during the loan term and returned to you once the loan is repaid under the agreed terms." },
+  { q: "What if my asset isn't suitable?", a: "If an asset isn't suitable for lending, ALYRA will let you know discreetly. There is no cost or obligation, and your details remain private." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "How it Works" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": absoluteUrl(path) + "#webpage",
+    url: absoluteUrl(path),
+    name: title,
+    description,
+    isPartOf: { "@id": absoluteUrl("/") + "#website" },
+    inLanguage: "en-AU",
+    about: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to borrow against a high-value asset with ALYRA",
+    description:
+      "ALYRA provides private loans secured against high-value assets. The asset is assessed by a specialist, held in secure custody for the loan term, and returned once the loan is repaid.",
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.body,
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <!-- Hero -->
+  <header class="hiw-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <div class="hiw-hero-inner">
+        <p class="eyebrow hin">How it works</p>
+        <h1 class="hiw-h1 hin">From confidential enquiry to the return of your <span class="hl">asset</span>.</h1>
+        <p class="hiw-lead hin">
+          A simple, private process: share your asset, receive a specialist assessment, review a written
+          offer, and recover your asset once the loan is repaid.
+        </p>
+        <div class="hin"><a class="btn btn--primary" href={SITE.enquiryPath}>Request a Confidential Valuation</a></div>
+        <p class="hiw-reassure hin">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Confidential enquiry · No obligation · Specialist response usually within one business day
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <TrustStrip />
+
+  <!-- The four steps -->
+  <HowItWorks
+    white
+    heading="Four steps, handled privately."
+    intro="From first enquiry to the return of your asset, you deal confidentially with a specialist at every stage."
+    steps={steps}
+    disclaimer="Funding is not guaranteed. Loans depend on the asset, valuation, approval, custody, documents, applicable law, and agreed terms. Your asset is at risk if repayment obligations are not met."
+  />
+
+  <!-- What you'll need -->
+  <section class="section reveal">
+    <div class="container hiw-prep-grid">
+      <div>
+        <p class="eyebrow">Before you enquire</p>
+        <h2 class="hiw-prep-h2">What you'll need.</h2>
+        <p class="hiw-prep-lead">You don't need everything to start — a few clear photos are enough for a first review. The more you can share, the more precise the assessment.</p>
+      </div>
+      <ul class="hiw-prep-list">
+        {prepare.map((item) => (
+          <li>
+            <span class="hiw-prep-icon" aria-hidden="true">
+              {item.icon === "camera" && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              )}
+              {item.icon === "file" && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              )}
+              {item.icon === "box" && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              )}
+              {item.icon === "fileCheck" && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
+              )}
+              {item.icon === "value" && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              )}
+              {item.icon === "clock" && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg>
+              )}
+            </span>
+            {item.label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Secure custody cross-link -->
+  <section class="section section--surface section--hairline reveal">
+    <div class="container hiw-custody">
+      <div>
+        <p class="eyebrow">During your loan</p>
+        <h2 class="hiw-custody-h2">Your asset is held securely — and returned when you repay.</h2>
+        <p class="hiw-custody-p">Once a loan proceeds, your asset is documented, insured where applicable, and held in secure custody for the agreed term. You remain the owner throughout.</p>
+      </div>
+      <a class="btn btn--outline hiw-custody-cta" href="/security-and-custody/">How we keep it safe</a>
+    </div>
+  </section>
+
+  <!-- Specialist -->
+  <section class="section reveal">
+    <div class="container hiw-spec">
+      <div class="hiw-spec-head">
+        <p class="eyebrow">Who you'll deal with</p>
+        <h2 class="h2">A specialist, from first enquiry to completion.</h2>
+      </div>
+      <SpecialistCard secondLine="From first enquiry through assessment, documentation, custody and completion, you deal directly and confidentially." />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <Faq
+    faqs={faqs}
+    heading="How it works — questions."
+    intro="Everything else is explained privately before you proceed. Speak with a specialist about your asset in confidence."
+    group="hiw-faq"
+  />
+
+  <!-- Request -->
+  <RequestSection noun="asset" idPrefix="hiw" />
+</BaseLayout>
+
+<style>
+  .hiw-hero { background: var(--cream); color: var(--ink); padding: calc(var(--nav-offset) + 24px) var(--section-x) 0; border-bottom: 1px solid var(--gold); }
+  .hiw-hero-inner { max-width: 820px; padding: clamp(40px, 7vh, 80px) 0 clamp(44px, 7vh, 84px); }
+  .hiw-h1 { font: 600 clamp(38px, 5vw, 62px)/1.05 var(--font-display); letter-spacing: -1.4px; margin: 0 0 22px; text-wrap: balance; }
+  .hiw-h1 .hl { color: var(--gold-fg); }
+  .hiw-lead { font: 400 clamp(16px, 1.4vw, 19px)/1.7 var(--font-body); color: var(--text-muted); max-width: 600px; margin: 0 0 30px; }
+  .hiw-reassure { display: flex; align-items: center; gap: 9px; font: 400 13px/1.6 var(--font-body); color: #6e6d65; margin-top: 18px; letter-spacing: .2px; }
+  .hiw-reassure svg { flex: none; opacity: .75; }
+
+  @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
+  .eyebrow.hin { animation-delay: .08s; }
+  .hiw-h1.hin { animation-delay: .17s; }
+  .hiw-lead.hin { animation-delay: .26s; }
+
+  /* What you'll need */
+  .hiw-prep-grid { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: clamp(36px, 5vw, 64px); align-items: start; }
+  .hiw-prep-h2 { font: 600 clamp(28px, 3.4vw, 40px)/1.08 var(--font-display); letter-spacing: -0.8px; margin: 0 0 16px; }
+  .hiw-prep-lead { font: 400 16px/1.75 var(--font-body); color: var(--text-muted); margin: 0; max-width: 360px; }
+  .hiw-prep-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; }
+  .hiw-prep-list li { display: flex; gap: 13px; align-items: center; font: 400 15.5px/1.45 var(--font-body); color: #45413a; }
+  .hiw-prep-icon { flex: none; width: 32px; height: 32px; border-radius: 50%; background: rgba(196, 165, 103, .16); color: var(--gold-ink); display: flex; align-items: center; justify-content: center; }
+
+  /* Custody cross-link */
+  .hiw-custody { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .hiw-custody-h2 { font: 600 clamp(24px, 3vw, 34px)/1.12 var(--font-display); letter-spacing: -0.6px; margin: 0 0 14px; max-width: 620px; }
+  .hiw-custody-p { font: 400 16px/1.75 var(--font-body); color: var(--text-muted); margin: 0; max-width: 620px; }
+  .hiw-custody-cta { white-space: nowrap; }
+
+  /* Specialist */
+  .hiw-spec { max-width: 1000px; }
+  .hiw-spec-head { text-align: center; margin-bottom: 40px; }
+  .hiw-spec-head .eyebrow { margin-left: auto; margin-right: auto; }
+
+  @media (max-width: 760px) {
+    .hiw-prep-grid { grid-template-columns: 1fr; gap: 24px; }
+    .hiw-prep-list { grid-template-columns: 1fr; }
+  }
+</style>

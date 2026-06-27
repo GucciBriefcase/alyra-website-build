@@ -325,9 +325,9 @@ const whyFeatures = [
     overflow: hidden;
     text-decoration: none;
     color: inherit;
-    transition: transform .28s ease, box-shadow .28s ease;
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
   }
-  .cat-card:hover { transform: translateY(-5px); box-shadow: 0 16px 38px rgba(40, 38, 30, .13); }
+  .cat-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 16px 38px rgba(40, 38, 30, .13); }
   .cat-img-wrap { overflow: hidden; border-bottom: 1px solid var(--border); }
   .cat-img-wrap img { display: block; width: 100%; height: 230px; object-fit: cover; transition: transform .55s ease; }
   .cat-card:hover .cat-img-wrap img { transform: scale(1.06); }
@@ -369,11 +369,10 @@ const whyFeatures = [
   .bos-h2 { max-width: 600px; margin-left: auto; margin-right: auto; }
   .bos-intro { max-width: 620px; }
   .bos-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 980px; margin: 0 auto; }
-  .bos-card { border-radius: var(--radius-card); padding: 38px 36px; position: relative; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease; }
-  .bos-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(40, 38, 30, .16); }
+  .bos-card { border: 1px solid transparent; border-radius: var(--radius-card); padding: 38px 36px; position: relative; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease; }
+  .bos-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 20px 44px rgba(40, 38, 30, .16); }
   .bos-card--dark { background: var(--ink); color: #f1ece1; }
-  .bos-card--light { background: var(--surface); border: 1px solid var(--border); }
-  .bos-card--light:hover { border-color: var(--gold-soft); }
+  .bos-card--light { background: var(--surface); border-color: var(--border); }
   .bos-badge {
     position: absolute; top: 24px; right: 28px;
     font: 600 10px/1 var(--font-body);
