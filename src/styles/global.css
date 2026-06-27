@@ -122,8 +122,14 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
 
 .lead { font: 400 16px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
 
-/* ---- Buttons ---- */
+/* ---- Buttons ----
+   All CTAs share one hover: an ink fill that sweeps in from the left while the
+   label flips to cream. Implemented with a clipped ::before (no JS). Base
+   colours differ per variant; the fill is always --ink. */
 .btn {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
   display: inline-block;
   text-decoration: none;
   font: 600 15px/1 var(--font-body);
@@ -131,14 +137,31 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
   border-radius: var(--radius-control);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: filter .3s ease, background .3s ease, color .3s ease, transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
+  transition: color .35s ease, transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
 }
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--cream);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .42s cubic-bezier(.2,.7,.2,1);
+}
+.btn:hover::before { transform: scaleX(1); }
+.btn:hover { color: var(--ink); }
+
 .btn--primary { background: var(--ink); color: #f1ece1; box-shadow: 0 10px 26px rgba(27,26,22,.28); }
-.btn--primary:hover { filter: brightness(1.28); }
+.btn--primary:hover { transform: translateY(-1.5px); box-shadow: 0 14px 32px rgba(27,26,22,.32); }
 .btn--light { background: #f1ece1; color: var(--ink); }
-.btn--light:hover { background: #fff; }
+.btn--gold { background: var(--gold); color: var(--ink-gold-button); }
 .btn--outline { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn--outline:hover { background: var(--ink); color: #f1ece1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::before { transition: none; }
+  .btn:hover { transform: none; }
+}
 
 /* ---- Arrow link ---- */
 .arrow-link {
