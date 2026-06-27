@@ -9,6 +9,9 @@ node_modules/
 # astro
 .astro/
 
+# local preview config (.claude/launch.json)
+.claude/
+
 # environment
 .env
 .env.production
