@@ -1,0 +1,362 @@
+---
+/**
+ * Confidential valuation enquiry — compact 3-step stepper (the original design's
+ * final-CTA form): Your asset → Your details → Confirm, with a progress stepper
+ * and success state. JavaScript-enhanced; users without JS are pointed to the
+ * full single-page form at /valuation/. Shares field styling with ValuationForm
+ * (global .vf-* classes) and submit logic with src/lib/valuation.ts.
+ */
+import { SITE } from "../../config/site";
+
+interface Props {
+  /** Preselect an asset type chip (used on asset-detail pages). */
+  preselect?: string;
+  idPrefix?: string;
+}
+const { preselect, idPrefix = "sf" } = Astro.props;
+
+const assetOptions = [
+  "High-Value Watches",
+  "Jewellery & Diamonds",
+  "Fine Art",
+  "Classic & Luxury Cars",
+  "Gold Bullion",
+  "Designer Handbags",
+  "Other",
+];
+const contactOptions = ["Email", "Phone", "Either"];
+const steps = ["Your asset", "Your details", "Confirm"];
+const endpoint = SITE.enquiryEndpoint;
+---
+
+<div class="vf-card">
+  <form
+    class="sf-form"
+    data-stepper-form
+    data-endpoint={endpoint}
+    method="POST"
+    action={endpoint || undefined}
+    novalidate
+  >
+    <div class="sf-step-meta" data-step-meta>Step 1 of 3</div>
+
+    <!-- Progress stepper -->
+    <div class="stepper" data-stepper>
+      {steps.map((label, i) => (
+        <>
+          {i > 0 && <span class="stepper-line"></span>}
+          <span class="stepper-item">
+            <span class="stepper-dot" data-dot={i}>{i + 1}</span>
+            <span class="stepper-label" data-dot-label={i}>{label}</span>
+          </span>
+        </>
+      ))}
+    </div>
+
+    <!-- STEP 1 — asset -->
+    <div class="step-panel" data-step="0">
+      <fieldset class="vf-fieldset" aria-describedby={`${idPrefix}-asset-err`}>
+        <legend class="vf-label">What would you like valued? <span class="req" aria-hidden="true">*</span></legend>
+        <div class="vf-chips">
+          {assetOptions.map((opt) => (
+            <label class="vf-chip">
+              <input type="radio" name="assetType" value={opt} checked={preselect === opt} />
+              <span>{opt}</span>
+            </label>
+          ))}
+        </div>
+        <p class="vf-error" id={`${idPrefix}-asset-err`} data-error-for="assetType" role="alert"></p>
+      </fieldset>
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-value`}>Estimated value (AUD) <span class="opt">(optional)</span></label>
+        <input class="vf-input" id={`${idPrefix}-value`} name="estimatedValue" type="text" inputmode="numeric" placeholder="e.g. 120,000" />
+      </div>
+    </div>
+
+    <!-- STEP 2 — details -->
+    <div class="step-panel" data-step="1" hidden>
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-name`}>Full name <span class="req" aria-hidden="true">*</span></label>
+        <input class="vf-input" id={`${idPrefix}-name`} name="name" type="text" autocomplete="name" placeholder="Your name"
+          aria-describedby={`${idPrefix}-name-err`} />
+        <p class="vf-error" id={`${idPrefix}-name-err`} data-error-for="name" role="alert"></p>
+      </div>
+      <div class="vf-row">
+        <div class="vf-field">
+          <label class="vf-label" for={`${idPrefix}-email`}>Email <span class="req" aria-hidden="true">*</span></label>
+          <input class="vf-input" id={`${idPrefix}-email`} name="email" type="email" autocomplete="email" placeholder="you@example.com"
+            aria-describedby={`${idPrefix}-email-err`} />
+          <p class="vf-error" id={`${idPrefix}-email-err`} data-error-for="email" role="alert"></p>
+        </div>
+        <div class="vf-field">
+          <label class="vf-label" for={`${idPrefix}-phone`}>Phone <span class="req" aria-hidden="true">*</span></label>
+          <input class="vf-input" id={`${idPrefix}-phone`} name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"
+            aria-describedby={`${idPrefix}-phone-err`} />
+          <p class="vf-error" id={`${idPrefix}-phone-err`} data-error-for="phone" role="alert"></p>
+        </div>
+      </div>
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-location`}>Location <span class="opt">(optional)</span></label>
+        <input class="vf-input" id={`${idPrefix}-location`} name="location" type="text" autocomplete="address-level2" placeholder="City or region" />
+      </div>
+      <fieldset class="vf-fieldset">
+        <legend class="vf-label">Preferred contact method</legend>
+        <div class="vf-chips">
+          {contactOptions.map((opt, i) => (
+            <label class="vf-chip">
+              <input type="radio" name="preferredContact" value={opt} checked={i === 2} />
+              <span>{opt}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- STEP 3 — confirm -->
+    <div class="step-panel" data-step="2" hidden>
+      <div class="summary-box">
+        <div class="summary-eyebrow">Your request</div>
+        <div class="summary-text" data-summary>No asset selected yet</div>
+      </div>
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-message`}>Additional details <span class="opt">(optional)</span></label>
+        <textarea class="vf-input vf-textarea" id={`${idPrefix}-message`} name="message" rows="3" placeholder="Timing, specific pieces, questions…"></textarea>
+      </div>
+      <div class="vf-field">
+        <label class="vf-consent" for={`${idPrefix}-consent`}>
+          <input type="checkbox" id={`${idPrefix}-consent`} name="consent" aria-describedby={`${idPrefix}-consent-err`} />
+          <span>I consent to ALYRA contacting me about this enquiry and have read the <a href="/privacy/">Privacy notice</a>. <span class="req" aria-hidden="true">*</span></span>
+        </label>
+        <p class="vf-error" id={`${idPrefix}-consent-err`} data-error-for="consent" role="alert"></p>
+      </div>
+    </div>
+
+    <!-- Honeypot -->
+    <div class="vf-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label></div>
+
+    <!-- Navigation -->
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-back hidden>Back</button>
+      <button type="submit" class="btn btn--primary step-primary" data-primary>Continue</button>
+    </div>
+
+    <p class="vf-status" data-form-status role="status" aria-live="polite"></p>
+    <p class="vf-disclaimer">
+      Submitting an enquiry does not guarantee approval or funding. Loans are subject to asset type,
+      valuation, approval, custody, documentation and agreed loan terms.
+    </p>
+  </form>
+
+  <!-- Success -->
+  <div class="vf-success" data-form-success hidden role="status" aria-live="polite">
+    <div class="vf-tick" aria-hidden="true">✓</div>
+    <h3>Request received.</h3>
+    <p>
+      Thank you. Your enquiry has been received. A specialist will review the information and contact
+      you privately, typically within one business day.
+    </p>
+    <button class="btn btn--outline vf-restart" type="button" data-form-restart>Start a new request</button>
+  </div>
+</div>
+
+<style>
+  .sf-step-meta {
+    font: 600 11px/1 var(--font-body);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-fg);
+    margin-bottom: 14px;
+  }
+  .stepper { display: flex; align-items: center; margin-bottom: 32px; }
+  .stepper-item { display: flex; align-items: center; gap: 10px; }
+  .stepper-line { flex: 1; height: 1px; background: #e0d8c7; margin: 0 14px; }
+  .stepper-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font: 600 13px/1 var(--font-body);
+    flex: none;
+    background: #fff;
+    border: 1px solid var(--border-strong);
+    color: #b3ab98;
+  }
+  .stepper-dot.is-active { background: var(--ink); color: #f1ece1; border-color: var(--ink); }
+  .stepper-dot.is-complete { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .stepper-label { font: 600 12px/1 var(--font-body); letter-spacing: .3px; color: #a59f8e; }
+  .stepper-label.is-on { color: var(--ink); }
+
+  .step-panel[hidden] { display: none; }
+
+  .summary-box { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; margin-bottom: 22px; }
+  .summary-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 9px; }
+  .summary-text { font: 500 16px/1.4 var(--font-display); color: var(--ink); }
+
+  .step-nav { display: flex; align-items: center; gap: 12px; margin-top: 30px; }
+  .btn-back {
+    font: 600 15px/1 var(--font-body);
+    padding: 15px 26px;
+    border-radius: var(--radius-control);
+    border: 1px solid #c9bfa6;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .step-primary { margin-left: auto; width: auto; box-shadow: none; }
+  .step-primary:disabled { opacity: .4; cursor: not-allowed; filter: none; }
+
+  /* On very narrow cards, let the chips and label wrap nicely */
+  @media (max-width: 420px) {
+    .stepper-label { display: none; }
+  }
+</style>
+
+<script>
+  import { submitValuation, validateValuation, type ValuationPayload } from "../../lib/valuation";
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  document.querySelectorAll<HTMLFormElement>("[data-stepper-form]").forEach((form) => {
+    const endpoint = form.dataset.endpoint || "";
+    const card = form.closest(".vf-card");
+    const statusEl = form.querySelector<HTMLElement>("[data-form-status]");
+    const successEl = card?.querySelector<HTMLElement>("[data-form-success]");
+    const restartBtn = card?.querySelector<HTMLButtonElement>("[data-form-restart]");
+    const metaEl = form.querySelector<HTMLElement>("[data-step-meta]");
+    const backBtn = form.querySelector<HTMLButtonElement>("[data-back]");
+    const primaryBtn = form.querySelector<HTMLButtonElement>("[data-primary]");
+    const panels = Array.from(form.querySelectorAll<HTMLElement>(".step-panel"));
+    const dots = Array.from(form.querySelectorAll<HTMLElement>("[data-dot]"));
+    const dotLabels = Array.from(form.querySelectorAll<HTMLElement>("[data-dot-label]"));
+    const summaryEl = form.querySelector<HTMLElement>("[data-summary]");
+    const LAST = panels.length - 1;
+    let step = 0;
+
+    const val = (n: string) => {
+      const el = form.elements.namedItem(n);
+      if (el instanceof RadioNodeList) return String(el.value || "");
+      if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) return el.value.trim();
+      return "";
+    };
+
+    const setStatus = (msg: string, tone: "error" | "info" | "" = "") => {
+      if (!statusEl) return;
+      statusEl.textContent = msg;
+      if (tone) statusEl.dataset.tone = tone;
+      else delete statusEl.dataset.tone;
+    };
+    const setError = (field: string, msg: string) => {
+      const e = form.querySelector<HTMLElement>(`[data-error-for="${field}"]`);
+      if (e) e.textContent = msg;
+      const input = form.querySelector(`[name="${field}"]`);
+      if (input && msg) input.setAttribute("aria-invalid", "true");
+      else if (input) input.removeAttribute("aria-invalid");
+    };
+    const clearErrors = () => {
+      form.querySelectorAll<HTMLElement>("[data-error-for]").forEach((e) => (e.textContent = ""));
+      form.querySelectorAll("[aria-invalid]").forEach((el) => el.removeAttribute("aria-invalid"));
+    };
+
+    const stepValid = (s: number) => {
+      if (s === 0) return !!val("assetType");
+      if (s === 1) return !!val("name") && EMAIL_RE.test(val("email")) && !!val("phone");
+      return true;
+    };
+
+    const render = () => {
+      panels.forEach((p, i) => (p.hidden = i !== step));
+      dots.forEach((d, i) => {
+        d.classList.toggle("is-active", i === step);
+        d.classList.toggle("is-complete", i < step);
+        d.textContent = i < step ? "✓" : String(i + 1);
+      });
+      dotLabels.forEach((l, i) => l.classList.toggle("is-on", i <= step));
+      if (metaEl) metaEl.textContent = `Step ${step + 1} of 3`;
+      if (backBtn) backBtn.hidden = step === 0;
+      if (primaryBtn) {
+        primaryBtn.textContent = step === LAST ? "Submit Confidential Enquiry" : "Continue";
+        primaryBtn.disabled = step < LAST && !stepValid(step);
+      }
+      if (step === LAST && summaryEl) {
+        const asset = val("assetType");
+        const v = val("estimatedValue");
+        summaryEl.textContent = asset
+          ? asset + (v ? ` · approx. $${v}` : "")
+          : "No asset selected yet";
+      }
+    };
+
+    const readPayload = (): ValuationPayload => ({
+      name: val("name"),
+      email: val("email"),
+      phone: val("phone"),
+      assetType: val("assetType"),
+      estimatedValue: val("estimatedValue"),
+      location: val("location"),
+      message: val("message"),
+      preferredContact: val("preferredContact"),
+      consent: (form.elements.namedItem("consent") as HTMLInputElement)?.checked ?? false,
+    });
+
+    // Re-evaluate the Continue button and live email error as fields change.
+    form.addEventListener("input", () => {
+      if (step === 1) {
+        const email = val("email");
+        setError("email", email && !EMAIL_RE.test(email) ? "Please enter a valid email address." : "");
+      }
+      render();
+    });
+
+    backBtn?.addEventListener("click", () => {
+      if (step > 0) { step--; clearErrors(); setStatus(""); render(); }
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if ((form.elements.namedItem("company") as HTMLInputElement)?.value) return; // honeypot
+
+      if (step < LAST) {
+        if (!stepValid(step)) { render(); return; }
+        step++; clearErrors(); setStatus(""); render();
+        return;
+      }
+
+      // Final step — full validation then submit.
+      clearErrors();
+      const payload = readPayload();
+      const errors = validateValuation(payload);
+      if (Object.keys(errors).length) {
+        Object.entries(errors).forEach(([f, m]) => setError(f, m));
+        setStatus("Please complete the required fields.", "error");
+        return;
+      }
+
+      if (primaryBtn) { primaryBtn.disabled = true; primaryBtn.textContent = "Sending…"; }
+      const result = await submitValuation(endpoint, payload);
+      if (primaryBtn) { primaryBtn.disabled = false; primaryBtn.textContent = "Submit Confidential Enquiry"; }
+
+      if (result.status === "ok") {
+        form.hidden = true;
+        if (successEl) { successEl.hidden = false; successEl.focus?.(); }
+      } else if (result.status === "unconfigured") {
+        setStatus(
+          "This enquiry form is ready but not yet connected to a backend, so it hasn't been sent. Please email enquiries@alyra.com.au in the meantime.",
+          "info"
+        );
+      } else {
+        setStatus(result.message, "error");
+      }
+    });
+
+    restartBtn?.addEventListener("click", () => {
+      form.reset();
+      step = 0;
+      form.hidden = false;
+      if (successEl) successEl.hidden = true;
+      clearErrors();
+      setStatus("");
+      render();
+    });
+
+    render();
+  });
+</script>

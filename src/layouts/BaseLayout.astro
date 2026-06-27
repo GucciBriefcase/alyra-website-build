@@ -1,0 +1,147 @@
+---
+/**
+ * Base page layout: HTML shell, font loading, site-wide structured data
+ * (Organisation + WebSite), shared Nav and Footer. Page-specific metadata and
+ * schema are passed in as props.
+ */
+import "../styles/global.css";
+import { SITE, absoluteUrl } from "../config/site";
+import Seo from "../components/Seo.astro";
+import JsonLd from "../components/JsonLd.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  imageAlt?: string;
+  ogType?: "website" | "article";
+  /** Additional page-specific JSON-LD (Service, FAQPage, WebPage, etc.). */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, path, image, imageAlt, ogType, schema } = Astro.props;
+
+const sameAs = Object.values(SITE.social).filter(Boolean);
+
+// Site-wide Organisation (FinancialService) + WebSite structured data.
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "@id": absoluteUrl("/") + "#organization",
+  name: SITE.name,
+  alternateName: "ALYRA Private Lending",
+  url: absoluteUrl("/"),
+  logo: absoluteUrl("/assets/alyra-logo-ink.png"),
+  image: absoluteUrl(SITE.defaultOgImage),
+  description: SITE.entityDescription,
+  email: SITE.email,
+  ...(SITE.phone ? { telephone: SITE.phone } : {}),
+  priceRange: "$50,000 - $5,000,000",
+  currenciesAccepted: SITE.currency,
+  areaServed: SITE.locationsServed.map((name) => ({ "@type": "City", name })),
+  address: { "@type": "PostalAddress", addressCountry: SITE.serviceAreaCode },
+  knowsAbout: [
+    "Asset-based lending",
+    "Pawnbroking",
+    "Luxury watch valuation",
+    "Jewellery and diamond valuation",
+    "Fine art lending",
+    "Classic car finance",
+    "Gold bullion",
+  ],
+  slogan: SITE.tagline,
+  ...(sameAs.length ? { sameAs } : {}),
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": absoluteUrl("/") + "#website",
+  url: absoluteUrl("/"),
+  name: SITE.name,
+  publisher: { "@id": absoluteUrl("/") + "#organization" },
+  inLanguage: "en-AU",
+};
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Fonts: only the weights actually used (Poppins 500/600, Inter 400/500/600). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      image={image}
+      imageAlt={imageAlt}
+      ogType={ogType}
+    />
+
+    <JsonLd schema={[orgSchema, websiteSchema]} />
+    {schema && <JsonLd schema={schema} />}
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Progressive-enhancement scroll reveal. Sections marked `.reveal` fade up
+      // once on entry; under prefers-reduced-motion they are shown immediately
+      // (handled in CSS). One-shot via IntersectionObserver.
+      const root = document.body;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const els = document.querySelectorAll<HTMLElement>(".reveal");
+      if (!reduce && "IntersectionObserver" in window && els.length) {
+        root.classList.add("reveal-on");
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((en) => {
+              if (en.isIntersecting) {
+                en.target.classList.add("in");
+                io.unobserve(en.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 12px 18px;
+    border-radius: 0 0 8px 0;
+    font: 600 14px/1 var(--font-body);
+    text-decoration: none;
+  }
+  .skip-link:focus { left: 0; }
+</style>

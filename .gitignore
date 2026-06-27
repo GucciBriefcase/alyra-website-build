@@ -1,0 +1,33 @@
+# build output
+dist/
+.output/
+.vercel/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+
+# environment
+.env
+.env.production
+.env.local
+
+# logs
+npm-debug.log*
+
+# os / editor
+.DS_Store
+Thumbs.db
+.thumbnail
+/.thumbnail
+
+# stray root-level design-handoff dump (kept only under design_handoff_alyra_site/)
+# Leading slash anchors these to the repo root so the canonical copies inside
+# design_handoff_alyra_site/ are still tracked.
+/*.dc.html
+/support.js
+/image-slot.js
+/assets/
+/uploads/

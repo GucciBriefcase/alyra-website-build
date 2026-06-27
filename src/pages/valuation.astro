@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../config/site";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import ValuationForm from "../components/forms/ValuationForm.astro";
+import TrustStrip from "../components/sections/TrustStrip.astro";
+
+const path = SITE.enquiryPath;
+const title = "Request a Confidential Valuation | ALYRA";
+const description =
+  "Submit your asset details for a confidential, no-obligation valuation. ALYRA provides private loans from $50,000 to $5 million against high-value watches, jewellery, art, cars and gold. A specialist responds, usually within one business day.";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": absoluteUrl(path) + "#webpage",
+    url: absoluteUrl(path),
+    name: title,
+    isPartOf: { "@id": absoluteUrl("/") + "#website" },
+    inLanguage: "en-AU",
+    about: { "@id": absoluteUrl("/") + "#organization" },
+  },
+];
+
+const expect = [
+  "Submit your asset details, photos and any documents you have.",
+  "An ALYRA specialist reviews your enquiry privately.",
+  "If suitable, you receive a written offer setting out the loan amount, fees, interest and terms before you proceed.",
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Confidential Valuation" },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <header class="vp-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <div class="vp-hero-inner">
+        <p class="eyebrow">Confidential enquiry</p>
+        <h1 class="vp-h1">Request a confidential valuation.</h1>
+        <p class="vp-lead">
+          Submit your asset details for private review. An ALYRA specialist will assess the information
+          and contact you confidentially, typically within one business day.
+        </p>
+        <p class="vp-note">
+          Your details are reviewed confidentially and are not used to publicly list, market or sell your asset.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section vp-body">
+    <div class="container vp-grid">
+      <div class="vp-form-col">
+        <ValuationForm idPrefix="page" />
+      </div>
+
+      <aside class="vp-aside">
+        <div class="vp-block">
+          <h2 class="vp-block-h">What happens next</h2>
+          <ol class="vp-steps">
+            {expect.map((s, i) => (
+              <li><span class="vp-step-n">{i + 1}</span><span>{s}</span></li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="vp-block">
+          <h2 class="vp-block-h">Contact</h2>
+          <p class="vp-contact">
+            By appointment only<br />
+            <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            {SITE.phone && (<><br />{SITE.phone}</>)}
+          </p>
+          <p class="vp-contact vp-contact--muted">{SITE.availability}</p>
+        </div>
+
+        <div class="vp-block">
+          <h2 class="vp-block-h">Locations served</h2>
+          <p class="vp-contact vp-contact--muted">{SITE.locationsServed.join(" · ")}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <TrustStrip />
+</BaseLayout>
+
+<style>
+  .vp-hero { background: var(--cream); padding: calc(var(--nav-offset) + 24px) var(--section-x) clamp(32px, 4vw, 56px); }
+  .vp-hero-inner { max-width: 720px; padding-top: 28px; }
+  .vp-h1 { font: 600 clamp(32px, 4vw, 52px)/1.08 var(--font-display); letter-spacing: -1px; margin: 0 0 18px; text-wrap: balance; }
+  .vp-lead { font: 400 clamp(16px, 1.4vw, 18px)/1.7 var(--font-body); color: var(--text-muted); margin: 0 0 12px; max-width: 600px; }
+  .vp-note { font: 400 13px/1.6 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .vp-body { padding-top: clamp(32px, 4vw, 48px); }
+  .vp-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
+
+  .vp-aside { display: flex; flex-direction: column; gap: 32px; position: sticky; top: calc(var(--nav-offset) + 16px); }
+  .vp-block-h { font: 600 13px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin: 0 0 16px; }
+  .vp-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .vp-steps li { display: flex; gap: 13px; font: 400 14.5px/1.6 var(--font-body); color: var(--text-muted); }
+  .vp-step-n {
+    flex: none; width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(196, 165, 103, .16); color: var(--gold-ink);
+    display: flex; align-items: center; justify-content: center;
+    font: 600 13px/1 var(--font-body);
+  }
+  .vp-contact { font: 400 15px/1.8 var(--font-body); color: var(--text-muted); margin: 0 0 10px; }
+  .vp-contact a { color: var(--gold-ink); }
+  .vp-contact--muted { color: var(--text-soft); font-size: 14px; }
+
+  @media (max-width: 880px) {
+    .vp-grid { grid-template-columns: 1fr; }
+    .vp-aside { position: static; }
+  }
+</style>

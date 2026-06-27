@@ -1,0 +1,56 @@
+---
+/**
+ * Per-page SEO / social metadata. Canonical and OG URLs are derived from the
+ * central site config so the production domain is set in one place.
+ */
+import { SITE, absoluteUrl } from "../config/site";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path of the current page, e.g. "/loans/fine-art/". Used for canonical + og:url. */
+  path: string;
+  /** OG/Twitter image (site-relative or absolute). Defaults to the site image. */
+  image?: string;
+  /** og:type — "website" for index/landing pages, "article" for posts. */
+  ogType?: "website" | "article";
+  /** Allow per-page override of the robots directive. */
+  robots?: string;
+  imageAlt?: string;
+}
+
+const {
+  title,
+  description,
+  path,
+  image = SITE.defaultOgImage,
+  ogType = "website",
+  robots = "index,follow,max-image-preview:large",
+  imageAlt = `${SITE.brand} — private asset-based lending`,
+} = Astro.props;
+
+const canonical = absoluteUrl(path);
+const ogImage = image.startsWith("http") ? image : absoluteUrl(image);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+<meta name="theme-color" content={SITE.themeColor} />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={SITE.ogLocale} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={imageAlt} />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />

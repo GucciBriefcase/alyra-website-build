@@ -1,0 +1,113 @@
+---
+/**
+ * FAQ section: split layout (heading + CTA left, accordion right) plus matching
+ * FAQPage structured data. Uses native <details name> for a single-open
+ * accordion that works without JavaScript and is keyboard accessible.
+ */
+import { SITE } from "../../config/site";
+import type { Faq } from "../../data/assets";
+import JsonLd from "../JsonLd.astro";
+
+interface Props {
+  id?: string;
+  faqs: Faq[];
+  heading: string;
+  intro: string;
+  /** Unique name for the exclusive-accordion group on this page. */
+  group?: string;
+  white?: boolean;
+}
+const { id = "faq", faqs, heading, intro, group = "faq", white = true } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<section id={id} class:list={["section", "reveal", "faq", { "section--white section--rule-gold": white }]}>
+  <div class="container faq-split">
+    <div class="faq-aside">
+      <p class="eyebrow">Questions</p>
+      <h2 class="faq-h2">{heading}</h2>
+      <p class="faq-intro">{intro}</p>
+      <a href={SITE.enquiryPath} class="arrow-link faq-cta">
+        Request a Confidential Valuation <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map((f) => (
+        <details name={group} class="faq-item">
+          <summary>
+            <span class="faq-q">{f.q}</span>
+            <span class="faq-sign" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>{f.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<JsonLd schema={schema} />
+
+<style>
+  .faq-split {
+    display: grid;
+    grid-template-columns: 0.85fr 1.4fr;
+    gap: clamp(40px, 5vw, 72px);
+    align-items: start;
+  }
+  .faq-h2 {
+    font: 600 clamp(28px, 3.2vw, 38px)/1.1 var(--font-display);
+    letter-spacing: -0.8px;
+    margin: 0 0 18px;
+  }
+  .faq-intro { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 26px; max-width: 320px; }
+  .faq-cta {
+    font: 600 14px/1 var(--font-body);
+    color: var(--ink);
+    border-bottom: 1px solid #c9bfa6;
+    padding-bottom: 5px;
+  }
+
+  .faq-list { border-top: 1px solid var(--border); }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 4px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-q { font: 500 16px/1.45 var(--font-display); color: var(--ink); }
+  .faq-sign {
+    font: 400 24px/1 var(--font-body);
+    color: var(--gold-fg);
+    flex: none;
+    transition: transform .25s ease;
+  }
+  .faq-item[open] .faq-sign { transform: rotate(45deg); }
+  .faq-answer p {
+    font: 400 15px/1.75 var(--font-body);
+    color: var(--text-soft);
+    margin: 0;
+    padding: 0 4px 24px;
+    max-width: 600px;
+  }
+
+  @media (max-width: 820px) {
+    .faq-split { grid-template-columns: 1fr; gap: 36px; }
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+/**
+ * "How it works" — 4 numbered steps. Layout-only; callers pass the step copy so
+ * the homepage (asset-agnostic) and asset pages (asset-specific) can differ
+ * while sharing the design. Optional CTA + disclaimer below the grid.
+ */
+interface Step {
+  title: string;
+  body: string;
+}
+interface Props {
+  heading: string;
+  intro: string;
+  steps: Step[];
+  /** Optional id for in-page anchoring (e.g. "how"). */
+  id?: string;
+  white?: boolean;
+  cta?: { label: string; href: string };
+  disclaimer?: string;
+}
+const { heading, intro, steps, id, white = false, cta, disclaimer } = Astro.props;
+---
+
+<section id={id} class:list={["section", "reveal", { "section--white section--rule": white }]}>
+  <div class="container">
+    <div class="hiw-head">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h2">{heading}</h2>
+      <p class="lead hiw-intro">{intro}</p>
+    </div>
+    <ol class="hiw-grid">
+      {steps.map((s, i) => (
+        <li class="hiw-step">
+          <div class="hiw-num">{String(i + 1).padStart(2, "0")}</div>
+          <div class="hiw-rule"></div>
+          <h3 class="h3">{s.title}</h3>
+          <p class="hiw-body">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+    {(cta || disclaimer) && (
+      <div class="hiw-foot">
+        {cta && <a class="btn btn--primary" href={cta.href}>{cta.label}</a>}
+        {disclaimer && <p class="hiw-disclaimer">{disclaimer}</p>}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hiw-head { text-align: center; margin-bottom: 54px; }
+  .hiw-head .eyebrow, .hiw-intro { margin-left: auto; margin-right: auto; }
+  .hiw-intro { max-width: 600px; }
+  .hiw-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 40px;
+  }
+  .hiw-num { font: 600 15px/1 var(--font-display); color: var(--gold-fg); margin-bottom: 18px; }
+  .hiw-rule { height: 1px; background: var(--border); margin-bottom: 22px; }
+  .hiw-body { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
+  .hiw-foot { text-align: center; margin-top: 50px; }
+  .hiw-disclaimer {
+    font: 400 12.5px/1.6 var(--font-body);
+    color: #9a937f;
+    margin: 18px auto 0;
+    max-width: 600px;
+  }
+</style>

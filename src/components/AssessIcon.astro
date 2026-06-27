@@ -1,0 +1,28 @@
+---
+/**
+ * Renders one assess-criterion line icon. Icon definitions and the name type
+ * live in src/lib/icons.ts so they can be shared with the data layer without
+ * importing types from an .astro file. Unknown names fall back to "sparkle".
+ */
+import { ASSESS_ICONS, type AssessIconName } from "../lib/icons";
+
+interface Props {
+  name: AssessIconName;
+  size?: number;
+}
+const { name, size = 16 } = Astro.props;
+const inner = ASSESS_ICONS[name] ?? ASSESS_ICONS.sparkle;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="var(--gold-fg)"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  set:html={inner}
+></svg>

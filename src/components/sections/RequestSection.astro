@@ -1,0 +1,49 @@
+---
+/**
+ * Dark "Request a confidential valuation" CTA section wrapping the enquiry form.
+ * Used at the foot of the homepage and each asset page.
+ */
+import StepperForm from "../forms/StepperForm.astro";
+
+interface Props {
+  id?: string;
+  /** Asset noun for the lead copy, e.g. "asset", "watch". */
+  noun?: string;
+  /** Preselected asset-type chip in the form. */
+  preselect?: string;
+  idPrefix?: string;
+}
+const { id = "request", noun = "asset", preselect, idPrefix = "vf" } = Astro.props;
+---
+
+<section id={id} class="section section--dark request reveal">
+  <div class="request-head">
+    <p class="eyebrow eyebrow--on-dark">Confidential enquiry</p>
+    <h2 class="request-h2">Request a confidential valuation.</h2>
+    <p class="request-lead">
+      Submit your {noun} details for private review. An ALYRA specialist will assess the information
+      and contact you confidentially, typically within one business day.
+    </p>
+    <p class="request-note">
+      Your details are reviewed confidentially and are not used to publicly list, market or sell your {noun}.
+    </p>
+  </div>
+
+  <div class="request-form">
+    <StepperForm preselect={preselect} idPrefix={idPrefix} />
+  </div>
+</section>
+
+<style>
+  .request { padding-top: clamp(72px, 9vw, 120px); padding-bottom: clamp(72px, 9vw, 120px); }
+  .request-head { max-width: 720px; margin: 0 auto; text-align: center; }
+  .request-h2 {
+    font: 600 clamp(30px, 3.8vw, 46px)/1.1 var(--font-display);
+    letter-spacing: -0.8px;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .request-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 14px; }
+  .request-note { font: 400 13px/1.6 var(--font-body); color: #9a958a; margin: 0; }
+  .request-form { max-width: 600px; margin: 42px auto 0; }
+</style>

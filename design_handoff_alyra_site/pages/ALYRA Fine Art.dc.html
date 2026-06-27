@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<title>Loans Against Fine Art | ALYRA</title>
+<meta name="description" content="Private loans from $50,000–$5 million against fine art — established, contemporary and collectible works. Keep the art you own.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1b1a16">
+<link rel="canonical" href="https://www.alyra.com.au/loans/fine-art/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ALYRA">
+<meta property="og:title" content="Loans Against Fine Art | ALYRA">
+<meta property="og:description" content="Private loans from $50,000 to $5 million secured against fine art. Keep the art you own — access funds confidentially.">
+<meta property="og:url" content="https://www.alyra.com.au/loans/fine-art/">
+<meta property="og:locale" content="en_AU">
+<meta property="og:image" content="https://www.alyra.com.au/assets/og-fineart.jpg">
+<meta property="og:image:alt" content="Fine art">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Loans Against Fine Art | ALYRA">
+<meta name="twitter:description" content="Private loans from $50,000 to $5 million secured against fine art. Keep the art you own.">
+<meta name="twitter:image" content="https://www.alyra.com.au/assets/og-fineart.jpg">
+
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #f4f1ea; color: #1b1a16; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: 88px; }
+  ::selection { background: #d8c79a; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline: 2px solid #c4a567; outline-offset: 3px; border-radius: 4px; }
+  .alyra-nav { transition: background .3s ease, box-shadow .3s ease, padding .25s ease; animation: navFadeSoft .5s ease backwards; }
+  @keyframes navFadeSoft { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes navDrop { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  .alyra-nav > a > img { transition: opacity .3s ease; }
+  .alyra-nav > a > img:hover { opacity: .72; }
+  .nav-links a { position: relative; display: inline-block; cursor: pointer; color: #3a372f; text-decoration: none; transition: color .3s ease, transform .3s cubic-bezier(.2,.7,.2,1); animation: navDrop .55s cubic-bezier(.2,1.25,.35,1) backwards; }
+  .nav-links a:nth-child(1) { animation-delay: .05s; }
+  .nav-links a:nth-child(2) { animation-delay: .13s; }
+  .nav-links a:nth-child(3) { animation-delay: .21s; }
+  .nav-links a:nth-child(4) { animation-delay: .29s; }
+  .nav-links a:hover { color: #9a6a3c; transform: translateY(-3px); }
+  .alyra-nav > a[href="#request"] { transition: background .3s ease, transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+  .alyra-nav > a[href="#request"]:hover { transform: translateY(-1.5px); box-shadow: 0 8px 22px rgba(120,124,130,.4); }
+  @media (prefers-reduced-motion: reduce) { .alyra-nav, .alyra-nav > *, .nav-links a { animation: none !important; } }
+  .arrow { display: inline-block; transition: transform .25s ease; }
+  .arrow-link:hover .arrow { transform: translateX(5px); }
+  .brand-tile { transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s ease, background .3s ease, box-shadow .3s ease; }
+  .brand-tile:hover { transform: translateY(-4px); border-color: #c4a567; background: #fff; box-shadow: 0 14px 32px rgba(40,38,30,.1); }
+  .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal-on .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal-on .reveal { opacity: 1 !important; transform: none !important; } }
+  .foot-link { color: #b4ae9f; transition: color .25s ease; cursor: pointer; text-decoration: none; }
+  .foot-link:hover { color: #e9e3d6; }
+  .ss-by { color: rgba(241,236,225,.85); transition: color .2s ease, border-color .2s ease; }
+  .ss-by:hover { color: #f1ece1; border-color: rgba(241,236,225,.4) !important; }
+  .ss-wipe { transition: width .5s ease-out; }
+  .ss-by:hover .ss-wipe { width: 100% !important; }
+  .nav-burger { display: none; }
+  @media (max-width: 1040px) { .nav-links { display: none !important; } .nav-cta { display: none !important; } .nav-burger { display: inline-flex !important; } }
+  @media (max-width: 760px) { .foot-cols { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 820px) { .faq-split { grid-template-columns: 1fr !important; gap: 36px !important; } }
+  @media (max-width: 900px) { .wp-hero { grid-template-columns: 1fr !important; gap: 40px !important; } .wp-hero-img { order: -1; } .borrow-split { grid-template-columns: 1fr !important; } }
+  @media (max-width: 820px) { .brand-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } .assess-grid { grid-template-columns: 1fr !important; } }
+  @media (max-width: 720px) { .kyw-split { grid-template-columns: 1fr !important; gap: 24px !important; } }
+  @media (max-width: 640px) { .bos-cards { grid-template-columns: 1fr !important; } }
+  @media (max-width: 480px) { .foot-cols { grid-template-columns: 1fr !important; } }
+</style>
+<script src="image-slot.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "@id": "https://www.alyra.com.au/#organization",
+  "name": "ALYRA",
+  "url": "https://www.alyra.com.au/",
+  "logo": "https://www.alyra.com.au/assets/alyra-logo-ink.png",
+  "image": "https://www.alyra.com.au/assets/og-fineart.jpg",
+  "email": "enquiries@alyra.com.au",
+  "description": "Discreet private asset-based lending. ALYRA provides loans from $50,000 to $5 million secured against high-value watches, jewellery, diamonds, fine art, classic cars and gold bullion, without a public sale.",
+  "priceRange": "$50,000 - $5,000,000",
+  "currenciesAccepted": "AUD",
+  "areaServed": [
+    { "@type": "City", "name": "Sydney" },
+    { "@type": "City", "name": "Melbourne" },
+    { "@type": "City", "name": "Brisbane" },
+    { "@type": "City", "name": "Perth" },
+    { "@type": "City", "name": "Adelaide" },
+    { "@type": "City", "name": "Gold Coast" }
+  ],
+  "address": { "@type": "PostalAddress", "addressCountry": "AU" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.alyra.com.au/#website",
+  "url": "https://www.alyra.com.au/",
+  "name": "ALYRA",
+  "publisher": { "@id": "https://www.alyra.com.au/#organization" },
+  "inLanguage": "en-AU"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.alyra.com.au/" },
+    { "@type": "ListItem", "position": 2, "name": "Fine Art", "item": "https://www.alyra.com.au/loans/fine-art/" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Loans Against Fine Art",
+  "serviceType": "Asset-based loan secured against fine art",
+  "provider": {
+    "@type": "FinancialService",
+    "@id": "https://www.alyra.com.au/#organization",
+    "name": "ALYRA",
+    "url": "https://www.alyra.com.au/",
+    "email": "enquiries@alyra.com.au",
+    "areaServed": "AU"
+  },
+  "areaServed": "AU",
+  "description": "Private loans from $50,000 to $5 million secured against eligible fine art, including established, contemporary and collectible works across painting, sculpture, photography and prints. The work is assessed by a specialist, held securely for the agreed term, and returned once the loan is repaid.",
+  "offers": { "@type": "Offer", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 50000, "maxPrice": 5000000, "priceCurrency": "AUD" } }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can I borrow against a painting?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. ALYRA considers paintings and other fine art for lending, subject to artist, provenance, condition, documentation, market demand, valuation and approval." } },
+    { "@type": "Question", "name": "Do I need provenance documents?", "acceptedAnswer": { "@type": "Answer", "text": "Provenance, receipts and certificates of authenticity help establish value and can support stronger terms. They are not always essential. Tell us what you have." } },
+    { "@type": "Question", "name": "What if I have lost the paperwork?", "acceptedAnswer": { "@type": "Answer", "text": "It is still worth enquiring. A specialist can assess the work on its own merits, and provenance can sometimes be researched." } },
+    { "@type": "Question", "name": "How do you confirm a work is authentic?", "acceptedAnswer": { "@type": "Answer", "text": "Each work is reviewed by a specialist, with reference to provenance, catalogues raisonnés and expert opinion where needed." } },
+    { "@type": "Question", "name": "Do I keep ownership of my artwork?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You remain the owner. ALYRA holds the work only as security until the loan is repaid." } },
+    { "@type": "Question", "name": "Can I repay early?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Early repayment terms are set out in your offer before you proceed." } },
+    { "@type": "Question", "name": "Which artists do you accept?", "acceptedAnswer": { "@type": "Answer", "text": "ALYRA considers established, contemporary and collectible works across many artists and movements. If yours is not listed, you are welcome to ask." } },
+    { "@type": "Question", "name": "What happens if I do not repay?", "acceptedAnswer": { "@type": "Answer", "text": "Your artwork is at risk if repayment obligations are not met. The consequences of non-repayment are set out in your written loan terms before you proceed." } }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.alyra.com.au/loans/fine-art/#webpage",
+  "url": "https://www.alyra.com.au/loans/fine-art/",
+  "name": "Loans Against Fine Art | ALYRA",
+  "isPartOf": { "@id": "https://www.alyra.com.au/#website" },
+  "inLanguage": "en-AU",
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-26",
+  "primaryImageOfPage": "https://www.alyra.com.au/assets/og-fineart.jpg"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Eden John",
+  "jobTitle": "Principal Valuation Specialist",
+  "worksFor": { "@type": "FinancialService", "@id": "https://www.alyra.com.au/#organization", "name": "ALYRA" },
+  "description": "Eden John leads ALYRA's valuation process, with experience across fine art, jewellery and collectible assets for private clients.",
+  "knowsAbout": ["Watch valuation", "Jewellery valuation", "Diamond grading", "Collectible asset assessment"]
+}
+</script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#f4f1ea;overflow:hidden">
+
+  <!-- ===================== STICKY NAV ===================== -->
+  <nav ref="{{ navRef }}" class="alyra-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;padding:22px clamp(24px,5vw,72px);background:transparent">
+   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:30px">
+    <a href="ALYRA Homepage v3.dc.html" aria-label="ALYRA home" style="display:block;line-height:0"><img ref="{{ logoRef }}" src="assets/alyra-logo-ink.png" alt="ALYRA" width="120" height="20" style="height:20px;width:auto;display:block"></a>
+    <div class="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:30px;font:500 14px/1 'Inter',sans-serif">
+      <a href="#how">How it Works</a><a href="#art">Art</a><a href="#security">Security</a><a href="#faq">FAQ</a>
+    </div>
+    <a class="nav-cta" href="#request" style="text-decoration:none;font:600 13px/1 'Inter',sans-serif;letter-spacing:.3px;padding:12px 22px;border-radius:8px;color:#f1ece1;white-space:nowrap;background:#1b1a16">Request a Confidential Valuation</a>
+    <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;border:none;background:none;cursor:pointer;color:#1b1a16;padding:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+   </div>
+   <div class="mobile-menu" style="{{ mobileMenuStyle }}">
+     <a href="#how" onClick="{{ closeMenu }}" style="font:600 15px/1 'Inter',sans-serif;color:#e9e3d6;text-decoration:none;padding:13px 14px;border-radius:8px">How it Works</a>
+     <a href="#art" onClick="{{ closeMenu }}" style="font:600 15px/1 'Inter',sans-serif;color:#e9e3d6;text-decoration:none;padding:13px 14px;border-radius:8px">Art</a>
+     <a href="#security" onClick="{{ closeMenu }}" style="font:600 15px/1 'Inter',sans-serif;color:#e9e3d6;text-decoration:none;padding:13px 14px;border-radius:8px">Security</a>
+     <a href="#faq" onClick="{{ closeMenu }}" style="font:600 15px/1 'Inter',sans-serif;color:#e9e3d6;text-decoration:none;padding:13px 14px;border-radius:8px">FAQ</a>
+     <a href="#request" onClick="{{ closeMenu }}" style="font:600 15px/1 'Inter',sans-serif;color:#1b1a16;background:#c4a567;text-decoration:none;padding:14px;border-radius:8px;text-align:center;margin-top:4px">Request a Confidential Valuation</a>
+   </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header style="position:relative;background:#f4f1ea;color:#1b1a16;padding:64px clamp(24px,5vw,72px) 0;border-bottom:1px solid #c4a567">
+   <div style="max-width:1200px;margin:0 auto">
+    <nav aria-label="Breadcrumb" style="padding-top:6px"><ol style="list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0;padding:0;font:500 12.5px/1 'Inter',sans-serif"><li><a href="ALYRA Homepage v3.dc.html" style="color:#7c7766;text-decoration:none" style-hover="color:#9a6a3c">Home</a></li><li aria-hidden="true" style="color:#c3bba8">/</li><li aria-current="page" style="color:#1b1a16">Fine Art</li></ol></nav>
+    <div class="wp-hero" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,76px);align-items:center;padding:clamp(48px,9vh,104px) 0 clamp(44px,7vh,84px)">
+      <div>
+        <div class="hin" style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:24px">Private fine art lending</div>
+        <h1 class="hin" style="font:600 clamp(38px,5vw,62px)/1.05 'Poppins',sans-serif;letter-spacing:-1.4px;margin:0 0 24px;text-wrap:balance;color:#1b1a16">Loans against fine <span style="color:#9a6a3c">art</span></h1>
+        <p class="hin" style="font:400 clamp(16px,1.4vw,19px)/1.6 'Inter',sans-serif;color:#46453f;max-width:520px;margin:0 0 16px">Access loans from $50,000 to $5 million secured against eligible fine art, without selling the works you want to keep.</p>
+        <p class="hin" style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;max-width:520px;margin:0 0 30px">ALYRA lends against established, contemporary and collectible works, subject to provenance, condition, artist market and saleability.</p>
+        <div class="hin" style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="#request" style="text-decoration:none;font:600 15px/1 'Inter',sans-serif;color:#f1ece1;padding:17px 32px;border-radius:8px;background:#1b1a16;box-shadow:0 10px 26px rgba(27,26,22,.26);transition:filter .3s ease" style-hover="filter:brightness(1.28)">Request a Confidential Valuation</a>
+        </div>
+        <div class="hin" style="display:flex;align-items:center;gap:9px;font:400 13px/1.6 'Inter',sans-serif;color:#6e6d65;margin-top:18px;letter-spacing:.2px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;opacity:.75"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Licensed pawnbroker &middot; Specialist response usually within one business day</div>
+      </div>
+      <div class="hin wp-hero-img" style="aspect-ratio:4096/3559;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(40,38,30,.2)">
+        <img src="assets/hero-fineart.jpeg" alt="Sir Alfred Munnings, horses watering — oil painting in a gilt frame" width="4096" height="3559" fetchpriority="high" style="display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.1)">
+      </div>
+    </div>
+   </div>
+  </header>
+
+  <!-- ===================== A LOAN, NOT A SALE ===================== -->
+  <section class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);background:#ece6da">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="kyw-split" style="display:grid;grid-template-columns:0.9fr 1.3fr;gap:clamp(36px,5vw,64px);align-items:start">
+        <div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:18px">Keep your art</div>
+          <h2 style="font:600 clamp(28px,3.4vw,40px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0">A loan, not a sale.</h2>
+        </div>
+        <div>
+          <p style="font:400 17px/1.8 'Inter',sans-serif;color:#6b6657;margin:0 0 16px">A work of art can hold significant value while remaining something you want to keep.</p>
+          <p style="font:400 17px/1.8 'Inter',sans-serif;color:#6b6657;margin:0 0 26px">ALYRA lends against fine art so you can access funds without parting with it. Your work is assessed privately, held securely for the agreed term, and returned once the loan is repaid.</p>
+          <div style="border-top:1px solid #e4ded1;padding-top:22px"><p style="font:500 18px/1.5 'Poppins',sans-serif;color:#1b1a16;margin:0;letter-spacing:-0.2px">No auction. No public listing. No obligation.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WATCHES WE LEND AGAINST ===================== -->
+  <section id="art" class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);background:#fff;border-top:1px solid #e4ded1;border-bottom:1px solid #e4ded1">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="max-width:680px;margin-bottom:44px">
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">What we lend against</div>
+        <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 16px">Art we lend against.</h2>
+        <p style="font:400 16px/1.7 'Inter',sans-serif;color:#6b6657;margin:0">ALYRA lends against fine art with clear ownership and proven resale demand, across the categories below.</p>
+      </div>
+      <div class="brand-grid" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
+        <div class="brand-tile" style="border:1px solid #e4ded1;border-radius:12px;background:#fbfaf6;padding:30px 18px;text-align:center;font:500 17px/1.25 'Poppins',sans-serif;color:#1b1a16;display:flex;align-items:center;justify-content:center;min-height:92px">Old Masters</div>
+        <div class="brand-tile" style="border:1px solid #e4ded1;border-radius:12px;background:#fbfaf6;padding:30px 18px;text-align:center;font:500 17px/1.25 'Poppins',sans-serif;color:#1b1a16;display:flex;align-items:center;justify-content:center;min-height:92px">Impressionist &amp; Modern</div>
+        <div class="brand-tile" style="border:1px solid #e4ded1;border-radius:12px;background:#fbfaf6;padding:30px 18px;text-align:center;font:500 17px/1.25 'Poppins',sans-serif;color:#1b1a16;display:flex;align-items:center;justify-content:center;min-height:92px">Post-War &amp; Contemporary</div>
+        <div class="brand-tile" style="border:1px solid #e4ded1;border-radius:12px;background:#fbfaf6;padding:30px 18px;text-align:center;font:500 17px/1.25 'Poppins',sans-serif;color:#1b1a16;display:flex;align-items:center;justify-content:center;min-height:92px">Prints &amp; Editions</div>
+      </div>
+      <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:28px 0 0;max-width:680px">Works with strong provenance and active artist markets typically support the strongest terms. If your work is not listed, you are still welcome to enquire.</p>
+    </div>
+  </section>
+
+  <!-- ===================== HOW MUCH YOU CAN BORROW ===================== -->
+  <section class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div class="borrow-split" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,72px);align-items:center">
+      <div>
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Loan range</div>
+        <h2 style="font:600 clamp(28px,3.4vw,40px)/1.1 'Poppins',sans-serif;letter-spacing:-0.6px;margin:0 0 22px">How much you can borrow.</h2>
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:24px">
+          <span style="font:600 clamp(40px,5.4vw,64px)/1 'Poppins',sans-serif;letter-spacing:-1.5px;color:#1b1a16">$50k&ndash;$5m</span>
+        </div>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#6b6657;margin:0 0 16px">Loans range from $50,000 to $5 million. The amount available depends on the work and its suitability as loan security.</p>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#6b6657;margin:0">A specialist will review the artist, provenance, condition, documentation and current market demand before any offer is made.</p>
+      </div>
+      <img src="assets/loanrange-fineart.jpg" alt="Ivan Aivazovsky, moonlit view of Venice — oil painting" width="4096" height="2804" loading="lazy" style="display:block;width:100%;height:clamp(320px,42vw,440px);object-fit:cover;border-radius:14px;box-shadow:0 24px 56px rgba(40,38,30,.16)">
+    </div>
+  </section>
+
+  <!-- ===================== WHAT WE ASSESS ===================== -->
+  <section class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);background:#fbfaf6;border-top:1px solid #e4ded1;border-bottom:1px solid #e4ded1">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="max-width:640px;margin-bottom:40px">
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Specialist assessment</div>
+        <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 14px">What we assess.</h2>
+        <p style="font:400 16px/1.7 'Inter',sans-serif;color:#6b6657;margin:0">Every work is reviewed individually.</p>
+      </div>
+      <div class="assess-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 40px">
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Artist &amp; attribution</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Condition</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3z"></path></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Provenance</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Documentation</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Exhibition history</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"></path><path d="M11 3 8 9l4 13 4-13-3-6"></path><path d="M2 9h20"></path></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Rarity</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Market demand</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Title &amp; ownership</span></div>
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid #e4ded1"><span style="flex:none;width:30px;height:30px;border-radius:50%;background:rgba(196,165,103,.16);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span><span style="font:500 15.5px/1.4 'Inter',sans-serif;color:#1b1a16">Authenticity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section id="how" class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:54px">
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">How it works</div>
+        <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 16px">From confidential enquiry to artwork return.</h2>
+        <p style="font:400 16px/1.7 'Inter',sans-serif;color:#7c7766;margin:0 auto;max-width:600px">A simple, private process from first enquiry to the return of your artwork.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px">
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">01</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Share your artwork details</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">Submit photos, key details and any documents you have. ALYRA reviews your enquiry privately and confirms whether the work is suitable for assessment.</p>
+        </div>
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">02</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Receive a specialist assessment</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">A specialist reviews the work's artist, provenance, condition, authenticity and market demand.</p>
+        </div>
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">03</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Review your loan offer</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">If approved, you receive a written offer setting out the loan amount, fees, interest, repayment terms and redemption rights before you proceed.</p>
+        </div>
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">04</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Repay and retrieve your artwork</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">Your artwork is held securely during the loan term and returned once the loan is repaid under the agreed terms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECURITY & CUSTODY ===================== -->
+  <section id="security" class="reveal" style="background:#1b1a16;color:#f1ece1;padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,6vw,80px);align-items:start">
+      <div>
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#c4a567;margin-bottom:16px">Security &amp; custody</div>
+        <h2 style="font:600 clamp(28px,3.4vw,40px)/1.1 'Poppins',sans-serif;letter-spacing:-0.6px;color:#f4f1ea;margin:0 0 20px">Securely held until repayment.</h2>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#c2bcae;margin:0 0 18px">When a loan proceeds, your work is documented on arrival, photographed and held in secure custody for the agreed term. Insurance may apply while it is held, subject to policy terms, asset approval, valuation limits and custody conditions.</p>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#c2bcae;margin:0">You remain the owner throughout. ALYRA holds the work only as security for the loan.</p>
+      </div>
+      <div style="align-self:start">
+        <div style="font:600 11px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:#c4a567;margin-bottom:28px">Custody process</div>
+        <div style="position:relative">
+          <div style="position:absolute;left:21px;top:21px;bottom:21px;width:1px;background:linear-gradient(180deg,rgba(196,165,103,.55),rgba(196,165,103,.18));z-index:0"></div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1;padding-bottom:30px">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(196,165,103,.55);background:#1b1a16;display:flex;align-items:center;justify-content:center;flex:none;font:600 15px/1 'Poppins',sans-serif;color:#c4a567">1</div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Documented on arrival</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">The work is received, identified and reviewed against available documents.</div></div>
+          </div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1;padding-bottom:30px">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(196,165,103,.55);background:#1b1a16;display:flex;align-items:center;justify-content:center;flex:none;font:600 15px/1 'Poppins',sans-serif;color:#c4a567">2</div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Photographed &amp; catalogued</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">Its condition and details are photographed and recorded before custody.</div></div>
+          </div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1;padding-bottom:30px">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(196,165,103,.55);background:#1b1a16;display:flex;align-items:center;justify-content:center;flex:none;font:600 15px/1 'Poppins',sans-serif;color:#c4a567">3</div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Held in secure custody</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">The work is held securely for the agreed loan term, subject to custody and insurance terms.</div></div>
+          </div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(196,165,103,.55);background:#1b1a16;display:flex;align-items:center;justify-content:center;flex:none;font:600 15px/1 'Poppins',sans-serif;color:#c4a567">4</div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Returned after repayment</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">Once the loan is repaid under the agreed terms, the work is returned to you.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HANDLED IN CONFIDENCE ===================== -->
+  <section class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:760px;margin:0 auto;text-align:center">
+      <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:20px">Discretion</div>
+      <h2 style="font:600 clamp(28px,3.4vw,42px)/1.1 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 22px">Handled in confidence.</h2>
+      <p style="font:400 17px/1.8 'Inter',sans-serif;color:#6b6657;margin:0 auto 14px;max-width:600px">Your enquiry is private from the first contact.</p>
+      <p style="font:400 17px/1.8 'Inter',sans-serif;color:#6b6657;margin:0 auto;max-width:600px">Your artwork is never listed, marketed or sent to auction. You deal confidentially through assessment, custody and completion.</p>
+    </div>
+  </section>
+
+  <!-- ===================== BORROW OR SELL ===================== -->
+  <section class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);background:#fbfaf6;border-top:1px solid #e4ded1;border-bottom:1px solid #e4ded1">
+    <div style="max-width:980px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:clamp(36px,4vw,46px)">
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Your options</div>
+        <h2 style="font:600 clamp(28px,3.4vw,42px)/1.1 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0">Borrow or sell privately.</h2>
+      </div>
+      <div class="bos-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div style="background:#1b1a16;color:#f1ece1;border-radius:14px;padding:38px 36px">
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#c4a567;margin-bottom:14px">Borrow</div>
+          <p style="font:400 16px/1.7 'Inter',sans-serif;color:#c2bcae;margin:0">Borrowing may suit clients who want access to funds while keeping ownership of their artwork during the loan term.</p>
+        </div>
+        <div style="background:#fff;border:1px solid #e4ded1;border-radius:14px;padding:38px 36px">
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#9a6a3c;margin-bottom:14px">Sell</div>
+          <p style="font:400 16px/1.7 'Inter',sans-serif;color:#6b6657;margin:0">If you are ready to sell permanently, ALYRA may also provide a private purchase offer where available. Any decision to sell is considered separately from borrowing.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:clamp(32px,4vw,40px)"><a href="#request" style="display:inline-block;text-decoration:none;font:600 15px/1 'Inter',sans-serif;color:#f1ece1;background:#1b1a16;padding:16px 32px;border-radius:8px" style-hover="filter:brightness(1.28)">Request a Confidential Valuation</a></div>
+    </div>
+  </section>
+
+  <!-- ===================== SPEAK WITH A SPECIALIST ===================== -->
+  <section id="specialist" class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);border-top:1px solid #c4a567">
+    <div style="max-width:1000px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:40px">
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Your specialist</div>
+        <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0">Speak with a specialist.</h2>
+      </div>
+      <div style="max-width:780px;margin:0 auto;display:flex;gap:26px;align-items:flex-start;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;padding:clamp(24px,3vw,34px)">
+        <img src="assets/specialist.jpg" alt="Eden John, Principal Valuation Specialist" width="96" height="96" loading="lazy" style="width:96px;height:96px;flex:none;object-fit:cover;object-position:center 22%;border-radius:50%">
+        <div>
+          <div style="font:600 18px/1.3 'Poppins',sans-serif;color:#1b1a16;margin:0 0 1px">Eden John</div>
+          <div style="font:500 13px/1.4 'Inter',sans-serif;color:#9a6a3c;margin-bottom:14px">Principal Valuation Specialist</div>
+          <p style="font:400 14.5px/1.7 'Inter',sans-serif;color:#6b6657;margin:0 0 12px">Eden John leads ALYRA's valuation process, with experience across fine art, jewellery and collectible assets for private clients.</p>
+          <p style="font:400 14.5px/1.7 'Inter',sans-serif;color:#6b6657;margin:0 0 18px">From first enquiry to completion, you deal directly and confidentially.</p>
+          <a href="#request" class="arrow-link" style="text-decoration:none;font:600 13.5px/1 'Inter',sans-serif;color:#1b1a16;border-bottom:1px solid #c9bfa6;padding-bottom:4px">Speak With a Specialist <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq" class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);background:#fff;border-top:1px solid #e4ded1">
+    <div class="faq-split" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.4fr;gap:clamp(40px,5vw,72px);align-items:start">
+      <div>
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Questions</div>
+        <h2 style="font:600 clamp(28px,3.2vw,38px)/1.1 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 18px">Common questions.</h2>
+        <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0 0 26px;max-width:320px">Everything else is explained privately before you proceed. Speak with a specialist about your artwork in confidence.</p>
+        <a href="#request" class="arrow-link" style="text-decoration:none;font:600 14px/1 'Inter',sans-serif;color:#1b1a16;border-bottom:1px solid #c9bfa6;padding-bottom:5px">Request a Confidential Valuation <span class="arrow">→</span></a>
+      </div>
+      <div style="border-top:1px solid #e4ded1">
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="8">
+          <div style="border-bottom:1px solid #e4ded1">
+            <button onClick="{{ item.toggle }}" aria-expanded="{{ item.open }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 4px;cursor:pointer;background:none;border:none;text-align:left">
+              <span style="font:500 16px/1.45 'Poppins',sans-serif;color:#1b1a16">{{ item.q }}</span>
+              <span style="{{ item.signStyle }}">+</span>
+            </button>
+            <div style="{{ item.answerStyle }}">
+              <p style="font:400 15px/1.75 'Inter',sans-serif;color:#7c7766;margin:0;padding:0 4px 24px;max-width:600px">{{ item.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REQUEST — 3-STEP FORM ===================== -->
+  <section id="request" class="reveal" style="background:#1b1a16;color:#f1ece1;padding:clamp(72px,9vw,120px) clamp(24px,5vw,72px)">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#c4a567;margin-bottom:22px">Confidential enquiry</div>
+      <h2 style="font:600 clamp(30px,3.8vw,46px)/1.1 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 18px;text-wrap:balance">Request a confidential valuation.</h2>
+      <p style="font:400 17px/1.7 'Inter',sans-serif;color:#c2bcae;margin:0 0 14px">Submit your artwork details for private review. A specialist will assess the information and contact you confidentially, usually within one business day.</p>
+      <p style="font:400 13px/1.6 'Inter',sans-serif;color:#9a958a;margin:0">Your enquiry is reviewed confidentially and is not used to publicly list, market or sell your artwork.</p>
+    </div>
+
+    <div style="max-width:600px;margin:42px auto 0;background:#f4f1ea;color:#1b1a16;border-radius:12px;padding:clamp(26px,4vw,38px);text-align:left">
+
+      <sc-if value="{{ formActive }}" hint-placeholder-val="{{ true }}">
+        <div style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#9a6a3c;margin-bottom:14px">{{ stepLabel }}</div>
+        <div style="display:flex;align-items:center;margin-bottom:32px">
+          <div style="display:flex;align-items:center;gap:10px"><div style="{{ stepA.dotStyle }}">{{ stepA.n }}</div><span style="{{ stepA.labelStyle }}">{{ stepA.label }}</span></div>
+          <div style="flex:1;height:1px;background:#e0d8c7;margin:0 14px"></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="{{ stepB.dotStyle }}">{{ stepB.n }}</div><span style="{{ stepB.labelStyle }}">{{ stepB.label }}</span></div>
+          <div style="flex:1;height:1px;background:#e0d8c7;margin:0 14px"></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="{{ stepC.dotStyle }}">{{ stepC.n }}</div><span style="{{ stepC.labelStyle }}">{{ stepC.label }}</span></div>
+        </div>
+
+        <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom:22px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:11px">Which work would you like valued?</label>
+            <div style="display:flex;flex-wrap:wrap;gap:9px">
+              <sc-for list="{{ brandOptions }}" as="opt" hint-placeholder-count="6">
+                <div onClick="{{ opt.select }}" style="{{ opt.style }}">{{ opt.name }}</div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Estimated value (AUD)</label>
+            <input type="text" value="{{ form.value }}" onChange="{{ onValue }}" placeholder="e.g. 120,000" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Full name</label>
+            <input type="text" value="{{ form.name }}" onChange="{{ onName }}" placeholder="Your name" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <div style="flex:1;min-width:200px">
+              <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Email</label>
+              <input type="email" value="{{ form.email }}" onChange="{{ onEmail }}" placeholder="you@example.com" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+              <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}"><div style="font:400 12px/1.4 'Inter',sans-serif;color:#8a3a2f;margin-top:6px">Please enter a valid email address.</div></sc-if>
+            </div>
+            <div style="flex:1;min-width:200px">
+              <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Phone <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+              <input type="tel" value="{{ form.phone }}" onChange="{{ onPhone }}" placeholder="04xx xxx xxx" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+            </div>
+          </div>
+          <div style="margin-top:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Location <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <input type="text" value="{{ form.location }}" onChange="{{ onLocation }}" placeholder="City or region" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+          <div style="margin-top:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:11px">Preferred contact method</label>
+            <div style="display:flex;flex-wrap:wrap;gap:9px">
+              <sc-for list="{{ contactOptions }}" as="opt" hint-placeholder-count="3">
+                <div onClick="{{ opt.select }}" style="{{ opt.style }}">{{ opt.name }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fff;border:1px solid #e4ded1;border-radius:8px;padding:16px 18px;margin-bottom:22px">
+            <div style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#9a6a3c;margin-bottom:9px">Your request</div>
+            <div style="font:500 16px/1.4 'Poppins',sans-serif;color:#1b1a16">{{ summary }}</div>
+          </div>
+          <div style="margin-bottom:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Additional details <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <textarea value="{{ form.notes }}" onChange="{{ onNotes }}" rows="3" placeholder="Artist, medium, provenance, questions…" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.5 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none;resize:vertical"></textarea>
+          </div>
+          <div style="margin-bottom:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Upload images or documents <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <input type="file" multiple style="width:100%;box-sizing:border-box;padding:11px 14px;border:1px dashed #d8d0bf;border-radius:8px;font:400 13.5px/1.3 'Inter',sans-serif;background:#fff;color:#6b6657;outline:none">
+          </div>
+          <div>
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Preferred timeframe <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <input type="text" value="{{ form.timeframe }}" onChange="{{ onTimeframe }}" placeholder="e.g. within 2 weeks" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+        </sc-if>
+
+        <div style="display:flex;align-items:center;gap:12px;margin-top:30px">
+          <sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ onBack }}" style="font:600 15px/1 'Inter',sans-serif;padding:15px 26px;border-radius:8px;border:1px solid #c9bfa6;background:transparent;color:#1b1a16;cursor:pointer">Back</button>
+          </sc-if>
+          <button onClick="{{ onPrimary }}" style="{{ primaryStyle }}">{{ ctaLabel }}</button>
+        </div>
+        <p style="font:400 11.5px/1.6 'Inter',sans-serif;color:#9a937f;margin:18px 0 0">Submitting an enquiry does not guarantee approval or funding. Loans are subject to valuation, approval, custody, documentation and agreed loan terms. Your artwork is at risk if repayment obligations are not met.</p>
+      </sc-if>
+
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:18px 0">
+          <div style="width:56px;height:56px;border-radius:50%;background:#c4a567;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font:600 26px/1 'Inter',sans-serif;color:#1b1a16">&#10003;</div>
+          <h3 style="font:600 26px/1.2 'Poppins',sans-serif;margin:0 0 12px">Request received.</h3>
+          <p style="font:400 16px/1.7 'Inter',sans-serif;color:#6b6657;margin:0 auto 26px;max-width:420px">Thank you. Your enquiry has been received. A specialist will review the information and contact you privately, usually within one business day.</p>
+          <button onClick="{{ restart }}" style="font:600 14px/1 'Inter',sans-serif;padding:13px 26px;border-radius:8px;border:1px solid #c9bfa6;background:transparent;color:#1b1a16;cursor:pointer">Start a new request</button>
+        </div>
+      </sc-if>
+
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#16150f;color:#a39d8e;padding:clamp(56px,6vw,80px) clamp(24px,5vw,72px) 40px">
+    <div style="max-width:1200px;margin:0 auto">
+
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:42px;border-bottom:1px solid #322f27">
+        <div>
+          <a href="ALYRA Homepage v3.dc.html" aria-label="ALYRA home" style="display:block;line-height:0"><img src="assets/alyra-logo-cream.png" alt="ALYRA" width="150" height="26" loading="lazy" style="height:26px;width:auto;display:block"></a>
+        </div>
+      </div>
+
+      <div class="foot-cols" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:46px 0;border-bottom:1px solid #322f27">
+        <div>
+          <p style="font:400 14px/1.7 'Inter',sans-serif;color:#a39d8e;margin:0 0 22px;max-width:300px">Private asset-based lending for high-value watches, jewellery, diamonds, designer handbags, art, classic and luxury cars, and gold bullion.</p>
+          <div style="font:400 13px/1.8 'Inter',sans-serif;color:#a39d8e">By appointment only<br><span class="foot-link">enquiries@alyra.com.au</span><br><span>[Phone number, if approved]</span></div>
+        </div>
+        <div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#c4a567;margin-bottom:18px">Assets</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><a class="foot-link" href="ALYRA High-Value Watches.dc.html">Watches</a><a class="foot-link" href="ALYRA Jewellery and Diamonds.dc.html">Jewellery and Diamonds</a><a class="foot-link" href="#art">Fine Art</a><a class="foot-link" href="ALYRA Homepage v3.dc.html#assets">Classic Cars</a><a class="foot-link" href="ALYRA Homepage v3.dc.html#assets">Gold Bullion</a></div>
+        </div>
+        <div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#c4a567;margin-bottom:18px">Company</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><a class="foot-link" href="#how">How it Works</a><a class="foot-link" href="#specialist">Our Specialist</a><a class="foot-link" href="#locations">Locations</a><a class="foot-link" href="#faq">FAQ</a><a class="foot-link" href="#request">Contact</a></div>
+        </div>
+        <div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#c4a567;margin-bottom:18px">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><a class="foot-link" href="/privacy/">Privacy</a><a class="foot-link" href="/terms/">Terms</a><a class="foot-link" href="/complaints/">Complaints</a><a class="foot-link" href="/pawnbroking-licence/">Pawnbroking Licence</a><a class="foot-link" href="/second-hand-dealer-registration/">Second-Hand Dealer Registration</a></div>
+        </div>
+      </div>
+
+      <div id="locations" style="padding:26px 0;border-bottom:1px solid #322f27;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#837e71">Locations served</span>
+        <span style="font:500 13px/1.6 'Inter',sans-serif;color:#a39d8e;letter-spacing:.3px">Sydney &middot; Melbourne &middot; Brisbane &middot; Perth &middot; Adelaide &middot; Gold Coast</span>
+      </div>
+
+      <div style="padding-top:28px;display:flex;flex-direction:column;gap:16px">
+        <p style="font:400 12px/1.7 'Inter',sans-serif;color:#837e71;margin:0;max-width:860px">ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. Loans are subject to valuation, approval, custody, eligibility and loan terms. Your asset is at risk if you do not meet your repayment obligations. Fees, interest, repayment terms, notices, redemption rights and enforcement processes will be disclosed before you proceed. This website contains general information only and does not constitute financial, legal or credit advice.</p>
+        <span style="font:400 12px/1.6 'Inter',sans-serif;color:#837e71">© 2026 ALYRA. All rights reserved.</span>
+      </div>
+
+      <div style="margin-top:40px;display:flex;justify-content:center">
+        <a class="ss-by" href="https://www.skyscale.com.au" target="_blank" rel="noopener noreferrer" aria-label="Website &amp; AI Search by SkyScale" style="display:inline-flex;align-items:center;gap:18px;border:1px solid rgba(241,236,225,.18);border-radius:8px;padding:13px 30px;text-decoration:none;font:400 15px/1 'Inter',sans-serif">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.7;flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 2.5 15.4 0 18"></path><path d="M12 3c-2.5 2.6-2.5 15.4 0 18"></path></svg>
+          <span>Website &amp; AI Search by</span>
+          <span aria-hidden="true" style="width:1px;height:22px;background:rgba(241,236,225,.2);flex:none"></span>
+          <span style="position:relative;display:inline-flex;align-items:center;flex:none">
+            <img src="assets/skyscale-logo.png" alt="SkyScale" width="127" height="22" loading="lazy" style="height:22px;width:auto;display:block">
+            <span aria-hidden="true" class="ss-wipe" style="position:absolute;inset:0;overflow:hidden;width:0">
+              <span style="display:block;height:22px;width:127px;background:#6ae1c9;-webkit-mask:url(assets/skyscale-logo.png) left center/auto 100% no-repeat;mask:url(assets/skyscale-logo.png) left center/auto 100% no-repeat"></span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1200, &quot;height&quot;: 900 }
+}">
+class Component extends DCLogic {
+  state = { open: 0, step: 0, done: false, menuOpen: false, form: { asset: '', value: '', name: '', email: '', phone: '', location: '', contact: 'Either', notes: '', timeframe: '' } };
+  setField(key, val) { this.setState(s => ({ form: { ...s.form, [key]: val } })); }
+  scrollTo(id) { const el = this.rootEl && this.rootEl.querySelector('#' + id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 70, behavior: 'smooth' }); }
+  componentDidMount() {
+    try { document.documentElement.lang = 'en-AU'; } catch (e) {}
+    this._onScroll = () => {
+      if (!this.navEl) return;
+      const s = (window.scrollY || window.pageYOffset || 0) > 40;
+      this.navEl.style.background = s ? '#1b1a16' : 'transparent';
+      this.navEl.style.boxShadow = s ? '0 1px 0 rgba(241,236,225,.08), 0 10px 30px rgba(0,0,0,.28)' : 'none';
+      this.navEl.style.padding = (s ? '14px ' : '22px ') + 'clamp(24px,5vw,72px)';
+      if (this.logoEl) this.logoEl.src = s ? 'assets/alyra-logo-cream.png' : 'assets/alyra-logo-ink.png';
+      this.navEl.querySelectorAll('.nav-links a').forEach(el => { el.style.color = s ? '#cfc8b9' : ''; });
+      const cta = this.navEl.querySelector('a[href="#request"]');
+      if (cta) { cta.style.background = s ? '#f1ece1' : '#1b1a16'; cta.style.color = s ? '#1b1a16' : '#f1ece1'; }
+      const burger = this.navEl.querySelector('.nav-burger');
+      if (burger) burger.style.color = s ? '#f1ece1' : '#1b1a16';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+    if (this.rootEl) {
+      this.rootEl.classList.add('reveal-on');
+      const els = this.rootEl.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        this._io = new IntersectionObserver((entries) => {
+          entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); this._io.unobserve(en.target); } });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        els.forEach(el => this._io.observe(el));
+      } else {
+        els.forEach(el => el.classList.add('in'));
+      }
+      const hin = [...this.rootEl.querySelectorAll('.hin')];
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        hin.forEach((el, i) => {
+          el.animate(
+            [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 650, delay: 80 + i * 90, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' }
+          );
+        });
+      }
+    }
+  }
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+  renderVals() {
+    const p = this.props || {};
+    const data = [
+      { q: "Can I borrow against a painting?", a: "Yes. ALYRA considers paintings and other fine art for lending, subject to artist, provenance, condition, documentation, market demand, valuation and approval." },
+      { q: "Do I need provenance documents?", a: "Provenance, receipts and certificates of authenticity help establish value and can support stronger terms. They are not always essential. Tell us what you have." },
+      { q: "What if I have lost the paperwork?", a: "It is still worth enquiring. A specialist can assess the work on its own merits, and provenance can sometimes be researched." },
+      { q: "How do you confirm a work is authentic?", a: "Each work is reviewed by a specialist, with reference to provenance, catalogues raisonnés and expert opinion where needed." },
+      { q: "Do I keep ownership of my artwork?", a: "Yes. You remain the owner. ALYRA holds the work only as security until the loan is repaid." },
+      { q: "Can I repay early?", a: "Yes. Early repayment terms are set out in your offer before you proceed." },
+      { q: "Which artists do you accept?", a: "ALYRA considers established, contemporary and collectible works across many artists and movements. If yours is not listed, you are welcome to ask." },
+      { q: "What happens if I do not repay?", a: "Your artwork is at risk if repayment obligations are not met. The consequences of non-repayment are set out in your written loan terms before you proceed." },
+    ];
+    const faqs = data.map((f, i) => {
+      const open = this.state.open === i;
+      return {
+        q: f.q, a: f.a, open,
+        signStyle: "font:400 24px/1 'Inter',sans-serif;color:#9a6a3c;flex:none;display:inline-block;transition:transform .25s ease;" + (open ? 'transform:rotate(45deg);' : ''),
+        answerStyle: 'overflow:hidden;transition:max-height .4s ease,opacity .3s ease;' + (open ? 'max-height:320px;opacity:1;' : 'max-height:0;opacity:0;'),
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
+      };
+    });
+    const f = this.state.form, step = this.state.step, done = this.state.done;
+    const chip = sel => "padding:11px 17px;border-radius:8px;font:500 14px/1 'Inter',sans-serif;cursor:pointer;white-space:nowrap;transition:all .15s;" + (sel ? 'border:1px solid #c4a567;background:rgba(196,165,103,.16);color:#1b1a16;' : 'border:1px solid #d8d0bf;background:#fff;color:#6b6657;');
+    const brandOptions = ['Painting','Sculpture','Photography','Print or edition','Other'].map(n => ({ name: n, style: chip(f.asset === n), select: () => this.setField('asset', n) }));
+    const contactOptions = ['Email','Phone','Either'].map(n => ({ name: n, style: chip(f.contact === n), select: () => this.setField('contact', n) }));
+    const mkStep = i => {
+      const active = step === i, complete = step > i;
+      const base = "width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 13px/1 'Inter',sans-serif;flex:none;";
+      const dotStyle = complete ? base + 'background:#c4a567;color:#1b1a16;' : active ? base + 'background:#1b1a16;color:#f1ece1;' : base + 'background:#fff;border:1px solid #d8d0bf;color:#b3ab98;';
+      const labelStyle = "font:600 12px/1 'Inter',sans-serif;letter-spacing:.3px;" + (active || complete ? 'color:#1b1a16;' : 'color:#a59f8e;');
+      return { n: complete ? '\u2713' : String(i + 1), label: ['Your artwork','Your details','Confirm'][i], dotStyle, labelStyle };
+    };
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email);
+    const emailError = step === 1 && f.email.length > 0 && !emailOk;
+    const stepLabel = 'Step ' + (step + 1) + ' of 3';
+    const canPrimary = step === 0 ? !!f.asset : step === 1 ? (!!f.name && emailOk) : true;
+    const btnBase = "font:600 15px/1 'Inter',sans-serif;padding:15px 32px;border-radius:8px;border:none;color:#f1ece1;background:#1b1a16;margin-left:auto;";
+    return {
+      faqs,
+      navRef: el => { this.navEl = el; },
+      logoRef: el => { this.logoEl = el; },
+      rootRef: el => { this.rootEl = el; },
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      mobileMenuStyle: this.state.menuOpen ? "display:flex;flex-direction:column;gap:6px;max-width:1200px;margin:14px auto 0;padding:16px;background:#1b1a16;border-radius:14px" : "display:none",
+      goHow: () => this.scrollTo('how'),
+      goWatches: () => this.scrollTo('art'),
+      goSecurity: () => this.scrollTo('security'),
+      goFaq: () => this.scrollTo('faq'),
+      emailError,
+      stepLabel,
+      form: f,
+      formActive: !done,
+      done,
+      s0: step === 0, s1: step === 1, s2: step === 2,
+      showBack: step > 0,
+      ctaLabel: step === 2 ? 'Submit Confidential Enquiry' : 'Continue',
+      primaryStyle: btnBase + (canPrimary ? 'cursor:pointer;' : 'opacity:.4;cursor:not-allowed;'),
+      onPrimary: () => { if (!canPrimary) return; if (step < 2) this.setState(s => ({ step: s.step + 1 })); else this.setState({ done: true }); },
+      onBack: () => this.setState(s => ({ step: Math.max(0, s.step - 1) })),
+      onName: e => this.setField('name', e.target.value),
+      onEmail: e => this.setField('email', e.target.value),
+      onPhone: e => this.setField('phone', e.target.value),
+      onValue: e => this.setField('value', e.target.value),
+      onNotes: e => this.setField('notes', e.target.value),
+      onLocation: e => this.setField('location', e.target.value),
+      onTimeframe: e => this.setField('timeframe', e.target.value),
+      restart: () => this.setState({ step: 0, done: false, form: { asset: '', value: '', name: '', email: '', phone: '', location: '', contact: 'Either', notes: '', timeframe: '' } }),
+      brandOptions, contactOptions,
+      stepA: mkStep(0), stepB: mkStep(1), stepC: mkStep(2),
+      summary: f.asset ? (f.asset + (f.value ? ' \u00b7 approx. $' + f.value : '')) : 'No artwork selected yet',
+    };
+  }
+}
+</script>
+</body>
+</html>

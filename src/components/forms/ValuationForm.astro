@@ -1,0 +1,253 @@
+---
+/**
+ * Confidential valuation enquiry form.
+ *
+ * Semantic, label-bound, keyboard accessible, with error and success states.
+ * Works without JavaScript (native POST to the configured endpoint); with JS it
+ * validates inline and submits via fetch. It never fakes a submission — if no
+ * endpoint is configured it tells the user the form is not yet connected.
+ * Submission logic lives in src/lib/valuation.ts.
+ */
+import { SITE } from "../../config/site";
+
+interface Props {
+  /** Preselect an asset type (used on asset-detail pages). */
+  preselect?: string;
+  /** Unique id prefix when more than one form could appear on a page. */
+  idPrefix?: string;
+}
+const { preselect, idPrefix = "vf" } = Astro.props;
+
+const assetOptions = [
+  "High-Value Watches",
+  "Jewellery & Diamonds",
+  "Fine Art",
+  "Classic & Luxury Cars",
+  "Gold Bullion",
+  "Designer Handbags",
+  "Other",
+];
+const contactOptions = ["Email", "Phone", "Either"];
+const endpoint = SITE.enquiryEndpoint;
+---
+
+<div class="vf-card">
+  <form
+    class="vf-form"
+    data-valuation-form
+    data-endpoint={endpoint}
+    method="POST"
+    action={endpoint || undefined}
+    novalidate
+  >
+    <!-- Asset type -->
+    <fieldset class="vf-fieldset" aria-describedby={`${idPrefix}-assetType-err`}>
+      <legend class="vf-label">What would you like valued? <span class="req" aria-hidden="true">*</span></legend>
+      <div class="vf-chips">
+        {assetOptions.map((opt, i) => (
+          <label class="vf-chip">
+            <input
+              type="radio"
+              name="assetType"
+              value={opt}
+              checked={preselect === opt || (!preselect && i === -1)}
+              required
+            />
+            <span>{opt}</span>
+          </label>
+        ))}
+      </div>
+      <p class="vf-error" id={`${idPrefix}-assetType-err`} data-error-for="assetType" role="alert"></p>
+    </fieldset>
+
+    <!-- Name -->
+    <div class="vf-field">
+      <label class="vf-label" for={`${idPrefix}-name`}>Full name <span class="req" aria-hidden="true">*</span></label>
+      <input class="vf-input" id={`${idPrefix}-name`} name="name" type="text" autocomplete="name" required
+        aria-describedby={`${idPrefix}-name-err`} placeholder="Your name" />
+      <p class="vf-error" id={`${idPrefix}-name-err`} data-error-for="name" role="alert"></p>
+    </div>
+
+    <!-- Email + Phone -->
+    <div class="vf-row">
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-email`}>Email <span class="req" aria-hidden="true">*</span></label>
+        <input class="vf-input" id={`${idPrefix}-email`} name="email" type="email" autocomplete="email" required
+          aria-describedby={`${idPrefix}-email-err`} placeholder="you@example.com" />
+        <p class="vf-error" id={`${idPrefix}-email-err`} data-error-for="email" role="alert"></p>
+      </div>
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-phone`}>Phone <span class="req" aria-hidden="true">*</span></label>
+        <input class="vf-input" id={`${idPrefix}-phone`} name="phone" type="tel" autocomplete="tel" required
+          aria-describedby={`${idPrefix}-phone-err`} placeholder="04xx xxx xxx" />
+        <p class="vf-error" id={`${idPrefix}-phone-err`} data-error-for="phone" role="alert"></p>
+      </div>
+    </div>
+
+    <!-- Estimated value + Location -->
+    <div class="vf-row">
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-estimatedValue`}>Estimated asset value (AUD) <span class="opt">(optional)</span></label>
+        <input class="vf-input" id={`${idPrefix}-estimatedValue`} name="estimatedValue" type="text"
+          inputmode="numeric" placeholder="e.g. 120,000" />
+      </div>
+      <div class="vf-field">
+        <label class="vf-label" for={`${idPrefix}-location`}>Location <span class="opt">(optional)</span></label>
+        <input class="vf-input" id={`${idPrefix}-location`} name="location" type="text" autocomplete="address-level2"
+          placeholder="City or region" />
+      </div>
+    </div>
+
+    <!-- Preferred contact -->
+    <fieldset class="vf-fieldset">
+      <legend class="vf-label">Preferred contact method</legend>
+      <div class="vf-chips">
+        {contactOptions.map((opt, i) => (
+          <label class="vf-chip">
+            <input type="radio" name="preferredContact" value={opt} checked={i === 2} />
+            <span>{opt}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <!-- Message -->
+    <div class="vf-field">
+      <label class="vf-label" for={`${idPrefix}-message`}>Additional details <span class="opt">(optional)</span></label>
+      <textarea class="vf-input vf-textarea" id={`${idPrefix}-message`} name="message" rows="3"
+        placeholder="Timing, specific pieces, questions…"></textarea>
+    </div>
+
+    <!-- Consent -->
+    <div class="vf-field">
+      <label class="vf-consent" for={`${idPrefix}-consent`}>
+        <input type="checkbox" id={`${idPrefix}-consent`} name="consent" required
+          aria-describedby={`${idPrefix}-consent-err`} />
+        <span>
+          I consent to ALYRA contacting me about this enquiry and have read the
+          <a href="/privacy/">Privacy notice</a>. <span class="req" aria-hidden="true">*</span>
+        </span>
+      </label>
+      <p class="vf-error" id={`${idPrefix}-consent-err`} data-error-for="consent" role="alert"></p>
+    </div>
+
+    <!-- Honeypot (spam protection — must stay empty) -->
+    <div class="vf-hp" aria-hidden="true">
+      <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+    </div>
+
+    <button class="btn btn--primary vf-submit" type="submit">Submit Confidential Enquiry</button>
+
+    <p class="vf-status" data-form-status role="status" aria-live="polite"></p>
+    <p class="vf-disclaimer">
+      Submitting an enquiry does not guarantee approval or funding. Loans are subject to asset type,
+      valuation, approval, custody, documentation and agreed loan terms.
+    </p>
+  </form>
+
+  <!-- Success state -->
+  <div class="vf-success" data-form-success hidden role="status" aria-live="polite">
+    <div class="vf-tick" aria-hidden="true">✓</div>
+    <h3>Request received.</h3>
+    <p>
+      Thank you. Your enquiry has been received. A specialist will review the information and contact
+      you privately, typically within one business day.
+    </p>
+    <button class="btn btn--outline vf-restart" type="button" data-form-restart>Start a new request</button>
+  </div>
+</div>
+
+<script>
+  import { submitValuation, validateValuation, type ValuationPayload } from "../../lib/valuation";
+
+  document.querySelectorAll<HTMLFormElement>("[data-valuation-form]").forEach((form) => {
+    const endpoint = form.dataset.endpoint || "";
+    const card = form.closest(".vf-card");
+    const statusEl = form.querySelector<HTMLElement>("[data-form-status]");
+    const successEl = card?.querySelector<HTMLElement>("[data-form-success]");
+    const restartBtn = card?.querySelector<HTMLButtonElement>("[data-form-restart]");
+
+    const setStatus = (msg: string, tone: "error" | "info" | "" = "") => {
+      if (!statusEl) return;
+      statusEl.textContent = msg;
+      if (tone) statusEl.dataset.tone = tone;
+      else delete statusEl.dataset.tone;
+    };
+
+    const clearErrors = () => {
+      form.querySelectorAll<HTMLElement>("[data-error-for]").forEach((el) => (el.textContent = ""));
+      form.querySelectorAll<HTMLElement>("[aria-invalid]").forEach((el) => el.removeAttribute("aria-invalid"));
+    };
+
+    const showErrors = (errors: Record<string, string>) => {
+      Object.entries(errors).forEach(([field, msg]) => {
+        const errEl = form.querySelector<HTMLElement>(`[data-error-for="${field}"]`);
+        if (errEl) errEl.textContent = msg;
+        const input = form.querySelector<HTMLElement>(`[name="${field}"]`);
+        if (input) input.setAttribute("aria-invalid", "true");
+      });
+      const first = form.querySelector<HTMLElement>('[aria-invalid="true"]');
+      first?.focus();
+    };
+
+    const readPayload = (): ValuationPayload => {
+      const fd = new FormData(form);
+      const get = (k: string) => String(fd.get(k) ?? "").trim();
+      return {
+        name: get("name"),
+        email: get("email"),
+        phone: get("phone"),
+        assetType: get("assetType"),
+        estimatedValue: get("estimatedValue"),
+        location: get("location"),
+        message: get("message"),
+        preferredContact: get("preferredContact"),
+        consent: fd.get("consent") != null,
+      };
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      clearErrors();
+      setStatus("");
+
+      // Honeypot: silently ignore bots.
+      if ((form.elements.namedItem("company") as HTMLInputElement)?.value) return;
+
+      const payload = readPayload();
+      const errors = validateValuation(payload);
+      if (Object.keys(errors).length) {
+        showErrors(errors);
+        return;
+      }
+
+      const submit = form.querySelector<HTMLButtonElement>(".vf-submit");
+      if (submit) { submit.disabled = true; submit.textContent = "Sending…"; }
+
+      const result = await submitValuation(endpoint, payload);
+
+      if (submit) { submit.disabled = false; submit.textContent = "Submit Confidential Enquiry"; }
+
+      if (result.status === "ok") {
+        form.hidden = true;
+        if (successEl) { successEl.hidden = false; successEl.focus?.(); }
+      } else if (result.status === "unconfigured") {
+        setStatus(
+          "This enquiry form is ready but not yet connected to a backend, so it hasn't been sent. Please email " +
+            "enquiries@alyra.com.au in the meantime.",
+          "info"
+        );
+      } else {
+        setStatus(result.message, "error");
+      }
+    });
+
+    restartBtn?.addEventListener("click", () => {
+      form.reset();
+      form.hidden = false;
+      if (successEl) successEl.hidden = true;
+      setStatus("");
+      clearErrors();
+    });
+  });
+</script>

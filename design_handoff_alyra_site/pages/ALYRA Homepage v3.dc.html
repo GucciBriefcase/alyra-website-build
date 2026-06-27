@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ===================== SEO / PRIMARY META ===================== -->
+<title>ALYRA — Private Asset-Based Lending | Loans Against Watches, Jewellery, Art & Gold</title>
+<meta name="description" content="ALYRA provides discreet private loans from $50,000 to $5 million secured against high-value watches, jewellery, diamonds, fine art, classic cars and gold bullion. Keep your asset — access funds confidentially. Australia-wide enquiries.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1b1a16">
+<link rel="canonical" href="https://www.alyra.com.au/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ALYRA">
+<meta property="og:title" content="ALYRA — Private Asset-Based Lending">
+<meta property="og:description" content="Discreet loans from $50,000 to $5 million secured against high-value watches, jewellery, diamonds, art, classic cars and gold bullion. Keep your asset.">
+<meta property="og:url" content="https://www.alyra.com.au/">
+<meta property="og:locale" content="en_AU">
+<meta property="og:image" content="https://www.alyra.com.au/assets/og-image.jpg">
+<meta property="og:image:alt" content="ALYRA — private asset-based lending">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ALYRA — Private Asset-Based Lending">
+<meta name="twitter:description" content="Discreet loans from $50,000 to $5 million secured against high-value assets. Keep your asset — access funds confidentially.">
+<meta name="twitter:image" content="https://www.alyra.com.au/assets/og-image.jpg">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #f4f1ea; color: #1b1a16; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #d8c79a; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline: 2px solid #c4a567; outline-offset: 3px; border-radius: 4px; }
+  .alyra-nav { transition: background .3s ease, box-shadow .3s ease, padding .25s ease; }
+  @keyframes navFadeSoft { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes navRiseBlur { from { opacity: 0; transform: translateY(11px); filter: blur(7px); } to { opacity: 1; transform: none; filter: blur(0); } }
+  @keyframes navDrop { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  .alyra-nav { animation: navFadeSoft .5s ease backwards; }
+  .alyra-nav > img, .alyra-nav > a { animation: navFadeSoft .7s ease backwards; }
+  .alyra-nav > img { transition: opacity .3s ease; }
+  .alyra-nav > img:hover { opacity: .72; }
+  .nav-links span { position: relative; display: inline-block; cursor: pointer; color: #3a372f; transition: color .3s ease, transform .3s cubic-bezier(.2,.7,.2,1); animation: navDrop .55s cubic-bezier(.2,1.25,.35,1) backwards; }
+  .nav-links span:nth-child(1) { animation-delay: .05s; }
+  .nav-links span:nth-child(2) { animation-delay: .13s; }
+  .nav-links span:nth-child(3) { animation-delay: .21s; }
+  .nav-links span:nth-child(4) { animation-delay: .29s; }
+  .nav-links span:hover { color: #9a6a3c; transform: translateY(-3px); }
+  .alyra-nav > a[href="#request"] { transition: background .3s ease, transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+  .alyra-nav > a[href="#request"]:hover { transform: translateY(-1.5px); box-shadow: 0 8px 22px rgba(120,124,130,.4); }
+  @media (prefers-reduced-motion: reduce) { .alyra-nav, .alyra-nav > *, .nav-links span { animation: none !important; } }
+  .arrow { display: inline-block; transition: transform .25s ease; }
+  .arrow-link:hover .arrow { transform: translateX(5px); }
+  .card-hover { transition: transform .28s ease, box-shadow .28s ease; }
+  .card-hover:hover { transform: translateY(-5px); box-shadow: 0 16px 38px rgba(40,38,30,.13); }
+  .card-hover image-slot { transition: transform .55s ease; }
+  .card-hover:hover image-slot { transform: scale(1.06); }
+  .bvs-card { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease; }
+  .bvs-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(40,38,30,.16); border-color: #d8c79a; }
+  .bvs-icon { transition: border-color .3s ease; }
+  .bvs-card:hover .bvs-icon { border-color: #c4a567; }
+  .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal-on .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal-on .reveal { opacity: 1 !important; transform: none !important; } }
+  @media (max-width: 860px) { .nav-links { display: none !important; } }
+  .foot-link { color: #b4ae9f; transition: color .25s ease; cursor: pointer; text-decoration: none; }
+  .foot-link:hover { color: #e9e3d6; }
+  .ss-by { color: rgba(241,236,225,.85); transition: color .2s ease, border-color .2s ease; }
+  .ss-by:hover { color: #f1ece1; border-color: rgba(241,236,225,.4) !important; }
+  .ss-wipe { transition: width .5s ease-out; }
+  .ss-by:hover .ss-wipe { width: 100% !important; }
+  @media (max-width: 760px) { .foot-cols { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 820px) { .faq-split { grid-template-columns: 1fr !important; gap: 36px !important; } }
+  @media (max-width: 860px) { .alyra-hero { grid-template-columns: 1fr !important; } .alyra-hero-img > div { min-height: 320px !important; } }
+  @media (max-width: 900px) { .asset-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } }
+  @media (max-width: 600px) { .asset-grid { grid-template-columns: 1fr !important; } }
+  @media (max-width: 480px) { .foot-cols { grid-template-columns: 1fr !important; } }
+</style>
+<script src="image-slot.js"></script>
+
+<!-- ===================== STRUCTURED DATA (AEO / GEO) ===================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "@id": "https://www.alyra.com.au/#organization",
+  "name": "ALYRA",
+  "alternateName": "ALYRA Private Lending",
+  "url": "https://www.alyra.com.au/",
+  "logo": "https://www.alyra.com.au/assets/alyra-logo.png",
+  "image": "https://www.alyra.com.au/assets/og-image.jpg",
+  "description": "Discreet private asset-based lending. ALYRA provides loans from $50,000 to $5 million secured against high-value watches, jewellery, diamonds, fine art, classic cars and gold bullion, without a public sale.",
+  "email": "enquiries@alyra.com.au",
+  "priceRange": "$50,000 - $5,000,000",
+  "currenciesAccepted": "AUD",
+  "areaServed": [
+    { "@type": "City", "name": "Sydney" },
+    { "@type": "City", "name": "Melbourne" },
+    { "@type": "City", "name": "Brisbane" },
+    { "@type": "City", "name": "Perth" },
+    { "@type": "City", "name": "Adelaide" },
+    { "@type": "City", "name": "Gold Coast" }
+  ],
+  "address": { "@type": "PostalAddress", "addressCountry": "AU" },
+  "knowsAbout": ["Asset-based lending", "Pawnbroking", "Luxury watch valuation", "Jewellery and diamond valuation", "Fine art lending", "Classic car finance", "Gold bullion"],
+  "slogan": "A loan against your asset, not a sale of it."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.alyra.com.au/#website",
+  "url": "https://www.alyra.com.au/",
+  "name": "ALYRA",
+  "publisher": { "@id": "https://www.alyra.com.au/#organization" },
+  "inLanguage": "en-AU"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Private Asset-Based Lending",
+  "serviceType": "Asset-based loan secured against pledged goods",
+  "provider": { "@id": "https://www.alyra.com.au/#organization" },
+  "areaServed": "AU",
+  "description": "Loans from $50,000 to $5 million secured against high-value physical assets. The asset is assessed by a specialist, held securely for the agreed loan term, and returned once the loan is repaid.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Assets ALYRA lends against",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lending against high-value watches" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lending against jewellery and diamonds" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lending against fine art" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lending against classic and luxury cars" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lending against gold bullion" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lending against designer handbags" } }
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Eden John",
+  "jobTitle": "Principal Valuation Specialist",
+  "worksFor": { "@id": "https://www.alyra.com.au/#organization" },
+  "description": "Eden John leads ALYRA's valuation process, with experience across high-value watches, jewellery, diamonds and collectible assets for private clients.",
+  "knowsAbout": ["Watch valuation", "Jewellery valuation", "Diamond grading", "Collectible asset assessment"]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is private asset-based lending?", "acceptedAnswer": { "@type": "Answer", "text": "Private asset-based lending is a loan secured against a valuable asset you own. The asset is assessed, held securely during the loan term, and returned when the loan is repaid in accordance with the agreed terms." } },
+    { "@type": "Question", "name": "Who is private asset-based lending suitable for?", "acceptedAnswer": { "@type": "Answer", "text": "It may suit private clients and collectors who own valuable physical assets and want liquidity without publicly selling watches, jewellery, diamonds, art, classic cars or bullion." } },
+    { "@type": "Question", "name": "What assets can secure a loan?", "acceptedAnswer": { "@type": "Answer", "text": "ALYRA considers high-value watches, jewellery, diamonds, fine art, classic and luxury cars, gold bullion. Suitability depends on asset quality, provenance, market demand, valuation and custody requirements." } },
+    { "@type": "Question", "name": "How is ALYRA different from selling through auction or a marketplace?", "acceptedAnswer": { "@type": "Answer", "text": "Selling transfers ownership and may involve public exposure, fees, negotiation and timing risk. ALYRA provides a private lending process where the client retains ownership and recovers the asset after repayment." } },
+    { "@type": "Question", "name": "What happens after I submit an enquiry?", "acceptedAnswer": { "@type": "Answer", "text": "ALYRA reviews the asset details, photographs and supporting documentation. If the asset may be suitable, a specialist may contact you to discuss valuation, custody and next steps." } },
+    { "@type": "Question", "name": "How much can I borrow?", "acceptedAnswer": { "@type": "Answer", "text": "ALYRA provides loans from $50,000 to $5 million, subject to asset type, valuation, approval, custody, documentation and agreed loan terms." } },
+    { "@type": "Question", "name": "Is this a pawn loan?", "acceptedAnswer": { "@type": "Answer", "text": "ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. The process is private, specialist-led and designed for high-value assets." } },
+    { "@type": "Question", "name": "Do I keep ownership of my asset?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You retain ownership of the asset while ALYRA holds it as security for the loan. Once the loan is repaid in accordance with the agreed terms, the asset is returned to you." } },
+    { "@type": "Question", "name": "What happens to my asset while the loan is active?", "acceptedAnswer": { "@type": "Answer", "text": "The asset is held in secure custody while the loan is active. Insurance may apply subject to policy terms, asset approval, valuation limits and custody conditions." } },
+    { "@type": "Question", "name": "How quickly can I receive funds?", "acceptedAnswer": { "@type": "Answer", "text": "Timing depends on the asset, documentation, valuation, approval and custody requirements. A specialist typically responds to enquiries within one business day." } },
+    { "@type": "Question", "name": "Will my asset be listed for sale?", "acceptedAnswer": { "@type": "Answer", "text": "No public listing, auction campaign or marketplace sale is required to access funds. The asset is held as security during the loan term." } },
+    { "@type": "Question", "name": "Will this appear on my credit record?", "acceptedAnswer": { "@type": "Answer", "text": "This depends on the final loan structure, applicable law and the circumstances of the loan. ALYRA will explain relevant disclosure and reporting obligations before you proceed." } },
+    { "@type": "Question", "name": "Can I repay early?", "acceptedAnswer": { "@type": "Answer", "text": "Early repayment may be available where permitted under your loan terms. Any applicable fees, interest and repayment conditions are disclosed before you proceed." } },
+    { "@type": "Question", "name": "What happens if I do not repay?", "acceptedAnswer": { "@type": "Answer", "text": "Your asset is at risk if you do not meet your repayment obligations. Fees, notices, redemption rights and enforcement processes are disclosed before you proceed." } },
+    { "@type": "Question", "name": "Can I sell instead of borrow?", "acceptedAnswer": { "@type": "Answer", "text": "You may choose to sell an asset independently instead of borrowing against it. ALYRA's primary service is lending secured against eligible physical assets." } }
+  ]
+}
+</script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#f4f1ea;overflow:hidden">
+
+  <!-- ===================== STICKY NAV ===================== -->
+  <nav ref="{{ navRef }}" class="alyra-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;padding:22px clamp(24px,5vw,72px);background:transparent">
+   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:30px">
+    <svg viewBox="385 820 2230 360" role="img" aria-label="ALYRA" fill="currentColor" style="height:20px;width:auto;display:block;color:#1b1a16"><path d="M389.46,1175.33c52.17-117.33,106.52-233.7,158.67-351.03c14.44,0.78,28.93-0.54,43.37,0.72c11.39,26.52,24.39,52.33,36.66,78.46c11.47,26.38,24.93,51.85,36.94,77.98c29.85,64.86,61.49,128.88,90.92,193.89c-15.49,0.1-30.98,0.06-46.46,0.2c-3.86-3.48-4.6-9.26-7.09-13.7c-24.99-54.04-49.9-108.11-75.19-161.99c-18.56-41.52-39.15-82.1-57.29-123.8c-43.53,96.62-86.44,193.5-129.77,290.21c-1.21,2.53-1.99,5.24-2.47,8.04c-4.54,1.73-9.44,1-14.16,1.1C412.22,1175.32,400.83,1175.55,389.46,1175.33z"/><path d="M912.66,824.21c13.88,0.62,27.8,0.24,41.7,0.12c0.9,107.57,0.02,215.18,0.46,322.75c76.55,0.36,153.09,0.26,229.64,0.04c-0.06,9.54-0.06,19.08,0.08,28.64c-90.64-0.6-181.33-0.3-271.99-0.16C913.06,1058.46,912.72,941.34,912.66,824.21z"/><path d="M1252.64,824.37c17.3,0.1,34.61,0.16,51.93-0.02c23.42,29.95,48.63,58.45,72.78,87.78c24.02,29.81,49.01,58.84,72.9,88.75c0.58-0.04,1.75-0.1,2.33-0.12c12.76-17.11,27.08-32.96,40.42-49.6c33.95-41.98,69.6-82.62,102.31-125.55c17.09-2.57,34.59-0.2,51.83-1.29c-1.47,6.27-7.11,10.39-10.59,15.57c-44.88,53.43-88.18,108.19-133,161.67c-10.69,12.41-20.61,25.51-31.9,37.38c-0.56,45.6,0.46,91.2-0.44,136.8c-13.84-0.46-27.7-0.62-41.54,0.06c-0.28-45.62,0.18-91.24-0.28-136.86c-50.42-58.56-99.07-118.62-148.05-178.38C1271.72,848.56,1260.91,837.37,1252.64,824.37z"/><path d="M1803.96,824.45c60.79,0.16,121.61-0.02,182.42,0.14c30.11,0.54,61.21,7.79,85.21,26.82c13.32,11.83,24.97,26.29,30.15,43.61c7.59,24.55,7.79,51.58-0.5,75.99c-6.29,21.53-21.43,40.01-40.58,51.46c-16.63,9.66-35.45,15.93-54.66,17.26c3.76,2.95,7.39,6.11,10.75,9.54c40.56,39.87,80.23,80.59,121.09,120.14c1.91,1.63,3.19,3.8,4.3,6.05c-20.01,0.02-40.03-0.22-60.04,0.12c-43.39-44.88-87.88-88.73-131.75-133.12c-17.76-1.41-35.7-0.26-53.55-0.64c-17.09,0.14-34.19-0.34-51.26,0.3c0.4,44.47-0.16,88.93,0.38,133.38c-14.08-0.06-28.18-0.24-42.26-0.04c0.34-54.28-0.1-108.55,0.28-162.83c50.86-0.14,101.72-0.02,152.57-0.16c24.59-0.26,50.72-1,72.56-13.78c15.15-8.56,24.77-24.41,29.49-40.78c4.64-19.46,3.84-40.26-2.81-59.14c-7.07-19.83-24.61-35.43-45-40.42c-22.54-7.61-46.62-6.27-70.03-6.63c-45.68-0.22-91.36-0.26-137.04-0.26C1804.02,842.45,1803.96,833.45,1803.96,824.45z"/><path d="M2405.54,825.9c13.44-3.25,27.7-0.54,41.48-1.33c43.77,94.41,88.24,188.56,132.26,282.87c10.16,22.76,21.84,44.86,31.26,67.92c-13.22,0.14-26.44-0.12-39.65,0.12c-2.67-0.3-6.43,1.14-7.91-1.89c-32.36-70.01-64.42-140.17-96.76-210.18c-12.39-28.56-26.66-56.25-38.43-85.07c-1.25,0.56-2.13,1.43-2.65,2.63c-44.25,98.53-89.87,196.38-134.71,294.63c-15.85-0.86-31.8,0.92-47.57-1.02c28.85-58.86,55.6-118.72,83.89-177.84c16.33-35.41,32.8-70.77,49.52-106.02C2385.63,868.93,2397.14,848.04,2405.54,825.9z"/></svg>
+    <div class="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:30px;font:500 14px/1 'Inter',sans-serif;color:#cfc8b9">
+      <span>Assets</span><span>How it Works</span><span>Valuation</span><span>Security &amp; Custody</span><span>Insights</span>
+    </div>
+    <a href="#request" style="text-decoration:none;font:600 13px/1 'Inter',sans-serif;letter-spacing:.3px;padding:12px 22px;border-radius:8px;color:#f1ece1;white-space:nowrap;background:#1b1a16;transition:filter .3s ease" style-hover="filter:brightness(.94)">Request a Confidential Valuation</a>
+   </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header style="position:relative;background:#f4f1ea;color:#1b1a16;padding:64px clamp(24px,5vw,72px) 0">
+   <div style="max-width:1200px;margin:0 auto">
+    <div class="alyra-hero" style="padding:clamp(56px,10vh,120px) 0 clamp(68px,9vh,112px)">
+    <!-- hero content -->
+    <div style="text-align:center;max-width:860px;margin:0 auto">
+      <div>
+        <div class="hin" style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:26px">Private asset-based lending</div>
+        <h1 class="hin" style="font:600 clamp(42px,5.4vw,72px)/1.04 'Poppins',sans-serif;letter-spacing:-1.5px;margin:0 auto 26px;max-width:860px;text-wrap:balance;color:#1b1a16">Access funds without selling what you <span style="color:#9a6a3c">value</span></h1>
+        <p class="hin" style="font:400 clamp(16px,1.4vw,19px)/1.65 'Inter',sans-serif;color:#6b6657;max-width:680px;margin:24px auto 16px">ALYRA provides discreet loans from $50,000 to $5 million, secured against watches, jewellery, diamonds, art, classic and luxury cars, and gold bullion.</p>
+        <div class="hin" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
+          <a href="#request" style="text-decoration:none;font:600 15px/1 'Inter',sans-serif;color:#f1ece1;padding:17px 34px;border-radius:8px;background:#1b1a16;box-shadow:0 10px 26px rgba(27,26,22,.28);transition:filter .3s ease" style-hover="filter:brightness(1.3)">Request a Confidential Valuation</a>
+        </div>
+        <div class="hin" style="display:flex;align-items:center;justify-content:center;gap:9px;font:400 13.5px/1.6 'Inter',sans-serif;color:#6e6d65;margin-top:16px;letter-spacing:.3px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;opacity:.75"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Confidential enquiry &middot; No obligation &middot; Specialist response usually within one business day</div>
+      </div>
+    </div>
+    </div>
+   </div>
+  </header>
+
+  <!-- ===================== CREDIBILITY STRIP ===================== -->
+  <sc-if value="{{ showTrustBar }}" hint-placeholder-val="{{ true }}">
+  <section style="background:#1b1a16;color:#e9e3d6;border-top:1px solid rgba(196,165,103,.45);padding:clamp(32px,3.4vw,46px) clamp(24px,5vw,72px)">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 34px">
+        <div style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c4a567" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none;opacity:.85"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg><span style="font:500 13px/1.3 'Inter',sans-serif;color:#cfc8b9">Licensed pawnbroker</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c4a567" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none;opacity:.85"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span style="font:500 13px/1.3 'Inter',sans-serif;color:#cfc8b9">Specialist valuation</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c4a567" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none;opacity:.85"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span style="font:500 13px/1.3 'Inter',sans-serif;color:#cfc8b9">Secure custody</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c4a567" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none;opacity:.85"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg><span style="font:500 13px/1.3 'Inter',sans-serif;color:#cfc8b9">Loans $50k&ndash;$5m</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c4a567" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none;opacity:.85"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span style="font:500 13px/1.3 'Inter',sans-serif;color:#cfc8b9">Australia-wide enquiries</span></div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ===================== WHAT IS ALYRA (definition) ===================== -->
+  <section class="reveal" style="background:#fff;padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:820px;margin:0 auto;text-align:center">
+      <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:20px">What is ALYRA?</div>
+      <h2 style="font:600 clamp(28px,3.6vw,44px)/1.12 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 22px;text-wrap:balance">A loan against your asset, not a sale of it.</h2>
+      <p style="font:400 17px/1.8 'Inter',sans-serif;color:#6b6657;margin:0 auto 14px;max-width:620px">ALYRA helps clients access funds without selling valuable assets they want to keep.</p>
+      <p style="font:400 17px/1.8 'Inter',sans-serif;color:#6b6657;margin:0 auto 36px;max-width:620px">Each eligible asset is assessed by a specialist, held securely for the agreed loan term, and returned once you've repaid.</p>
+      <p style="font:400 17px/1.8 'Inter',sans-serif;color:#6b6657;margin:0 auto;max-width:620px">No public listing. No auction. No obligation.</p>
+    </div>
+  </section>
+
+  <!-- ===================== ASSET CATEGORIES ===================== -->
+  <section id="assets" class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);border-top:1px solid #c4a567">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:42px">
+        <div style="max-width:680px">
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">What we lend against</div>
+          <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 16px;max-width:620px">Six asset classes. One private way to access funds.</h2>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">ALYRA lends against high-value assets with clear ownership, good condition, and proven resale demand. What qualifies depends on the asset, its documents, value, location, and applicable law.</p>
+        </div>
+        <a href="#" class="arrow-link" style="text-decoration:none;font:500 14px/1 'Inter',sans-serif;color:#7c7766;border-bottom:1px solid #c9bfa6;padding-bottom:5px">View Accepted Assets <span class="arrow">→</span></a>
+      </div>
+      <div class="asset-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px">
+        <div class="card-hover" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;overflow:hidden">
+          <img src="assets/fine-watches.jpg" alt="Fine watch detail" style="display:block;width:100%;height:230px;object-fit:cover;border-bottom:1px solid #e4ded1">
+          <div style="padding:30px;display:flex;flex-direction:column;flex:1"><div style="font:600 16px/1.2 'Poppins',sans-serif;margin-bottom:8px">High-Value Watches</div><p style="font:400 13px/1.55 'Inter',sans-serif;color:#857f6e;margin:0 0 16px">Rolex, Patek Philippe, Audemars Piguet, Richard Mille, and other collectible watches.</p><a href="#" class="arrow-link" style="margin-top:auto;text-decoration:none;font:600 12.5px/1 'Inter',sans-serif;color:#9a6a3c;display:inline-flex;align-items:center;gap:6px">Lending Against Watches <span class="arrow">→</span></a></div>
+        </div>
+        <div class="card-hover" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;overflow:hidden">
+          <img src="assets/jewellery.jpg" alt="Diamond panther bracelet" style="display:block;width:100%;height:230px;object-fit:cover;border-bottom:1px solid #e4ded1">
+          <div style="padding:30px;display:flex;flex-direction:column;flex:1"><div style="font:600 16px/1.2 'Poppins',sans-serif;margin-bottom:8px">Jewellery &amp; Diamonds</div><p style="font:400 13px/1.55 'Inter',sans-serif;color:#857f6e;margin:0 0 16px">Diamond jewellery, signed pieces, coloured stones, and other high-value items.</p><a href="#" class="arrow-link" style="margin-top:auto;text-decoration:none;font:600 12.5px/1 'Inter',sans-serif;color:#9a6a3c;display:inline-flex;align-items:center;gap:6px">Lending Against Jewellery <span class="arrow">→</span></a></div>
+        </div>
+        <div class="card-hover" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;overflow:hidden">
+          <img src="assets/fine-art.jpg" alt="Fine art in gilt frame" style="display:block;width:100%;height:230px;object-fit:cover;border-bottom:1px solid #e4ded1">
+          <div style="padding:30px;display:flex;flex-direction:column;flex:1"><div style="font:600 16px/1.2 'Poppins',sans-serif;margin-bottom:8px">Fine Art</div><p style="font:400 13px/1.55 'Inter',sans-serif;color:#857f6e;margin:0 0 16px">Established, contemporary, and collectible works, subject to provenance, condition, artist market, and saleability.</p><a href="#" class="arrow-link" style="margin-top:auto;text-decoration:none;font:600 12.5px/1 'Inter',sans-serif;color:#9a6a3c;display:inline-flex;align-items:center;gap:6px">Lending Against Fine Art <span class="arrow">→</span></a></div>
+        </div>
+        <div class="card-hover" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;overflow:hidden">
+          <img src="assets/classic-cars.jpg" alt="Luxury car detail" style="display:block;width:100%;height:230px;object-fit:cover;border-bottom:1px solid #e4ded1">
+          <div style="padding:30px;display:flex;flex-direction:column;flex:1"><div style="font:600 16px/1.2 'Poppins',sans-serif;margin-bottom:8px">Classic &amp; Luxury Cars</div><p style="font:400 13px/1.55 'Inter',sans-serif;color:#857f6e;margin:0 0 16px">Selected classic, prestige, and collector vehicles, subject to title, condition, location, and custody requirements.</p><a href="#" class="arrow-link" style="margin-top:auto;text-decoration:none;font:600 12.5px/1 'Inter',sans-serif;color:#9a6a3c;display:inline-flex;align-items:center;gap:6px">Lending Against Cars <span class="arrow">→</span></a></div>
+        </div>
+        <div class="card-hover" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;overflow:hidden">
+          <img src="assets/gold-bullion.jpg" alt="Gold bullion bars" style="display:block;width:100%;height:230px;object-fit:cover;border-bottom:1px solid #e4ded1">
+          <div style="padding:30px;display:flex;flex-direction:column;flex:1"><div style="font:600 16px/1.2 'Poppins',sans-serif;margin-bottom:8px">Gold Bullion</div><p style="font:400 13px/1.55 'Inter',sans-serif;color:#857f6e;margin:0 0 16px">Investment-grade bars and coins, subject to verification of weight, purity, ownership, and authenticity.</p><a href="#" class="arrow-link" style="margin-top:auto;text-decoration:none;font:600 12.5px/1 'Inter',sans-serif;color:#9a6a3c;display:inline-flex;align-items:center;gap:6px">Lending Against Bullion <span class="arrow">→</span></a></div>
+        </div>
+        <div class="card-hover" style="display:flex;flex-direction:column;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;overflow:hidden">
+          <img src="assets/designer-handbags.jpg" alt="Hermès handbag detail" style="display:block;width:100%;height:230px;object-fit:cover;border-bottom:1px solid #e4ded1">
+          <div style="padding:30px;display:flex;flex-direction:column;flex:1"><div style="font:600 16px/1.2 'Poppins',sans-serif;margin-bottom:8px">Designer Handbags</div><p style="font:400 13px/1.55 'Inter',sans-serif;color:#857f6e;margin:0 0 16px">Hermès, Chanel, Louis Vuitton, and other collector handbags, subject to condition, provenance, authenticity, and resale demand.</p><a href="#" class="arrow-link" style="margin-top:auto;text-decoration:none;font:600 12.5px/1 'Inter',sans-serif;color:#9a6a3c;display:inline-flex;align-items:center;gap:6px">Lending Against Handbags <span class="arrow">→</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section id="how" class="reveal" style="background:#fff;border-top:1px solid #d8d0bf;border-bottom:1px solid #d8d0bf;padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:54px">
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">How it works</div>
+        <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 16px">From confidential enquiry to asset return.</h2>
+        <p style="font:400 16px/1.7 'Inter',sans-serif;color:#7c7766;margin:0 auto;max-width:600px">A simple, private process from first enquiry to the return of your asset.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px">
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">01</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Share your asset details</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">Submit photos, key details, and any documents you have. ALYRA reviews your enquiry privately and confirms whether the asset is suitable for assessment.</p>
+        </div>
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">02</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Receive a specialist assessment</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">A specialist reviews the asset's condition, documents, value, market demand, and custody requirements.</p>
+        </div>
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">03</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Review your loan offer</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">If approved, you receive a written offer showing the loan amount, fees, interest, repayment terms, redemption rights, and what happens if you don't repay, before you proceed.</p>
+        </div>
+        <div>
+          <div style="font:600 15px/1 'Poppins',sans-serif;color:#9a6a3c;margin-bottom:18px">04</div>
+          <div style="height:1px;background:#e4ded1;margin-bottom:22px"></div>
+          <h3 style="font:600 20px/1.25 'Poppins',sans-serif;margin:0 0 12px">Repay and retrieve your asset</h3>
+          <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0">Your asset is held securely during the loan term and returned once the loan is repaid under the agreed terms.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:50px">
+        <a href="#request" style="display:inline-block;text-decoration:none;font:600 15px/1 'Inter',sans-serif;color:#f1ece1;background:#1b1a16;padding:16px 32px;border-radius:8px" style-hover="background:#2c2a24">Request a Confidential Valuation</a>
+        <p style="font:400 12.5px/1.6 'Inter',sans-serif;color:#9a937f;margin:18px auto 0;max-width:600px">Funding is not guaranteed. Loans depend on the asset, valuation, approval, custody, documents, applicable law, and agreed terms. Your asset is at risk if repayment obligations are not met.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY CHOOSE US ===================== -->
+  <section class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Why ALYRA</div>
+      <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 16px;max-width:600px">Private, licensed lending against high-value assets.</h2>
+      <p style="font:400 16px/1.7 'Inter',sans-serif;color:#7c7766;margin:0 0 48px;max-width:600px">ALYRA helps clients access funds privately, with clear loan terms, specialist asset review, and secure custody without a public sale.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:34px">
+        <div>
+          <div style="width:34px;height:34px;border:1px solid #c9bfa6;border-radius:8px;margin-bottom:18px;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 8 10 8a13.2 13.2 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.5 13.5 0 0 0 2 12s3 8 10 8a9.7 9.7 0 0 0 5.39-1.61"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg></div>
+          <h3 style="font:600 17px/1.3 'Poppins',sans-serif;margin:0 0 9px">Private process</h3>
+          <p style="font:400 14px/1.65 'Inter',sans-serif;color:#7c7766;margin:0">Your enquiry is handled confidentially. Your asset is not publicly listed, marketed, or sent to auction.</p>
+        </div>
+        <div>
+          <div style="width:34px;height:34px;border:1px solid #c9bfa6;border-radius:8px;margin-bottom:18px;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 1.5-4 1.5-6 0"></path><path d="m2 16 3-8 3 8c-2 1.5-4 1.5-6 0"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg></div>
+          <h3 style="font:600 17px/1.3 'Poppins',sans-serif;margin:0 0 9px">Licensed pawnbroker</h3>
+          <p style="font:400 14px/1.65 'Inter',sans-serif;color:#7c7766;margin:0">ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. Loan terms are documented before you proceed.</p>
+        </div>
+        <div>
+          <div style="width:34px;height:34px;border:1px solid #c9bfa6;border-radius:8px;margin-bottom:18px;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+          <h3 style="font:600 17px/1.3 'Poppins',sans-serif;margin:0 0 9px">Specialist review</h3>
+          <p style="font:400 14px/1.65 'Inter',sans-serif;color:#7c7766;margin:0">Eligible assets are reviewed by a specialist before any loan offer is made.</p>
+        </div>
+        <div>
+          <div style="width:34px;height:34px;border:1px solid #c9bfa6;border-radius:8px;margin-bottom:18px;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+          <h3 style="font:600 17px/1.3 'Poppins',sans-serif;margin:0 0 9px">Secure custody</h3>
+          <p style="font:400 14px/1.65 'Inter',sans-serif;color:#7c7766;margin:0">If your loan proceeds, your asset is documented and held securely for the agreed loan term, subject to custody and insurance terms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VALUATION EXPERTISE ===================== -->
+  <section id="valuation" class="reveal" style="background:#fff;border-top:1px solid #d8d0bf;border-bottom:1px solid #d8d0bf;padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,6vw,80px);align-items:center">
+      <img src="assets/valuation.jpg" alt="Diamond-set Patek Philippe watch" style="display:block;width:100%;height:380px;object-fit:cover;border-radius:14px;order:2">
+      <div>
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Valuation &amp; specialist assessment</div>
+        <h2 style="font:600 clamp(28px,3.4vw,40px)/1.1 'Poppins',sans-serif;letter-spacing:-0.6px;margin:0 0 20px">Specialist assessment for high-value assets.</h2>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#6b6657;margin:0 0 18px">High-value assets are not assessed by brand, weight, artist name, or recent sale price alone.</p>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#6b6657;margin:0 0 18px">Condition, provenance, rarity, service history, documents, market demand, and likely resale value all matter.</p>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#6b6657;margin:0">ALYRA reviews each eligible asset before making a loan offer. The assessment considers both value and suitability as loan security.</p>
+      </div>
+    </div>
+    <div style="max-width:780px;margin:clamp(40px,5vw,60px) auto 0;display:flex;gap:26px;align-items:flex-start;background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;padding:clamp(24px,3vw,32px)">
+      <img src="assets/specialist.jpg" alt="Eden John, Principal Valuation Specialist" style="width:92px;height:92px;flex:none;object-fit:cover;object-position:center 22%;border-radius:50%">
+      <div>
+        <div style="font:600 18px/1.3 'Poppins',sans-serif;color:#1b1a16;margin:0 0 1px">Eden John</div>
+        <div style="font:500 13px/1.4 'Inter',sans-serif;color:#9a6a3c;margin-bottom:14px">Principal Valuation Specialist</div>
+        <p style="font:400 14.5px/1.7 'Inter',sans-serif;color:#6b6657;margin:0 0 12px">Eden John leads ALYRA's valuation process, with experience across high-value watches, jewellery, diamonds, and collectible assets for private clients.</p>
+        <p style="font:400 14.5px/1.7 'Inter',sans-serif;color:#6b6657;margin:0 0 18px">Clients deal confidentially from first enquiry through assessment, documentation, custody, and loan completion.</p>
+        <a href="#" class="arrow-link" style="text-decoration:none;font:600 13.5px/1 'Inter',sans-serif;color:#1b1a16;border-bottom:1px solid #c9bfa6;padding-bottom:4px">Speak With a Specialist <span class="arrow">→</span></a>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:18px">
+          <span style="font:500 11.5px/1 'Inter',sans-serif;color:#857f6e;border:1px solid #e7e1d4;border-radius:6px;padding:6px 10px">MBA</span>
+          <span style="font:500 11.5px/1 'Inter',sans-serif;color:#857f6e;border:1px solid #e7e1d4;border-radius:6px;padding:6px 10px">10 years&rsquo; experience</span>
+          <span style="font:500 11.5px/1 'Inter',sans-serif;color:#857f6e;border:1px solid #e7e1d4;border-radius:6px;padding:6px 10px">Watches &middot; Jewellery &middot; Diamonds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECURITY & CUSTODY ===================== -->
+  <section id="security" class="reveal" style="background:#1b1a16;color:#f1ece1;padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,6vw,80px);align-items:start">
+      <div>
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#c4a567;margin-bottom:16px">Security &amp; custody</div>
+        <h2 style="font:600 clamp(28px,3.4vw,40px)/1.1 'Poppins',sans-serif;letter-spacing:-0.6px;color:#f4f1ea;margin:0 0 20px">Securely held until repayment.</h2>
+        <p style="font:400 16px/1.75 'Inter',sans-serif;color:#c2bcae;margin:0 0 28px">When a loan is approved, your asset is documented and held securely for the agreed loan term. You remain the owner. ALYRA holds the asset only as security for the loan.</p>
+        <p style="font:400 13px/1.6 'Inter',sans-serif;color:#db9a8f;margin:0">Your asset is at risk if repayment obligations are not met.</p>
+      </div>
+      <div style="align-self:start">
+        <div style="font:600 11px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:#c4a567;margin-bottom:28px">Custody process</div>
+        <div style="position:relative">
+          <div style="position:absolute;left:21px;top:21px;bottom:21px;width:1px;background:linear-gradient(180deg,rgba(196,165,103,.55),rgba(196,165,103,.18));z-index:0"></div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1;padding-bottom:30px">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(196,165,103,.55);background:#1b1a16;display:flex;align-items:center;justify-content:center;flex:none;font:600 15px/1 'Poppins',sans-serif;color:#c4a567">1</div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Received and checked</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">The asset is received, identified, and reviewed against available documents.</div></div>
+          </div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1;padding-bottom:30px">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(196,165,103,.55);background:#1b1a16;display:flex;align-items:center;justify-content:center;flex:none;font:600 15px/1 'Poppins',sans-serif;color:#c4a567">2</div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Photographed and documented</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">Its condition, details, and supporting records are documented before custody.</div></div>
+          </div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1;padding-bottom:30px">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(196,165,103,.55);background:#1b1a16;display:flex;align-items:center;justify-content:center;flex:none;font:600 15px/1 'Poppins',sans-serif;color:#c4a567">3</div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Held securely</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">The asset is catalogued and held securely for the agreed loan term, subject to custody and insurance terms.</div></div>
+          </div>
+          <div style="display:flex;gap:18px;position:relative;z-index:1">
+            <div style="width:42px;height:42px;border-radius:50%;border:1px solid #c4a567;background:#c4a567;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1b1a16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div style="padding-top:3px"><div style="font:600 16px/1.3 'Poppins',sans-serif;color:#f1ece1;margin-bottom:5px">Returned after repayment</div><div style="font:400 13.5px/1.6 'Inter',sans-serif;color:#b4ae9f">Once the loan is repaid under the agreed terms, the asset is returned to you.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELL VS BORROW ===================== -->
+  <section class="reveal" style="padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Borrow or Sell</div>
+        <h2 style="font:600 clamp(28px,3.4vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 auto 16px;max-width:600px">Keep the asset, or sell it permanently.</h2>
+        <p style="font:400 16px/1.7 'Inter',sans-serif;color:#7c7766;margin:0 auto;max-width:620px">Borrowing may suit clients who want access to funds while keeping ownership of their asset during the loan term. Selling may suit clients who are ready to transfer ownership permanently.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:980px;margin:0 auto">
+        <div class="bvs-card" style="background:#1b1a16;color:#f1ece1;border-radius:14px;padding:38px 36px;position:relative">
+          <div style="position:absolute;top:24px;right:28px;font:600 10px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#1b1a16;background:#c4a567;padding:6px 11px;border-radius:8px">Most chosen</div>
+          <div class="bvs-icon" style="width:44px;height:44px;border:1px solid rgba(241,236,225,.28);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c4a567" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.6"/><path d="M20 4.5V11h-6.5"/></svg>
+          </div>
+          <h3 style="font:600 24px/1.2 'Poppins',sans-serif;margin:0 0 8px">Borrow with ALYRA</h3>
+          <p style="font:400 14px/1.6 'Inter',sans-serif;color:#b6b0a2;margin:0 0 26px">Access funds without selling your asset.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:30px">
+            <div style="display:flex;gap:12px;font:400 15px/1.5 'Inter',sans-serif;color:#e6e1d5"><span style="color:#c4a567">—</span>Keep ownership during the loan term</div>
+            <div style="display:flex;gap:12px;font:400 15px/1.5 'Inter',sans-serif;color:#e6e1d5"><span style="color:#c4a567">—</span>Avoid auction or public listing</div>
+            <div style="display:flex;gap:12px;font:400 15px/1.5 'Inter',sans-serif;color:#e6e1d5"><span style="color:#c4a567">—</span>Keep the asset out of public sale while the loan is active</div>
+            <div style="display:flex;gap:12px;font:400 15px/1.5 'Inter',sans-serif;color:#e6e1d5"><span style="color:#c4a567">—</span>Retrieve the asset once repayment obligations are met</div>
+          </div>
+          <a href="#request" style="display:inline-block;text-decoration:none;font:600 14px/1 'Inter',sans-serif;color:#1b1a16;background:#f1ece1;padding:15px 28px;border-radius:8px" style-hover="background:#fff">Request a Confidential Valuation</a>
+        </div>
+        <div class="bvs-card" style="background:#fbfaf6;border:1px solid #e4ded1;border-radius:14px;padding:38px 36px">
+          <div class="bvs-icon" style="width:44px;height:44px;border:1px solid #c9bfa6;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9a6a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2.5" x2="12" y2="21.5"/><path d="M16.2 6.4C15.4 4.9 13.8 4 12 4c-2.3 0-4 1.3-4 3.3 0 1.9 1.6 2.8 4 3.4 2.4.6 4.2 1.5 4.2 3.6 0 2.1-1.9 3.4-4.2 3.4-1.9 0-3.6-.9-4.3-2.5"/></svg>
+          </div>
+          <h3 style="font:600 24px/1.2 'Poppins',sans-serif;margin:0 0 8px">Sell privately</h3>
+          <p style="font:400 14px/1.6 'Inter',sans-serif;color:#857f6e;margin:0 0 26px">Receive a private purchase offer where available.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:30px">
+            <div style="display:flex;gap:12px;font:400 15px/1.5 'Inter',sans-serif;color:#4a4639"><span style="color:#9a6a3c">—</span>Avoid auction or public listing</div>
+            <div style="display:flex;gap:12px;font:400 15px/1.5 'Inter',sans-serif;color:#4a4639"><span style="color:#9a6a3c">—</span>Complete a direct private sale</div>
+            <div style="display:flex;gap:12px;font:400 15px/1.5 'Inter',sans-serif;color:#4a4639"><span style="color:#9a6a3c">—</span>Transfer ownership once the sale is complete</div>
+          </div>
+          <a href="#request" style="display:inline-block;text-decoration:none;font:600 14px/1 'Inter',sans-serif;color:#1b1a16;border:1px solid #1b1a16;padding:15px 28px;border-radius:8px" style-hover="background:#1b1a16;color:#f1ece1">Request a Confidential Valuation</a>
+        </div>
+      </div>
+      <p style="font:400 12.5px/1.6 'Inter',sans-serif;color:#9a937f;margin:34px auto 0;max-width:760px;text-align:center">Borrowing is not suitable for everyone. Your asset is at risk if repayment obligations are not met. Any decision to sell should be considered separately from the lending process.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq" class="reveal" style="background:#fff;padding:clamp(64px,8vw,104px) clamp(24px,5vw,72px);border-top:1px solid #c4a567">
+    <div class="faq-split" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.4fr;gap:clamp(40px,5vw,72px);align-items:start">
+      <div>
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#9a6a3c;margin-bottom:16px">Questions</div>
+        <h2 style="font:600 clamp(28px,3.2vw,38px)/1.1 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 18px">Frequently asked questions.</h2>
+        <p style="font:400 15px/1.7 'Inter',sans-serif;color:#7c7766;margin:0 0 26px;max-width:320px">Everything else is explained privately before you proceed. Speak with a specialist about your asset in confidence.</p>
+        <a href="#request" class="arrow-link" style="text-decoration:none;font:600 14px/1 'Inter',sans-serif;color:#1b1a16;border-bottom:1px solid #c9bfa6;padding-bottom:5px">Request a Confidential Valuation <span class="arrow">→</span></a>
+      </div>
+      <div style="border-top:1px solid #e4ded1">
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="10">
+          <div style="border-bottom:1px solid #e4ded1">
+            <div onClick="{{ item.toggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 4px;cursor:pointer">
+              <span style="font:500 16px/1.45 'Poppins',sans-serif;color:#1b1a16">{{ item.q }}</span>
+              <span style="{{ item.signStyle }}">+</span>
+            </div>
+            <div style="{{ item.answerStyle }}">
+              <p style="font:400 15px/1.75 'Inter',sans-serif;color:#7c7766;margin:0;padding:0 4px 24px;max-width:600px">{{ item.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA — 3-STEP FORM ===================== -->
+  <section id="request" class="reveal" style="background:#1b1a16;color:#f1ece1;padding:clamp(72px,9vw,120px) clamp(24px,5vw,72px)">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#c4a567;margin-bottom:22px">Confidential enquiry</div>
+      <h2 style="font:600 clamp(30px,3.8vw,46px)/1.1 'Poppins',sans-serif;letter-spacing:-0.8px;margin:0 0 18px;text-wrap:balance">Request a confidential valuation.</h2>
+      <p style="font:400 17px/1.7 'Inter',sans-serif;color:#c2bcae;margin:0 0 14px">Submit your asset details for private review. An ALYRA specialist will assess the information and contact you confidentially, typically within one business day.</p>
+      <p style="font:400 13px/1.6 'Inter',sans-serif;color:#9a958a;margin:0">Your details are reviewed confidentially and are not used to publicly list, market or sell your asset.</p>
+    </div>
+
+    <div style="max-width:600px;margin:42px auto 0;background:#f4f1ea;color:#1b1a16;border-radius:12px;padding:clamp(26px,4vw,38px);text-align:left">
+
+      <sc-if value="{{ formActive }}" hint-placeholder-val="{{ true }}">
+        <div style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#9a6a3c;margin-bottom:14px">{{ stepLabel }}</div>
+        <!-- stepper -->
+        <div style="display:flex;align-items:center;margin-bottom:32px">
+          <div style="display:flex;align-items:center;gap:10px"><div style="{{ stepA.dotStyle }}">{{ stepA.n }}</div><span style="{{ stepA.labelStyle }}">{{ stepA.label }}</span></div>
+          <div style="flex:1;height:1px;background:#e0d8c7;margin:0 14px"></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="{{ stepB.dotStyle }}">{{ stepB.n }}</div><span style="{{ stepB.labelStyle }}">{{ stepB.label }}</span></div>
+          <div style="flex:1;height:1px;background:#e0d8c7;margin:0 14px"></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="{{ stepC.dotStyle }}">{{ stepC.n }}</div><span style="{{ stepC.labelStyle }}">{{ stepC.label }}</span></div>
+        </div>
+
+        <!-- STEP 1 — asset -->
+        <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom:22px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:11px">What would you like valued?</label>
+            <div style="display:flex;flex-wrap:wrap;gap:9px">
+              <sc-for list="{{ assetOptions }}" as="opt" hint-placeholder-count="5">
+                <div onClick="{{ opt.select }}" style="{{ opt.style }}">{{ opt.name }}</div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Estimated value (AUD)</label>
+            <input type="text" value="{{ form.value }}" onChange="{{ onValue }}" placeholder="e.g. 120,000" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+        </sc-if>
+
+        <!-- STEP 2 — details -->
+        <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Full name</label>
+            <input type="text" value="{{ form.name }}" onChange="{{ onName }}" placeholder="Your name" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <div style="flex:1;min-width:200px">
+              <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Email</label>
+              <input type="email" value="{{ form.email }}" onChange="{{ onEmail }}" placeholder="you@example.com" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+              <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}"><div style="font:400 12px/1.4 'Inter',sans-serif;color:#8a3a2f;margin-top:6px">Please enter a valid email address.</div></sc-if>
+            </div>
+            <div style="flex:1;min-width:200px">
+              <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Phone <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+              <input type="tel" value="{{ form.phone }}" onChange="{{ onPhone }}" placeholder="04xx xxx xxx" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+            </div>
+          </div>
+          <div style="margin-top:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Location <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <input type="text" value="{{ form.location }}" onChange="{{ onLocation }}" placeholder="City or region" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+          <div style="margin-top:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:11px">Preferred contact method</label>
+            <div style="display:flex;flex-wrap:wrap;gap:9px">
+              <sc-for list="{{ contactOptions }}" as="opt" hint-placeholder-count="3">
+                <div onClick="{{ opt.select }}" style="{{ opt.style }}">{{ opt.name }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- STEP 3 — confirm -->
+        <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fff;border:1px solid #e4ded1;border-radius:8px;padding:16px 18px;margin-bottom:22px">
+            <div style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#9a6a3c;margin-bottom:9px">Your request</div>
+            <div style="font:500 16px/1.4 'Poppins',sans-serif;color:#1b1a16">{{ summary }}</div>
+          </div>
+          <div style="margin-bottom:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Additional details <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <textarea value="{{ form.notes }}" onChange="{{ onNotes }}" rows="3" placeholder="Timing, specific pieces, questions…" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.5 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none;resize:vertical" style-focus="border-color:#c4a567"></textarea>
+          </div>
+          <div style="margin-bottom:18px">
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Upload images or documents <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <input type="file" multiple style="width:100%;box-sizing:border-box;padding:11px 14px;border:1px dashed #d8d0bf;border-radius:8px;font:400 13.5px/1.3 'Inter',sans-serif;background:#fff;color:#6b6657;outline:none" style-focus="border-color:#c4a567">
+          </div>
+          <div>
+            <label style="display:block;font:600 13px/1 'Inter',sans-serif;color:#4a4639;margin-bottom:8px">Preferred timeframe <span style="color:#a59f8e;font-weight:400">(optional)</span></label>
+            <input type="text" value="{{ form.timeframe }}" onChange="{{ onTimeframe }}" placeholder="e.g. within 2 weeks" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d8d0bf;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#fff;color:#1b1a16;outline:none" style-focus="border-color:#c4a567">
+          </div>
+        </sc-if>
+
+        <!-- nav buttons -->
+        <div style="display:flex;align-items:center;gap:12px;margin-top:30px">
+          <sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ onBack }}" style="font:600 15px/1 'Inter',sans-serif;padding:15px 26px;border-radius:8px;border:1px solid #c9bfa6;background:transparent;color:#1b1a16;cursor:pointer">Back</button>
+          </sc-if>
+          <button onClick="{{ onPrimary }}" style="{{ primaryStyle }}">{{ ctaLabel }}</button>
+        </div>
+        <p style="font:400 11.5px/1.6 'Inter',sans-serif;color:#9a937f;margin:18px 0 0">Submitting an enquiry does not guarantee approval or funding. Loans are subject to asset type, valuation, approval, custody, documentation and agreed loan terms.</p>
+      </sc-if>
+
+      <!-- SUCCESS -->
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:18px 0">
+          <div style="width:56px;height:56px;border-radius:50%;background:#c4a567;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font:600 26px/1 'Inter',sans-serif;color:#1b1a16">&#10003;</div>
+          <h3 style="font:600 26px/1.2 'Poppins',sans-serif;margin:0 0 12px">Request received.</h3>
+          <p style="font:400 16px/1.7 'Inter',sans-serif;color:#6b6657;margin:0 auto 26px;max-width:420px">Thank you. Your enquiry has been received. A specialist will review the information and contact you privately, typically within one business day.</p>
+          <button onClick="{{ restart }}" style="font:600 14px/1 'Inter',sans-serif;padding:13px 26px;border-radius:8px;border:1px solid #c9bfa6;background:transparent;color:#1b1a16;cursor:pointer">Start a new request</button>
+        </div>
+      </sc-if>
+
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#16150f;color:#a39d8e;padding:clamp(56px,6vw,80px) clamp(24px,5vw,72px) 40px">
+    <div style="max-width:1200px;margin:0 auto">
+
+      <!-- closing band -->
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:42px;border-bottom:1px solid #322f27">
+        <div>
+          <svg viewBox="385 820 2230 360" role="img" aria-label="ALYRA" fill="currentColor" style="height:26px;width:auto;display:block;margin-bottom:18px;color:#f4f1ea"><path d="M389.46,1175.33c52.17-117.33,106.52-233.7,158.67-351.03c14.44,0.78,28.93-0.54,43.37,0.72c11.39,26.52,24.39,52.33,36.66,78.46c11.47,26.38,24.93,51.85,36.94,77.98c29.85,64.86,61.49,128.88,90.92,193.89c-15.49,0.1-30.98,0.06-46.46,0.2c-3.86-3.48-4.6-9.26-7.09-13.7c-24.99-54.04-49.9-108.11-75.19-161.99c-18.56-41.52-39.15-82.1-57.29-123.8c-43.53,96.62-86.44,193.5-129.77,290.21c-1.21,2.53-1.99,5.24-2.47,8.04c-4.54,1.73-9.44,1-14.16,1.1C412.22,1175.32,400.83,1175.55,389.46,1175.33z"/><path d="M912.66,824.21c13.88,0.62,27.8,0.24,41.7,0.12c0.9,107.57,0.02,215.18,0.46,322.75c76.55,0.36,153.09,0.26,229.64,0.04c-0.06,9.54-0.06,19.08,0.08,28.64c-90.64-0.6-181.33-0.3-271.99-0.16C913.06,1058.46,912.72,941.34,912.66,824.21z"/><path d="M1252.64,824.37c17.3,0.1,34.61,0.16,51.93-0.02c23.42,29.95,48.63,58.45,72.78,87.78c24.02,29.81,49.01,58.84,72.9,88.75c0.58-0.04,1.75-0.1,2.33-0.12c12.76-17.11,27.08-32.96,40.42-49.6c33.95-41.98,69.6-82.62,102.31-125.55c17.09-2.57,34.59-0.2,51.83-1.29c-1.47,6.27-7.11,10.39-10.59,15.57c-44.88,53.43-88.18,108.19-133,161.67c-10.69,12.41-20.61,25.51-31.9,37.38c-0.56,45.6,0.46,91.2-0.44,136.8c-13.84-0.46-27.7-0.62-41.54,0.06c-0.28-45.62,0.18-91.24-0.28-136.86c-50.42-58.56-99.07-118.62-148.05-178.38C1271.72,848.56,1260.91,837.37,1252.64,824.37z"/><path d="M1803.96,824.45c60.79,0.16,121.61-0.02,182.42,0.14c30.11,0.54,61.21,7.79,85.21,26.82c13.32,11.83,24.97,26.29,30.15,43.61c7.59,24.55,7.79,51.58-0.5,75.99c-6.29,21.53-21.43,40.01-40.58,51.46c-16.63,9.66-35.45,15.93-54.66,17.26c3.76,2.95,7.39,6.11,10.75,9.54c40.56,39.87,80.23,80.59,121.09,120.14c1.91,1.63,3.19,3.8,4.3,6.05c-20.01,0.02-40.03-0.22-60.04,0.12c-43.39-44.88-87.88-88.73-131.75-133.12c-17.76-1.41-35.7-0.26-53.55-0.64c-17.09,0.14-34.19-0.34-51.26,0.3c0.4,44.47-0.16,88.93,0.38,133.38c-14.08-0.06-28.18-0.24-42.26-0.04c0.34-54.28-0.1-108.55,0.28-162.83c50.86-0.14,101.72-0.02,152.57-0.16c24.59-0.26,50.72-1,72.56-13.78c15.15-8.56,24.77-24.41,29.49-40.78c4.64-19.46,3.84-40.26-2.81-59.14c-7.07-19.83-24.61-35.43-45-40.42c-22.54-7.61-46.62-6.27-70.03-6.63c-45.68-0.22-91.36-0.26-137.04-0.26C1804.02,842.45,1803.96,833.45,1803.96,824.45z"/><path d="M2405.54,825.9c13.44-3.25,27.7-0.54,41.48-1.33c43.77,94.41,88.24,188.56,132.26,282.87c10.16,22.76,21.84,44.86,31.26,67.92c-13.22,0.14-26.44-0.12-39.65,0.12c-2.67-0.3-6.43,1.14-7.91-1.89c-32.36-70.01-64.42-140.17-96.76-210.18c-12.39-28.56-26.66-56.25-38.43-85.07c-1.25,0.56-2.13,1.43-2.65,2.63c-44.25,98.53-89.87,196.38-134.71,294.63c-15.85-0.86-31.8,0.92-47.57-1.02c28.85-58.86,55.6-118.72,83.89-177.84c16.33-35.41,32.8-70.77,49.52-106.02C2385.63,868.93,2397.14,848.04,2405.54,825.9z"/></svg>
+          <div style="font:500 clamp(19px,2vw,24px)/1.35 'Poppins',sans-serif;color:#cfc8b9;max-width:430px;letter-spacing:-0.3px">Private appointments by arrangement.</div>
+        </div>
+        <a href="#request" class="arrow-link" style="text-decoration:none;font:600 15px/1 'Inter',sans-serif;color:#e9e3d6;border-bottom:1px solid #c4a567;padding-bottom:7px;white-space:nowrap">Request a Confidential Valuation <span class="arrow">→</span></a>
+      </div>
+
+      <!-- columns -->
+      <div class="foot-cols" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:46px 0;border-bottom:1px solid #322f27">
+        <div>
+          <p style="font:400 14px/1.7 'Inter',sans-serif;color:#a39d8e;margin:0 0 22px;max-width:300px">Discreet private asset-based lending for private clients. Borrow against high-value watches, jewellery, diamonds, art, classic and luxury cars, and gold bullion.</p>
+          <div style="font:400 13px/1.8 'Inter',sans-serif;color:#a39d8e">By appointment only<br><span class="foot-link">enquiries@alyra.com.au</span><br><span>[Phone number, if approved]</span></div>
+        </div>
+        <div>
+          <div style="width:24px;height:2px;background:#c4a567;margin-bottom:16px"></div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#c4a567;margin-bottom:18px">Assets</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><a class="foot-link" href="#assets">Watches</a><a class="foot-link" href="#assets">Jewellery and Diamonds</a><a class="foot-link" href="#assets">Fine Art</a><a class="foot-link" href="#assets">Classic Cars</a><a class="foot-link" href="#assets">Gold Bullion</a></div>
+        </div>
+        <div>
+          <div style="width:24px;height:2px;background:#c4a567;margin-bottom:16px"></div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#c4a567;margin-bottom:18px">Company</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><a class="foot-link" href="#how">How it Works</a><a class="foot-link" href="#valuation">Our Specialist</a><a class="foot-link" href="#locations">Locations</a><a class="foot-link" href="#faq">FAQ</a><a class="foot-link" href="#request">Contact</a></div>
+        </div>
+        <div>
+          <div style="width:24px;height:2px;background:#c4a567;margin-bottom:16px"></div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#c4a567;margin-bottom:18px">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><span class="foot-link">Privacy</span><span class="foot-link">Terms</span><span class="foot-link">Complaints</span><span class="foot-link">Pawnbroking Licence</span><span class="foot-link">Second-Hand Dealer Registration</span></div>
+        </div>
+      </div>
+
+      <!-- locations -->
+      <div id="locations" style="padding:26px 0;border-bottom:1px solid #322f27;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#837e71">Locations served</span>
+        <span style="font:500 13px/1.6 'Inter',sans-serif;color:#a39d8e;letter-spacing:.3px">Sydney &middot; Melbourne &middot; Brisbane &middot; Perth &middot; Adelaide &middot; Gold Coast</span>
+      </div>
+
+      <!-- entity / credentials -->
+      <div style="padding:26px 0;border-bottom:1px solid #322f27;display:flex;flex-wrap:wrap;gap:9px 30px;align-items:center">
+        <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#837e71;width:100%;margin-bottom:6px">Regulatory &amp; entity</span>
+        <span style="font:400 13px/1.5 'Inter',sans-serif;color:#a39d8e">Legal entity: [Registered company name] Pty Ltd</span>
+        <span style="font:400 13px/1.5 'Inter',sans-serif;color:#a39d8e">ABN: [00 000 000 000]</span>
+        <span style="font:400 13px/1.5 'Inter',sans-serif;color:#a39d8e">Pawnbroker licence: [Licence number and jurisdiction]</span>
+        <span style="font:400 13px/1.5 'Inter',sans-serif;color:#a39d8e">Second-hand dealer registration: [Registration number, if applicable]</span>
+        <span style="font:400 13px/1.5 'Inter',sans-serif;color:#a39d8e">Insurance may apply while assets are in custody, subject to policy terms, asset approval, valuation limits and custody conditions</span>
+        <span style="font:400 13px/1.5 'Inter',sans-serif;color:#a39d8e">Australia-wide enquiries &middot; Private appointments by arrangement</span>
+      </div>
+
+      <!-- bottom legal -->
+      <div style="padding-top:28px;display:flex;flex-direction:column;gap:16px">
+        <p style="font:400 12px/1.7 'Inter',sans-serif;color:#837e71;margin:0;max-width:860px">ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. Loans are subject to valuation, approval, custody, eligibility and loan terms. Your asset is at risk if you do not meet your repayment obligations. Fees, interest, repayment terms, notices, redemption rights and enforcement processes will be disclosed before you proceed. This website contains general information only and does not constitute financial, legal or credit advice.</p>
+        <span style="font:400 12px/1.6 'Inter',sans-serif;color:#837e71">© 2026 ALYRA. All rights reserved.</span>
+      </div>
+
+      <!-- attribution -->
+      <div style="margin-top:40px;display:flex;justify-content:center">
+        <a class="ss-by" href="https://www.skyscale.com.au" target="_blank" rel="noopener noreferrer" aria-label="Website &amp; AI Search by SkyScale" style="display:inline-flex;align-items:center;gap:18px;border:1px solid rgba(241,236,225,.18);border-radius:8px;padding:13px 30px;text-decoration:none;font:400 15px/1 'Inter',sans-serif">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.7;flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 2.5 15.4 0 18"></path><path d="M12 3c-2.5 2.6-2.5 15.4 0 18"></path></svg>
+          <span>Website &amp; AI Search by</span>
+          <span aria-hidden="true" style="width:1px;height:22px;background:rgba(241,236,225,.2);flex:none"></span>
+          <span style="position:relative;display:inline-flex;align-items:center;flex:none">
+            <img src="assets/skyscale-logo.png" alt="SkyScale" style="height:22px;width:auto;display:block">
+            <span aria-hidden="true" class="ss-wipe" style="position:absolute;inset:0;overflow:hidden;width:0">
+              <span style="display:block;height:22px;width:127px;background:#6ae1c9;-webkit-mask:url(assets/skyscale-logo.png) left center/auto 100% no-repeat;mask:url(assets/skyscale-logo.png) left center/auto 100% no-repeat"></span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showTrustBar&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; },
+  &quot;showSecondaryCta&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; }
+}">
+class Component extends DCLogic {
+  state = { open: 0, step: 0, done: false, form: { asset: '', value: '', name: '', email: '', phone: '', location: '', contact: 'Either', notes: '', timeframe: '' } };
+  setField(key, val) { this.setState(s => ({ form: { ...s.form, [key]: val } })); }
+  componentDidMount() {
+    this._onScroll = () => {
+      if (!this.navEl) return;
+      const s = (window.scrollY || window.pageYOffset || 0) > 40;
+      this.navEl.style.background = s ? '#1b1a16' : 'transparent';
+      this.navEl.style.boxShadow = s ? '0 1px 0 rgba(241,236,225,.08), 0 10px 30px rgba(0,0,0,.28)' : 'none';
+      this.navEl.style.padding = (s ? '14px ' : '22px ') + 'clamp(24px,5vw,72px)';
+      const logo = this.navEl.querySelector('svg[aria-label="ALYRA"]');
+      if (logo) logo.style.color = s ? '#f4f1ea' : '#1b1a16';
+      this.navEl.querySelectorAll('.nav-links span').forEach(el => { el.style.color = s ? '#cfc8b9' : ''; });
+      const cta = this.navEl.querySelector('a[href="#request"]');
+      if (cta) { cta.style.background = s ? '#f1ece1' : '#1b1a16'; cta.style.color = s ? '#1b1a16' : '#f1ece1'; }
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+    if (this.rootEl) {
+      this.rootEl.classList.add('reveal-on');
+      const els = this.rootEl.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        this._io = new IntersectionObserver((entries) => {
+          entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); this._io.unobserve(en.target); } });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        els.forEach(el => this._io.observe(el));
+      } else {
+        els.forEach(el => el.classList.add('in'));
+      }
+      // hero entrance — staggered fade-up
+      const hin = [...this.rootEl.querySelectorAll('.hin')];
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        hin.forEach((el, i) => {
+          el.animate(
+            [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 650, delay: 80 + i * 90, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' }
+          );
+        });
+      }
+    }
+  }
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+  fx(el, styles) { el._p = el._p || {}; for (const k in styles) { el._p[k] = el.style.getPropertyValue(k); el.style.setProperty(k, styles[k]); } }
+  unfx(el) { if (!el._p) return; for (const k in el._p) { el.style.setProperty(k, el._p[k]); } }
+  renderVals() {
+    const p = this.props || {};
+    const data = [
+      { q: "What is private asset-based lending?", a: "Private asset-based lending is a loan secured against a valuable asset you own. The asset is assessed, held securely during the loan term, and returned when the loan is repaid in accordance with the agreed terms." },
+      { q: "Who is private asset-based lending suitable for?", a: "It may suit private clients and collectors who own valuable physical assets and want liquidity without publicly selling watches, jewellery, diamonds, art, classic cars or bullion." },
+      { q: "What assets can secure a loan?", a: "ALYRA considers high-value watches, jewellery, diamonds, fine art, classic and luxury cars, gold bullion. Suitability depends on asset quality, provenance, market demand, valuation and custody requirements." },
+      { q: "How is ALYRA different from selling through auction or a marketplace?", a: "Selling transfers ownership and may involve public exposure, fees, negotiation and timing risk. ALYRA provides a private lending process where the client retains ownership and recovers the asset after repayment." },
+      { q: "What happens after I submit an enquiry?", a: "ALYRA reviews the asset details, photographs and supporting documentation. If the asset may be suitable, a specialist may contact you to discuss valuation, custody and next steps." },
+      { q: "How much can I borrow?", a: "ALYRA provides loans from $50,000 to $5 million, subject to asset type, valuation, approval, custody, documentation and agreed loan terms." },
+      { q: "Is this a pawn loan?", a: "ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. The process is private, specialist-led and designed for high-value assets." },
+      { q: "Do I keep ownership of my asset?", a: "Yes. You retain ownership of the asset while ALYRA holds it as security for the loan. Once the loan is repaid in accordance with the agreed terms, the asset is returned to you." },
+      { q: "What happens to my asset while the loan is active?", a: "The asset is held in secure custody while the loan is active. Insurance may apply subject to policy terms, asset approval, valuation limits and custody conditions." },
+      { q: "How quickly can I receive funds?", a: "Timing depends on the asset, documentation, valuation, approval and custody requirements. A specialist typically responds to enquiries within one business day." },
+      { q: "Will my asset be listed for sale?", a: "No public listing, auction campaign or marketplace sale is required to access funds. The asset is held as security during the loan term." },
+      { q: "Will this appear on my credit record?", a: "This depends on the final loan structure, applicable law and the circumstances of the loan. ALYRA will explain relevant disclosure and reporting obligations before you proceed." },
+      { q: "Can I repay early?", a: "Early repayment may be available where permitted under your loan terms. Any applicable fees, interest and repayment conditions are disclosed before you proceed." },
+      { q: "What happens if I do not repay?", a: "Your asset is at risk if you do not meet your repayment obligations. Fees, notices, redemption rights and enforcement processes are disclosed before you proceed." },
+      { q: "Can I sell instead of borrow?", a: "You may choose to sell an asset independently instead of borrowing against it. ALYRA's primary service is lending secured against eligible physical assets." },
+    ];
+    const faqs = data.map((f, i) => {
+      const open = this.state.open === i;
+      return {
+        q: f.q, a: f.a, open,
+        signStyle: "font:400 24px/1 'Inter',sans-serif;color:#9a6a3c;flex:none;display:inline-block;transition:transform .25s ease;" + (open ? 'transform:rotate(45deg);' : ''),
+        answerStyle: 'overflow:hidden;transition:max-height .4s ease,opacity .3s ease;' + (open ? 'max-height:320px;opacity:1;' : 'max-height:0;opacity:0;'),
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
+      };
+    });
+    const f = this.state.form, step = this.state.step, done = this.state.done;
+    const chip = sel => "padding:11px 17px;border-radius:8px;font:500 14px/1 'Inter',sans-serif;cursor:pointer;white-space:nowrap;transition:all .15s;" + (sel ? 'border:1px solid #c4a567;background:rgba(196,165,103,.16);color:#1b1a16;' : 'border:1px solid #d8d0bf;background:#fff;color:#6b6657;');
+    const assetOptions = ['High-value watches','Jewellery and diamonds','Fine art','Classic or luxury cars','Gold bullion'].map(n => ({ name: n, style: chip(f.asset === n), select: () => this.setField('asset', n) }));
+    const contactOptions = ['Email','Phone','Either'].map(n => ({ name: n, style: chip(f.contact === n), select: () => this.setField('contact', n) }));
+    const mkStep = i => {
+      const active = step === i, complete = step > i;
+      const base = "width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 13px/1 'Inter',sans-serif;flex:none;";
+      const dotStyle = complete ? base + 'background:#c4a567;color:#1b1a16;' : active ? base + 'background:#1b1a16;color:#f1ece1;' : base + 'background:#fff;border:1px solid #d8d0bf;color:#b3ab98;';
+      const labelStyle = "font:600 12px/1 'Inter',sans-serif;letter-spacing:.3px;" + (active || complete ? 'color:#1b1a16;' : 'color:#a59f8e;');
+      return { n: complete ? '\u2713' : String(i + 1), label: ['Your asset','Your details','Confirm'][i], dotStyle, labelStyle };
+    };
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email);
+    const emailError = step === 1 && f.email.length > 0 && !emailOk;
+    const stepLabel = 'Step ' + (step + 1) + ' of 3';
+    const canPrimary = step === 0 ? !!f.asset : step === 1 ? (!!f.name && emailOk) : true;
+    const btnBase = "font:600 15px/1 'Inter',sans-serif;padding:15px 32px;border-radius:8px;border:none;color:#f1ece1;background:#1b1a16;margin-left:auto;";
+    return {
+      faqs,
+      showTrustBar: p.showTrustBar ?? true,
+      showSecondaryCta: p.showSecondaryCta ?? true,
+      navRef: el => { this.navEl = el; },
+      rootRef: el => { this.rootEl = el; },
+      onInkIn: e => this.fx(e.currentTarget, { 'background-position': '100% 0', 'color': '#f4f1ea' }),
+      onInkOut: e => this.unfx(e.currentTarget),
+      onBrownIn: e => this.fx(e.currentTarget, { 'background-position': '100% 0', 'color': '#1b1509' }),
+      onBrownOut: e => this.unfx(e.currentTarget),
+      onLeftIn: e => this.fx(e.currentTarget, { 'background-position': '0 0', 'color': '#f4f1ea' }),
+      onLeftOut: e => this.unfx(e.currentTarget),
+      onChipIn: e => this.fx(e.currentTarget, { 'background': '#fff', 'border-color': '#9a6a3c', 'transform': 'translateY(-1px)' }),
+      onChipOut: e => this.unfx(e.currentTarget),
+      emailError,
+      stepLabel,
+      form: f,
+      formActive: !done,
+      done,
+      s0: step === 0, s1: step === 1, s2: step === 2,
+      showBack: step > 0,
+      ctaLabel: step === 2 ? 'Submit Confidential Enquiry' : 'Continue',
+      primaryStyle: btnBase + (canPrimary ? 'cursor:pointer;' : 'opacity:.4;cursor:not-allowed;'),
+      onPrimary: () => { if (!canPrimary) return; if (step < 2) this.setState(s => ({ step: s.step + 1 })); else this.setState({ done: true }); },
+      onBack: () => this.setState(s => ({ step: Math.max(0, s.step - 1) })),
+      onName: e => this.setField('name', e.target.value),
+      onEmail: e => this.setField('email', e.target.value),
+      onPhone: e => this.setField('phone', e.target.value),
+      onValue: e => this.setField('value', e.target.value),
+      onNotes: e => this.setField('notes', e.target.value),
+      onLocation: e => this.setField('location', e.target.value),
+      onTimeframe: e => this.setField('timeframe', e.target.value),
+      restart: () => this.setState({ step: 0, done: false, form: { asset: '', value: '', name: '', email: '', phone: '', location: '', contact: 'Either', notes: '', timeframe: '' } }),
+      assetOptions, contactOptions,
+      stepA: mkStep(0), stepB: mkStep(1), stepC: mkStep(2),
+      summary: f.asset ? (f.asset + (f.value ? ' \u00b7 approx. $' + f.value : '')) : 'No asset selected yet',
+    };
+  }
+}
+</script>
+</body>
+</html>

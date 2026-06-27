@@ -1,0 +1,67 @@
+---
+/**
+ * Accessible breadcrumb trail + matching BreadcrumbList structured data.
+ * The last item is rendered as the current page (no link).
+ */
+import { absoluteUrl } from "../config/site";
+import JsonLd from "./JsonLd.astro";
+
+export interface Crumb {
+  name: string;
+  /** Site-relative path. Omit on the final (current) crumb. */
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+const { items } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    item: absoluteUrl(c.href ?? "/"),
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="crumbs">
+  <ol>
+    {
+      items.map((c, i) => (
+        <li>
+          {c.href && i < items.length - 1 ? (
+            <a href={c.href}>{c.name}</a>
+          ) : (
+            <span aria-current="page">{c.name}</span>
+          )}
+          {i < items.length - 1 && <span class="sep" aria-hidden="true">/</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<JsonLd schema={schema} />
+
+<style>
+  .crumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px;
+    margin: 0;
+    padding: 6px 0 0;
+    font: 500 12.5px/1 var(--font-body);
+  }
+  .crumbs li { display: inline-flex; align-items: center; gap: 9px; }
+  .crumbs a { color: var(--text-soft); text-decoration: none; transition: color .25s ease; }
+  .crumbs a:hover { color: var(--gold-fg); }
+  .crumbs [aria-current="page"] { color: var(--ink); }
+  .crumbs .sep { color: #c3bba8; }
+</style>

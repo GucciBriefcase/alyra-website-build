@@ -1,0 +1,231 @@
+---
+/**
+ * Standardised site footer (one variant for every page, per the handoff).
+ * Closing band → 4 columns → locations strip → regulatory/entity block →
+ * bottom legal → SkyScale attribution. All entity data comes from SITE config.
+ */
+import { SITE } from "../config/site";
+import { ASSETS } from "../data/assets";
+import Logo from "./Logo.astro";
+
+const year = new Date().getFullYear();
+const companyLinks = [
+  { label: "How it Works", href: "/#how" },
+  { label: "Our Specialist", href: "/#valuation" },
+  { label: "Locations", href: "#locations" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: SITE.enquiryPath },
+];
+const legalLinks = [
+  { label: "Privacy", href: "/privacy/" },
+  { label: "Terms", href: "/terms/" },
+  { label: "Complaints", href: "/complaints/" },
+  { label: "Pawnbroking Licence", href: "/licence/" },
+  { label: "Second-Hand Dealer Registration", href: "/licence/" },
+];
+const att = SITE.attribution;
+---
+
+<footer class="footer">
+  <div class="container">
+    <!-- Closing band -->
+    <div class="footer-closing">
+      <span class="footer-logo"><Logo height={26} /></span>
+    </div>
+
+    <!-- Columns -->
+    <div class="footer-cols">
+      <div>
+        <p class="footer-blurb">
+          Discreet private asset-based lending for private clients. Borrow against
+          high-value watches, jewellery, diamonds, art, classic and luxury cars,
+          and gold bullion.
+        </p>
+        <div class="footer-contact">
+          By appointment only<br />
+          <a class="foot-link" href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
+          <span>{SITE.phone || "[Phone number, if approved]"}</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="col-rule"></div>
+        <div class="col-head">Assets</div>
+        <div class="col-links">
+          {ASSETS.map((a) => (
+            <a class="foot-link" href={`/loans/${a.slug}/`}>{a.breadcrumbName}</a>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div class="col-rule"></div>
+        <div class="col-head">Company</div>
+        <div class="col-links">
+          {companyLinks.map((l) => <a class="foot-link" href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+
+      <div>
+        <div class="col-rule"></div>
+        <div class="col-head">Legal</div>
+        <div class="col-links">
+          {legalLinks.map((l) => <a class="foot-link" href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+    </div>
+
+    <!-- Locations -->
+    <div id="locations" class="footer-locations">
+      <span class="footer-label">Locations served</span>
+      <span class="footer-locations-list">{SITE.locationsServed.join(" · ")}</span>
+    </div>
+
+    <!-- Regulatory / entity -->
+    <div class="footer-reg">
+      <span class="footer-label footer-reg-head">Regulatory &amp; entity</span>
+      <span>Legal entity: {SITE.legalEntity}</span>
+      <span>ABN: {SITE.abn}</span>
+      <span>Pawnbroker licence: {SITE.pawnbrokerLicence}</span>
+      <span>Second-hand dealer registration: {SITE.secondHandDealerRegistration}</span>
+      <span>{SITE.insuranceNote}</span>
+      <span>{SITE.availability}</span>
+    </div>
+
+    <!-- Bottom legal -->
+    <div class="footer-bottom">
+      <p>{SITE.regulatoryDisclaimer}</p>
+      <span>© {year} {SITE.brand}. All rights reserved.</span>
+    </div>
+
+    <!-- Attribution -->
+    <div class="footer-attr">
+      <a
+        class="ss-by"
+        href={att.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${att.label} ${att.name}`}
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18"></path>
+          <path d="M12 3c2.5 2.6 2.5 15.4 0 18"></path>
+          <path d="M12 3c-2.5 2.6-2.5 15.4 0 18"></path>
+        </svg>
+        <span>{att.label}</span>
+        <span aria-hidden="true" class="ss-divider"></span>
+        <span class="ss-logo">
+          <img src="/assets/skyscale-logo.png" alt={att.name} height="22" />
+          <span aria-hidden="true" class="ss-wipe">
+            <span class="ss-wipe-fill"></span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink-deep);
+    color: #a39d8e;
+    padding: clamp(56px, 6vw, 80px) var(--section-x) 40px;
+  }
+  .foot-link { color: var(--text-muted-on-dark); transition: color .25s ease; text-decoration: none; }
+  .foot-link:hover { color: var(--text-on-dark); }
+
+  .footer-closing {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-bottom: 42px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .footer-logo { display: block; line-height: 0; color: var(--cream); }
+
+  .footer-cols {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 46px 0;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .footer-blurb { font: 400 14px/1.7 var(--font-body); color: #a39d8e; margin: 0 0 22px; max-width: 300px; }
+  .footer-contact { font: 400 13px/1.8 var(--font-body); color: #a39d8e; }
+  .col-rule { width: 24px; height: 2px; background: var(--gold); margin-bottom: 16px; }
+  .col-head {
+    font: 600 12px/1 var(--font-body);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .col-links { display: flex; flex-direction: column; gap: 12px; font: 400 14px/1.3 var(--font-body); }
+
+  .footer-label {
+    font: 600 11px/1 var(--font-body);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #837e71;
+  }
+  .footer-locations {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .footer-locations-list { font: 500 13px/1.6 var(--font-body); color: #a39d8e; letter-spacing: .3px; }
+
+  .footer-reg {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border-dark);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px 30px;
+    align-items: center;
+    font: 400 13px/1.5 var(--font-body);
+    color: #a39d8e;
+  }
+  .footer-reg-head { width: 100%; margin-bottom: 6px; }
+
+  .footer-bottom { padding-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .footer-bottom p { font: 400 12px/1.7 var(--font-body); color: #837e71; margin: 0; max-width: 860px; }
+  .footer-bottom span { font: 400 12px/1.6 var(--font-body); color: #837e71; }
+
+  .footer-attr { margin-top: 40px; display: flex; justify-content: center; }
+  .ss-by {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    border: 1px solid rgba(241,236,225,.18);
+    border-radius: var(--radius-control);
+    padding: 13px 30px;
+    text-decoration: none;
+    font: 400 15px/1 var(--font-body);
+    color: rgba(241,236,225,.85);
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .ss-by:hover { color: #f1ece1; border-color: rgba(241,236,225,.4); }
+  .ss-by svg { opacity: .7; flex: none; }
+  .ss-divider { width: 1px; height: 22px; background: rgba(241,236,225,.2); flex: none; }
+  .ss-logo { position: relative; display: inline-flex; align-items: center; flex: none; }
+  .ss-logo img { height: 22px; width: auto; display: block; }
+  .ss-wipe { position: absolute; inset: 0; overflow: hidden; width: 0; transition: width .5s ease-out; }
+  .ss-by:hover .ss-wipe { width: 100%; }
+  .ss-wipe-fill {
+    display: block;
+    height: 22px;
+    width: 127px;
+    background: #6ae1c9;
+    -webkit-mask: url(/assets/skyscale-logo.png) left center/auto 100% no-repeat;
+    mask: url(/assets/skyscale-logo.png) left center/auto 100% no-repeat;
+  }
+
+  @media (max-width: 760px) { .footer-cols { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .footer-cols { grid-template-columns: 1fr; } }
+</style>

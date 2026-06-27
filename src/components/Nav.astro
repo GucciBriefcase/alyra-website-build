@@ -1,0 +1,190 @@
+---
+/**
+ * Site navigation. Fixed and transparent over the hero; switches to the dark
+ * scroll-state after 40px (handled by a CSS class toggle in a tiny inline
+ * script). Collapses to a toggleable menu below 1040px.
+ */
+import { SITE } from "../config/site";
+import Logo from "./Logo.astro";
+
+const links = [
+  { label: "Assets", href: "/#assets" },
+  { label: "How it Works", href: "/#how" },
+  { label: "Valuation", href: SITE.enquiryPath },
+  { label: "Security & Custody", href: "/#security" },
+];
+const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath };
+---
+
+<nav class="alyra-nav" data-nav aria-label="Primary">
+  <div class="nav-inner container">
+    <a href="/" class="nav-logo" aria-label={`${SITE.brand} home`}>
+      <Logo height={20} />
+    </a>
+
+    <div class="nav-links">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </div>
+
+    <a class="nav-cta btn" href={cta.href}>{cta.label}</a>
+
+    <button
+      class="nav-burger"
+      data-burger
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" data-menu hidden>
+    {links.map((l) => <a href={l.href} data-menu-link>{l.label}</a>)}
+    <a href={cta.href} class="mobile-cta" data-menu-link>{cta.label}</a>
+  </div>
+</nav>
+
+<style>
+  .alyra-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 22px var(--section-x);
+    background: transparent;
+    transition: background .3s ease, box-shadow .3s ease, padding .25s ease;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .nav-logo { display: block; line-height: 0; color: var(--ink); transition: color .3s ease, opacity .3s ease; }
+  .nav-logo:hover { opacity: .72; }
+
+  .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    font: 500 14px/1 var(--font-body);
+  }
+  .nav-links a {
+    color: #3a372f;
+    text-decoration: none;
+    transition: color .3s ease, transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav-links a:hover { color: var(--gold-fg); transform: translateY(-3px); }
+
+  .nav-cta {
+    font: 600 13px/1 var(--font-body);
+    letter-spacing: .3px;
+    padding: 12px 22px;
+    border-radius: var(--radius-control);
+    color: #f1ece1;
+    white-space: nowrap;
+    background: var(--ink);
+    box-shadow: none;
+  }
+  .nav-cta:hover { filter: brightness(.94); transform: translateY(-1.5px); box-shadow: 0 8px 22px rgba(120,124,130,.4); }
+
+  .nav-burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    border: none; background: none; cursor: pointer;
+    color: var(--ink); padding: 0;
+    transition: color .3s ease;
+  }
+
+  /* ---- Scrolled state ---- */
+  .alyra-nav.is-scrolled {
+    background: var(--ink);
+    padding: 14px var(--section-x);
+    box-shadow: 0 1px 0 rgba(241,236,225,.08), 0 10px 30px rgba(0,0,0,.28);
+  }
+  .alyra-nav.is-scrolled .nav-logo { color: var(--cream); }
+  .alyra-nav.is-scrolled .nav-links a { color: #cfc8b9; }
+  .alyra-nav.is-scrolled .nav-links a:hover { color: #fff; }
+  .alyra-nav.is-scrolled .nav-cta { background: #f1ece1; color: var(--ink); }
+  .alyra-nav.is-scrolled .nav-burger { color: #f1ece1; }
+
+  /* ---- Mobile menu ---- */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    max-width: var(--maxw);
+    margin: 14px auto 0;
+    padding: 16px;
+    background: var(--ink);
+    border-radius: var(--radius-card);
+  }
+  .mobile-menu[data-open] { display: flex; }
+  .mobile-menu a {
+    font: 600 15px/1 var(--font-body);
+    color: var(--text-on-dark);
+    text-decoration: none;
+    padding: 13px 14px;
+    border-radius: var(--radius-control);
+  }
+  .mobile-menu a:hover { background: rgba(255,255,255,.06); }
+  .mobile-menu .mobile-cta {
+    color: var(--ink);
+    background: var(--gold);
+    text-align: center;
+    padding: 14px;
+    margin-top: 4px;
+  }
+  .mobile-menu .mobile-cta:hover { background: var(--gold-light); }
+
+  @media (max-width: 1040px) {
+    .nav-links, .nav-cta { display: none !important; }
+    .nav-burger { display: inline-flex; }
+  }
+</style>
+
+<script>
+  // Scroll-state toggle (passive) + mobile menu. Minimal, no dependencies.
+  const nav = document.querySelector<HTMLElement>("[data-nav]");
+  if (nav) {
+    const onScroll = () => {
+      const scrolled = (window.scrollY || window.pageYOffset || 0) > 40;
+      nav.classList.toggle("is-scrolled", scrolled);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    const burger = nav.querySelector<HTMLButtonElement>("[data-burger]");
+    const menu = nav.querySelector<HTMLElement>("[data-menu]");
+    if (burger && menu) {
+      const close = () => {
+        menu.removeAttribute("data-open");
+        menu.hidden = true;
+        burger.setAttribute("aria-expanded", "false");
+      };
+      burger.addEventListener("click", () => {
+        const open = menu.hasAttribute("data-open");
+        if (open) {
+          close();
+        } else {
+          menu.hidden = false;
+          menu.setAttribute("data-open", "");
+          burger.setAttribute("aria-expanded", "true");
+        }
+      });
+      menu
+        .querySelectorAll("[data-menu-link]")
+        .forEach((a) => a.addEventListener("click", close));
+    }
+  }
+</script>

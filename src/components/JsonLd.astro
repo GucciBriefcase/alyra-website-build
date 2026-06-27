@@ -1,0 +1,21 @@
+---
+/**
+ * Renders one or more JSON-LD structured-data blocks.
+ * Pass a single schema object or an array of them.
+ */
+interface Props {
+  schema: Record<string, unknown> | Record<string, unknown>[];
+}
+const { schema } = Astro.props;
+const blocks = Array.isArray(schema) ? schema : [schema];
+---
+
+{
+  blocks.map((block) => (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(block)}
+    />
+  ))
+}

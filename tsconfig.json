@@ -1,0 +1,21 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": [
+    "dist",
+    "design_handoff_alyra_site",
+    "support.js",
+    "image-slot.js",
+    "*.dc.html",
+    "uploads",
+    "assets",
+    ".thumbnail"
+  ],
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}

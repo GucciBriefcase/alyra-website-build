@@ -1,0 +1,401 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../config/site";
+import { ASSETS } from "../data/assets";
+import { HOME_FAQS } from "../data/faqs";
+import TrustStrip from "../components/sections/TrustStrip.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+import SecurityCustody from "../components/sections/SecurityCustody.astro";
+import SpecialistCard from "../components/sections/SpecialistCard.astro";
+import Faq from "../components/sections/Faq.astro";
+import RequestSection from "../components/sections/RequestSection.astro";
+
+const orgId = absoluteUrl("/") + "#organization";
+
+// Page-specific structured data (Organisation + WebSite live in BaseLayout;
+// FAQPage is emitted by the Faq component).
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Private Asset-Based Lending",
+    serviceType: "Asset-based loan secured against pledged goods",
+    provider: { "@id": orgId },
+    areaServed: SITE.serviceAreaCode,
+    description:
+      "Loans from $50,000 to $5 million secured against high-value physical assets. The asset is assessed by a specialist, held securely for the agreed loan term, and returned once the loan is repaid.",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Assets ALYRA lends against",
+      itemListElement: ASSETS.map((a) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: `Lending against ${a.navLabel.toLowerCase()}` },
+      })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Eden John",
+    jobTitle: "Principal Valuation Specialist",
+    worksFor: { "@id": orgId },
+    description:
+      "Eden John leads ALYRA's valuation process, with experience across high-value watches, jewellery, diamonds and collectible assets for private clients.",
+    knowsAbout: ["Watch valuation", "Jewellery valuation", "Diamond grading", "Collectible asset assessment"],
+  },
+];
+
+const howSteps = [
+  { title: "Share your asset details", body: "Submit photos, key details, and any documents you have. ALYRA reviews your enquiry privately and confirms whether the asset is suitable for assessment." },
+  { title: "Receive a specialist assessment", body: "A specialist reviews the asset's condition, documents, value, market demand, and custody requirements." },
+  { title: "Review your loan offer", body: "If approved, you receive a written offer showing the loan amount, fees, interest, repayment terms, redemption rights, and what happens if you don't repay, before you proceed." },
+  { title: "Repay and retrieve your asset", body: "Your asset is held securely during the loan term and returned once the loan is repaid under the agreed terms." },
+];
+
+const custodySteps = [
+  { title: "Received and checked", body: "The asset is received, identified, and reviewed against available documents." },
+  { title: "Photographed and documented", body: "Its condition, details, and supporting records are documented before custody." },
+  { title: "Held securely", body: "The asset is catalogued and held securely for the agreed loan term, subject to custody and insurance terms." },
+  { title: "Returned after repayment", body: "Once the loan is repaid under the agreed terms, the asset is returned to you." },
+];
+
+const whyFeatures = [
+  { icon: "eye", title: "Private process", body: "Your enquiry is handled confidentially. Your asset is not publicly listed, marketed, or sent to auction." },
+  { icon: "scale", title: "Licensed pawnbroker", body: "ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. Loan terms are documented before you proceed." },
+  { icon: "search", title: "Specialist review", body: "Eligible assets are reviewed by a specialist before any loan offer is made." },
+  { icon: "lock", title: "Secure custody", body: "If your loan proceeds, your asset is documented and held securely for the agreed loan term, subject to custody and insurance terms." },
+];
+---
+
+<BaseLayout
+  title={SITE.defaultTitle}
+  description={SITE.defaultDescription}
+  path="/"
+  image="/assets/og-image.jpg"
+  schema={schema}
+>
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow hin">Private asset-based lending</p>
+      <h1 class="hero-h1 hin">
+        Access funds without selling what you <span class="hl">value</span>
+      </h1>
+      <p class="hero-sub hin">
+        ALYRA provides discreet loans from $50,000 to $5 million, secured against watches, jewellery,
+        diamonds, art, classic and luxury cars, and gold bullion.
+      </p>
+      <div class="hero-cta hin">
+        <a class="btn btn--primary" href={SITE.enquiryPath}>Request a Confidential Valuation</a>
+      </div>
+      <p class="hero-reassure hin">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        Confidential enquiry · No obligation · Specialist response usually within one business day
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== TRUST STRIP ===== -->
+  <TrustStrip />
+
+  <!-- ===== WHAT IS ALYRA ===== -->
+  <section class="section section--white reveal">
+    <div class="container def">
+      <p class="eyebrow">What is ALYRA?</p>
+      <h2 class="def-h2">A loan against your asset, not a sale of it.</h2>
+      <p class="def-p">ALYRA helps clients access funds without selling valuable assets they want to keep.</p>
+      <p class="def-p">Each eligible asset is assessed by a specialist, held securely for the agreed loan term, and returned once you've repaid.</p>
+      <p class="def-p def-p--last">No public listing. No auction. No obligation.</p>
+    </div>
+  </section>
+
+  <!-- ===== ASSET CATEGORIES ===== -->
+  <section id="assets" class="section section--rule-gold reveal">
+    <div class="container">
+      <div class="cat-head">
+        <p class="eyebrow">What we lend against</p>
+        <h2 class="h2 cat-h2">Six asset classes. One private way to access funds.</h2>
+        <p class="lead cat-intro">
+          ALYRA lends against high-value assets with clear ownership, good condition, and proven
+          resale demand. What qualifies depends on the asset, its documents, value, location, and
+          applicable law.
+        </p>
+      </div>
+      <div class="asset-grid">
+        {ASSETS.map((a) => (
+          <a class="cat-card" href={`/loans/${a.slug}/`}>
+            <div class="cat-img-wrap">
+              <img src={a.card.image} alt={a.card.title} width="400" height="230" loading="lazy" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-title">{a.card.title}</div>
+              <p class="cat-card-blurb">{a.card.blurb}</p>
+              <span class="arrow-link cat-card-cta">{a.card.ctaLabel} <span class="arrow">→</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <HowItWorks
+    id="how"
+    white
+    heading="From confidential enquiry to asset return."
+    intro="A simple, private process from first enquiry to the return of your asset."
+    steps={howSteps}
+    cta={{ label: "Request a Confidential Valuation", href: SITE.enquiryPath }}
+    disclaimer="Funding is not guaranteed. Loans depend on the asset, valuation, approval, custody, documents, applicable law, and agreed terms. Your asset is at risk if repayment obligations are not met."
+  />
+
+  <!-- ===== WHY ALYRA ===== -->
+  <section class="section reveal">
+    <div class="container">
+      <p class="eyebrow">Why ALYRA</p>
+      <h2 class="h2 why-h2">Private, licensed lending against high-value assets.</h2>
+      <p class="lead why-intro">
+        ALYRA helps clients access funds privately, with clear loan terms, specialist asset review,
+        and secure custody without a public sale.
+      </p>
+      <div class="why-grid">
+        {whyFeatures.map((f) => (
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">
+              {f.icon === "eye" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 8 10 8a13.2 13.2 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.5 13.5 0 0 0 2 12s3 8 10 8a9.7 9.7 0 0 0 5.39-1.61"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg>
+              )}
+              {f.icon === "scale" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 1.5-4 1.5-6 0"></path><path d="m2 16 3-8 3 8c-2 1.5-4 1.5-6 0"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
+              )}
+              {f.icon === "search" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              )}
+              {f.icon === "lock" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              )}
+            </div>
+            <h3 class="why-card-title">{f.title}</h3>
+            <p class="why-card-body">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUATION & SPECIALIST ===== -->
+  <section id="valuation" class="section section--white section--rule reveal">
+    <div class="container val-grid">
+      <img class="val-img" src="/assets/valuation.jpg" alt="Diamond-set Patek Philippe watch" width="600" height="380" loading="lazy" />
+      <div>
+        <p class="eyebrow">Valuation &amp; specialist assessment</p>
+        <h2 class="val-h2">Specialist assessment for high-value assets.</h2>
+        <p class="val-p">High-value assets are not assessed by brand, weight, artist name, or recent sale price alone.</p>
+        <p class="val-p">Condition, provenance, rarity, service history, documents, market demand, and likely resale value all matter.</p>
+        <p class="val-p">ALYRA reviews each eligible asset before making a loan offer. The assessment considers both value and suitability as loan security.</p>
+      </div>
+    </div>
+    <div class="val-spec">
+      <SpecialistCard tags={["MBA", "10 years' experience", "Watches · Jewellery · Diamonds"]} />
+    </div>
+  </section>
+
+  <!-- ===== SECURITY & CUSTODY ===== -->
+  <SecurityCustody
+    tickLast
+    lead={["When a loan is approved, your asset is documented and held securely for the agreed loan term. You remain the owner. ALYRA holds the asset only as security for the loan."]}
+    steps={custodySteps}
+    riskLine="Your asset is at risk if repayment obligations are not met."
+  />
+
+  <!-- ===== BORROW OR SELL ===== -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="bos-head">
+        <p class="eyebrow">Borrow or Sell</p>
+        <h2 class="h2 bos-h2">Keep the asset, or sell it permanently.</h2>
+        <p class="lead bos-intro">
+          Borrowing may suit clients who want access to funds while keeping ownership of their asset
+          during the loan term. Selling may suit clients who are ready to transfer ownership permanently.
+        </p>
+      </div>
+      <div class="bos-cards">
+        <div class="bos-card bos-card--dark">
+          <span class="bos-badge">Most chosen</span>
+          <div class="bos-icon bos-icon--dark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.6"/><path d="M20 4.5V11h-6.5"/></svg>
+          </div>
+          <h3 class="bos-title">Borrow with ALYRA</h3>
+          <p class="bos-sub bos-sub--dark">Access funds without selling your asset.</p>
+          <div class="bos-list">
+            <div class="bos-li bos-li--dark"><span class="bos-dash">—</span>Keep ownership during the loan term</div>
+            <div class="bos-li bos-li--dark"><span class="bos-dash">—</span>Avoid auction or public listing</div>
+            <div class="bos-li bos-li--dark"><span class="bos-dash">—</span>Keep the asset out of public sale while the loan is active</div>
+            <div class="bos-li bos-li--dark"><span class="bos-dash">—</span>Retrieve the asset once repayment obligations are met</div>
+          </div>
+          <a class="btn btn--light" href={SITE.enquiryPath}>Request a Confidential Valuation</a>
+        </div>
+        <div class="bos-card bos-card--light">
+          <div class="bos-icon bos-icon--light" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-fg)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2.5" x2="12" y2="21.5"/><path d="M16.2 6.4C15.4 4.9 13.8 4 12 4c-2.3 0-4 1.3-4 3.3 0 1.9 1.6 2.8 4 3.4 2.4.6 4.2 1.5 4.2 3.6 0 2.1-1.9 3.4-4.2 3.4-1.9 0-3.6-.9-4.3-2.5"/></svg>
+          </div>
+          <h3 class="bos-title">Sell privately</h3>
+          <p class="bos-sub">Receive a private purchase offer where available.</p>
+          <div class="bos-list">
+            <div class="bos-li"><span class="bos-dash bos-dash--gold">—</span>Avoid auction or public listing</div>
+            <div class="bos-li"><span class="bos-dash bos-dash--gold">—</span>Complete a direct private sale</div>
+            <div class="bos-li"><span class="bos-dash bos-dash--gold">—</span>Transfer ownership once the sale is complete</div>
+          </div>
+          <a class="btn btn--outline" href={SITE.enquiryPath}>Request a Confidential Valuation</a>
+        </div>
+      </div>
+      <p class="bos-disclaimer">
+        Borrowing is not suitable for everyone. Your asset is at risk if repayment obligations are not
+        met. Any decision to sell should be considered separately from the lending process.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <Faq
+    faqs={HOME_FAQS}
+    heading="Frequently asked questions."
+    intro="Everything else is explained privately before you proceed. Speak with a specialist about your asset in confidence."
+    group="home-faq"
+  />
+
+  <!-- ===== REQUEST ===== -->
+  <RequestSection noun="asset" idPrefix="home" />
+</BaseLayout>
+
+<style>
+  /* ---- Hero ---- */
+  .hero { background: var(--cream); color: var(--ink); padding: calc(var(--nav-offset) + 24px) var(--section-x) 0; }
+  .hero-inner { text-align: center; max-width: 860px; padding: clamp(56px, 10vh, 120px) 0 clamp(68px, 9vh, 112px); }
+  .hero .eyebrow { margin-bottom: 26px; }
+  .hero-h1 {
+    font: 600 clamp(42px, 5.4vw, 72px)/1.04 var(--font-display);
+    letter-spacing: -1.5px;
+    margin: 0 auto 26px;
+    max-width: 860px;
+    text-wrap: balance;
+  }
+  .hero-h1 .hl { color: var(--gold-fg); }
+  .hero-sub {
+    font: 400 clamp(16px, 1.4vw, 19px)/1.65 var(--font-body);
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 24px auto 16px;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .hero-reassure {
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    font: 400 13.5px/1.6 var(--font-body);
+    color: #6e6d65;
+    margin-top: 16px;
+    letter-spacing: .3px;
+  }
+  .hero-reassure svg { flex: none; opacity: .75; }
+
+  /* Hero entrance — CSS staggered fade-up; disabled under reduced-motion (global). */
+  @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero .eyebrow.hin { animation-delay: .08s; }
+  .hero-h1.hin { animation-delay: .17s; }
+  .hero-sub.hin { animation-delay: .26s; }
+  .hero-cta.hin { animation-delay: .35s; }
+  .hero-reassure.hin { animation-delay: .44s; }
+
+  /* ---- Definition ---- */
+  .def { max-width: 820px; margin: 0 auto; text-align: center; }
+  .def-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.8px; margin: 0 0 22px; text-wrap: balance; }
+  .def-p { font: 400 17px/1.8 var(--font-body); color: var(--text-muted); margin: 0 auto 14px; max-width: 620px; }
+  .def-p--last { margin-top: 22px; }
+
+  /* ---- Asset categories ---- */
+  .cat-head { max-width: 680px; margin-bottom: 42px; }
+  .cat-h2 { max-width: 620px; }
+  .cat-intro { color: var(--text-soft); }
+  .asset-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .cat-card {
+    display: flex; flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .28s ease, box-shadow .28s ease;
+  }
+  .cat-card:hover { transform: translateY(-5px); box-shadow: 0 16px 38px rgba(40, 38, 30, .13); }
+  .cat-img-wrap { overflow: hidden; border-bottom: 1px solid var(--border); }
+  .cat-img-wrap img { display: block; width: 100%; height: 230px; object-fit: cover; transition: transform .55s ease; }
+  .cat-card:hover .cat-img-wrap img { transform: scale(1.06); }
+  .cat-card-body { padding: 30px; display: flex; flex-direction: column; flex: 1; }
+  .cat-card-title { font: 600 16px/1.2 var(--font-display); margin-bottom: 8px; }
+  .cat-card-blurb { font: 400 13px/1.55 var(--font-body); color: #857f6e; margin: 0 0 16px; }
+  .cat-card-cta { margin-top: auto; font: 600 12.5px/1 var(--font-body); color: var(--gold-fg); }
+
+  /* ---- Why ALYRA ---- */
+  .why-h2 { max-width: 600px; }
+  .why-intro { color: var(--text-soft); max-width: 600px; margin-bottom: 48px; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 34px; }
+  .why-icon {
+    width: 34px; height: 34px;
+    border: 1px solid #c9bfa6;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-fg);
+  }
+  .why-card-title { font: 600 17px/1.3 var(--font-display); margin: 0 0 9px; }
+  .why-card-body { font: 400 14px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  /* ---- Valuation ---- */
+  .val-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+  .val-img { display: block; width: 100%; height: 380px; object-fit: cover; border-radius: var(--radius-card); order: 2; }
+  .val-h2 { font: 600 clamp(28px, 3.4vw, 40px)/1.1 var(--font-display); letter-spacing: -0.6px; margin: 0 0 20px; }
+  .val-p { font: 400 16px/1.75 var(--font-body); color: var(--text-muted); margin: 0 0 18px; }
+  .val-spec { max-width: 780px; margin: clamp(40px, 5vw, 60px) auto 0; }
+
+  /* ---- Borrow or Sell ---- */
+  .bos-head { text-align: center; margin-bottom: 48px; }
+  .bos-head .eyebrow, .bos-intro { margin-left: auto; margin-right: auto; }
+  .bos-h2 { max-width: 600px; margin-left: auto; margin-right: auto; }
+  .bos-intro { max-width: 620px; }
+  .bos-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 980px; margin: 0 auto; }
+  .bos-card { border-radius: var(--radius-card); padding: 38px 36px; position: relative; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease; }
+  .bos-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(40, 38, 30, .16); }
+  .bos-card--dark { background: var(--ink); color: #f1ece1; }
+  .bos-card--light { background: var(--surface); border: 1px solid var(--border); }
+  .bos-card--light:hover { border-color: var(--gold-soft); }
+  .bos-badge {
+    position: absolute; top: 24px; right: 28px;
+    font: 600 10px/1 var(--font-body);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--ink); background: var(--gold);
+    padding: 6px 11px; border-radius: 8px;
+  }
+  .bos-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: border-color .3s ease; }
+  .bos-icon--dark { border: 1px solid rgba(241, 236, 225, .28); }
+  .bos-card--dark:hover .bos-icon--dark { border-color: var(--gold); }
+  .bos-icon--light { border: 1px solid #c9bfa6; }
+  .bos-title { font: 600 24px/1.2 var(--font-display); margin: 0 0 8px; }
+  .bos-sub { font: 400 14px/1.6 var(--font-body); color: #857f6e; margin: 0 0 26px; }
+  .bos-sub--dark { color: #b6b0a2; }
+  .bos-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+  .bos-li { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #4a4639; }
+  .bos-li--dark { color: #e6e1d5; }
+  .bos-dash { color: var(--gold-fg); }
+  .bos-li--dark .bos-dash { color: var(--gold); }
+  .bos-disclaimer { font: 400 12.5px/1.6 var(--font-body); color: #9a937f; margin: 34px auto 0; max-width: 760px; text-align: center; }
+
+  @media (max-width: 900px) { .asset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .bos-cards { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .asset-grid { grid-template-columns: 1fr; } }
+</style>

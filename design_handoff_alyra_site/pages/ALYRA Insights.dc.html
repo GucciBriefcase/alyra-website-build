@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #f4f1ea; color: #1b1a16; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #d8c79a; }
+  a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible { outline: 2px solid #c4a567; outline-offset: 3px; border-radius: 4px; }
+  .alyra-nav { transition: background .3s ease, box-shadow .3s ease, padding .25s ease; }
+  @keyframes navFadeSoft { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes navRiseBlur { from { opacity: 0; transform: translateY(11px); filter: blur(7px); } to { opacity: 1; transform: none; filter: blur(0); } }
+  .alyra-nav { animation: navFadeSoft .5s ease backwards; }
+  .alyra-nav > img, .alyra-nav > a { animation: navFadeSoft .7s ease backwards; }
+  .alyra-nav > img { transition: opacity .3s ease; }
+  .alyra-nav > img:hover { opacity: .72; }
+  .nav-links span { position: relative; display: inline-block; cursor: pointer; color: #3a372f; transition: color .3s ease, transform .3s cubic-bezier(.2,.7,.2,1); animation: navRiseBlur .7s cubic-bezier(.2,.7,.2,1) backwards; }
+  .nav-links span:nth-child(1) { animation-delay: .05s; }
+  .nav-links span:nth-child(2) { animation-delay: .13s; }
+  .nav-links span:nth-child(3) { animation-delay: .21s; }
+  .nav-links span:nth-child(4) { animation-delay: .29s; }
+  .nav-links span:hover { color: #c4a567; transform: translateY(-3px); }
+  .nav-links span.is-active { color: #c4a567; }
+  .alyra-nav > a[href="#request"] { transition: background .3s ease, transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+  .alyra-nav > a[href="#request"]:hover { transform: translateY(-1.5px); box-shadow: 0 8px 22px rgba(196,165,103,.38); }
+  @media (prefers-reduced-motion: reduce) { .alyra-nav, .alyra-nav > *, .nav-links span { animation: none !important; } }
+  .arrow { display: inline-block; transition: transform .25s ease; }
+  .arrow-link:hover .arrow { transform: translateX(5px); }
+  .card-hover { transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+  .card-hover:hover { transform: translateY(-5px); box-shadow: 0 16px 38px rgba(40,38,30,.13); border-color: #d8c79a; }
+  .card-hover image-slot { transition: transform .55s ease; }
+  .card-hover:hover image-slot { transform: scale(1.06); }
+  .card-hover:hover .card-title { color: #6f5a26; }
+  .card-title { transition: color .25s ease; }
+  .feat-card image-slot { transition: transform .7s ease; }
+  .feat-card:hover image-slot { transform: scale(1.04); }
+  .feat-card:hover .arrow { transform: translateX(5px); }
+  .reveal-on .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal-on .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal-on .reveal { opacity: 1 !important; transform: none !important; } }
+  .foot-link { color: #b4ae9f; transition: color .25s ease; cursor: pointer; }
+  .foot-link:hover { color: #e9e3d6; }
+  .ss-by { color: rgba(241,236,225,.85); transition: color .2s ease, border-color .2s ease; }
+  .ss-by:hover { color: #f1ece1; border-color: rgba(241,236,225,.4) !important; }
+  .ss-wipe { transition: width .5s ease-out; }
+  .ss-by:hover .ss-wipe { width: 100% !important; }
+  @media (max-width: 860px) { .nav-links { display: none !important; } }
+  @media (max-width: 760px) { .foot-cols { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 880px) { .feat-split { grid-template-columns: 1fr !important; } .feat-img > div { min-height: 280px !important; } }
+  @media (max-width: 620px) { .news-split { grid-template-columns: 1fr !important; text-align: center !important; } }
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#f4f1ea;overflow:hidden">
+
+  <!-- ===================== STICKY NAV ===================== -->
+  <nav ref="{{ navRef }}" class="alyra-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;padding:22px clamp(24px,5vw,72px);background:transparent">
+   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:30px">
+    <img src="assets/alyra-logo-ink.png" alt="ALYRA" style="height:20px;width:auto;display:block">
+    <div class="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:30px;font:500 14px/1 'Inter',sans-serif;color:#cfc8b9">
+      <span>How it works</span><span>Assets</span><span>Borrow vs sell</span><span class="is-active">Insights</span>
+    </div>
+    <a href="#request" onMouseEnter="{{ onInkIn }}" onMouseLeave="{{ onInkOut }}" style="text-decoration:none;font:600 13px/1 'Inter',sans-serif;letter-spacing:.3px;padding:12px 22px;border-radius:8px;color:#1b1a16;white-space:nowrap;background:linear-gradient(90deg,#c4a567 50%,#1b1a16 50%);background-size:210% 100%;background-position:0 0;transition:background-position .42s cubic-bezier(.2,.7,.2,1),color .35s ease">Request a valuation</a>
+   </div>
+  </nav>
+
+  <!-- ===================== PAGE HEADER ===================== -->
+  <header style="position:relative;background:#f4f1ea;color:#1b1a16;padding:clamp(120px,15vh,176px) clamp(24px,5vw,72px) clamp(40px,5vw,56px)">
+   <div style="max-width:1200px;margin:0 auto">
+    <div class="hin" style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#6f5a26;margin-bottom:24px">Insights &amp; perspective</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <h1 class="hin" style="font:600 clamp(36px,4.6vw,60px)/1.06 'Poppins',sans-serif;letter-spacing:-1.3px;margin:0;max-width:760px;text-wrap:balance">Notes on value, liquidity and the assets worth keeping.</h1>
+      <p class="hin" style="font:400 16px/1.7 'Inter',sans-serif;color:#6b6657;margin:0 0 6px;max-width:340px">Specialist commentary on the markets behind fine watches, art, jewellery, cars and bullion — and how private clients put them to work.</p>
+    </div>
+   </div>
+  </header>
+
+  <!-- ===================== FEATURED ARTICLE ===================== -->
+  <section class="reveal" style="padding:0 clamp(24px,5vw,72px) clamp(48px,6vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <a href="ALYRA Article — Watch Value 2026.dc.html" class="feat-card" style="display:block;text-decoration:none;color:inherit;background:#fbfaf6;border:1px solid #e4ded1;border-radius:4px;overflow:hidden">
+        <div class="feat-split" style="display:grid;grid-template-columns:1.15fr 1fr;align-items:stretch">
+          <div class="feat-img" style="overflow:hidden;order:2">
+            <image-slot id="ins-featured" shape="rect" fit="cover" placeholder="Featured — watch detail / loupe" style="display:block;width:100%;height:100%;min-height:360px"></image-slot>
+          </div>
+          <div style="order:1;padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+              <span style="font:600 10px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#1b1a16;background:#c4a567;padding:6px 11px;border-radius:8px">Featured</span>
+              <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#6f5a26">Watches</span>
+            </div>
+            <h2 style="font:600 clamp(26px,2.8vw,36px)/1.16 'Poppins',sans-serif;letter-spacing:-0.7px;margin:0 0 18px;text-wrap:balance">What actually determines the value of a fine watch in 2026.</h2>
+            <p style="font:400 16px/1.75 'Inter',sans-serif;color:#6b6657;margin:0 0 28px;max-width:480px">Brand and reference are only the beginning. Condition, provenance, service history, market timing and the channel you sell through can move a realisable figure by tens of thousands. A specialist walks through what we weigh first.</p>
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:26px">
+              <div style="display:flex;align-items:center;gap:10px;font:500 13px/1 'Inter',sans-serif;color:#857f6e"><span style="width:5px;height:5px;border-radius:50%;background:#6f5a26"></span>9 June 2026</div>
+              <span style="width:3px;height:3px;border-radius:50%;background:#cabf9f"></span>
+              <span style="font:500 13px/1 'Inter',sans-serif;color:#857f6e">7 min read</span>
+            </div>
+            <span class="arrow-link" style="font:600 14px/1 'Inter',sans-serif;color:#1b1a16;border-bottom:1px solid #c9bfa6;padding-bottom:6px;align-self:flex-start">Read the analysis <span class="arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== CATEGORY FILTER ===================== -->
+  <section class="reveal" style="padding:0 clamp(24px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto;border-top:1px solid #e4ded1;border-bottom:1px solid #e4ded1;padding:20px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#a59f8e;margin-right:6px">Browse</span>
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="7">
+        <button onClick="{{ cat.select }}" style="{{ cat.style }}">{{ cat.name }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===================== ARTICLE GRID ===================== -->
+  <section class="reveal" style="padding:clamp(44px,5vw,64px) clamp(24px,5vw,72px) clamp(64px,8vw,96px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px">
+        <sc-for list="{{ articles }}" as="post" hint-placeholder-count="6">
+          <a href="#" class="card-hover" style="display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fbfaf6;border:1px solid #e4ded1;border-radius:3px;overflow:hidden">
+            <div style="overflow:hidden">
+              <image-slot id="{{ post.slotId }}" shape="rect" fit="cover" placeholder="{{ post.img }}" style="display:block;width:100%;height:200px"></image-slot>
+            </div>
+            <div style="padding:24px 24px 26px;display:flex;flex-direction:column;flex:1">
+              <div style="font:600 11px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#6f5a26;margin-bottom:14px">{{ post.category }}</div>
+              <h3 class="card-title" style="font:600 20px/1.28 'Poppins',sans-serif;letter-spacing:-0.3px;margin:0 0 11px;text-wrap:balance">{{ post.title }}</h3>
+              <p style="font:400 14px/1.65 'Inter',sans-serif;color:#7c7766;margin:0 0 22px">{{ post.excerpt }}</p>
+              <div style="margin-top:auto;display:flex;align-items:center;gap:12px;font:500 12.5px/1 'Inter',sans-serif;color:#9a937f">
+                <span>{{ post.date }}</span>
+                <span style="width:3px;height:3px;border-radius:50%;background:#cabf9f"></span>
+                <span>{{ post.read }}</span>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:60px 0;font:400 16px/1.6 'Inter',sans-serif;color:#857f6e">No articles in this category yet. <span onClick="{{ resetCat }}" style="color:#6f5a26;border-bottom:1px solid #c9bfa6;cursor:pointer">View all insights</span>.</div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER (dark) ===================== -->
+  <section class="reveal" style="background:#1b1a16;color:#f1ece1;padding:clamp(56px,7vw,88px) clamp(24px,5vw,72px)">
+    <div class="news-split" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(32px,5vw,64px);align-items:center">
+      <div>
+        <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#c4a567;margin-bottom:18px">The ALYRA brief</div>
+        <h2 style="font:600 clamp(26px,3vw,38px)/1.14 'Poppins',sans-serif;letter-spacing:-0.6px;margin:0 0 16px;text-wrap:balance">Market notes, privately delivered.</h2>
+        <p style="font:400 16px/1.7 'Inter',sans-serif;color:#c2bcae;margin:0;max-width:440px">An occasional, discreet note on asset values and liquidity. No noise, no sharing of your details — unsubscribe any time.</p>
+      </div>
+      <div>
+        <sc-if value="{{ !subscribed }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@example.com" style="flex:1;min-width:200px;box-sizing:border-box;padding:15px 16px;border:1px solid #3a382f;border-radius:8px;font:400 15px/1.3 'Inter',sans-serif;background:#26241c;color:#f1ece1;outline:none" style-focus="border-color:#c4a567">
+            <button onClick="{{ subscribe }}" onMouseEnter="{{ onGoldIn }}" onMouseLeave="{{ onGoldOut }}" style="font:600 15px/1 'Inter',sans-serif;padding:15px 28px;border-radius:8px;border:none;background:#c4a567;color:#1b1509;cursor:pointer;white-space:nowrap;transition:background .25s ease">Subscribe</button>
+          </div>
+          <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}"><div style="font:400 12.5px/1.4 'Inter',sans-serif;color:#e0a594;margin-top:10px">Please enter a valid email address.</div></sc-if>
+        </sc-if>
+        <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:14px;background:#26241c;border:1px solid #3a382f;border-radius:8px;padding:18px 20px">
+            <div style="width:36px;height:36px;border-radius:50%;background:#c4a567;display:flex;align-items:center;justify-content:center;font:600 18px/1 'Inter',sans-serif;color:#1b1509;flex:none">&#10003;</div>
+            <div style="font:400 15px/1.5 'Inter',sans-serif;color:#e9e3d6">You're on the list. We'll be in touch — discreetly.</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#16150f;color:#8d887b;padding:clamp(56px,6vw,80px) clamp(24px,5vw,72px) 40px">
+    <div style="max-width:1200px;margin:0 auto">
+
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:42px;border-bottom:1px solid #2a281f">
+        <div>
+          <img src="assets/alyra-logo-cream.png" alt="ALYRA" style="height:26px;width:auto;display:block;margin-bottom:18px">
+          <div style="font:500 clamp(19px,2vw,24px)/1.35 'Poppins',sans-serif;color:#cfc8b9;max-width:430px;letter-spacing:-0.3px">Private appointments by arrangement.</div>
+        </div>
+        <a href="#request" class="arrow-link" style="text-decoration:none;font:600 15px/1 'Inter',sans-serif;color:#e9e3d6;border-bottom:1px solid #c4a567;padding-bottom:7px;white-space:nowrap">Request a valuation <span class="arrow">→</span></a>
+      </div>
+
+      <div class="foot-cols" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:46px 0;border-bottom:1px solid #2a281f">
+        <div>
+          <p style="font:400 14px/1.7 'Inter',sans-serif;color:#7d786c;margin:0 0 22px;max-width:300px">Discreet asset-backed lending for private clients. Borrow against fine watches, jewellery, diamonds, art, classic and luxury cars, gold and bullion.</p>
+          <div style="font:400 13px/1.8 'Inter',sans-serif;color:#7d786c">By appointment only<br><span class="foot-link">enquiries@alyra.com.au</span></div>
+        </div>
+        <div>
+          <div style="width:24px;height:2px;background:#c4a567;margin-bottom:16px"></div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#6f6a5e;margin-bottom:18px">Assets</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><span class="foot-link">Watches</span><span class="foot-link">Jewellery and diamonds</span><span class="foot-link">Fine art</span><span class="foot-link">Classic cars</span><span class="foot-link">Gold and bullion</span></div>
+        </div>
+        <div>
+          <div style="width:24px;height:2px;background:#c4a567;margin-bottom:16px"></div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#6f6a5e;margin-bottom:18px">Company</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><span class="foot-link">How it works</span><span class="foot-link">Our specialists</span><span class="foot-link">Locations</span><span class="foot-link">Contact</span></div>
+        </div>
+        <div>
+          <div style="width:24px;height:2px;background:#c4a567;margin-bottom:16px"></div>
+          <div style="font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#6f6a5e;margin-bottom:18px">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1 'Inter',sans-serif"><span class="foot-link">Privacy</span><span class="foot-link">Terms</span><span class="foot-link">Complaints</span><span class="foot-link">Pawnbroking licence</span><span class="foot-link">Second-hand dealer registration</span></div>
+        </div>
+      </div>
+
+      <div style="padding:26px 0;border-bottom:1px solid #2a281f;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="font:600 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#5f5b50">Locations served</span>
+        <span style="font:500 13px/1.6 'Inter',sans-serif;color:#8d887b;letter-spacing:.3px">Sydney &middot; Melbourne &middot; Brisbane &middot; Perth &middot; Adelaide &middot; Gold Coast</span>
+      </div>
+
+      <div style="padding-top:28px;display:flex;flex-direction:column;gap:16px">
+        <p style="font:400 12px/1.7 'Inter',sans-serif;color:#5f5b50;margin:0;max-width:860px">ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. Loans are subject to valuation, approval, custody, eligibility and loan terms. Your asset is at risk if you do not meet your repayment obligations. Fees, interest, repayment terms, notices, redemption rights and enforcement processes will be disclosed before you proceed.</p>
+        <span style="font:400 12px/1.6 'Inter',sans-serif;color:#5f5b50">© 2026 ALYRA. All rights reserved.</span>
+      </div>
+
+      <div style="margin-top:40px;display:flex;justify-content:center">
+        <a class="ss-by" href="https://www.skyscale.com.au" target="_blank" rel="noopener noreferrer" aria-label="Website &amp; AI Search by SkyScale" style="display:inline-flex;align-items:center;gap:18px;border:1px solid rgba(241,236,225,.18);border-radius:8px;padding:13px 30px;text-decoration:none;font:400 15px/1 'Inter',sans-serif">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="opacity:.7;flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 2.5 15.4 0 18"></path><path d="M12 3c-2.5 2.6-2.5 15.4 0 18"></path></svg>
+          <span>Website &amp; AI Search by</span>
+          <span aria-hidden="true" style="width:1px;height:22px;background:rgba(241,236,225,.2);flex:none"></span>
+          <span style="position:relative;display:inline-flex;align-items:center;flex:none">
+            <img src="assets/skyscale-logo.png" alt="SkyScale" style="height:22px;width:auto;display:block">
+            <span aria-hidden="true" class="ss-wipe" style="position:absolute;inset:0;overflow:hidden;width:0">
+              <span style="display:block;height:22px;width:127px;background:#6ae1c9;-webkit-mask:url(assets/skyscale-logo.png) left center/auto 100% no-repeat;mask:url(assets/skyscale-logo.png) left center/auto 100% no-repeat"></span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'All', email: '', subscribed: false, emailError: false };
+  componentDidMount() {
+    this._onScroll = () => {
+      if (!this.navEl) return;
+      const s = (window.scrollY || window.pageYOffset || 0) > 40;
+      this.navEl.style.background = s ? '#1b1a16' : 'transparent';
+      this.navEl.style.boxShadow = s ? '0 1px 0 rgba(241,236,225,.08), 0 10px 30px rgba(0,0,0,.28)' : 'none';
+      this.navEl.style.padding = (s ? '14px ' : '22px ') + 'clamp(24px,5vw,72px)';
+      const logo = this.navEl.querySelector('img');
+      if (logo) logo.src = s ? 'assets/alyra-logo-cream.png' : 'assets/alyra-logo-ink.png';
+      this.navEl.querySelectorAll('.nav-links span').forEach(el => { if (!el.classList.contains('is-active')) el.style.color = s ? '#cfc8b9' : ''; });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+    if (this.rootEl) {
+      this.rootEl.classList.add('reveal-on');
+      const obs = () => {
+        const els = this.rootEl.querySelectorAll('.reveal:not(.in)');
+        if ('IntersectionObserver' in window) {
+          this._io = new IntersectionObserver((entries) => {
+            entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); this._io.unobserve(en.target); } });
+          }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+          els.forEach(el => this._io.observe(el));
+        } else { els.forEach(el => el.classList.add('in')); }
+      };
+      obs();
+      const hin = [...this.rootEl.querySelectorAll('.hin')];
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        hin.forEach((el, i) => {
+          el.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 650, delay: 80 + i * 90, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
+        });
+      }
+    }
+  }
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+  fx(el, styles) { el._p = el._p || {}; for (const k in styles) { el._p[k] = el.style.getPropertyValue(k); el.style.setProperty(k, styles[k]); } }
+  unfx(el) { if (!el._p) return; for (const k in el._p) { el.style.setProperty(k, el._p[k]); } }
+  renderVals() {
+    const cats = ['All', 'Watches', 'Art', 'Jewellery', 'Cars', 'Gold', 'Market'];
+    const active = this.state.cat;
+    const catStyle = sel => "font:600 13px/1 'Inter',sans-serif;cursor:pointer;white-space:nowrap;padding:9px 16px;border-radius:8px;transition:all .18s ease;" + (sel ? 'border:1px solid #c4a567;background:rgba(196,165,103,.16);color:#1b1a16;' : 'border:1px solid #d8d0bf;background:transparent;color:#6b6657;');
+    const categories = cats.map(n => ({ name: n, style: catStyle(active === n), select: () => this.setState({ cat: n }) }));
+
+    const all = [
+      { category: 'Watches', title: 'Why service history quietly moves a watch valuation.', excerpt: 'A complete service record does more than reassure a buyer — it can change the realisable figure outright. Here is how we weigh it.', date: '4 Jun 2026', read: '6 min read', img: 'Watch on bench', slotId: 'ins-1' },
+      { category: 'Art', title: 'Lending against blue-chip art without selling the work.', excerpt: 'Provenance, catalogue raisonné status and market depth all shape how much capital a painting can responsibly secure.', date: '28 May 2026', read: '8 min read', img: 'Framed artwork', slotId: 'ins-2' },
+      { category: 'Market', title: 'The case for liquidity without giving up ownership.', excerpt: 'Selling is final. Borrowing against an asset keeps the upside in your hands while solving a timing problem.', date: '21 May 2026', read: '5 min read', img: 'Editorial still life', slotId: 'ins-3' },
+      { category: 'Gold', title: 'Gold and bullion as collateral: a practical guide.', excerpt: 'Bars, coins and allocated holdings each behave differently as security. What to expect from valuation to custody.', date: '14 May 2026', read: '6 min read', img: 'Gold bars', slotId: 'ins-4' },
+      { category: 'Cars', title: 'Which marques actually hold their value.', excerpt: 'Rarity, originality and documented history separate a collector car from a depreciating asset. A specialist view.', date: '7 May 2026', read: '7 min read', img: 'Classic car detail', slotId: 'ins-5' },
+      { category: 'Jewellery', title: 'Signed jewellery and important stones: where price lives.', excerpt: 'A signature, a certificate and a cut can matter as much as carat weight. How provenance translates into a loan figure.', date: '30 Apr 2026', read: '5 min read', img: 'Diamond ring', slotId: 'ins-6' },
+      { category: 'Market', title: 'Inside a private valuation appointment.', excerpt: 'What happens when a specialist assesses your asset — from authentication to the figure that anchors your offer.', date: '23 Apr 2026', read: '6 min read', img: 'Specialist at desk', slotId: 'ins-7' },
+      { category: 'Watches', title: 'Independents, complications and the new collector market.', excerpt: 'Demand has broadened well beyond the usual references. What that means for valuation and liquidity today.', date: '16 Apr 2026', read: '7 min read', img: 'Watch movement', slotId: 'ins-8' },
+      { category: 'Art', title: 'Reading an auction result before you rely on it.', excerpt: 'A single hammer price rarely tells the whole story. How specialists separate signal from noise in the salesroom.', date: '9 Apr 2026', read: '8 min read', img: 'Auction room', slotId: 'ins-9' },
+    ];
+    const filtered = active === 'All' ? all : all.filter(a => a.category === active);
+
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email);
+    return {
+      navRef: el => { this.navEl = el; },
+      rootRef: el => { this.rootEl = el; },
+      onInkIn: e => this.fx(e.currentTarget, { 'background-position': '100% 0', 'color': '#f4f1ea' }),
+      onInkOut: e => this.unfx(e.currentTarget),
+      onGoldIn: e => this.fx(e.currentTarget, { 'background': '#d3b878' }),
+      onGoldOut: e => this.unfx(e.currentTarget),
+      categories,
+      articles: filtered,
+      isEmpty: filtered.length === 0,
+      resetCat: () => this.setState({ cat: 'All' }),
+      email: this.state.email,
+      subscribed: this.state.subscribed,
+      emailError: this.state.emailError,
+      onEmail: e => this.setState({ email: e.target.value, emailError: false }),
+      subscribe: () => { if (isEmail) this.setState({ subscribed: true }); else this.setState({ emailError: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>
