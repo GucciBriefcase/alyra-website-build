@@ -196,8 +196,12 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
   .alyra-nav.is-scrolled .nav-links > a:hover,
   .alyra-nav.is-scrolled .nav-trigger:hover { color: #fff; }
   .alyra-nav.is-scrolled .nav-burger { color: #f1ece1; }
-  .alyra-nav.is-scrolled .nav-cta { background: var(--gold); color: var(--ink-gold-button); }
-  .alyra-nav.is-scrolled .nav-cta-mobile { background: var(--gold); color: var(--ink-gold-button); }
+  /* CTA: rests at the hero colour (cream), sweeps to a dark fill on hover */
+  .alyra-nav.is-scrolled .nav-cta { background: var(--cream); color: var(--ink); }
+  .alyra-nav.is-scrolled .nav-cta::before { background: var(--ink); }
+  .alyra-nav.is-scrolled .nav-cta:hover { color: var(--cream); }
+  .alyra-nav.is-scrolled .nav-cta-mobile { background: var(--cream); color: var(--ink); }
+  .alyra-nav.is-scrolled .nav-cta-mobile:hover { background: var(--ink); color: var(--cream); }
 
   /* ---- Mobile menu ---- */
   .mobile-menu {
