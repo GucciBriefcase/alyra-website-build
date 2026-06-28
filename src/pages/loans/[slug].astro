@@ -264,7 +264,7 @@ const crumbs = [
       <div class="rel-grid">
         {related.map((r) => (
           <a class="rel-card" href={`/loans/${r.slug}/`}>
-            <Image src={r.card.image} alt={r.card.title} widths={[260, 400]} sizes="(max-width: 600px) 90vw, 30vw" format="webp" quality={70} loading="lazy" />
+            <Image src={r.card.image} alt="" widths={[260, 400]} sizes="(max-width: 600px) 90vw, 30vw" format="webp" quality={70} loading="lazy" />
             <div class="rel-card-body">
               <span class="rel-card-title">{r.card.title}</span>
               <span class="arrow-link rel-card-cta">{r.card.ctaLabel} <span class="arrow">→</span></span>
