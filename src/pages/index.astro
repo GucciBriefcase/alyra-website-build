@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE, absoluteUrl } from "../config/site";
 import { ASSETS } from "../data/assets";
+import valuationImg from "../assets/images/valuation.jpg";
 import { HOME_FAQS } from "../data/faqs";
 import TrustStrip from "../components/sections/TrustStrip.astro";
 import HowItWorks from "../components/sections/HowItWorks.astro";
@@ -125,7 +127,7 @@ const whyFeatures = [
         {ASSETS.map((a) => (
           <a class="cat-card" href={`/loans/${a.slug}/`}>
             <div class="cat-img-wrap">
-              <img src={a.card.image} alt={a.card.title} width="400" height="230" loading="lazy" />
+              <Image src={a.card.image} alt={a.card.title} widths={[300, 460, 600]} sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 30vw" format="webp" quality={70} loading="lazy" />
             </div>
             <div class="cat-card-body">
               <div class="cat-card-title">{a.card.title}</div>
@@ -186,7 +188,7 @@ const whyFeatures = [
   <!-- ===== VALUATION & SPECIALIST ===== -->
   <section id="valuation" class="section section--white section--rule reveal">
     <div class="container val-grid">
-      <img class="val-img" src="/assets/valuation.jpg" alt="Diamond-set Patek Philippe watch" width="600" height="380" loading="lazy" />
+      <Image class="val-img" src={valuationImg} alt="Diamond-set Patek Philippe watch" widths={[480, 768]} sizes="(max-width: 900px) 100vw, 50vw" format="webp" quality={72} loading="lazy" />
       <div>
         <p class="eyebrow">Valuation &amp; specialist assessment</p>
         <h2 class="val-h2">Specialist assessment for high-value assets.</h2>

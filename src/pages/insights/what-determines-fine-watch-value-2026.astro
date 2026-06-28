@@ -3,13 +3,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { absoluteUrl } from "../../config/site";
 import { SITE } from "../../config/site";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/hero-watches-patek2.jpg";
+import inlineWatch from "../../assets/images/fine-watches.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
 
 const slug = "what-determines-fine-watch-value-2026";
 const path = `/insights/${slug}/`;
 const title = "What actually determines the value of a fine watch in 2026 | ALYRA";
 const description =
   "An asset specialist explains how a fine watch's realisable value is assessed in 2026 — across brand, reference, condition, originality, documentation, provenance, service history, market demand and sale channel.";
-const heroImage = "/assets/hero-watches-patek2.jpg";
+const ogImage = "/assets/og-watches.jpg";
 
 const toc = [
   ["answer", "Direct answer"],
@@ -52,7 +56,7 @@ const schema = [
     mainEntityOfPage: absoluteUrl(path),
     headline: "What actually determines the value of a fine watch in 2026",
     description,
-    image: absoluteUrl(heroImage),
+    image: absoluteUrl(ogImage),
     datePublished: "2026-06-24",
     dateModified: "2026-06-24",
     inLanguage: "en-AU",
@@ -77,7 +81,7 @@ const schema = [
 ];
 ---
 
-<BaseLayout title={title} description={description} path={path} image={heroImage} ogType="article" schema={schema}>
+<BaseLayout title={title} description={description} path={path} image={ogImage} ogType="article" schema={schema}>
   <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
 
   <!-- Header -->
@@ -95,7 +99,7 @@ const schema = [
       </p>
       <div class="art-byline">
         <div class="art-author">
-          <img class="art-avatar" src="/assets/specialist.jpg" alt="" width="42" height="42" />
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
           <span>
             <span class="art-author-name">Eden John</span>
             <span class="art-author-role">Asset Specialist · MBA Qualified</span>
@@ -110,7 +114,7 @@ const schema = [
 
   <!-- Hero image -->
   <div class="art-hero reveal">
-    <div class="art-hero-frame"><img src={heroImage} alt="Fine watch on a specialist's bench under a loupe" width="1080" height="460" /></div>
+    <div class="art-hero-frame"><Image src={heroImg} alt="Fine watch on a specialist's bench under a loupe" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
     <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>A specialist assesses condition, originality and documentation before any figure is given.</p>
   </div>
 
@@ -252,7 +256,7 @@ const schema = [
         <p>In a more selective market, sharper examples with stronger documentation are generally easier to defend than average-condition pieces with optimistic pricing. Collector attention has broadened beyond the most obvious steel sports models into dress watches, neo-vintage pieces, Cartier and independent makers. Market timing does not change the watch itself. It changes how many buyers are actively competing for it.</p>
 
         <figure class="art-figure reveal">
-          <div class="art-figure-frame"><img src="/assets/fine-watches.jpg" alt="Watch caseback and movement detail" width="1080" height="340" loading="lazy" /></div>
+          <div class="art-figure-frame"><Image src={inlineWatch} alt="Watch caseback and movement detail" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="lazy" /></div>
           <figcaption><span class="cap-rule" aria-hidden="true"></span>Condition and originality are read at the level of the case, dial, movement and bracelet.</figcaption>
         </figure>
 
@@ -347,7 +351,7 @@ const schema = [
         </ol>
 
         <div class="author-card reveal">
-          <img class="author-avatar" src="/assets/specialist.jpg" alt="Eden John" width="58" height="58" loading="lazy" />
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
           <div>
             <div class="author-eyebrow">Written by</div>
             <div class="author-name">Eden John</div>

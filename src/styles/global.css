@@ -26,7 +26,7 @@
 
   /* ---- Text ---- */
   --text-muted: #6b6657;     /* body */
-  --text-soft: #7c7766;      /* secondary */
+  --text-soft: #6e6957;      /* secondary (darkened from #7c7766 to meet AA on cream) */
   --text-chip: #46453f;
   --text-on-dark: #e9e3d6;
   --text-muted-on-dark: #b4ae9f;
@@ -107,7 +107,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
   font: 600 12px/1 var(--font-body);
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--gold-fg);
+  color: var(--gold-ink);
   margin: 0 0 16px;
 }
 .eyebrow--on-dark { color: var(--gold); }

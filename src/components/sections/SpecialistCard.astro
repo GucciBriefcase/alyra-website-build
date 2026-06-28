@@ -3,7 +3,9 @@
  * Specialist bio card (Eden John). Reused on the homepage valuation section and
  * on each asset page. Optional credential tags and an optional second paragraph.
  */
+import { Image } from "astro:assets";
 import { SITE } from "../../config/site";
+import specialistImg from "../../assets/images/specialist.jpg";
 
 interface Props {
   /** Optional credential chips (shown on the homepage). */
@@ -18,10 +20,14 @@ const {
 ---
 
 <div class="spec-card">
-  <img
-    src="/assets/specialist.jpg"
+  <Image
+    src={specialistImg}
     alt="Eden John, Principal Valuation Specialist"
-    width="96" height="96" loading="lazy"
+    widths={[96, 192]}
+    sizes="96px"
+    format="webp"
+    quality={80}
+    loading="lazy"
     class="spec-photo"
   />
   <div>

@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { SITE, absoluteUrl } from "../../config/site";
 import { ASSETS, relatedAssets, type Asset } from "../../data/assets";
@@ -106,7 +107,7 @@ const crumbs = [
           </p>
         </div>
         <div class="hero-img hin" style={`background:${asset.heroBg}`}>
-          <img src={asset.heroImage} alt={asset.heroImageAlt} fetchpriority="high" width="1080" height="1080" />
+          <Image src={asset.heroImage} alt={asset.heroImageAlt} widths={[480, 768, 1100]} sizes="(max-width: 900px) 100vw, 50vw" format="webp" quality={72} loading="eager" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -153,7 +154,7 @@ const crumbs = [
         <p class="range-p">{asset.loanRangeIntro1}</p>
         <p class="range-p">{asset.loanRangeIntro2}</p>
       </div>
-      <img class="range-img" src={asset.loanRangeImage} alt={asset.loanRangeImageAlt} width="600" height="440" loading="lazy" />
+      <Image class="range-img" src={asset.loanRangeImage} alt={asset.loanRangeImageAlt} widths={[480, 768, 1080]} sizes="(max-width: 900px) 100vw, 50vw" format="webp" quality={70} loading="lazy" />
     </div>
   </section>
 
@@ -263,7 +264,7 @@ const crumbs = [
       <div class="rel-grid">
         {related.map((r) => (
           <a class="rel-card" href={`/loans/${r.slug}/`}>
-            <img src={r.card.image} alt={r.card.title} width="300" height="160" loading="lazy" />
+            <Image src={r.card.image} alt={r.card.title} widths={[260, 400]} sizes="(max-width: 600px) 90vw, 30vw" format="webp" quality={70} loading="lazy" />
             <div class="rel-card-body">
               <span class="rel-card-title">{r.card.title}</span>
               <span class="arrow-link rel-card-cta">{r.card.ctaLabel} <span class="arrow">→</span></span>

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { SITE, absoluteUrl } from "../../config/site";
 import { FEATURED, POSTS, INSIGHT_CATEGORIES } from "../../data/insights";
@@ -45,7 +46,7 @@ const schema = [
     <div class="container">
       <a href={featuredUrl} class="feat-card">
         <div class="feat-img">
-          <img src={FEATURED.image} alt={FEATURED.imageAlt} width="640" height="420" loading="eager" />
+          <Image src={FEATURED.image} alt={FEATURED.imageAlt} widths={[480, 768, 1100]} sizes="(max-width: 880px) 100vw, 55vw" format="webp" quality={72} loading="eager" />
         </div>
         <div class="feat-body">
           <div class="feat-tags">
@@ -83,7 +84,7 @@ const schema = [
         {POSTS.map((post) => (
           <article class="post-card" data-category={post.category}>
             <div class="post-img">
-              <img src={post.image} alt={post.imageAlt} width="320" height="200" loading="lazy" />
+              <Image src={post.image} alt={post.imageAlt} widths={[300, 460, 600]} sizes="(max-width: 600px) 90vw, 33vw" format="webp" quality={70} loading="lazy" />
               <span class="post-soon">Coming soon</span>
             </div>
             <div class="post-body">

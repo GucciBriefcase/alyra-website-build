@@ -8,7 +8,23 @@
  * the same template in the established brand tone (per the handoff README).
  */
 
+import type { ImageMetadata } from "astro";
 import type { AssessIconName } from "../lib/icons";
+
+// Content images optimised at build time via astro:assets.
+import heroWatchesPatek2 from "../assets/images/hero-watches-patek2.jpg";
+import heroJewellery from "../assets/images/hero-jewellery.png";
+import heroFineart from "../assets/images/hero-fineart.jpeg";
+import heroAventadorStudio from "../assets/images/hero-aventador-studio.jpg";
+import goldBullion from "../assets/images/gold-bullion.jpg";
+import designerHandbags from "../assets/images/designer-handbags.jpg";
+import fineWatches from "../assets/images/fine-watches.jpg";
+import loanrangeJewellery from "../assets/images/loanrange-jewellery.png";
+import loanrangeFineart from "../assets/images/loanrange-fineart.jpg";
+import loanrangeCars from "../assets/images/loanrange-cars.jpg";
+import jewelleryImg from "../assets/images/jewellery.jpg";
+import fineArtImg from "../assets/images/fine-art.jpg";
+import classicCarsImg from "../assets/images/classic-cars.jpg";
 
 export interface Faq {
   q: string;
@@ -45,7 +61,7 @@ export interface Asset {
   h1Highlight: string;
   heroIntro1: string;
   heroIntro2: string;
-  heroImage: string;
+  heroImage: ImageMetadata;
   heroImageAlt: string;
   /** Background colour behind the hero image while it loads. */
   heroBg: string;
@@ -67,7 +83,7 @@ export interface Asset {
   // --- Loan range ---
   loanRangeIntro1: string;
   loanRangeIntro2: string;
-  loanRangeImage: string;
+  loanRangeImage: ImageMetadata;
   loanRangeImageAlt: string;
 
   // --- What we assess ---
@@ -87,7 +103,7 @@ export interface Asset {
 
   // --- Homepage category card ---
   card: {
-    image: string;
+    image: ImageMetadata;
     title: string;
     blurb: string;
     ctaLabel: string;
@@ -112,7 +128,7 @@ export const ASSETS: Asset[] = [
       "Access loans from $50,000 to $5 million secured against eligible high-value watches, without selling the watch you want to keep.",
     heroIntro2:
       "ALYRA lends against Rolex, Patek Philippe, Audemars Piguet, Richard Mille, Cartier and other collectible watches, through specialist assessment and secure custody.",
-    heroImage: "/assets/hero-watches-patek2.jpg",
+    heroImage: heroWatchesPatek2,
     heroImageAlt:
       "Patek Philippe Nautilus in rose gold with a ruby-set bezel",
     heroBg: "#1a0712",
@@ -139,7 +155,7 @@ export const ASSETS: Asset[] = [
       "Loans range from $50,000 to $5 million. The amount available depends on the watch and its suitability as loan security.",
     loanRangeIntro2:
       "A specialist will review the model, condition, documents, authenticity, ownership records and current market demand before any offer is made.",
-    loanRangeImage: "/assets/fine-watches.jpg",
+    loanRangeImage: fineWatches,
     loanRangeImageAlt: "Close detail of a high-value watch",
     assessIntro: "Every watch is reviewed individually.",
     assessItems: [
@@ -168,7 +184,7 @@ export const ASSETS: Asset[] = [
     ],
     formChips: ["Rolex", "Patek Philippe", "Audemars Piguet", "Richard Mille", "Cartier", "Other"],
     card: {
-      image: "/assets/fine-watches.jpg",
+      image: fineWatches,
       title: "High-Value Watches",
       blurb: "Rolex, Patek Philippe, Audemars Piguet, Richard Mille, and other collectible watches.",
       ctaLabel: "Lending Against Watches",
@@ -192,7 +208,7 @@ export const ASSETS: Asset[] = [
       "Access loans from $50,000 to $5 million secured against eligible jewellery and diamonds, without selling the pieces you want to keep.",
     heroIntro2:
       "ALYRA lends against diamond jewellery, signed pieces, coloured stones and loose diamonds, through specialist assessment and secure custody.",
-    heroImage: "/assets/hero-jewellery.png",
+    heroImage: heroJewellery,
     heroImageAlt: "Cartier Panthère diamond bracelet in rose gold",
     heroBg: "#0f0d0c",
     loanNotSaleP1: "A piece of jewellery can hold significant value while remaining something you want to keep.",
@@ -218,7 +234,7 @@ export const ASSETS: Asset[] = [
       "Loans range from $50,000 to $5 million. The amount available depends on the piece and its suitability as loan security.",
     loanRangeIntro2:
       "A specialist will review the stones, certification, condition, maker, ownership records and current market demand before any offer is made.",
-    loanRangeImage: "/assets/loanrange-jewellery.png",
+    loanRangeImage: loanrangeJewellery,
     loanRangeImageAlt: "Cartier Panthère diamond ring in white gold",
     assessIntro: "Every piece is reviewed individually.",
     assessItems: [
@@ -247,7 +263,7 @@ export const ASSETS: Asset[] = [
     ],
     formChips: ["Diamond ring", "Diamond necklace", "Signed jewellery", "Loose diamond", "Other"],
     card: {
-      image: "/assets/jewellery.jpg",
+      image: jewelleryImg,
       title: "Jewellery & Diamonds",
       blurb: "Diamond jewellery, signed pieces, coloured stones, and other high-value items.",
       ctaLabel: "Lending Against Jewellery",
@@ -271,7 +287,7 @@ export const ASSETS: Asset[] = [
       "Access loans from $50,000 to $5 million secured against eligible fine art, without selling the works you want to keep.",
     heroIntro2:
       "ALYRA lends against established, contemporary and collectible works, subject to provenance, condition, artist market and saleability.",
-    heroImage: "/assets/hero-fineart.jpeg",
+    heroImage: heroFineart,
     heroImageAlt:
       "Sir Alfred Munnings, horses watering — oil painting in a gilt frame",
     heroBg: "#0f0d0c",
@@ -294,7 +310,7 @@ export const ASSETS: Asset[] = [
       "Loans range from $50,000 to $5 million. The amount available depends on the work and its suitability as loan security.",
     loanRangeIntro2:
       "A specialist will review the artist, provenance, condition, documentation and current market demand before any offer is made.",
-    loanRangeImage: "/assets/loanrange-fineart.jpg",
+    loanRangeImage: loanrangeFineart,
     loanRangeImageAlt: "Ivan Aivazovsky, moonlit view of Venice — oil painting",
     assessIntro: "Every work is reviewed individually.",
     assessItems: [
@@ -323,7 +339,7 @@ export const ASSETS: Asset[] = [
     ],
     formChips: ["Painting", "Sculpture", "Photography", "Print or edition", "Other"],
     card: {
-      image: "/assets/fine-art.jpg",
+      image: fineArtImg,
       title: "Fine Art",
       blurb: "Established, contemporary, and collectible works, subject to provenance, condition, artist market, and saleability.",
       ctaLabel: "Lending Against Fine Art",
@@ -347,7 +363,7 @@ export const ASSETS: Asset[] = [
       "Access loans from $50,000 to $5 million secured against eligible classic and luxury cars, without selling the car you want to keep.",
     heroIntro2:
       "ALYRA lends against Ferrari, Porsche, Lamborghini, Aston Martin, Bentley, Rolls-Royce and other collectible marques, through specialist assessment and secure custody.",
-    heroImage: "/assets/hero-aventador-studio.jpg",
+    heroImage: heroAventadorStudio,
     heroImageAlt: "Grey Lamborghini Aventador Ultimae studio shot",
     heroBg: "#0f0d0c",
     loanNotSaleLead:
@@ -375,7 +391,7 @@ export const ASSETS: Asset[] = [
       "Loans range from $50,000 to $5 million. The amount available depends on the car and its suitability as loan security.",
     loanRangeIntro2:
       "A specialist will review the make, model, condition, originality, documentation, mileage and current market demand before any offer is made.",
-    loanRangeImage: "/assets/loanrange-cars.jpg",
+    loanRangeImage: loanrangeCars,
     loanRangeImageAlt: "Red Ferrari LaFerrari displayed in a showroom",
     assessIntro: "Every car is reviewed individually.",
     assessItems: [
@@ -404,7 +420,7 @@ export const ASSETS: Asset[] = [
     ],
     formChips: ["Ferrari", "Porsche", "Lamborghini", "Aston Martin", "Bentley", "Other"],
     card: {
-      image: "/assets/classic-cars.jpg",
+      image: classicCarsImg,
       title: "Classic & Luxury Cars",
       blurb: "Selected classic, prestige, and collector vehicles, subject to title, condition, location, and custody requirements.",
       ctaLabel: "Lending Against Cars",
@@ -428,7 +444,7 @@ export const ASSETS: Asset[] = [
       "Access loans from $50,000 to $5 million secured against eligible investment-grade gold bullion, without selling the gold you want to keep.",
     heroIntro2:
       "ALYRA lends against recognised bars and coins, subject to verification of weight, purity, ownership and authenticity, through specialist assessment and secure custody.",
-    heroImage: "/assets/gold-bullion.jpg",
+    heroImage: goldBullion,
     heroImageAlt: "Stacked investment-grade gold bullion bars",
     heroBg: "#1a1408",
     loanNotSaleP1: "Gold bullion can hold significant value while remaining an asset you want to keep.",
@@ -450,7 +466,7 @@ export const ASSETS: Asset[] = [
       "Loans range from $50,000 to $5 million. The amount available depends on the bullion and its suitability as loan security.",
     loanRangeIntro2:
       "A specialist will verify the weight, purity, refiner, ownership and authenticity, with reference to current market pricing, before any offer is made.",
-    loanRangeImage: "/assets/gold-bullion.jpg",
+    loanRangeImage: goldBullion,
     loanRangeImageAlt: "Close detail of investment-grade gold bars",
     assessIntro: "Every holding is reviewed individually.",
     assessItems: [
@@ -479,7 +495,7 @@ export const ASSETS: Asset[] = [
     ],
     formChips: ["Gold bars", "Gold coins", "Mixed bullion", "Other"],
     card: {
-      image: "/assets/gold-bullion.jpg",
+      image: goldBullion,
       title: "Gold Bullion",
       blurb: "Investment-grade bars and coins, subject to verification of weight, purity, ownership, and authenticity.",
       ctaLabel: "Lending Against Bullion",
@@ -503,7 +519,7 @@ export const ASSETS: Asset[] = [
       "Access loans from $50,000 to $5 million secured against eligible collector handbags, without selling the handbag you want to keep.",
     heroIntro2:
       "ALYRA lends against Hermès, Chanel, Louis Vuitton and other collector handbags, subject to condition, provenance, authenticity and resale demand, through specialist assessment and secure custody.",
-    heroImage: "/assets/designer-handbags.jpg",
+    heroImage: designerHandbags,
     heroImageAlt: "Hermès handbag in detail",
     heroBg: "#171210",
     loanNotSaleP1: "A designer handbag can hold significant value while remaining a piece you want to keep.",
@@ -527,7 +543,7 @@ export const ASSETS: Asset[] = [
       "Loans range from $50,000 to $5 million. The amount available depends on the handbag and its suitability as loan security.",
     loanRangeIntro2:
       "A specialist will review the house, model, condition, materials, provenance, authenticity and current market demand before any offer is made.",
-    loanRangeImage: "/assets/designer-handbags.jpg",
+    loanRangeImage: designerHandbags,
     loanRangeImageAlt: "Close detail of a collector designer handbag",
     assessIntro: "Every handbag is reviewed individually.",
     assessItems: [
@@ -556,7 +572,7 @@ export const ASSETS: Asset[] = [
     ],
     formChips: ["Hermès", "Chanel", "Louis Vuitton", "Dior", "Other"],
     card: {
-      image: "/assets/designer-handbags.jpg",
+      image: designerHandbags,
       title: "Designer Handbags",
       blurb: "Hermès, Chanel, Louis Vuitton, and other collector handbags, subject to condition, provenance, authenticity, and resale demand.",
       ctaLabel: "Lending Against Handbags",
