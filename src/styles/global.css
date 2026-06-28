@@ -270,7 +270,22 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
 .vf-error { font: 400 12px/1.4 var(--font-body); color: var(--error); margin: 6px 0 0; }
 .vf-error:empty { display: none; }
 
-.vf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* Honeypot: kept in the DOM and submittable for bots, but fully removed from
+   view, layout, the a11y tree and tab order for humans. */
+.vf-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
+  pointer-events: none;
+}
 
 .vf-submit { margin-top: 12px; width: 100%; }
 

@@ -12,24 +12,45 @@ interface Props {
   /** Preselected asset-type chip in the form. */
   preselect?: string;
   idPrefix?: string;
+  /** Override the section heading. */
+  heading?: string;
+  /** Override the lead paragraph. */
+  lead?: string;
+  /** Override the confidentiality note (pass null to omit). */
+  note?: string | null;
+  /** Optional intro line shown directly above the form. */
+  formIntro?: string;
 }
-const { id = "request", noun = "asset", preselect, idPrefix = "vf" } = Astro.props;
+const {
+  id = "request",
+  noun = "asset",
+  preselect,
+  idPrefix = "vf",
+  heading = "Request a confidential valuation.",
+  lead,
+  note,
+  formIntro,
+} = Astro.props;
+
+const leadText =
+  lead ??
+  `Submit your ${noun} details for private review. An ALYRA specialist will assess the information and contact you confidentially, typically within one business day.`;
+const noteText =
+  note === undefined
+    ? `Your details are reviewed confidentially and are not used to publicly list, market or sell your ${noun}.`
+    : note;
 ---
 
 <section id={id} class="section section--dark request reveal">
   <div class="request-head">
     <p class="eyebrow eyebrow--on-dark">Confidential enquiry</p>
-    <h2 class="request-h2">Request a confidential valuation.</h2>
-    <p class="request-lead">
-      Submit your {noun} details for private review. An ALYRA specialist will assess the information
-      and contact you confidentially, typically within one business day.
-    </p>
-    <p class="request-note">
-      Your details are reviewed confidentially and are not used to publicly list, market or sell your {noun}.
-    </p>
+    <h2 class="request-h2">{heading}</h2>
+    <p class="request-lead">{leadText}</p>
+    {noteText && <p class="request-note">{noteText}</p>}
   </div>
 
   <div class="request-form">
+    {formIntro && <p class="request-formintro">{formIntro}</p>}
     <StepperForm preselect={preselect} idPrefix={idPrefix} />
   </div>
 </section>
@@ -46,4 +67,11 @@ const { id = "request", noun = "asset", preselect, idPrefix = "vf" } = Astro.pro
   .request-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 14px; }
   .request-note { font: 400 13px/1.6 var(--font-body); color: #9a958a; margin: 0; }
   .request-form { max-width: 600px; margin: 42px auto 0; }
+  .request-formintro {
+    font: 500 13px/1.5 var(--font-body);
+    letter-spacing: .3px;
+    color: var(--gold);
+    text-align: center;
+    margin: 0 0 18px;
+  }
 </style>

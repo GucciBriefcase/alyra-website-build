@@ -5,13 +5,25 @@
  */
 import { SITE } from "../../config/site";
 
-const items = [
+type TrustIcon = "shield" | "search" | "lock" | "clock" | "pin";
+interface TrustItem {
+  label: string;
+  icon: TrustIcon;
+}
+interface Props {
+  /** Override the default trust signals (e.g. on the Asset Loans hub). */
+  items?: readonly TrustItem[];
+}
+
+const defaultItems: readonly TrustItem[] = [
   { label: "Licensed pawnbroker", icon: "shield" },
   { label: "Specialist valuation", icon: "search" },
   { label: "Secure custody", icon: "lock" },
   { label: `Loans ${SITE.loanRangeLabel}`, icon: "clock" },
   { label: "Australia-wide enquiries", icon: "pin" },
-] as const;
+];
+
+const { items = defaultItems } = Astro.props;
 ---
 
 <section class="trust">

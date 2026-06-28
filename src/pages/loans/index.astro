@@ -5,6 +5,8 @@ import { SITE, absoluteUrl } from "../../config/site";
 import { ASSETS } from "../../data/assets";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import TrustStrip from "../../components/sections/TrustStrip.astro";
+import HowItWorks from "../../components/sections/HowItWorks.astro";
+import Faq from "../../components/sections/Faq.astro";
 import RequestSection from "../../components/sections/RequestSection.astro";
 
 const path = "/loans/";
@@ -18,6 +20,110 @@ const orgId = absoluteUrl("/") + "#organization";
 const crumbs = [
   { name: "Home", href: "/" },
   { name: "Asset Loans" },
+];
+
+// Compact trust strip — conservative signals only (no "Licensed pawnbroker"
+// here until the licence details in site.ts are final and approved).
+const trustItems = [
+  { label: "Private enquiry", icon: "lock" },
+  { label: "Specialist asset review", icon: "search" },
+  { label: "Controlled custody arrangements", icon: "shield" },
+  { label: "Loans from $50k to $5m", icon: "clock" },
+  { label: "Australia-wide enquiries", icon: "pin" },
+] as const;
+
+const processSteps = [
+  {
+    title: "Submit asset details",
+    body: "Share the asset type, estimated value, documentation and any relevant ownership or provenance information.",
+  },
+  {
+    title: "Receive a private assessment",
+    body: "An ALYRA specialist reviews the asset information and may request additional details before indicating whether the asset may be suitable.",
+  },
+  {
+    title: "Review the offer and terms",
+    body: "If suitable, ALYRA provides an offer based on the asset, proposed loan amount, custody requirements and agreed loan terms.",
+  },
+  {
+    title: "Funds are advanced and the asset is held",
+    body: "Once documentation is complete and custody arrangements are confirmed, funds may be advanced and the asset is held as security.",
+  },
+];
+
+const eligibilityItems = [
+  "Asset type and category",
+  "Estimated market value",
+  "Condition and completeness",
+  "Provenance and ownership documentation",
+  "Authenticity and supporting records",
+  "Resale demand and market liquidity",
+  "Location and transport requirements",
+  "Custody requirements",
+  "Applicable law and documentation requirements",
+];
+
+const suitabilityItems = [
+  "Own a high-value asset and want to access funds without immediately selling it",
+  "Prefer a private, asset-led assessment process",
+  "Can provide ownership, authenticity or provenance documentation",
+  "Require a structured short-to-medium-term funding option",
+  "Understand that the asset is at risk if loan obligations are not met",
+];
+
+const whyCards = [
+  {
+    icon: "eye",
+    title: "Private client handling",
+    body: "A discreet enquiry process designed for owners of high-value assets.",
+  },
+  {
+    icon: "search",
+    title: "Specialist asset focus",
+    body: "Focused on luxury watches, jewellery, diamonds, fine art, classic and luxury cars, gold bullion and designer handbags.",
+  },
+  {
+    icon: "doc",
+    title: "Clear documentation",
+    body: "Offers and terms are documented before the client proceeds.",
+  },
+  {
+    icon: "lock",
+    title: "Controlled custody",
+    body: "Accepted assets are handled through agreed custody arrangements.",
+  },
+  {
+    icon: "pin",
+    title: "Australia-wide enquiries",
+    body: "ALYRA reviews enquiries from clients across Australia, with appointments arranged privately where appropriate.",
+  },
+];
+
+const loansFaqs = [
+  {
+    q: "What assets can I borrow against?",
+    a: "ALYRA may consider luxury watches, jewellery, diamonds, fine art, classic and luxury cars, gold bullion and designer handbags. Each asset is assessed individually based on value, ownership, condition, authenticity, documentation, resale demand and custody requirements.",
+  },
+  {
+    q: "Do I need to sell my asset?",
+    a: "No. The purpose of an asset-backed loan is to access liquidity while the asset is held as security. If the loan is repaid in accordance with the agreed terms, the asset is returned.",
+  },
+  {
+    q: "How is the asset valued?",
+    a: "Valuation depends on the asset type, market demand, condition, provenance, authenticity, documentation and comparable sale data. ALYRA may request additional information before confirming whether an asset is suitable.",
+  },
+  {
+    q: "Where is the asset held?",
+    a: "Assets accepted for lending are held through controlled custody arrangements agreed as part of the loan process. Specific custody requirements depend on the asset type, value, location and agreed loan terms.",
+  },
+  {
+    q: "How long does the process take?",
+    a: "Initial review usually begins after asset details are submitted. Timing depends on the asset type, documentation, valuation complexity, custody requirements and client responsiveness.",
+  },
+  {
+    q: "What happens if I do not repay?",
+    a: "If a loan is not repaid in accordance with the agreed terms, the pledged asset may be dealt with in accordance with the loan documents and applicable law. Full terms are disclosed before the client proceeds.",
+  },
 ];
 
 const schema = [
@@ -51,40 +157,66 @@ const schema = [
     <div class="container">
       <Breadcrumbs items={crumbs} />
       <div class="loans-hero-inner">
-        <p class="eyebrow hin">Asset loans</p>
-        <h1 class="loans-h1 hin">Borrow against what you <span class="hl">value</span>.</h1>
+        <p class="eyebrow hin">Asset Loans</p>
+        <h1 class="loans-h1 hin">Private Asset-Backed Loans Secured Against <span class="hl">Luxury Assets</span></h1>
         <p class="loans-lead hin">
-          ALYRA provides discreet loans from $50,000 to $5 million, secured against six classes of
-          high-value asset. Access funds privately while keeping ownership of what you value.
+          Access private liquidity secured against luxury watches, jewellery, diamonds, fine art,
+          classic and luxury cars, gold bullion and designer handbags — without immediately selling
+          the asset.
         </p>
-        <div class="hin"><a class="btn btn--primary" href={SITE.enquiryPath}>Request a Confidential Valuation</a></div>
+        <div class="loans-cta hin">
+          <a class="btn btn--primary" href={SITE.enquiryPath}>Request a Confidential Valuation</a>
+          <a class="btn btn--outline" href="/how-it-works/">How the Process Works</a>
+        </div>
         <p class="loans-reassure hin">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          Confidential enquiry · No obligation · Specialist response usually within one business day
+          Private enquiry · Specialist review · No obligation to proceed.
         </p>
       </div>
     </div>
   </header>
 
-  <TrustStrip />
+  <TrustStrip items={trustItems} />
+
+  <!-- What asset-backed lending means -->
+  <section class="section section--white reveal">
+    <div class="container abl-split">
+      <div class="abl-head">
+        <p class="eyebrow">Asset-backed lending</p>
+        <h2 class="h2">What asset-backed lending means</h2>
+      </div>
+      <div class="abl-body">
+        <p class="abl-p">
+          An asset-backed loan allows you to access funds against an eligible asset without
+          immediately selling it. The asset is assessed, documented and held as security. If the loan
+          is repaid in accordance with the agreed terms, the asset is returned.
+        </p>
+        <div class="abl-callout">
+          <p>
+            This may suit clients who want to access liquidity without immediately selling a luxury,
+            collectible or investment-grade asset.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Asset classes -->
   <section class="section section--rule-gold reveal">
     <div class="container">
       <div class="cat-head">
         <p class="eyebrow">What we lend against</p>
-        <h2 class="h2 cat-h2">Six asset classes. One private way to access funds.</h2>
+        <h2 class="h2 cat-h2">Assets ALYRA may lend against</h2>
         <p class="lead cat-intro">
-          ALYRA lends against high-value assets with clear ownership, good condition, and proven
-          resale demand. What qualifies depends on the asset, its documents, value, location, and
-          applicable law.
+          Each asset is assessed individually based on value, ownership, condition, documentation,
+          authenticity, resale demand, location, custody requirements and applicable law.
         </p>
       </div>
       <div class="asset-grid">
         {ASSETS.map((a) => (
           <a class="cat-card" href={`/loans/${a.slug}/`}>
             <div class="cat-img-wrap">
-              <Image src={a.card.image} alt={a.card.title} widths={[300, 460, 600]} sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 30vw" format="webp" quality={70} loading="lazy" />
+              <Image src={a.card.image} alt="" widths={[300, 460, 600]} sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 30vw" format="webp" quality={70} loading="lazy" />
             </div>
             <div class="cat-card-body">
               <div class="cat-card-title">{a.card.title}</div>
@@ -97,8 +229,141 @@ const schema = [
     </div>
   </section>
 
-  <!-- Request -->
-  <RequestSection noun="asset" idPrefix="loans" />
+  <!-- How the process works -->
+  <HowItWorks
+    id="how"
+    white
+    heading="How the process works"
+    intro="The process is designed to be private, structured and clear from first enquiry to repayment."
+    steps={processSteps}
+    cta={{ label: "View the Full Process", href: "/how-it-works/" }}
+  />
+
+  <!-- What affects eligibility and valuation -->
+  <section class="section section--surface section--hairline reveal">
+    <div class="container">
+      <div class="elig-head">
+        <p class="eyebrow">Eligibility &amp; valuation</p>
+        <h2 class="h2">What affects eligibility and valuation</h2>
+        <p class="lead">
+          ALYRA considers both the asset itself and the practical requirements of holding it securely
+          as loan security.
+        </p>
+      </div>
+      <ul class="elig-grid">
+        {eligibilityItems.map((item) => (
+          <li class="elig-item">
+            <span class="elig-tick" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span class="elig-label">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="elig-foot">
+        Not every asset will qualify. Suitability depends on valuation, verification, custody,
+        documentation, approval and agreed terms.
+      </p>
+    </div>
+  </section>
+
+  <!-- Security, custody and confidentiality -->
+  <section class="section section--dark reveal">
+    <div class="container sec-cust">
+      <p class="eyebrow eyebrow--on-dark">Security &amp; custody</p>
+      <h2 class="sec-cust-h2">Security, custody and confidentiality</h2>
+      <p class="sec-cust-p">
+        Assets accepted for lending are handled through controlled custody arrangements. Enquiries are
+        reviewed privately, and asset details are not used to publicly list, market or sell the asset
+        during the assessment process.
+      </p>
+      <p class="sec-cust-p">
+        Where an asset proceeds to loan documentation, custody requirements are confirmed before funds
+        are advanced. Any storage, insurance or handling arrangements are subject to the asset type,
+        approval, policy terms and agreed loan conditions.
+      </p>
+      <a class="btn btn--gold sec-cust-cta" href="/security-and-custody/">Read About Security &amp; Custody</a>
+    </div>
+  </section>
+
+  <!-- Loan range and suitability -->
+  <section class="section reveal">
+    <div class="container suit-split">
+      <div>
+        <p class="eyebrow">Loan range</p>
+        <h2 class="h2">Loan range and suitability</h2>
+        <p class="suit-p">
+          ALYRA is designed for clients seeking private liquidity from $50,000 to $5 million against
+          eligible luxury or collectible assets.
+        </p>
+        <div class="suit-closing">
+          <p>
+            All loans are subject to asset type, valuation, approval, custody, documentation and
+            agreed loan terms.
+          </p>
+        </div>
+      </div>
+      <div class="suit-aside">
+        <p class="suit-list-label">This may suit clients who:</p>
+        <ul class="suit-list">
+          {suitabilityItems.map((s) => (
+            <li><span class="suit-dash" aria-hidden="true">—</span>{s}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why ALYRA -->
+  <section class="section section--surface section--hairline reveal">
+    <div class="container">
+      <p class="eyebrow">Why ALYRA</p>
+      <h2 class="h2 why-h2">Why clients choose ALYRA</h2>
+      <div class="why-grid">
+        {whyCards.map((c) => (
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">
+              {c.icon === "eye" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 8 10 8a13.2 13.2 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.5 13.5 0 0 0 2 12s3 8 10 8a9.7 9.7 0 0 0 5.39-1.61"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg>
+              )}
+              {c.icon === "search" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              )}
+              {c.icon === "doc" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>
+              )}
+              {c.icon === "lock" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              )}
+              {c.icon === "pin" && (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              )}
+            </div>
+            <h3 class="why-card-title">{c.title}</h3>
+            <p class="why-card-body">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <Faq
+    faqs={loansFaqs}
+    heading="Asset loan FAQs"
+    intro="Common questions about borrowing against luxury and collectible assets. Anything specific to your asset is discussed privately before you proceed."
+    group="loans-faq"
+  />
+
+  <!-- Final valuation CTA -->
+  <RequestSection
+    noun="asset"
+    idPrefix="loans"
+    heading="Ready to understand what your asset may support?"
+    lead="Submit your asset details for private review. An ALYRA specialist will assess the information and contact you confidentially."
+    note={null}
+    formIntro="Confidential enquiry · No obligation · Specialist review"
+  />
 </BaseLayout>
 
 <style>
@@ -114,6 +379,7 @@ const schema = [
   }
   .loans-h1 .hl { color: var(--gold-fg); }
   .loans-lead { font: 400 clamp(16px, 1.4vw, 19px)/1.7 var(--font-body); color: var(--text-muted); max-width: 640px; margin: 0 0 26px; }
+  .loans-cta { display: flex; gap: 14px; flex-wrap: wrap; }
   .loans-reassure {
     display: flex; align-items: center; gap: 9px;
     font: 400 13.5px/1.6 var(--font-body);
@@ -155,7 +421,62 @@ const schema = [
   .cat-card-blurb { font: 400 13px/1.55 var(--font-body); color: #857f6e; margin: 0 0 16px; }
   .cat-card-cta { margin-top: auto; font: 600 12.5px/1 var(--font-body); color: var(--gold-fg); }
 
+  /* ---- What asset-backed lending means (split) ---- */
+  .abl-split { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: clamp(36px, 5vw, 64px); align-items: start; }
+  .abl-p { font: 400 17px/1.8 var(--font-body); color: var(--text-muted); margin: 0 0 26px; }
+  .abl-callout {
+    border-left: 2px solid var(--gold);
+    background: var(--surface);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    padding: 22px 26px;
+  }
+  .abl-callout p { font: 500 16px/1.6 var(--font-display); color: var(--ink); margin: 0; letter-spacing: -0.2px; }
+
+  /* ---- Eligibility & valuation ---- */
+  .elig-head { max-width: 640px; margin-bottom: 40px; }
+  .elig-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 40px; }
+  .elig-item { display: flex; gap: 14px; align-items: center; padding: 16px 0; border-top: 1px solid var(--border); }
+  .elig-tick { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(196, 165, 103, .16); display: flex; align-items: center; justify-content: center; color: var(--gold-fg); }
+  .elig-label { font: 500 15.5px/1.4 var(--font-body); color: var(--ink); }
+  .elig-foot { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 32px 0 0; max-width: 720px; }
+
+  /* ---- Security, custody & confidentiality (dark) ---- */
+  .sec-cust { max-width: 760px; }
+  .sec-cust-h2 { font: 600 clamp(28px, 3.4vw, 40px)/1.1 var(--font-display); letter-spacing: -0.6px; color: var(--cream); margin: 0 0 20px; }
+  .sec-cust-p { font: 400 16px/1.75 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 18px; }
+  .sec-cust-cta { margin-top: 14px; }
+
+  /* ---- Loan range & suitability (split) ---- */
+  .suit-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 72px); align-items: start; }
+  .suit-p { font: 400 17px/1.8 var(--font-body); color: var(--text-muted); margin: 0 0 22px; }
+  .suit-closing { border-top: 1px solid var(--border); padding-top: 22px; margin-top: 4px; }
+  .suit-closing p { font: 500 16px/1.6 var(--font-display); color: var(--ink); margin: 0; letter-spacing: -0.2px; }
+  .suit-aside { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: clamp(28px, 4vw, 38px); }
+  .suit-list-label { font: 600 13px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin: 0 0 22px; }
+  .suit-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .suit-list li { display: flex; gap: 12px; font: 400 15.5px/1.55 var(--font-body); color: var(--text-muted); }
+  .suit-dash { color: var(--gold-fg); flex: none; }
+
+  /* ---- Why ALYRA (matches homepage cards) ---- */
+  .why-h2 { max-width: 600px; margin-bottom: 40px; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 34px; }
+  .why-icon {
+    width: 34px; height: 34px;
+    border: 1px solid #c9bfa6;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-fg);
+  }
+  .why-card-title { font: 600 17px/1.3 var(--font-display); margin: 0 0 9px; }
+  .why-card-body { font: 400 14px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
   @media (max-width: 900px) { .asset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 820px) {
+    .abl-split { grid-template-columns: 1fr; gap: 28px; }
+    .elig-grid { grid-template-columns: 1fr; }
+    .suit-split { grid-template-columns: 1fr; gap: 32px; }
+  }
 
   @media (max-width: 600px) {
     .asset-grid { grid-template-columns: 1fr; gap: 0; }
