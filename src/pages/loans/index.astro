@@ -1,0 +1,189 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../../config/site";
+import { ASSETS } from "../../data/assets";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import TrustStrip from "../../components/sections/TrustStrip.astro";
+import RequestSection from "../../components/sections/RequestSection.astro";
+
+const path = "/loans/";
+const title =
+  "Asset Loans — Borrow Against Watches, Jewellery, Art, Cars & Gold | ALYRA";
+const description =
+  "Private asset loans from $50,000 to $5 million secured against high-value watches, jewellery and diamonds, fine art, classic and luxury cars, gold bullion and designer handbags. Keep your asset.";
+
+const orgId = absoluteUrl("/") + "#organization";
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Asset Loans" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": absoluteUrl(path) + "#webpage",
+    url: absoluteUrl(path),
+    name: title,
+    description,
+    isPartOf: { "@id": absoluteUrl("/") + "#website" },
+    inLanguage: "en-AU",
+    about: { "@id": orgId },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Assets ALYRA lends against",
+      itemListElement: ASSETS.map((a, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: a.card.title,
+        url: absoluteUrl(`/loans/${a.slug}/`),
+      })),
+    },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <!-- Hero -->
+  <header class="loans-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <div class="loans-hero-inner">
+        <p class="eyebrow hin">Asset loans</p>
+        <h1 class="loans-h1 hin">Borrow against what you <span class="hl">value</span>.</h1>
+        <p class="loans-lead hin">
+          ALYRA provides discreet loans from $50,000 to $5 million, secured against six classes of
+          high-value asset. Access funds privately while keeping ownership of what you value.
+        </p>
+        <div class="hin"><a class="btn btn--primary" href={SITE.enquiryPath}>Request a Confidential Valuation</a></div>
+        <p class="loans-reassure hin">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Confidential enquiry · No obligation · Specialist response usually within one business day
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <TrustStrip />
+
+  <!-- Asset classes -->
+  <section class="section section--rule-gold reveal">
+    <div class="container">
+      <div class="cat-head">
+        <p class="eyebrow">What we lend against</p>
+        <h2 class="h2 cat-h2">Six asset classes. One private way to access funds.</h2>
+        <p class="lead cat-intro">
+          ALYRA lends against high-value assets with clear ownership, good condition, and proven
+          resale demand. What qualifies depends on the asset, its documents, value, location, and
+          applicable law.
+        </p>
+      </div>
+      <div class="asset-grid">
+        {ASSETS.map((a) => (
+          <a class="cat-card" href={`/loans/${a.slug}/`}>
+            <div class="cat-img-wrap">
+              <Image src={a.card.image} alt={a.card.title} widths={[300, 460, 600]} sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 30vw" format="webp" quality={70} loading="lazy" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-title">{a.card.title}</div>
+              <p class="cat-card-blurb">{a.card.blurb}</p>
+              <span class="arrow-link cat-card-cta">{a.card.ctaLabel} <span class="arrow">→</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Request -->
+  <RequestSection noun="asset" idPrefix="loans" />
+</BaseLayout>
+
+<style>
+  /* ---- Hero (inner-page pattern) ---- */
+  .loans-hero { background: var(--cream); color: var(--ink); padding: calc(var(--nav-offset) + 8px) var(--section-x) clamp(40px, 6vw, 64px); }
+  .loans-hero-inner { max-width: 760px; padding-top: clamp(20px, 4vh, 40px); }
+  .loans-hero .eyebrow { margin-bottom: 22px; }
+  .loans-h1 {
+    font: 600 clamp(36px, 4.8vw, 60px)/1.06 var(--font-display);
+    letter-spacing: -1.2px;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .loans-h1 .hl { color: var(--gold-fg); }
+  .loans-lead { font: 400 clamp(16px, 1.4vw, 19px)/1.7 var(--font-body); color: var(--text-muted); max-width: 640px; margin: 0 0 26px; }
+  .loans-reassure {
+    display: flex; align-items: center; gap: 9px;
+    font: 400 13.5px/1.6 var(--font-body);
+    color: #6e6d65;
+    margin-top: 16px;
+    letter-spacing: .3px;
+  }
+  .loans-reassure svg { flex: none; opacity: .75; }
+
+  @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
+  .loans-hero .eyebrow.hin { animation-delay: .08s; }
+  .loans-h1.hin { animation-delay: .17s; }
+  .loans-lead.hin { animation-delay: .26s; }
+  .loans-hero .btn.hin, .loans-hero div.hin { animation-delay: .35s; }
+  .loans-reassure.hin { animation-delay: .44s; }
+
+  /* ---- Asset categories (matches homepage grid) ---- */
+  .cat-head { max-width: 680px; margin-bottom: 42px; }
+  .cat-h2 { max-width: 620px; }
+  .cat-intro { color: var(--text-soft); }
+  .asset-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .cat-card {
+    display: flex; flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  }
+  .cat-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 16px 38px rgba(40, 38, 30, .13); }
+  .cat-img-wrap { overflow: hidden; border-bottom: 1px solid var(--border); }
+  .cat-img-wrap img { display: block; width: 100%; height: 230px; object-fit: cover; transition: transform .55s ease; }
+  .cat-card:hover .cat-img-wrap img { transform: scale(1.06); }
+  .cat-card-body { padding: 30px; display: flex; flex-direction: column; flex: 1; }
+  .cat-card-title { font: 600 16px/1.2 var(--font-display); margin-bottom: 8px; }
+  .cat-card-blurb { font: 400 13px/1.55 var(--font-body); color: #857f6e; margin: 0 0 16px; }
+  .cat-card-cta { margin-top: auto; font: 600 12.5px/1 var(--font-body); color: var(--gold-fg); }
+
+  @media (max-width: 900px) { .asset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  @media (max-width: 600px) {
+    .asset-grid { grid-template-columns: 1fr; gap: 0; }
+    .cat-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+      padding: 13px 0;
+      background: transparent;
+      border: none;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+    }
+    .cat-card:last-child { border-bottom: 1px solid var(--border); }
+    .cat-card:hover { transform: none; box-shadow: none; }
+    .cat-img-wrap { width: 60px; height: 60px; flex: none; border: none; border-radius: 9px; overflow: hidden; }
+    .cat-img-wrap img { height: 60px; }
+    .cat-card:hover .cat-img-wrap img { transform: none; }
+    .cat-card-body { padding: 0; }
+    .cat-card-title { font-size: 15px; margin-bottom: 3px; }
+    .cat-card-blurb {
+      font-size: 12.5px;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .cat-card-cta { display: none; }
+  }
+</style>

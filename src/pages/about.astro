@@ -1,0 +1,155 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../config/site";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import TrustStrip from "../components/sections/TrustStrip.astro";
+import SpecialistCard from "../components/sections/SpecialistCard.astro";
+import RequestSection from "../components/sections/RequestSection.astro";
+
+const path = "/about/";
+const title = "About ALYRA | Private Asset-Based Lending";
+const description =
+  "ALYRA is a private asset-based lending business in Australia, helping clients access funds from $50,000 to $5 million secured against high-value assets — discreetly, and specialist-led.";
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "About" },
+];
+
+const principles = [
+  {
+    title: "Private by default",
+    body: "Every enquiry is handled confidentially. Your asset is not publicly listed, marketed or sent to auction.",
+  },
+  {
+    title: "Specialist-led",
+    body: "Eligible assets are reviewed by a specialist who understands the market for what you own.",
+  },
+  {
+    title: "Keep what you value",
+    body: "ALYRA is built around lending against an asset rather than buying it, so you can access funds without selling.",
+  },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": absoluteUrl(path) + "#webpage",
+    url: absoluteUrl(path),
+    name: title,
+    description,
+    isPartOf: { "@id": absoluteUrl("/") + "#website" },
+    inLanguage: "en-AU",
+    about: { "@id": absoluteUrl("/") + "#organization" },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <!-- Hero -->
+  <header class="about-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <div class="about-hero-inner">
+        <p class="eyebrow hin">About ALYRA</p>
+        <h1 class="about-h1 hin">Discreet lending for private clients.</h1>
+        <p class="about-lead hin">
+          ALYRA is a private asset-based lending business in Australia. We help clients access funds
+          from $50,000 to $5 million secured against high-value assets they would rather keep than sell.
+        </p>
+        <div class="hin"><a class="btn btn--primary" href={SITE.enquiryPath}>Request a Confidential Valuation</a></div>
+      </div>
+    </div>
+  </header>
+
+  <TrustStrip />
+
+  <!-- Approach -->
+  <section class="section section--white reveal">
+    <div class="container about-approach">
+      <p class="eyebrow">Our approach</p>
+      <h2 class="h2 about-h2">A quieter way to access funds.</h2>
+      <p class="about-p">
+        Selling a valued asset is final. ALYRA exists for the moments when a client needs liquidity but
+        would prefer to keep the watch, the painting, the car or the collection they have built.
+      </p>
+      <p class="about-p">
+        We lend against high-value assets with clear ownership and proven resale demand. Each enquiry is
+        handled privately, and eligible assets are reviewed by a specialist before any conversation about
+        a loan.
+      </p>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="about-principles">
+        {principles.map((p) => (
+          <div class="about-card">
+            <h3 class="about-card-title">{p.title}</h3>
+            <p class="about-card-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialist -->
+  <section class="section section--white section--rule reveal">
+    <div class="container">
+      <div class="about-spec-head">
+        <p class="eyebrow">Specialist assessment</p>
+        <h2 class="h2 about-h2">Led by a valuation specialist.</h2>
+        <p class="lead about-spec-intro">
+          High-value assets are not judged by brand or weight alone. ALYRA's assessments are led by a
+          specialist who weighs condition, provenance, documentation and market demand.
+        </p>
+      </div>
+      <SpecialistCard tags={["MBA", "10 years' experience", "Watches · Jewellery · Diamonds"]} />
+    </div>
+  </section>
+
+  <!-- Request -->
+  <RequestSection noun="asset" idPrefix="about" />
+</BaseLayout>
+
+<style>
+  .about-hero { background: var(--cream); color: var(--ink); padding: calc(var(--nav-offset) + 8px) var(--section-x) clamp(40px, 6vw, 64px); }
+  .about-hero-inner { max-width: 760px; padding-top: clamp(20px, 4vh, 40px); }
+  .about-hero .eyebrow { margin-bottom: 22px; }
+  .about-h1 {
+    font: 600 clamp(36px, 4.8vw, 60px)/1.06 var(--font-display);
+    letter-spacing: -1.2px;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .about-lead { font: 400 clamp(16px, 1.4vw, 19px)/1.7 var(--font-body); color: var(--text-muted); max-width: 640px; margin: 0 0 26px; }
+
+  @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
+  .about-hero .eyebrow.hin { animation-delay: .08s; }
+  .about-h1.hin { animation-delay: .17s; }
+  .about-lead.hin { animation-delay: .26s; }
+  .about-hero .btn.hin, .about-hero div.hin { animation-delay: .35s; }
+
+  .about-approach { max-width: 720px; }
+  .about-h2 { max-width: 600px; }
+  .about-p { font: 400 16px/1.8 var(--font-body); color: var(--text-muted); margin: 18px 0 0; }
+
+  .about-principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 32px 30px;
+  }
+  .about-card-title { font: 600 18px/1.3 var(--font-display); margin: 0 0 10px; }
+  .about-card-body { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .about-spec-head { max-width: 640px; margin-bottom: 36px; }
+  .about-spec-intro { color: var(--text-soft); }
+
+  @media (max-width: 860px) { .about-principles { grid-template-columns: 1fr; } }
+</style>

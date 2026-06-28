@@ -1,0 +1,108 @@
+---
+/**
+ * Shared scaffold for the legal / regulatory pages (privacy, terms, complaints,
+ * licence). Intentionally conservative: a heading, a short plain-language intro,
+ * and a clear notice that the full content is being finalised ahead of launch.
+ *
+ * This scaffold deliberately makes NO detailed legal, regulatory, licensing or
+ * custody claims — that content is pending a separate compliance review.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../config/site";
+import Breadcrumbs from "./Breadcrumbs.astro";
+
+interface Props {
+  /** <title> text, e.g. "Privacy Policy | ALYRA". */
+  title: string;
+  /** Page H1, e.g. "Privacy Policy". */
+  heading: string;
+  /** Breadcrumb label, e.g. "Privacy". */
+  crumbName: string;
+  /** Meta description. */
+  description: string;
+  /** Site-relative path, e.g. "/privacy/". */
+  path: string;
+  /** One or more conservative intro paragraphs. */
+  intro: string[];
+  /** Noun for the closing notice, e.g. "privacy policy", "terms of use". */
+  noticeNoun: string;
+}
+
+const { title, heading, crumbName, description, path, intro, noticeNoun } = Astro.props;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: crumbName },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": absoluteUrl(path) + "#webpage",
+    url: absoluteUrl(path),
+    name: title,
+    description,
+    isPartOf: { "@id": absoluteUrl("/") + "#website" },
+    inLanguage: "en-AU",
+    about: { "@id": absoluteUrl("/") + "#organization" },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <header class="legal-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <div class="legal-hero-inner">
+        <p class="eyebrow">Legal &amp; regulatory</p>
+        <h1 class="legal-h1">{heading}</h1>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--white">
+    <div class="container legal-body">
+      {intro.map((p) => <p class="legal-p">{p}</p>)}
+
+      <div class="legal-notice" role="note">
+        <p class="legal-notice-title">This {noticeNoun} is being finalised.</p>
+        <p class="legal-notice-body">
+          ALYRA's full {noticeNoun} is being prepared ahead of launch and will be published on this
+          page. If you have a question in the meantime, please <a href="/contact/">contact us</a>
+          or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+        </p>
+      </div>
+
+      <slot />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-hero { background: var(--cream); color: var(--ink); padding: calc(var(--nav-offset) + 8px) var(--section-x) clamp(28px, 4vw, 44px); }
+  .legal-hero-inner { max-width: 760px; padding-top: clamp(16px, 3vh, 32px); }
+  .legal-hero .eyebrow { margin-bottom: 18px; }
+  .legal-h1 {
+    font: 600 clamp(32px, 4.4vw, 52px)/1.08 var(--font-display);
+    letter-spacing: -1px;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .legal-body { max-width: 720px; }
+  .legal-p { font: 400 16px/1.8 var(--font-body); color: var(--text-muted); margin: 0 0 18px; }
+
+  .legal-notice {
+    margin-top: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius-card);
+    padding: 22px 26px;
+  }
+  .legal-notice-title { font: 600 15px/1.4 var(--font-display); color: var(--ink); margin: 0 0 8px; }
+  .legal-notice-body { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
+  .legal-notice-body a { color: var(--gold-fg); text-decoration: none; border-bottom: 1px solid #c9bfa6; }
+  .legal-notice-body a:hover { color: var(--gold-ink); }
+</style>

@@ -112,20 +112,20 @@ export interface Asset {
 
 export const ASSETS: Asset[] = [
   {
-    slug: "high-value-watches",
+    slug: "luxury-watches",
     navLabel: "Watches",
-    breadcrumbName: "High-Value Watches",
-    title: "Loans Against High-Value Watches | ALYRA",
+    breadcrumbName: "Luxury Watches",
+    title: "Loans Against Luxury Watches | ALYRA",
     metaDescription:
-      "Private loans from $50,000–$5 million against high-value watches — Rolex, Patek Philippe, AP, Richard Mille, Cartier and more. Keep your watch.",
+      "Private loans from $50,000–$5 million against luxury watches — Rolex, Patek Philippe, AP, Richard Mille, Cartier and more. Keep your watch.",
     ogImage: "/assets/og-watches.jpg",
     noun: "watch",
     keepLabel: "watch",
     heroEyebrow: "Private luxury watch lending",
-    h1Lead: "Loans against high-value",
+    h1Lead: "Loans against luxury",
     h1Highlight: "watches",
     heroIntro1:
-      "Access loans from $50,000 to $5 million secured against eligible high-value watches, without selling the watch you want to keep.",
+      "Access loans from $50,000 to $5 million secured against eligible luxury watches, without selling the watch you want to keep.",
     heroIntro2:
       "ALYRA lends against Rolex, Patek Philippe, Audemars Piguet, Richard Mille, Cartier and other collectible watches, through specialist assessment and secure custody.",
     heroImage: heroWatchesPatek2,
@@ -134,7 +134,7 @@ export const ASSETS: Asset[] = [
     heroBg: "#1a0712",
     loanNotSaleP1: "A watch can hold significant value while remaining a piece you want to keep.",
     loanNotSaleP2:
-      "ALYRA lends against high-value watches so you can access funds without parting with yours. Your watch is assessed privately, held securely for the agreed term, and returned once the loan is repaid.",
+      "ALYRA lends against luxury watches so you can access funds without parting with yours. Your watch is assessed privately, held securely for the agreed term, and returned once the loan is repaid.",
     closingLine: "No auction. No public listing. No obligation.",
     brandHeading: "Watches we lend against.",
     brandIntro:
@@ -156,7 +156,7 @@ export const ASSETS: Asset[] = [
     loanRangeIntro2:
       "A specialist will review the model, condition, documents, authenticity, ownership records and current market demand before any offer is made.",
     loanRangeImage: fineWatches,
-    loanRangeImageAlt: "Close detail of a high-value watch",
+    loanRangeImageAlt: "Close detail of a luxury watch",
     assessIntro: "Every watch is reviewed individually.",
     assessItems: [
       { label: "Model & reference", icon: "tag" },
@@ -171,7 +171,7 @@ export const ASSETS: Asset[] = [
     ],
     serviceType: "Asset-based loan secured against luxury watches",
     serviceDescription:
-      "Private loans from $50,000 to $5 million secured against eligible high-value watches, including Rolex, Patek Philippe, Audemars Piguet, Richard Mille, Cartier, Vacheron Constantin, A. Lange & Söhne and Omega. The watch is assessed by a specialist, held securely for the agreed term, and returned once the loan is repaid.",
+      "Private loans from $50,000 to $5 million secured against eligible luxury watches, including Rolex, Patek Philippe, Audemars Piguet, Richard Mille, Cartier, Vacheron Constantin, A. Lange & Söhne and Omega. The watch is assessed by a specialist, held securely for the agreed term, and returned once the loan is repaid.",
     faqs: [
       { q: "Can I borrow against a Rolex?", a: "Yes. ALYRA considers selected Rolex watches for lending, subject to model, condition, authenticity, documents, ownership records, market demand, valuation and approval." },
       { q: "Do I need the box and papers?", a: "They help establish authenticity and value, and can support stronger terms. They are not always essential. Tell us what you have." },
@@ -185,7 +185,7 @@ export const ASSETS: Asset[] = [
     formChips: ["Rolex", "Patek Philippe", "Audemars Piguet", "Richard Mille", "Cartier", "Other"],
     card: {
       image: fineWatches,
-      title: "High-Value Watches",
+      title: "Luxury Watches",
       blurb: "Rolex, Patek Philippe, Audemars Piguet, Richard Mille, and other collectible watches.",
       ctaLabel: "Lending Against Watches",
     },
@@ -347,7 +347,7 @@ export const ASSETS: Asset[] = [
   },
 
   {
-    slug: "classic-luxury-cars",
+    slug: "classic-and-luxury-cars",
     navLabel: "Cars",
     breadcrumbName: "Classic & Luxury Cars",
     title: "Loans Against Classic & Luxury Cars | ALYRA",

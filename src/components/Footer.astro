@@ -10,11 +10,11 @@ import Logo from "./Logo.astro";
 
 const year = new Date().getFullYear();
 const companyLinks = [
+  { label: "About", href: "/about/" },
   { label: "How it Works", href: "/how-it-works/" },
   { label: "Our Specialist", href: "/#valuation" },
   { label: "Locations", href: "#locations" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Contact", href: SITE.enquiryPath },
 ];
 const legalLinks = [
   { label: "Privacy", href: "/privacy/" },
@@ -31,25 +31,17 @@ const att = SITE.attribution;
     <!-- Closing band -->
     <div class="footer-closing">
       <span class="footer-logo"><Logo height={26} /></span>
+      <p class="footer-blurb">
+        Discreet private asset-based lending for private clients. Borrow against
+        luxury watches, jewellery, diamonds, art, classic and luxury cars, and
+        gold bullion.
+      </p>
     </div>
 
-    <!-- Columns -->
+    <!-- Columns: Asset Loans · Company · Legal · Contact -->
     <div class="footer-cols">
       <div>
-        <p class="footer-blurb">
-          Discreet private asset-based lending for private clients. Borrow against
-          high-value watches, jewellery, diamonds, art, classic and luxury cars,
-          and gold bullion.
-        </p>
-        <div class="footer-contact">
-          By appointment only<br />
-          <a class="foot-link" href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
-          <span>{SITE.phone || "[Phone number, if approved]"}</span>
-        </div>
-      </div>
-
-      <div>
-        <div class="col-head">Assets</div>
+        <div class="col-head">Asset Loans</div>
         <div class="col-links">
           {ASSETS.map((a) => (
             <a class="foot-link" href={`/loans/${a.slug}/`}>{a.breadcrumbName}</a>
@@ -68,6 +60,17 @@ const att = SITE.attribution;
         <div class="col-head">Legal</div>
         <div class="col-links">
           {legalLinks.map((l) => <a class="foot-link" href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+
+      <div>
+        <div class="col-head">Contact</div>
+        <div class="col-links">
+          <a class="foot-link" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <span class="foot-muted">{SITE.phone || "[Phone number, if approved]"}</span>
+          <span class="foot-muted">By appointment only</span>
+          <a class="foot-link" href="/contact/">Contact us</a>
+          <a class="foot-link" href={SITE.enquiryPath}>Request a valuation</a>
         </div>
       </div>
     </div>
@@ -113,7 +116,7 @@ const att = SITE.attribution;
         <span>{att.label}</span>
         <span aria-hidden="true" class="ss-divider"></span>
         <span class="ss-logo">
-          <img src="/assets/skyscale-logo.png" alt={att.name} height="22" />
+          <img src="/assets/skyscale-logo.svg" alt={att.name} height="22" />
           <span aria-hidden="true" class="ss-wipe">
             <span class="ss-wipe-fill"></span>
           </span>
@@ -145,12 +148,14 @@ const att = SITE.attribution;
 
   .footer-cols {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 40px;
     padding: 46px 0;
     border-bottom: 1px solid var(--border-dark);
   }
-  .footer-blurb { font: 400 14px/1.7 var(--font-body); color: #a39d8e; margin: 0 0 22px; max-width: 300px; }
+  .footer-blurb { font: 400 14px/1.7 var(--font-body); color: #a39d8e; margin: 0; max-width: 360px; }
+  .footer-closing .footer-blurb { text-align: right; }
+  .foot-muted { color: #a39d8e; font: 400 14px/1.3 var(--font-body); }
   .footer-contact { font: 400 13px/1.8 var(--font-body); color: #a39d8e; }
   .col-head {
     font: 600 12px/1 var(--font-body);
@@ -218,10 +223,13 @@ const att = SITE.attribution;
     height: 22px;
     width: 127px;
     background: #6ae1c9;
-    -webkit-mask: url(/assets/skyscale-logo.png) left center/auto 100% no-repeat;
-    mask: url(/assets/skyscale-logo.png) left center/auto 100% no-repeat;
+    -webkit-mask: url(/assets/skyscale-logo.svg) left center/auto 100% no-repeat;
+    mask: url(/assets/skyscale-logo.svg) left center/auto 100% no-repeat;
   }
 
-  @media (max-width: 760px) { .footer-cols { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 760px) {
+    .footer-cols { grid-template-columns: 1fr 1fr; }
+    .footer-closing .footer-blurb { text-align: left; }
+  }
   @media (max-width: 480px) { .footer-cols { grid-template-columns: 1fr; } }
 </style>

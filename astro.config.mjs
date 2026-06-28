@@ -10,7 +10,25 @@ export default defineConfig({
   site: SITE.baseUrl,
   output: "static",
   trailingSlash: "always",
-  integrations: [sitemap()],
+  // Permanent (301) redirects for legacy slugs renamed during the IA pass.
+  // Honoured by the dev server; emitted as redirect stubs in the static build.
+  redirects: {
+    "/loans/high-value-watches/": { status: 301, destination: "/loans/luxury-watches/" },
+    "/loans/classic-luxury-cars/": { status: 301, destination: "/loans/classic-and-luxury-cars/" },
+    "/insights/what-determines-fine-watch-value-2026/": {
+      status: 301,
+      destination: "/insights/what-determines-fine-watch-value/",
+    },
+  },
+  integrations: [
+    sitemap({
+      // Keep legacy redirect URLs out of the sitemap.
+      filter: (page) =>
+        !/\/loans\/high-value-watches\/|\/loans\/classic-luxury-cars\/|\/insights\/what-determines-fine-watch-value-2026\//.test(
+          page
+        ),
+    }),
+  ],
   build: {
     inlineStylesheets: "auto",
   },

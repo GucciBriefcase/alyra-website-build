@@ -1,0 +1,136 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, absoluteUrl } from "../config/site";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import RequestSection from "../components/sections/RequestSection.astro";
+
+const path = "/contact/";
+const title = "Contact ALYRA | Confidential Enquiries";
+const description =
+  "Contact ALYRA to discuss private asset-based lending. Confidential enquiries, Australia-wide, by appointment. Request a confidential valuation online.";
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Contact" },
+];
+
+// Widen the config literal so the optional phone block type-checks and works
+// automatically once a real number is set in site config.
+const phone = SITE.phone as string;
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": absoluteUrl(path) + "#webpage",
+    url: absoluteUrl(path),
+    name: title,
+    description,
+    isPartOf: { "@id": absoluteUrl("/") + "#website" },
+    inLanguage: "en-AU",
+    about: { "@id": absoluteUrl("/") + "#organization" },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} schema={schema}>
+  <!-- Hero -->
+  <header class="contact-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <div class="contact-hero-inner">
+        <p class="eyebrow hin">Contact</p>
+        <h1 class="contact-h1 hin">Speak with ALYRA, in confidence.</h1>
+        <p class="contact-lead hin">
+          Enquiries are handled privately. The fastest way to start is to request a confidential
+          valuation — an ALYRA specialist will review your details and respond directly.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Details + CTA -->
+  <section class="section section--white reveal">
+    <div class="container contact-grid">
+      <div class="contact-details">
+        <div class="contact-block">
+          <span class="contact-label">Email</span>
+          <a class="contact-value" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </div>
+        {phone && (
+          <div class="contact-block">
+            <span class="contact-label">Phone</span>
+            <a class="contact-value" href={`tel:${phone.replace(/\s+/g, "")}`}>{phone}</a>
+          </div>
+        )}
+        <div class="contact-block">
+          <span class="contact-label">Availability</span>
+          <span class="contact-value contact-value--plain">{SITE.availability}</span>
+        </div>
+        <div class="contact-block">
+          <span class="contact-label">Locations served</span>
+          <span class="contact-value contact-value--plain">{SITE.locationsServed.join(" · ")}</span>
+        </div>
+      </div>
+
+      <div class="contact-cta-card">
+        <h2 class="contact-cta-title">Request a confidential valuation</h2>
+        <p class="contact-cta-body">
+          Submit a few details about your asset for private review. There is no cost or obligation to enquire.
+        </p>
+        <a class="btn btn--primary" href={SITE.enquiryPath}>Request a Confidential Valuation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request form -->
+  <RequestSection noun="asset" idPrefix="contact" />
+</BaseLayout>
+
+<style>
+  .contact-hero { background: var(--cream); color: var(--ink); padding: calc(var(--nav-offset) + 8px) var(--section-x) clamp(40px, 6vw, 64px); }
+  .contact-hero-inner { max-width: 760px; padding-top: clamp(20px, 4vh, 40px); }
+  .contact-hero .eyebrow { margin-bottom: 22px; }
+  .contact-h1 {
+    font: 600 clamp(36px, 4.8vw, 60px)/1.06 var(--font-display);
+    letter-spacing: -1.2px;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .contact-lead { font: 400 clamp(16px, 1.4vw, 19px)/1.7 var(--font-body); color: var(--text-muted); max-width: 640px; margin: 0; }
+
+  @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
+  .contact-hero .eyebrow.hin { animation-delay: .08s; }
+  .contact-h1.hin { animation-delay: .17s; }
+  .contact-lead.hin { animation-delay: .26s; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 60px);
+    align-items: start;
+  }
+  .contact-details { display: flex; flex-direction: column; gap: 26px; }
+  .contact-block { display: flex; flex-direction: column; gap: 6px; }
+  .contact-label {
+    font: 600 11px/1 var(--font-body);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-fg);
+  }
+  .contact-value { font: 500 17px/1.5 var(--font-body); color: var(--ink); text-decoration: none; }
+  a.contact-value:hover { color: var(--gold-fg); }
+  .contact-value--plain { font-weight: 400; color: var(--text-muted); }
+
+  .contact-cta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: clamp(28px, 4vw, 38px);
+  }
+  .contact-cta-title { font: 600 22px/1.2 var(--font-display); margin: 0 0 12px; }
+  .contact-cta-body { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 24px; }
+
+  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>

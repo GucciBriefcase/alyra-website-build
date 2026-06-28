@@ -26,8 +26,8 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
 
     <div class="nav-links">
       <div class="nav-item">
-        <a href="/#assets" class="nav-trigger" aria-haspopup="menu">
-          Assets
+        <a href="/loans/" class="nav-trigger" aria-haspopup="menu">
+          Asset Loans
           <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </a>
         <div class="nav-menu" role="menu">
@@ -59,7 +59,7 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
   </div>
 
   <div class="mobile-menu" id="mobile-menu" data-menu hidden>
-    <span class="mobile-group-label">Assets</span>
+    <span class="mobile-group-label"><a href="/loans/" data-menu-link class="mobile-group-link">Asset Loans</a></span>
     {assetLinks.map((l) => <a href={l.href} data-menu-link class="mobile-sub">{l.label}</a>)}
     {links.map((l) => <a href={l.href} data-menu-link>{l.label}</a>)}
     <a href={cta.href} class="mobile-cta" data-menu-link>{cta.label}</a>
@@ -226,6 +226,16 @@ const cta = { label: "Request a Confidential Valuation", href: SITE.enquiryPath 
     color: var(--gold);
     padding: 8px 14px 4px;
   }
+  .mobile-menu .mobile-group-link {
+    display: inline;
+    padding: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    border-radius: 0;
+  }
+  .mobile-menu .mobile-group-link:hover { background: none; color: var(--gold-light); }
   .mobile-menu .mobile-sub {
     padding-left: 26px;
     font-weight: 500;

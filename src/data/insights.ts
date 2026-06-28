@@ -50,7 +50,7 @@ export const INSIGHT_CATEGORIES: InsightCategory[] = [
 ];
 
 export const FEATURED: InsightCard & { slug: string } = {
-  slug: "what-determines-fine-watch-value-2026",
+  slug: "what-determines-fine-watch-value",
   category: "Watches",
   title: "What actually determines the value of a fine watch in 2026.",
   excerpt:
