@@ -28,7 +28,8 @@ unless there is a clear accessibility or state requirement.
 | `--gold-light` | `#d4b777` | Top stop of gold gradient |
 | `--gold-hover` | `#a8884e` | (legacy mid-gold; avoid as small foreground on light) |
 | `--gold-soft` | `#d8c79a` | Text selection, soft card-hover borders |
-| `--gold-ink` | `#6f5a26` | **Gold used as a small foreground on light bg** — eyebrows, step numbers, list dashes, small icons, location dots, FAQ sign, chip icons |
+| `--gold-fg` | `#9a6a3c` | **Eyebrows / accent labels on light bg** — site-wide eyebrow colour |
+| `--gold-ink` | `#6f5a26` | **Gold used as a small foreground on light bg** — step numbers, list dashes, small icons, location dots, FAQ sign, chip icons |
 
 ### Text
 | Token | Hex | Use |
@@ -70,3 +71,60 @@ unless there is a clear accessibility or state requirement.
 ## Type
 - Display / headings: **Poppins** (600).
 - Body / labels / eyebrows: **Inter** (400/500/600).
+
+## Analytics event contract
+
+The enquiry forms push a GTM `dataLayer` event only after a successful enquiry submission.
+
+Source files:
+
+- `src/lib/valuation.ts`
+- `src/components/forms/ValuationForm.astro`
+- `src/components/forms/StepperForm.astro`
+
+Event shape:
+
+```ts
+{
+  event: "enquiry_submit";
+  form_name: "confidential_valuation";
+  asset_type?: string;
+  estimated_value_band?: string; // coarse band only, never the exact value
+  preferred_contact?: string;
+}
+```
+
+`estimated_value_band` values (the only values `valueBand()` can emit — aligned to the $50k–$5m loan range):
+
+| Band | Range (AUD) |
+|---|---|
+| `under_50k` | below $50,000 |
+| `50k_100k` | $50,000 – $99,999 |
+| `100k_250k` | $100,000 – $249,999 |
+| `250k_500k` | $250,000 – $499,999 |
+| `500k_1m` | $500,000 – $999,999 |
+| `1m_5m` | $1,000,000 – $4,999,999 |
+| `5m_plus` | $5,000,000 and above |
+
+When the field is blank or no number can be parsed, `estimated_value_band` is omitted from the event entirely (not sent empty). Note: the form collects an exact figure — banding happens only for analytics. The exact `estimatedValue` is still sent to the business enquiry endpoint via `submitValuation`; only the `dataLayer` event is coarsened by `valueBand()`.
+
+Privacy constraint: do not push personally identifiable information into `dataLayer`. Do not include name, email, phone, message content, address, or any free-text financial details. `estimated_value_band` must be a coarse band, never an exact asset value.
+
+GTM configuration:
+
+- Trigger type: Custom Event
+- Event name: `enquiry_submit`
+
+GA4 configuration:
+
+- GA4 event name: `generate_lead`
+- Suggested parameters:
+  - `form_name`
+  - `asset_type`
+  - `estimated_value_band`
+  - `preferred_contact`
+- Register these custom parameters in GA4 (as custom dimensions) if they need to be used in reports.
+
+This event should represent a successful lead submission only. Do not fire it on button click, validation failure, form start, or failed endpoint response.
+
+Architecture note: `enquiry_submit` is the internal GTM/`dataLayer` event; `generate_lead` is the GA4 event name it maps to in GTM.

@@ -211,7 +211,7 @@ const endpoint = SITE.enquiryEndpoint;
 </style>
 
 <script>
-  import { submitValuation, validateValuation, type ValuationPayload } from "../../lib/valuation";
+  import { submitValuation, validateValuation, trackEnquirySuccess, type ValuationPayload } from "../../lib/valuation";
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -335,6 +335,7 @@ const endpoint = SITE.enquiryEndpoint;
       if (primaryBtn) { primaryBtn.disabled = false; primaryBtn.textContent = "Submit Confidential Enquiry"; }
 
       if (result.status === "ok") {
+        trackEnquirySuccess(payload);
         form.hidden = true;
         if (successEl) { successEl.hidden = false; successEl.focus?.(); }
       } else if (result.status === "unconfigured") {

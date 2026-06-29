@@ -79,7 +79,7 @@ const schema = [
       <Breadcrumbs items={crumbs} />
       <div class="hiw-hero-inner">
         <p class="eyebrow hin">How it works</p>
-        <h1 class="hiw-h1 hin">From confidential enquiry to the return of your <span class="hl">asset</span>.</h1>
+        <h1 class="hiw-h1 hin">From confidential enquiry to the return of your <span class="hl">asset</span></h1>
         <p class="hiw-lead hin">
           A simple, private process: share your asset, receive a specialist assessment, review a written
           offer, and recover your asset once the loan is repaid.
@@ -101,8 +101,18 @@ const schema = [
     heading="Four steps, handled privately."
     intro="From first enquiry to the return of your asset, you deal confidentially with a specialist at every stage."
     steps={steps}
-    disclaimer="Funding is not guaranteed. Loans depend on the asset, valuation, approval, custody, documents, applicable law, and agreed terms. Your asset is at risk if repayment obligations are not met."
   />
+
+  <!-- Specialist -->
+  <section class="section section--surface reveal">
+    <div class="container hiw-spec">
+      <div class="hiw-spec-head">
+        <p class="eyebrow">Who you'll deal with</p>
+        <h2 class="h2">A specialist, from first enquiry to completion.</h2>
+      </div>
+      <SpecialistCard secondLine="From first enquiry through assessment, documentation, custody and completion, you deal directly and confidentially." />
+    </div>
+  </section>
 
   <!-- What you'll need -->
   <section class="section reveal">
@@ -154,14 +164,14 @@ const schema = [
     </div>
   </section>
 
-  <!-- Specialist -->
-  <section class="section reveal">
-    <div class="container hiw-spec">
-      <div class="hiw-spec-head">
-        <p class="eyebrow">Who you'll deal with</p>
-        <h2 class="h2">A specialist, from first enquiry to completion.</h2>
+  <!-- Important loan information -->
+  <section class="section section--white reveal">
+    <div class="container">
+      <div class="hiw-info">
+        <p class="eyebrow">Important</p>
+        <h2 class="hiw-info-h2">Important loan information.</h2>
+        <p class="hiw-info-p">Funding is not guaranteed. Loans depend on the asset, valuation, approval, custody, documents, applicable law, and agreed terms. Your asset is at risk if repayment obligations are not met.</p>
       </div>
-      <SpecialistCard secondLine="From first enquiry through assessment, documentation, custody and completion, you deal directly and confidentially." />
     </div>
   </section>
 
@@ -205,6 +215,11 @@ const schema = [
   .hiw-custody-h2 { font: 600 clamp(24px, 3vw, 34px)/1.12 var(--font-display); letter-spacing: -0.6px; margin: 0 0 14px; max-width: 620px; }
   .hiw-custody-p { font: 400 16px/1.75 var(--font-body); color: var(--text-muted); margin: 0; max-width: 620px; }
   .hiw-custody-cta { white-space: nowrap; }
+
+  /* Important loan information */
+  .hiw-info { max-width: 760px; }
+  .hiw-info-h2 { font: 600 clamp(24px, 3vw, 34px)/1.12 var(--font-display); letter-spacing: -0.6px; margin: 0 0 16px; }
+  .hiw-info-p { font: 400 16px/1.8 var(--font-body); color: var(--text-muted); margin: 0; border-left: 2px solid var(--gold); padding-left: 22px; }
 
   /* Specialist */
   .hiw-spec { max-width: 1000px; }

@@ -29,6 +29,11 @@ const { title, description, path, image, imageAlt, ogType, schema, hideMobileCta
 
 const sameAs = Object.values(SITE.social).filter(Boolean);
 
+// Analytics / verification (inert until IDs are set in site.ts).
+const { gtmId, googleSiteVerification, bingSiteVerification } = SITE.analytics;
+const gtmHeadScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`;
+const gtmBodyNoscript = `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+
 // Site-wide Organisation (FinancialService) + WebSite structured data.
 const orgSchema = {
   "@context": "https://schema.org",
@@ -75,6 +80,15 @@ const websiteSchema = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Google Tag Manager — hosts GA4 + Microsoft Clarity tags. */}
+    {gtmId && <script is:inline set:html={gtmHeadScript} />}
+    {/* Webmaster verification (fallback to verifying via GTM/GA). */}
+    {googleSiteVerification && (
+      <meta name="google-site-verification" content={googleSiteVerification} />
+    )}
+    {bingSiteVerification && <meta name="msvalidate.01" content={bingSiteVerification} />}
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
@@ -100,6 +114,8 @@ const websiteSchema = {
   </head>
 
   <body>
+    {/* Google Tag Manager (noscript) — must be immediately after <body>. */}
+    {gtmId && <noscript set:html={gtmBodyNoscript} />}
     <a href="#main" class="skip-link">Skip to content</a>
     <Nav />
     <main id="main">

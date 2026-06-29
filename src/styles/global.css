@@ -107,7 +107,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
   font: 600 12px/1 var(--font-body);
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--gold-ink);
+  color: var(--gold-fg);
   margin: 0 0 16px;
 }
 .eyebrow--on-dark { color: var(--gold); }

@@ -158,7 +158,7 @@ const endpoint = SITE.enquiryEndpoint;
 </div>
 
 <script>
-  import { submitValuation, validateValuation, type ValuationPayload } from "../../lib/valuation";
+  import { submitValuation, validateValuation, trackEnquirySuccess, type ValuationPayload } from "../../lib/valuation";
 
   document.querySelectorAll<HTMLFormElement>("[data-valuation-form]").forEach((form) => {
     const endpoint = form.dataset.endpoint || "";
@@ -229,6 +229,7 @@ const endpoint = SITE.enquiryEndpoint;
       if (submit) { submit.disabled = false; submit.textContent = "Submit Confidential Enquiry"; }
 
       if (result.status === "ok") {
+        trackEnquirySuccess(payload);
         form.hidden = true;
         if (successEl) { successEl.hidden = false; successEl.focus?.(); }
       } else if (result.status === "unconfigured") {

@@ -104,6 +104,27 @@ export const SITE = {
   /** Endpoint for the Insights newsletter sign-up. Empty until connected. */
   newsletterEndpoint: "",
 
+  // ---- Analytics & webmaster verification ----------------------------------
+  /**
+   * Tracking and site-verification IDs. Leave any value empty ("") to disable
+   * that tag — nothing renders until an ID is supplied.
+   *
+   * Architecture: Google Tag Manager is the single container. Google Analytics
+   * (GA4) and Microsoft Clarity are deployed as tags *inside* GTM (no code
+   * here) — set them up in the GTM dashboard, not this file. Google Search
+   * Console and Bing Webmaster Tools are verification + sitemap submission only;
+   * the meta tokens below are the fallback if you don't verify via GTM/GA (Bing
+   * can also import verification straight from Search Console).
+   */
+  analytics: {
+    /** Google Tag Manager container ID, e.g. "GTM-XXXXXXX". Loads GA4 + Clarity. */
+    gtmId: "",
+    /** Google Search Console meta token (the content="" value only). */
+    googleSiteVerification: "",
+    /** Bing Webmaster Tools meta token (msvalidate.01 content value). */
+    bingSiteVerification: "",
+  },
+
   // ---- Attribution ---------------------------------------------------------
   attribution: {
     label: "Website & AI Search by",
