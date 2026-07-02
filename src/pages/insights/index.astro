@@ -274,7 +274,7 @@ const schema = [
       const email = emailEl?.value.trim() || "";
       if (!EMAIL_RE.test(email)) { setStatus("Please enter a valid email address.", "error"); return; }
       if (!endpoint) {
-        setStatus("Sign-up isn't connected yet — email enquiries@alyra.com.au to be added to the brief.", "ok");
+        setStatus("Sign-up isn't connected yet — email hello@alyra.com.au to be added to the brief.", "ok");
         return;
       }
       try {

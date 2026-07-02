@@ -90,13 +90,33 @@ export async function submitValuation(
 ): Promise<SubmitResult> {
   if (!endpoint) return { status: "unconfigured" };
 
+  // FormSubmit reads control fields from the body: _subject sets the email
+  // subject line, _template: "table" formats the fields as a readable table.
+  const body: Record<string, unknown> = { ...payload };
+  if (endpoint.includes("formsubmit.co")) {
+    body._subject = "New confidential valuation enquiry — alyra.com.au";
+    body._template = "table";
+  }
+
   try {
     const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(body),
     });
     if (!res.ok) {
+      return {
+        status: "error",
+        message: "Something went wrong sending your enquiry. Please try again or email us directly.",
+      };
+    }
+    // FormSubmit answers HTTP 200 even when it does NOT deliver (e.g. the
+    // recipient address hasn't clicked its activation link yet) and signals
+    // the real outcome in the body. Only an explicit `success: "false"` is a
+    // failure, so other backends without that field are unaffected.
+    const data = await res.json().catch(() => null);
+    if (data && String(data.success) === "false") {
+      console.warn("Enquiry endpoint refused delivery:", data.message);
       return {
         status: "error",
         message: "Something went wrong sending your enquiry. Please try again or email us directly.",

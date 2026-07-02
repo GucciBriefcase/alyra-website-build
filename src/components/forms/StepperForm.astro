@@ -30,12 +30,18 @@ const endpoint = SITE.enquiryEndpoint;
 ---
 
 <div class="vf-card">
+  <!-- The multi-step flow only makes sense with JS; without it, hide the form
+       and point to the full single-page form, which submits natively. -->
+  <noscript>
+    <p class="vf-noscript">
+      This quick form needs JavaScript. <a href="/valuation/">Use the full enquiry form instead</a>.
+    </p>
+    <style>.sf-form { display: none; }</style>
+  </noscript>
   <form
     class="sf-form"
     data-stepper-form
     data-endpoint={endpoint}
-    method="POST"
-    action={endpoint || undefined}
     novalidate
   >
     <div class="sf-step-meta" data-step-meta>Step 1 of 3</div>
@@ -131,8 +137,10 @@ const endpoint = SITE.enquiryEndpoint;
       </div>
     </div>
 
-    <!-- Honeypot -->
-    <div class="vf-hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label></div>
+    <!-- Honeypot. The name must NOT match a browser autofill category (an
+         earlier name="company" was auto-filled by Chrome's address autofill,
+         silently blocking real users as bots). -->
+    <div class="vf-hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label></div>
 
     <!-- Navigation -->
     <div class="step-nav">
@@ -148,7 +156,7 @@ const endpoint = SITE.enquiryEndpoint;
   </form>
 
   <!-- Success -->
-  <div class="vf-success" data-form-success hidden role="status" aria-live="polite">
+  <div class="vf-success" data-form-success hidden role="status" aria-live="polite" tabindex="-1">
     <div class="vf-tick" aria-hidden="true">✓</div>
     <h3>Request received.</h3>
     <p>
@@ -274,7 +282,6 @@ const endpoint = SITE.enquiryEndpoint;
       if (backBtn) backBtn.hidden = step === 0;
       if (primaryBtn) {
         primaryBtn.textContent = step === LAST ? "Submit Confidential Enquiry" : "Continue";
-        primaryBtn.disabled = step < LAST && !stepValid(step);
       }
       if (step === LAST && summaryEl) {
         const asset = val("assetType");
@@ -297,14 +304,32 @@ const endpoint = SITE.enquiryEndpoint;
       consent: (form.elements.namedItem("consent") as HTMLInputElement)?.checked ?? false,
     });
 
-    // Re-evaluate the Continue button and live email error as fields change.
+    // Clear a field's error as soon as the user resolves it; keep the email
+    // format error live.
     form.addEventListener("input", () => {
+      if (step === 0 && val("assetType")) setError("assetType", "");
       if (step === 1) {
+        if (val("name")) setError("name", "");
+        if (val("phone")) setError("phone", "");
         const email = val("email");
         setError("email", email && !EMAIL_RE.test(email) ? "Please enter a valid email address." : "");
       }
       render();
     });
+
+    // Field-level messages for an incomplete intermediate step, shown when
+    // Continue is clicked. The button stays enabled so the click always gives
+    // feedback — a silently disabled button reads as "the form is broken".
+    const showStepErrors = (s: number) => {
+      if (s === 0 && !val("assetType")) setError("assetType", "Please choose an asset type.");
+      if (s === 1) {
+        if (!val("name")) setError("name", "Please enter your name.");
+        const email = val("email");
+        if (!email) setError("email", "Please enter your email address.");
+        else if (!EMAIL_RE.test(email)) setError("email", "Please enter a valid email address.");
+        if (!val("phone")) setError("phone", "Please enter your phone number.");
+      }
+    };
 
     backBtn?.addEventListener("click", () => {
       if (step > 0) { step--; clearErrors(); setStatus(""); render(); }
@@ -312,10 +337,10 @@ const endpoint = SITE.enquiryEndpoint;
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if ((form.elements.namedItem("company") as HTMLInputElement)?.value) return; // honeypot
+      if ((form.elements.namedItem("_gotcha") as HTMLInputElement)?.value) return; // honeypot
 
       if (step < LAST) {
-        if (!stepValid(step)) { render(); return; }
+        if (!stepValid(step)) { showStepErrors(step); render(); return; }
         step++; clearErrors(); setStatus(""); render();
         return;
       }
@@ -337,10 +362,23 @@ const endpoint = SITE.enquiryEndpoint;
       if (result.status === "ok") {
         trackEnquirySuccess(payload);
         form.hidden = true;
-        if (successEl) { successEl.hidden = false; successEl.focus?.(); }
+        if (successEl) {
+          successEl.hidden = false;
+          // The form is much taller than the confirmation, so the collapse can
+          // leave the viewport past the card — bring the confirmation to it.
+          // Deferred a tick so the scroll targets the collapsed layout, not the
+          // pre-collapse positions. Scroll behavior comes from the html
+          // scroll-behavior rule, which already respects prefers-reduced-motion.
+          setTimeout(() => {
+            const r = successEl.getBoundingClientRect();
+            const top = window.scrollY + r.top - Math.max((window.innerHeight - r.height) / 2, 0);
+            window.scrollTo({ top: Math.max(top, 0) });
+            successEl.focus({ preventScroll: true });
+          }, 0);
+        }
       } else if (result.status === "unconfigured") {
         setStatus(
-          "This enquiry form is ready but not yet connected to a backend, so it hasn't been sent. Please email enquiries@alyra.com.au in the meantime.",
+          "This enquiry form is ready but not yet connected to a backend, so it hasn't been sent. Please email hello@alyra.com.au in the meantime.",
           "info"
         );
       } else {

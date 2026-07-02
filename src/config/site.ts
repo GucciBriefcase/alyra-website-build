@@ -30,7 +30,7 @@ export const SITE = {
   baseUrl: "https://www.alyra.com.au",
 
   // ---- Contact (NAP) -------------------------------------------------------
-  email: "enquiries@alyra.com.au",
+  email: "hello@alyra.com.au",
   /** Phone placeholder — set to a real number once approved, or leave empty to hide. */
   phone: "",
   serviceArea: "Australia",
@@ -63,8 +63,8 @@ export const SITE = {
   ],
 
   // ---- Legal entity & regulatory (PLACEHOLDERS — replace before launch) -----
-  legalEntity: "[Registered company name] Pty Ltd",
-  abn: "[00 000 000 000]",
+  legalEntity: "ALYRA GROUP PTY LTD",
+  abn: "72 699 671 291",
   pawnbrokerLicence: "[Licence number and jurisdiction]",
   secondHandDealerRegistration: "[Registration number, if applicable]",
   insuranceNote:
@@ -95,12 +95,15 @@ export const SITE = {
   /** Path to the dedicated confidential-valuation enquiry page. */
   enquiryPath: "/valuation/",
   /**
-   * Endpoint the valuation form posts to. Leave empty until a backend is
-   * connected (Astro Actions, a Vercel serverless function, Formspree, Basin,
-   * HubSpot, Airtable or Google Sheets). When empty, the form does not fake a
-   * submission — see src/lib/valuation.ts.
+   * Endpoint the valuation form posts to. Currently FormSubmit's AJAX API,
+   * which delivers submissions to the address in the URL — no account needed,
+   * but the FIRST submission triggers an activation email to that inbox which
+   * must be confirmed before deliveries start. Swap for Astro Actions, a
+   * serverless function, Formspree or Basin later without touching the form —
+   * see src/lib/valuation.ts. Set to "" to disconnect (the form then says so
+   * honestly instead of faking a submission).
    */
-  enquiryEndpoint: "",
+  enquiryEndpoint: "https://formsubmit.co/ajax/hello@alyra.com.au",
   /** Endpoint for the Insights newsletter sign-up. Empty until connected. */
   newsletterEndpoint: "",
 

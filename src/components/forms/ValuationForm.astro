@@ -29,6 +29,9 @@ const assetOptions = [
 ];
 const contactOptions = ["Email", "Phone", "Either"];
 const endpoint = SITE.enquiryEndpoint;
+// No-JS fallback: FormSubmit's /ajax/ endpoint returns JSON, so native POSTs
+// go to the plain endpoint, which redirects to a thank-you page instead.
+const nativeAction = endpoint.replace("formsubmit.co/ajax/", "formsubmit.co/");
 ---
 
 <div class="vf-card">
@@ -37,7 +40,7 @@ const endpoint = SITE.enquiryEndpoint;
     data-valuation-form
     data-endpoint={endpoint}
     method="POST"
-    action={endpoint || undefined}
+    action={nativeAction || undefined}
     novalidate
   >
     <!-- Asset type -->
@@ -131,9 +134,11 @@ const endpoint = SITE.enquiryEndpoint;
       <p class="vf-error" id={`${idPrefix}-consent-err`} data-error-for="consent" role="alert"></p>
     </div>
 
-    <!-- Honeypot (spam protection — must stay empty) -->
+    <!-- Honeypot (spam protection — must stay empty). The name must NOT match
+         a browser autofill category (an earlier name="company" was auto-filled
+         by Chrome's address autofill, silently blocking real users as bots). -->
     <div class="vf-hp" aria-hidden="true">
-      <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+      <label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
     </div>
 
     <button class="btn btn--primary vf-submit" type="submit">Submit Confidential Enquiry</button>
@@ -146,7 +151,7 @@ const endpoint = SITE.enquiryEndpoint;
   </form>
 
   <!-- Success state -->
-  <div class="vf-success" data-form-success hidden role="status" aria-live="polite">
+  <div class="vf-success" data-form-success hidden role="status" aria-live="polite" tabindex="-1">
     <div class="vf-tick" aria-hidden="true">✓</div>
     <h3>Request received.</h3>
     <p>
@@ -212,7 +217,7 @@ const endpoint = SITE.enquiryEndpoint;
       setStatus("");
 
       // Honeypot: silently ignore bots.
-      if ((form.elements.namedItem("company") as HTMLInputElement)?.value) return;
+      if ((form.elements.namedItem("_gotcha") as HTMLInputElement)?.value) return;
 
       const payload = readPayload();
       const errors = validateValuation(payload);
@@ -231,11 +236,24 @@ const endpoint = SITE.enquiryEndpoint;
       if (result.status === "ok") {
         trackEnquirySuccess(payload);
         form.hidden = true;
-        if (successEl) { successEl.hidden = false; successEl.focus?.(); }
+        if (successEl) {
+          successEl.hidden = false;
+          // The form is much taller than the confirmation, so the collapse can
+          // leave the viewport past the card — bring the confirmation to it.
+          // Deferred a tick so the scroll targets the collapsed layout, not the
+          // pre-collapse positions. Scroll behavior comes from the html
+          // scroll-behavior rule, which already respects prefers-reduced-motion.
+          setTimeout(() => {
+            const r = successEl.getBoundingClientRect();
+            const top = window.scrollY + r.top - Math.max((window.innerHeight - r.height) / 2, 0);
+            window.scrollTo({ top: Math.max(top, 0) });
+            successEl.focus({ preventScroll: true });
+          }, 0);
+        }
       } else if (result.status === "unconfigured") {
         setStatus(
           "This enquiry form is ready but not yet connected to a backend, so it hasn't been sent. Please email " +
-            "enquiries@alyra.com.au in the meantime.",
+            "hello@alyra.com.au in the meantime.",
           "info"
         );
       } else {
