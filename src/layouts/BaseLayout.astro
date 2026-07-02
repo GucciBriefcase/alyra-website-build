@@ -106,13 +106,23 @@ const websiteSchema = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Fonts: only the weights actually used (Poppins 500/600, Inter 400/500/600). -->
+    <!-- Fonts: only the weights actually used (Poppins 500/600, Inter 400/500/600).
+         Loaded non-blocking (media="print" until loaded) so text paints in the
+         fallback font immediately instead of waiting on the fonts CSS. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <Seo
       title={title}

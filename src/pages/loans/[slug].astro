@@ -309,9 +309,11 @@ const crumbs = [
   .hero-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
   @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  /* H1 rises without fading: an invisible headline delays LCP until the animation reveals it. */
+  @keyframes hin-rise-solid { from { transform: translateY(16px); } to { transform: none; } }
   .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
   .eyebrow.hin { animation-delay: .08s; }
-  .hero-h1.hin { animation-delay: .17s; }
+  .hero-h1.hin { animation-name: hin-rise-solid; animation-delay: .17s; }
   .hero-intro1.hin { animation-delay: .26s; }
   .hero-intro2.hin { animation-delay: .33s; }
   .hero-img.hin { animation-delay: .2s; }

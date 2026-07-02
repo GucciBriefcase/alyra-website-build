@@ -100,9 +100,11 @@ const schema = [
   .contact-lead { font: 400 clamp(16px, 1.4vw, 19px)/1.7 var(--font-body); color: var(--text-muted); max-width: 640px; margin: 0 auto; }
 
   @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  /* H1 rises without fading: an invisible headline delays LCP until the animation reveals it. */
+  @keyframes hin-rise-solid { from { transform: translateY(16px); } to { transform: none; } }
   .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
   .contact-hero .eyebrow.hin { animation-delay: .08s; }
-  .contact-h1.hin { animation-delay: .17s; }
+  .contact-h1.hin { animation-name: hin-rise-solid; animation-delay: .17s; }
   .contact-lead.hin { animation-delay: .26s; }
 
   .contact-grid {

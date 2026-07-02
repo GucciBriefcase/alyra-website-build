@@ -419,9 +419,11 @@ const schema = [
   .loans-reassure svg { flex: none; opacity: .75; }
 
   @keyframes hin-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  /* H1 rises without fading: an invisible headline delays LCP until the animation reveals it. */
+  @keyframes hin-rise-solid { from { transform: translateY(16px); } to { transform: none; } }
   .hin { animation: hin-rise .65s cubic-bezier(.2,.7,.2,1) backwards; }
   .loans-hero .eyebrow.hin { animation-delay: .08s; }
-  .loans-h1.hin { animation-delay: .17s; }
+  .loans-h1.hin { animation-name: hin-rise-solid; animation-delay: .17s; }
   .loans-lead.hin { animation-delay: .26s; }
   .loans-hero .btn.hin, .loans-hero div.hin { animation-delay: .35s; }
   .loans-reassure.hin { animation-delay: .44s; }
