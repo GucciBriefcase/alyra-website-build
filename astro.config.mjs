@@ -30,6 +30,8 @@ export default defineConfig({
     }),
   ],
   build: {
-    inlineStylesheets: "auto",
+    // Inline all CSS (~8 KiB total): external stylesheets were render-blocking
+    // for ~420 ms on slow 4G and gated @font-face discovery behind a request.
+    inlineStylesheets: "always",
   },
 });

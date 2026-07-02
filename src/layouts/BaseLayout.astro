@@ -31,7 +31,11 @@ const sameAs = Object.values(SITE.social).filter(Boolean);
 
 // Analytics / verification (inert until IDs are set in site.ts).
 const { gtmId, googleSiteVerification, bingSiteVerification } = SITE.analytics;
-const gtmHeadScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`;
+// GTM is deferred until after the first frame has painted: loading it eagerly
+// blocked mobile first paint for ~2s (GA4 + Clarity evaluate before render),
+// which single-handedly dropped the Lighthouse performance score to ~66.
+// dataLayer is initialised inline so events queued before GTM loads are kept.
+const gtmHeadScript = `(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=false;function load(){if(done)return;done=true;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){requestAnimationFrame(function(){setTimeout(load,200);});}if(d.readyState==='complete'){idle();}else{w.addEventListener('load',idle);}setTimeout(load,4000);})(window,document,'dataLayer','${gtmId}');`;
 const gtmBodyNoscript = `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
 
 // Site-wide Organisation (FinancialService) + WebSite structured data.

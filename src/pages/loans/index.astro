@@ -193,7 +193,7 @@ const schema = [
         {ASSETS.map((a) => (
           <a class="cat-card" href={`/loans/${a.slug}/`}>
             <div class="cat-img-wrap">
-              <Image src={a.card.image} alt="" widths={[300, 460, 600]} sizes="(max-width: 600px) 90vw, (max-width: 900px) 45vw, 30vw" format="webp" quality={70} loading="lazy" />
+              <Image src={a.card.image} alt="" widths={[300, 460, 600]} sizes="(max-width: 600px) 60px, (max-width: 900px) 45vw, 30vw" format="webp" quality={70} loading="lazy" />
             </div>
             <div class="cat-card-body">
               <div class="cat-card-title">{a.card.title}</div>
