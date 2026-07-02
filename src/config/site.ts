@@ -65,10 +65,15 @@ export const SITE = {
   // ---- Legal entity & regulatory (PLACEHOLDERS — replace before launch) -----
   legalEntity: "ALYRA GROUP PTY LTD",
   abn: "72 699 671 291",
-  pawnbrokerLicence: "[Licence number and jurisdiction]",
-  secondHandDealerRegistration: "[Registration number, if applicable]",
+  pawnbrokerLicence: "4817352",
+  pawnbrokerLicenceJurisdiction: "Queensland",
+  secondHandDealerRegistration: "4817352",
+  secondHandDealerJurisdiction: "Queensland",
   insuranceNote:
     "Insurance may apply while assets are in custody, subject to policy terms, asset approval, valuation limits and custody conditions.",
+  /** Short disclaimer shown in the footer on every page. */
+  footerDisclaimer:
+    "ALYRA provides loans secured against pledged goods under applicable pawnbroking laws, subject to valuation, approval, custody, and loan terms. Your asset is at risk if you do not meet your repayment obligations. General information only — not financial, legal, or credit advice.",
   regulatoryDisclaimer:
     "ALYRA provides loans secured against pledged goods under applicable pawnbroking laws. Loans are subject to valuation, approval, custody, eligibility and loan terms. Your asset is at risk if you do not meet your repayment obligations. Fees, interest, repayment terms, notices, redemption rights and enforcement processes will be disclosed before you proceed. This website contains general information only and does not constitute financial, legal or credit advice.",
   copyrightYear: 2026,
@@ -121,7 +126,7 @@ export const SITE = {
    */
   analytics: {
     /** Google Tag Manager container ID, e.g. "GTM-XXXXXXX". Loads GA4 + Clarity. */
-    gtmId: "",
+    gtmId: "GTM-PW7936R9",
     /** Google Search Console meta token (the content="" value only). */
     googleSiteVerification: "",
     /** Bing Webmaster Tools meta token (msvalidate.01 content value). */

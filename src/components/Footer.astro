@@ -1,8 +1,8 @@
 ---
 /**
  * Standardised site footer (one variant for every page, per the handoff).
- * Closing band → 4 columns → locations strip → regulatory/entity block →
- * bottom legal → SkyScale attribution. All entity data comes from SITE config.
+ * Brand + link columns → licence/entity cards → disclaimer → bottom legal →
+ * SkyScale attribution. All entity data comes from SITE config.
  */
 import { SITE } from "../config/site";
 import { ASSETS } from "../data/assets";
@@ -11,36 +11,49 @@ import Logo from "./Logo.astro";
 const year = new Date().getFullYear();
 const companyLinks = [
   { label: "About", href: "/about/" },
-  { label: "How it Works", href: "/how-it-works/" },
-  { label: "Our Specialist", href: "/#valuation" },
-  { label: "Locations", href: "#locations" },
+  { label: "How it works", href: "/how-it-works/" },
+  { label: "Our specialist", href: "/#valuation" },
+  { label: "Locations", href: "/contact/" },
   { label: "FAQ", href: "/#faq" },
 ];
 const legalLinks = [
   { label: "Privacy", href: "/privacy/" },
   { label: "Terms", href: "/terms/" },
   { label: "Complaints", href: "/complaints/" },
-  { label: "Pawnbroking Licence", href: "/licence/" },
-  { label: "Second-Hand Dealer Registration", href: "/licence/" },
+];
+const entityCards = [
+  {
+    label: "Legal entity",
+    value: SITE.legalEntity,
+    sub: `ABN ${SITE.abn}`,
+  },
+  {
+    label: "Pawnbroker licence",
+    value: SITE.pawnbrokerLicence,
+    sub: SITE.pawnbrokerLicenceJurisdiction,
+  },
+  {
+    label: "Second-hand dealer licence",
+    value: SITE.secondHandDealerRegistration,
+    sub: SITE.secondHandDealerJurisdiction,
+  },
 ];
 const att = SITE.attribution;
 ---
 
 <footer class="footer">
   <div class="container">
-    <!-- Closing band -->
-    <div class="footer-closing">
-      <span class="footer-logo"><Logo height={26} /></span>
-      <p class="footer-blurb">
-        Discreet private asset-based lending for private clients. Borrow against
-        luxury watches, jewellery, diamonds, art, classic and luxury cars, and
-        gold bullion.
-      </p>
-    </div>
-
-    <!-- Columns: Asset Loans · Company · Legal · Contact -->
+    <!-- Brand + link columns -->
     <div class="footer-cols">
-      <div>
+      <div class="footer-brand">
+        <span class="footer-logo"><Logo height={26} /></span>
+        <p class="footer-blurb">
+          Discreet asset-based lending for private clients. Borrow against
+          luxury watches, jewellery, art, cars, designer handbags, and gold bullion.
+        </p>
+      </div>
+
+      <div class="footer-col">
         <div class="col-head">Asset Loans</div>
         <div class="col-links">
           {ASSETS.map((a) => (
@@ -49,53 +62,54 @@ const att = SITE.attribution;
         </div>
       </div>
 
-      <div>
+      <div class="footer-col">
         <div class="col-head">Company</div>
         <div class="col-links">
           {companyLinks.map((l) => <a class="foot-link" href={l.href}>{l.label}</a>)}
         </div>
       </div>
 
-      <div>
-        <div class="col-head">Legal</div>
-        <div class="col-links">
-          {legalLinks.map((l) => <a class="foot-link" href={l.href}>{l.label}</a>)}
-        </div>
-      </div>
-
-      <div>
+      <div class="footer-col">
         <div class="col-head">Contact</div>
-        <div class="col-links">
-          <a class="foot-link" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-          <span class="foot-muted">{SITE.phone || "[Phone number, if approved]"}</span>
-          <span class="foot-muted">By appointment only</span>
-          <a class="foot-link" href="/contact/">Contact us</a>
-          <a class="foot-link" href={SITE.enquiryPath}>Request a valuation</a>
+        <div class="col-links col-links--contact">
+          <span class="foot-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 6 10-6"></path></svg>
+            <a class="foot-link" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          </span>
+          <span class="foot-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+            <span class="foot-muted">By appointment only</span>
+          </span>
+          <a class="foot-cta" href={SITE.enquiryPath}>Request a valuation <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
 
-    <!-- Locations -->
-    <div id="locations" class="footer-locations">
-      <span class="footer-label">Locations served</span>
-      <span class="footer-locations-list">{SITE.locationsServed.join(" · ")}</span>
+    <!-- Entity / licence cards -->
+    <div class="footer-cards">
+      {entityCards.map((c) => (
+        <div class="footer-card">
+          <div class="footer-card-label">{c.label}</div>
+          <div class="footer-card-value">{c.value}</div>
+          <div class="footer-card-sub">{c.sub}</div>
+        </div>
+      ))}
     </div>
 
-    <!-- Regulatory / entity -->
-    <div class="footer-reg">
-      <span class="footer-label footer-reg-head">Regulatory &amp; entity</span>
-      <span>Legal entity: {SITE.legalEntity}</span>
-      <span>ABN: {SITE.abn}</span>
-      <span>Pawnbroker licence: {SITE.pawnbrokerLicence}</span>
-      <span>Second-hand dealer registration: {SITE.secondHandDealerRegistration}</span>
-      <span>{SITE.insuranceNote}</span>
-      <span>{SITE.availability}</span>
-    </div>
+    <!-- Disclaimer -->
+    <p class="footer-disclaimer">{SITE.footerDisclaimer}</p>
 
     <!-- Bottom legal -->
     <div class="footer-bottom">
-      <p>{SITE.regulatoryDisclaimer}</p>
       <span>© {year} {SITE.brand}. All rights reserved.</span>
+      <span class="footer-legal-links">
+        {legalLinks.map((l, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true" class="dot">·</span>}
+            <a class="foot-link" href={l.href}>{l.label}</a>
+          </>
+        ))}
+      </span>
     </div>
 
     <!-- Attribution -->
@@ -131,32 +145,23 @@ const att = SITE.attribution;
     background: var(--ink-deep);
     color: #a39d8e;
     padding: clamp(56px, 6vw, 80px) var(--section-x) 40px;
+    /* Same gold rule as .section--rule-gold, so the footer divider matches
+       the section dividers used across the page. */
+    border-top: 1px solid var(--gold);
   }
   .foot-link { color: var(--text-muted-on-dark); transition: color .25s ease; text-decoration: none; }
   .foot-link:hover { color: var(--text-on-dark); }
 
-  .footer-closing {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding-bottom: 42px;
-    border-bottom: 1px solid var(--border-dark);
-  }
-  .footer-logo { display: block; line-height: 0; color: var(--cream); }
-
   .footer-cols {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: 1.3fr 1fr 0.9fr 1.1fr;
     gap: 40px;
-    padding: 46px 0;
-    border-bottom: 1px solid var(--border-dark);
+    padding-bottom: 46px;
   }
-  .footer-blurb { font: 400 14px/1.7 var(--font-body); color: #a39d8e; margin: 0; max-width: 360px; }
-  .footer-closing .footer-blurb { text-align: right; }
+  .footer-col { border-left: 1px solid var(--border-dark); padding-left: 40px; }
+  .footer-logo { display: block; line-height: 0; color: var(--cream); margin-bottom: 20px; }
+  .footer-blurb { font: 400 14px/1.7 var(--font-body); color: #a39d8e; margin: 0; max-width: 300px; }
   .foot-muted { color: #a39d8e; font: 400 14px/1.3 var(--font-body); }
-  .footer-contact { font: 400 13px/1.8 var(--font-body); color: #a39d8e; }
   .col-head {
     font: 600 12px/1 var(--font-body);
     letter-spacing: 1.5px;
@@ -165,38 +170,68 @@ const att = SITE.attribution;
     margin-bottom: 18px;
   }
   .col-links { display: flex; flex-direction: column; gap: 12px; font: 400 14px/1.3 var(--font-body); }
+  .foot-row { display: flex; align-items: center; gap: 9px; }
+  .foot-row svg { flex: none; color: var(--gold); opacity: .85; }
+  .foot-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 12px 18px;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-control);
+    font: 500 14px/1 var(--font-body);
+    color: var(--gold);
+    text-decoration: none;
+    transition: color .25s ease, border-color .25s ease;
+  }
+  .foot-cta:hover { color: var(--text-on-dark); border-color: var(--gold); }
 
-  .footer-label {
-    font: 600 11px/1 var(--font-body);
-    letter-spacing: 1.5px;
+  .footer-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border-dark);
+  }
+  .footer-card {
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-control);
+    padding: 17px 20px;
+    background: rgba(255, 255, 255, .015);
+  }
+  .footer-card-label {
+    font: 600 10px/1.4 var(--font-body);
+    letter-spacing: 1.4px;
     text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 9px;
+  }
+  .footer-card-value { font: 600 15px/1.4 var(--font-body); color: var(--text-on-dark); }
+  .footer-card-sub { font: 400 13px/1.5 var(--font-body); color: #a39d8e; margin-top: 2px; }
+
+  .footer-disclaimer {
+    font: 400 13px/1.7 var(--font-body);
+    color: #a39d8e;
+    margin: 0;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-dark);
+    max-width: 960px;
+  }
+
+  .footer-bottom {
+    padding-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font: 400 13px/1.6 var(--font-body);
     color: #837e71;
   }
-  .footer-locations {
-    padding: 26px 0;
-    border-bottom: 1px solid var(--border-dark);
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  .footer-locations-list { font: 500 13px/1.6 var(--font-body); color: #a39d8e; letter-spacing: .3px; }
-
-  .footer-reg {
-    padding: 26px 0;
-    border-bottom: 1px solid var(--border-dark);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px 30px;
-    align-items: center;
-    font: 400 13px/1.5 var(--font-body);
-    color: #a39d8e;
-  }
-  .footer-reg-head { width: 100%; margin-bottom: 6px; }
-
-  .footer-bottom { padding-top: 28px; display: flex; flex-direction: column; gap: 16px; }
-  .footer-bottom p { font: 400 12px/1.7 var(--font-body); color: #837e71; margin: 0; max-width: 860px; }
-  .footer-bottom span { font: 400 12px/1.6 var(--font-body); color: #837e71; }
+  .footer-legal-links { display: inline-flex; align-items: center; gap: 8px; }
+  .footer-legal-links .dot { color: #837e71; }
 
   .footer-attr { margin-top: 40px; display: flex; justify-content: center; }
   .ss-by {
@@ -227,9 +262,14 @@ const att = SITE.attribution;
     mask: url(/assets/skyscale-logo.svg) left center/auto 100% no-repeat;
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 960px) {
     .footer-cols { grid-template-columns: 1fr 1fr; }
-    .footer-closing .footer-blurb { text-align: left; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-col { border-left: 0; padding-left: 0; }
+    .footer-cards { grid-template-columns: 1fr; }
   }
-  @media (max-width: 480px) { .footer-cols { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) {
+    .footer-cols { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
 </style>

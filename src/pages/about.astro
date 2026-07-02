@@ -55,13 +55,12 @@ const clientTypes = [
   { label: "Clients seeking a private alternative to public sale or auction", icon: "lock" },
 ] as const;
 
-// Licensing & compliance — confirmed details live in site.ts. Bracketed values
-// are placeholders to be replaced before launch.
+// Licensing & compliance — confirmed details live in site.ts.
 const compliance = [
   { label: "Legal entity", value: SITE.legalEntity },
   { label: "ABN", value: SITE.abn },
-  { label: "Pawnbroker licence", value: SITE.pawnbrokerLicence },
-  { label: "Second-hand dealer registration", value: SITE.secondHandDealerRegistration },
+  { label: "Pawnbroker licence", value: `${SITE.pawnbrokerLicence} (${SITE.pawnbrokerLicenceJurisdiction})` },
+  { label: "Second-hand dealer licence", value: `${SITE.secondHandDealerRegistration} (${SITE.secondHandDealerJurisdiction})` },
   { label: "Jurisdiction", value: SITE.serviceArea },
 ];
 

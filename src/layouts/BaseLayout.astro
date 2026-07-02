@@ -41,6 +41,20 @@ const orgSchema = {
   "@id": absoluteUrl("/") + "#organization",
   name: SITE.name,
   alternateName: "ALYRA Private Lending",
+  legalName: SITE.legalEntity,
+  identifier: { "@type": "PropertyValue", propertyID: "ABN", value: SITE.abn },
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "licence",
+      name: `Pawnbroker licence ${SITE.pawnbrokerLicence} (${SITE.pawnbrokerLicenceJurisdiction})`,
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "licence",
+      name: `Second-hand dealer licence ${SITE.secondHandDealerRegistration} (${SITE.secondHandDealerJurisdiction})`,
+    },
+  ],
   url: absoluteUrl("/"),
   logo: absoluteUrl("/assets/alyra-logo-ink.png"),
   image: absoluteUrl(SITE.defaultOgImage),
