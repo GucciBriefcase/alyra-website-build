@@ -1,0 +1,708 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/hero-aventador-studio.jpg";
+import inlineCar from "../../assets/images/loanrange-cars.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "which-prestige-car-marques-hold-value-australia";
+const path = `/insights/${slug}/`;
+const title = "Which prestige car marques actually hold their value in Australia in 2026 | ALYRA";
+const description =
+  "Ferrari, Porsche, Lamborghini and selected prestige marques can hold value well in Australia, but the badge is only the beginning. Model, specification, kilometres, condition, documentation, Australian delivery and sale channel decide the real number.";
+const ogImage = "/assets/og-cars.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["context", "Market context"],
+  ["factors-table", "Factors at a glance"],
+  ["overseas", "Australia vs overseas"],
+  ["marques", "The nine marques"],
+  ["weak", "What doesn't hold value"],
+  ["risks", "Australian value risks"],
+  ["advertised", "Price vs value"],
+  ["channel", "Sale channel"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Does Ferrari always hold its value in Australia?", a: "No. Ferrari is one of the strongest prestige marques, but value varies sharply by model, kilometres, specification, condition, service history and Australian delivery status. Limited-production, manual, special-series and well documented cars usually have stronger demand than common or poorly maintained examples." },
+  { q: "Is Porsche safer than Ferrari from a resale perspective?", a: "Not necessarily. Porsche often has broader liquidity, especially around the 911, but there are many Porsche variants. GT, RS, Turbo S, limited-production and rare manual examples can be strong. Standard models need more careful assessment." },
+  { q: "Do Lamborghinis hold value?", a: "Selected Lamborghinis can hold value well, especially limited-production, manual, low-kilometre and special-series cars. Standard modern examples may still depreciate before stabilising." },
+  { q: "Do McLarens hold value?", a: "Some do, especially halo and limited-production models such as the P1, Senna and LT variants. Standard production models can be more depreciation-sensitive and require careful assessment of warranty, service history and buyer depth." },
+  { q: "Are Rolls-Royce and Bentley good at holding value?", a: "They can be, but usually only in the right model, specification and condition. Many new or near-new examples depreciate materially. Low-kilometre, well specified and carefully maintained examples are easier to defend." },
+  { q: "Are Australian-delivered cars worth more?", a: "Often, but not always. Australian-delivered status can improve confidence because the car's history is easier to verify. A properly imported car with exceptional documentation can still be valuable. The issue is documentation, compliance and buyer confidence." },
+  { q: "Does low mileage always increase value?", a: "Low mileage can help, but only when storage, servicing and condition support the story. A low-kilometre car with poor storage or missing service records may be less attractive than a properly maintained car with moderate kilometres." },
+  { q: "Are modified prestige cars worth less?", a: "Often, yes. Originality usually matters most for high-end collectible vehicles. However, high-quality modifications by respected specialists may have their own buyer base. The buyer pool is usually narrower." },
+  { q: "Is auction the best way to sell a prestige car?", a: "Auction can work well for rare, important or highly documented cars. It is not always best for standard modern luxury cars. Fees, reserve strategy, timing, photography, presentation and bidder depth all matter." },
+  { q: "Can a prestige car be used as security for lending?", a: "Potentially, but it depends on the car, value, liquidity, ownership status, condition, documentation, insurance and custody arrangements. A separate assessment is required." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Prestige car marques in 2026" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "Which prestige car marques actually hold their value in Australia in 2026",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-07-02",
+    dateModified: "2026-07-02",
+    inLanguage: "en-AU",
+    articleSection: "Cars",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Cars</span>
+      </div>
+      <h1 class="art-h1">Which prestige car marques actually hold their value in Australia in 2026</h1>
+      <p class="art-lead">
+        Some prestige car badges carry real market weight. Others rely more on reputation than resale
+        evidence. An asset specialist explains which marques hold value in Australia, and why the exact
+        car, its specification and its documentation decide the real number.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>2 July 2026</span><span class="meta-sep" aria-hidden="true"></span><span>10 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="Luxury supercar photographed in a studio setting" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>The badge starts the conversation. The exact car, its history and its documentation decide the number.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <p class="art-intro"><span class="dropcap">I</span>n Australia, the cars most likely to retain value are not simply the most expensive or the most recognisable. The strongest examples usually combine global demand, local buyer depth, factory right-hand drive, limited supply, desirable specification, complete service records and a sale channel that reaches qualified buyers.</p>
+        <p>Ferrari and Porsche usually lead the conversation. Selected models from Lamborghini, McLaren, Mercedes-AMG, Aston Martin, Rolls-Royce, Bentley and BMW M can also perform well in the right circumstances. But the badge alone does not protect value.</p>
+        <p>The final number is shaped by the exact model, specification, kilometres, condition, service history, ownership history, Australian delivery status, import documentation, finance status and how quickly the owner wants to realise value.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">In Australia, Ferrari and Porsche usually have one of the strongest combinations of global recognition, model-specific demand and buyer depth in the prestige car market. Selected high-demand models from Lamborghini, McLaren, Mercedes-AMG, Aston Martin, Rolls-Royce, Bentley and BMW M can also be resilient, but performance varies sharply by model, specification, kilometres, condition and documentation.</p>
+            <p class="answer-sub">The marque is only the starting point. A limited-production Ferrari or Porsche GT car with low kilometres, desirable specification and complete Australian history may be highly liquid. A high-kilometre supercar with deferred maintenance, accident history, missing records or unclear import documentation can be much harder to defend. The better question is not "which marque holds value?" It is: which exact car, in which specification, with which history, in which condition, and through which Australian sale channel?</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>This guide explains which high-end car marques tend to retain value in Australia and why overseas market results need local interpretation.</p>
+        <p>It focuses on prestige, exotic and modern collectible cars rather than Australian muscle cars, historic classics or general used luxury vehicles. Those markets behave differently and should be assessed separately.</p>
+        <p>The article covers Ferrari, Porsche, Lamborghini, McLaren, Mercedes-AMG, Aston Martin, Rolls-Royce, Bentley and BMW M. It also explains why Australian-delivered status, factory right-hand drive, Luxury Car Tax, import approval, PPSR status, service history, kilometres and local buyer depth can all affect value.</p>
+        <p>The focus is realisable Australian market value: the amount a serious buyer may reasonably pay for that exact car after condition, documentation, demand, timing, fees and sale channel are considered.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article provides general market information only. It is not a formal valuation, financial advice, tax advice, insurance advice, lending advice or a guarantee of sale price.</p>
+          <p>Car values change with market conditions, exchange rates, import rules, taxes, duties, kilometres, title status, service history, originality, accident history, specification, buyer demand and sale channel. A specialist assessment is required before relying on any figure for sale, insurance, estate, lending, security or collateral purposes.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>Ferrari and Porsche usually have one of the strongest combinations of global demand, buyer depth and model recognition.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Lamborghini, McLaren, Mercedes-AMG and Aston Martin can hold value well, but performance varies sharply by model and specification.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Rolls-Royce and Bentley are prestige marques, but many models depreciate unless the car has the right specification, low kilometres, complete records and strong buyer appeal.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>In Australia, Australian-delivered history, factory right-hand drive and clean documentation can materially improve buyer confidence.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Limited-production, special-series, manual, naturally aspirated and halo models usually retain value better than standard luxury cars.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Overseas auction results are useful, but they must be adjusted for currency, freight, taxes, import approval, compliance, registration, Luxury Car Tax where applicable and local buyer depth.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>In 2026, buyers are more selective. Strong examples still attract demand. Average examples are judged more carefully.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This guide is written for:</p>
+        <ul class="art-list">
+          <li>owners of prestige, exotic or high-end performance cars in Australia;</li>
+          <li>collectors reviewing the value of a luxury car portfolio;</li>
+          <li>executors or beneficiaries dealing with high-value vehicles;</li>
+          <li>private clients considering whether a vehicle may be relevant to an asset assessment;</li>
+          <li>owners comparing dealer offers, auction estimates, online listings or private-sale interest;</li>
+          <li>buyers trying to understand which prestige marques have stronger resale depth.</li>
+        </ul>
+        <p>It is not a substitute for physical inspection, mechanical review, PPSR checks, import verification, insurance advice, tax advice or a formal written valuation.</p>
+
+        <h2 id="method" class="anchor art-h2">How this guide was prepared</h2>
+        <p>This guide was prepared by reviewing Australian vehicle-market conditions, global collector-car reporting, prestige vehicle sales patterns, auction data and practical asset-assessment factors used when considering high-value cars as realisable private assets.</p>
+        <p>Australia recorded 1,241,037 new vehicle sales in 2025, a 0.3% increase on the prior year, according to the <a class="body-link" href="https://www.aada.asn.au/new-vehicle-sales-2025/" target="_blank" rel="noopener noreferrer">Australian Automotive Dealer Association</a>. That broad figure is useful market context, but it does not explain prestige and collectible values by itself. High-end cars are more condition-sensitive, more documentation-sensitive and more dependent on buyer confidence than the general market.</p>
+        <p>Global collector-car data is useful, but it cannot be imported directly into an Australian valuation. Australia is a right-hand-drive market with its own import approval requirements, Luxury Car Tax settings, state registration systems, transfer duties, compliance rules and buyer preferences. Import approval is required before bringing a road vehicle into Australia, and importing without approval is an offence under section 22 of the Road Vehicle Standards Act 2018, per the <a class="body-link" href="https://www.infrastructure.gov.au/infrastructure-transport-vehicles/vehicles/importing-road-vehicle-australia" target="_blank" rel="noopener noreferrer">Department of Infrastructure</a>.</p>
+        <p>The article focuses on realisable market value: the amount a car may reasonably achieve after condition, documentation, demand, sale channel, fees, negotiation and timing are considered.</p>
+
+        <h2 id="context" class="anchor art-h2">Market context in Australia</h2>
+        <p>The Australian prestige car market in 2026 appears more selective than it was during the post-Covid period. Buyers remain active, but they are paying closer attention to kilometres, condition, service history, import status, accident history, finance status and pricing evidence.</p>
+        <p>That is consistent with broader collector-car market reporting. <a class="body-link" href="https://www.classic.com/insights/2025-half-time-report/" target="_blank" rel="noopener noreferrer">CLASSIC.COM</a> reported that the classic and exotic auction market held steady in the first half of 2025, with US$2.3 billion in auction sales, 70% sell-through and average prices around US$60,000. <a class="body-link" href="https://www.classic.com/insights/hagerty-2025-market-in-4-charts/" target="_blank" rel="noopener noreferrer">Hagerty</a> also described the 2025 collector-car market as moving into a more stable phase after the Covid-era run-up.</p>
+        <p><a class="body-link" href="https://www.knightfrank.com.au/blog/2026/04/24/luxury-investment-market-stabilises-as-collectors-pivot-to-rarity-and-provenance-knight-franks-the" target="_blank" rel="noopener noreferrer">Knight Frank's 2026 luxury investment reporting</a> also described a broader stabilisation across collectible categories, with collectors placing more emphasis on rarity and provenance after a period of correction.</p>
+        <p>For Australian owners, the practical implication is simple. A strong badge may create interest, but the evidence has to support the value.</p>
+        <p>A strong high-end car in Australia usually has:</p>
+        <ul class="art-list">
+          <li>Australian-delivered history, or clean and complete import history;</li>
+          <li>factory right-hand drive;</li>
+          <li>clear PPSR status;</li>
+          <li>original books, service records and invoices;</li>
+          <li>low or appropriate kilometres;</li>
+          <li>desirable colour and specification;</li>
+          <li>limited production or strong enthusiast demand;</li>
+          <li>no unclear accident, repair, finance or compliance issues;</li>
+          <li>a realistic sale channel for the owner's timeframe.</li>
+        </ul>
+
+        <h2 id="factors-table" class="anchor art-h2">Valuation factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Assessment layer</th><th>What is reviewed</th><th>Why it matters in Australia</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Marque</td><td>Ferrari, Porsche, Lamborghini, McLaren, AMG, Aston Martin, Rolls-Royce, Bentley, BMW M</td><td>Sets the starting buyer pool and level of recognition.</td></tr>
+              <tr><td class="tcell-head">Model</td><td>911 GT3 RS, 458 Speciale, 488 Pista, Huracan STO, 765LT, SLS AMG, V12 Vantage</td><td>The exact model usually matters more than the badge.</td></tr>
+              <tr><td class="tcell-head">Specification</td><td>Engine, gearbox, colour, trim, options, market delivery</td><td>Rare or desirable specification can materially improve value.</td></tr>
+              <tr><td class="tcell-head">Australian delivery</td><td>Locally delivered or privately imported</td><td>Australian-delivered cars often carry stronger confidence.</td></tr>
+              <tr><td class="tcell-head">Right-hand drive</td><td>Factory right-hand drive, left-hand drive or converted</td><td>Factory right-hand drive is usually more liquid in Australia.</td></tr>
+              <tr><td class="tcell-head">Kilometres</td><td>Odometer reading, usage pattern, verification</td><td>Low kilometres help only when maintenance and condition also support value.</td></tr>
+              <tr><td class="tcell-head">Condition</td><td>Paint, body, interior, tyres, brakes, electronics, underbody</td><td>High-end repair costs can materially affect buyer appetite.</td></tr>
+              <tr><td class="tcell-head">Service history</td><td>Dealer records, specialist invoices, major scheduled works</td><td>Buyers price in risk when service history is incomplete.</td></tr>
+              <tr><td class="tcell-head">Ownership and title</td><td>PPSR, finance, stolen and written-off status</td><td>A PPSR search can show whether a vehicle is recorded as free from debt and may show stolen or written-off status.</td></tr>
+              <tr><td class="tcell-head">Sale channel</td><td>Dealer, consignment, auction, private sale</td><td>Different channels can produce different net outcomes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="overseas" class="anchor art-h2">Why Australian value is different from overseas value</h2>
+        <p>Overseas auction results can be helpful, but they are not a valuation by themselves.</p>
+        <p>A Ferrari result in the United States, a Porsche result in the United Kingdom or a Lamborghini result in Europe may not translate directly into Australian dollars. The Australian buyer has to consider exchange rate, freight, insurance, import approval, compliance, Luxury Car Tax where applicable, GST, duty, stamp duty, registration and the smaller pool of local buyers.</p>
+        <p>Luxury Car Tax is part of the Australian high-end vehicle landscape. For 2025-26, the <a class="body-link" href="https://www.ato.gov.au/businesses-and-organisations/small-business-newsroom/changes-to-car-thresholds-from-1-july" target="_blank" rel="noopener noreferrer">ATO</a> lists the LCT threshold as $91,387 for fuel-efficient vehicles and $80,567 for other luxury vehicles. This does not mean LCT directly sets used-car value. It means acquisition cost, import economics and buyer alternatives can influence market behaviour where LCT applies.</p>
+        <p>Australia also places a premium on confidence. A locally delivered, factory right-hand-drive car with complete books may attract stronger interest than a cheaper imported example with uncertain history. Imported cars can still be valuable, especially if rare or well documented, but the paperwork needs to be strong.</p>
+
+        <h2 id="marques" class="anchor art-h2">The marques that tend to hold value best in Australia</h2>
+
+        <h3 class="art-h3"><span class="fnum">01</span>Ferrari</h3>
+        <p>Ferrari is one of the benchmark prestige marques for value retention. It has global recognition, controlled supply, motorsport heritage, strong auction history and a deep collector base.</p>
+        <p>In Australia, Ferrari value is strongest when the car combines rarity, local delivery, desirable specification, low kilometres, authorised or respected specialist service history and clean ownership records.</p>
+        <p>The strongest modern Ferrari segments usually include:</p>
+        <ul class="art-list">
+          <li>limited-production halo cars;</li>
+          <li>special-series V8 models;</li>
+          <li>selected manual V8 and V12 models;</li>
+          <li>front-engine V12 cars in desirable specification;</li>
+          <li>low-kilometre original examples;</li>
+          <li>Australian-delivered cars with complete books;</li>
+          <li>cars with Ferrari Classiche certification;</li>
+          <li>models linked to rarity, motorsport or cultural significance.</li>
+        </ul>
+        <p>Relevant examples include the 458 Speciale, 488 Pista, F12tdf, 812 Competizione, 599 GTO, Challenge Stradale, 430 Scuderia and selected manual V8 and V12 cars.</p>
+        <p>Ferrari also shows why marque alone is not enough. A rare, well documented, Australian-delivered Ferrari can attract serious demand. A poorly maintained, accident-repaired, unusually specified or high-kilometre example may be far less liquid.</p>
+        <p>In Australia, Ferrari is one of the strongest badges, but the best results still require the right car.</p>
+
+        <h3 class="art-h3"><span class="fnum">02</span>Porsche</h3>
+        <p>Porsche has one of the broadest and most liquid enthusiast markets in Australia. It benefits from usability, motorsport credibility, parts support, dealer network depth, strong club culture and a large base of informed buyers.</p>
+        <p>The 911 remains the centre of the Porsche market, but value retention is strongest in the right variants.</p>
+        <p>The strongest Porsche segments usually include:</p>
+        <ul class="art-list">
+          <li>911 GT3, GT3 RS, GT2 and GT2 RS;</li>
+          <li>limited-production 911 variants;</li>
+          <li>manual transmission cars;</li>
+          <li>Turbo S models with desirable specification;</li>
+          <li>Carrera GT and 918 Spyder;</li>
+          <li>911 Sport Classic, 911 Dakar and 911 S/T;</li>
+          <li>rare paint-to-sample examples;</li>
+          <li>low-kilometre Australian-delivered cars;</li>
+          <li>well documented cars with Porsche or respected specialist service history.</li>
+        </ul>
+        <p>Porsche is often more liquid than many exotic marques because more buyers understand the model hierarchy. That also means buyers are better informed. A base 911, GT3, RS, Turbo S and limited-production model are not valued in the same way.</p>
+        <blockquote class="pull">In Australia, Porsche value is strongest where scarcity meets usability.</blockquote>
+
+        <h3 class="art-h3"><span class="fnum">03</span>Lamborghini</h3>
+        <p>Lamborghini has a narrower but highly visible market. The marque is emotionally strong, but values are more selective than Ferrari or Porsche.</p>
+        <p>In Australia, the strongest examples are usually limited-production cars, special variants, manual cars, low-kilometre examples and cars in desirable colours.</p>
+        <p>The strongest Lamborghini segments usually include:</p>
+        <ul class="art-list">
+          <li>Aventador SV, SVJ and Ultimae;</li>
+          <li>Huracan STO, Performante and Tecnica;</li>
+          <li>Gallardo Superleggera manual;</li>
+          <li>Murcielago manual;</li>
+          <li>rare factory colours and specifications;</li>
+          <li>Australian-delivered cars with complete history.</li>
+        </ul>
+        <p>Lamborghini can be very strong when the car has rarity, presence and low supply. It can also be selective. Some standard modern examples may still depreciate before stabilising, especially when kilometres, maintenance, clutch life, accident history or specification weaken demand.</p>
+
+        <h3 class="art-h3"><span class="fnum">04</span>McLaren</h3>
+        <p>McLaren is a serious high-end performance marque, but its value profile is more uneven.</p>
+        <p>The strongest McLaren cars tend to be limited-production, track-focused or clearly positioned as halo models. Standard series-production cars can depreciate more heavily before the market finds a floor.</p>
+        <p>The strongest McLaren segments usually include:</p>
+        <ul class="art-list">
+          <li>P1, Senna, Speedtail and Elva;</li>
+          <li>675LT, 765LT and 600LT;</li>
+          <li>rare MSO specifications;</li>
+          <li>low-kilometre cars with complete authorised service history.</li>
+        </ul>
+        <p>In Australia, McLaren buyers often pay close attention to service history, warranty position, known model issues, specification and local support. The badge is strong, but buyer depth can be thinner than Porsche or Ferrari. That means sale timing and sale channel matter.</p>
+        <p>A special McLaren can be highly desirable. A standard model with weak history can be difficult to defend at an optimistic number.</p>
+
+        <h3 class="art-h3"><span class="fnum">05</span>Mercedes-AMG</h3>
+        <p>Mercedes-AMG is strongest when the car is limited, special, naturally aspirated, V8 or V12 powered, or clearly connected to AMG's performance identity.</p>
+        <p>The broader Mercedes-Benz range should not be treated as collectible simply because it was expensive when new. Large luxury sedans and SUVs can depreciate heavily. The value-retention case is strongest for selected AMG models.</p>
+        <p>The strongest AMG segments usually include:</p>
+        <ul class="art-list">
+          <li>SLS AMG;</li>
+          <li>AMG GT Black Series and AMG GT R Pro;</li>
+          <li>CLK DTM AMG;</li>
+          <li>SL65 AMG Black Series and C63 AMG Black Series;</li>
+          <li>selected limited G-Class AMG variants;</li>
+          <li>low-kilometre V8 and V12 AMG models;</li>
+          <li>rare colours and limited-production cars;</li>
+          <li>well documented Australian-delivered examples.</li>
+        </ul>
+        <p>AMG value depends heavily on model hierarchy. A Black Series car is not comparable with a standard AMG sedan. A rare, low-kilometre, well documented AMG can be strong. A high-kilometre luxury AMG with expensive deferred maintenance may be much less liquid.</p>
+
+        <h3 class="art-h3"><span class="fnum">06</span>Aston Martin</h3>
+        <p>Aston Martin has strong emotional appeal, British heritage and cultural recognition, but value retention is uneven.</p>
+        <p>In Australia, the strongest Aston Martin values usually sit in rare, manual, limited-production or highly specified cars.</p>
+        <p>The strongest Aston Martin segments usually include:</p>
+        <ul class="art-list">
+          <li>DBS Superleggera and Vanquish S;</li>
+          <li>V12 Vantage manual and V12 Vantage S manual;</li>
+          <li>Vantage GT12 and Vantage GT8;</li>
+          <li>One-77 and Vulcan;</li>
+          <li>Zagato-bodied modern models;</li>
+          <li>low-kilometre cars with complete history;</li>
+          <li>rare colours and special specifications.</li>
+        </ul>
+        <p>Aston Martin needs model-level assessment. The badge is attractive, but it does not protect every model from depreciation. A rare manual V12 or limited-production special may be desirable. A more common automatic grand tourer with deferred maintenance may be harder to defend.</p>
+
+        <h3 class="art-h3"><span class="fnum">07</span>Rolls-Royce</h3>
+        <p>Rolls-Royce is a prestige marque, but it does not behave like Ferrari or Porsche.</p>
+        <p>New and near-new Rolls-Royce models can depreciate materially, especially where the original specification is highly personal. The strongest cars are usually those with broad buyer appeal, restrained specification, low kilometres, complete service records and clear ownership history.</p>
+        <p>The strongest Rolls-Royce segments usually include:</p>
+        <ul class="art-list">
+          <li>Phantom and Cullinan;</li>
+          <li>Ghost Black Badge and Wraith Black Badge;</li>
+          <li>Dawn;</li>
+          <li>limited Bespoke or special collection cars;</li>
+          <li>cars with conservative and desirable specification;</li>
+          <li>low-kilometre Australian-delivered examples.</li>
+        </ul>
+        <p>Rolls-Royce value is highly sensitive to condition, colour, interior taste, service history and ownership costs. A distinctive bespoke specification may be expensive when new but harder to resell if the next buyer does not share the original owner's taste.</p>
+
+        <h3 class="art-h3"><span class="fnum">08</span>Bentley</h3>
+        <p>Bentley sits in a similar position to Rolls-Royce, but with a stronger performance and grand touring identity.</p>
+        <p>The strongest Bentley examples tend to be limited-production, performance-focused, low-kilometre and well specified. Standard luxury sedans and older grand tourers may depreciate heavily if maintenance costs and buyer depth are unfavourable.</p>
+        <p>The strongest Bentley segments usually include:</p>
+        <ul class="art-list">
+          <li>Continental GT Speed and Continental Supersports;</li>
+          <li>Mulliner variants;</li>
+          <li>Bentayga Speed;</li>
+          <li>Mulsanne Speed;</li>
+          <li>limited-production coachbuilt or special edition cars;</li>
+          <li>low-kilometre Australian-delivered examples;</li>
+          <li>cars with complete Bentley service records.</li>
+        </ul>
+        <p>Bentley value depends on taste as much as badge. Colour, interior trim, wheel choice, options and condition can all materially affect buyer demand.</p>
+
+        <h3 class="art-h3"><span class="fnum">09</span>BMW M</h3>
+        <p>BMW M is strongest where the model has a clear enthusiast following, limited supply, manual transmission, low kilometres or special-series status.</p>
+        <p>The strongest BMW M segments usually include:</p>
+        <ul class="art-list">
+          <li>M3 CS and M3 CSL;</li>
+          <li>M4 CSL;</li>
+          <li>M2 CS;</li>
+          <li>M5 CS;</li>
+          <li>1M Coupe;</li>
+          <li>Z8;</li>
+          <li>low-kilometre manual M cars;</li>
+          <li>rare colours and limited-production variants.</li>
+        </ul>
+        <p>BMW M value is sensitive to modification, service history, accident history and usage. Many cars are driven hard or altered. The best examples are usually original, low-kilometre, well documented and free of questionable modifications.</p>
+
+        <figure class="art-figure reveal">
+          <div class="art-figure-frame"><Image src={inlineCar} alt="Classic and luxury car detail" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="lazy" /></div>
+          <figcaption><span class="cap-rule" aria-hidden="true"></span>Condition, originality and documentation are read at the level of the exact car, not the badge.</figcaption>
+        </figure>
+
+        <h2 id="weak" class="anchor art-h2">What usually does not hold value well</h2>
+        <p>Some cars carry prestigious badges but still depreciate heavily.</p>
+        <p>The weaker value-retention categories often include:</p>
+        <ul class="art-list">
+          <li>standard luxury sedans;</li>
+          <li>large luxury SUVs without special specification;</li>
+          <li>common automatic grand tourers;</li>
+          <li>cars with highly personalised colours or interiors;</li>
+          <li>vehicles with expensive options but limited resale appeal;</li>
+          <li>high-kilometre supercars with deferred maintenance;</li>
+          <li>accident-repaired prestige cars;</li>
+          <li>poorly documented imports;</li>
+          <li>cars with incomplete service history;</li>
+          <li>modified cars without specialist buyer demand;</li>
+          <li>vehicles with finance, written-off or unclear title history.</li>
+        </ul>
+        <p>This does not mean these cars have no value. It means the owner should not assume they hold value simply because the badge is prestigious.</p>
+
+        <h2 id="risks" class="anchor art-h2">Australian-specific value risks</h2>
+
+        <h3 class="art-h3 art-h3--plain">Luxury Car Tax and transaction cost</h3>
+        <p>Luxury Car Tax affects the economics of new and imported prestige cars in Australia where it applies. For 2025-26, the <a class="body-link" href="https://www.ato.gov.au/businesses-and-organisations/small-business-newsroom/changes-to-car-thresholds-from-1-july" target="_blank" rel="noopener noreferrer">ATO</a> lists the LCT threshold as $91,387 for fuel-efficient vehicles and $80,567 for other luxury vehicles.</p>
+        <p>For valuation, LCT does not automatically determine used-car value. It affects total acquisition cost and can influence whether buyers choose a local car, a new allocation or an imported alternative.</p>
+
+        <h3 class="art-h3 art-h3--plain">Import approval and compliance</h3>
+        <p>Import history matters. The <a class="body-link" href="https://www.infrastructure.gov.au/infrastructure-transport-vehicles/vehicles/importing-road-vehicle-australia" target="_blank" rel="noopener noreferrer">Australian Government</a> states that import approval is required before importing a road vehicle into Australia. It is an offence to import a road vehicle into Australia without approval under section 22 of the Road Vehicle Standards Act 2018.</p>
+        <p>For value purposes, a clean import file can support confidence. Missing or unclear import documents can reduce buyer depth, especially for high-value cars where buyers expect clean provenance.</p>
+
+        <h3 class="art-h3 art-h3--plain">PPSR and encumbrance checks</h3>
+        <p>A PPSR search can show whether a vehicle is recorded as free from debt and may show whether it is recorded as stolen or written off.</p>
+        <p>For prestige cars, PPSR status should not be treated as a minor administrative point. Finance, stolen status, written-off history or inconsistent identifiers can materially affect saleability.</p>
+
+        <h3 class="art-h3 art-h3--plain">New Vehicle Efficiency Standard</h3>
+        <p>The <a class="body-link" href="https://www.nvesregulator.gov.au/what-new-vehicle-efficiency-standard" target="_blank" rel="noopener noreferrer">New Vehicle Efficiency Standard</a> sets CO2 emissions targets for new passenger cars and light commercial vehicles entering the Australian market from 1 July 2025.</p>
+        <p>Its direct impact on collectible prestige cars is still developing. The more immediate relevance is supply. Policy settings can influence which high-performance models manufacturers choose to bring to Australia, how many arrive and how buyers think about future internal-combustion performance cars.</p>
+
+        <h2 id="advertised" class="anchor art-h2">Why advertised prices are not value</h2>
+        <p>A common mistake is to search online listings, find the highest advertised price and assume that is the value of the car. That rarely gives an accurate result.</p>
+        <p>Advertised prices show what sellers want. They do not show what buyers will pay, how long the car has been listed, what defects are hidden, whether finance is owing, whether the car has accident history or whether the car actually sold.</p>
+        <p>The more useful figure is realisable value: the amount the car may reasonably achieve after condition, documentation, negotiation, fees, timing and sale channel are considered.</p>
+        <p>A dealer offer may be lower than a public listing because the dealer is taking stock risk, warranty exposure, rectification cost, financing cost, marketing cost and holding time. Auction may achieve a strong result for the right car, but it depends on timing, reserve strategy, buyer depth and presentation. Private sale may produce a stronger gross figure, but it requires trust, secure payment, inspections, title checks and patience.</p>
+        <p>There is no single universal value. There is a market range, and then there is the likely outcome for your car.</p>
+
+        <h2 id="channel" class="anchor art-h2">The sale channel changes the number</h2>
+        <p>A prestige car can have several different values at the same time.</p>
+        <p>When assessing a car as a realisable private asset, we look not only at public asking prices, but also at buyer depth, comparable sales, documentation strength, condition risk and the most realistic sale channel for the owner's timeframe.</p>
+        <blockquote class="pull">A prestige car can have several different values at the same time.</blockquote>
+        <h3 class="art-h3 art-h3--plain">Dealer purchase value</h3>
+        <p>Usually the fastest and cleanest route. The dealer buys the car outright, then takes stock risk, rectification risk, marketing cost, warranty exposure and holding time. Because of that, the offer is usually below the final retail asking price.</p>
+        <h3 class="art-h3 art-h3--plain">Consignment value</h3>
+        <p>May produce a higher result than an immediate dealer sale, but usually takes longer. The owner keeps title until the vehicle sells, and the dealer or platform takes a commission.</p>
+        <h3 class="art-h3 art-h3--plain">Auction estimate</h3>
+        <p>Auction can work well for rare, important, low-kilometre or highly documented cars. It is less predictable for standard modern luxury cars where buyers have many alternatives.</p>
+        <p>Auction results can be strong when several qualified buyers compete. They can disappoint when estimates are ambitious, reserves are too high or the car is not special enough for the buyer pool.</p>
+        <h3 class="art-h3 art-h3--plain">Private sale value</h3>
+        <p>A private sale may produce a strong gross price, but it requires time, negotiation, inspections, secure payment and title confidence. For high-value vehicles, the additional risk may outweigh the extra return.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists usually ask for first</h2>
+        <p>Before giving a serious indication, a specialist will usually ask for:</p>
+        <ul class="art-list">
+          <li>marque, model and year;</li>
+          <li>VIN or chassis number;</li>
+          <li>odometer reading;</li>
+          <li>Australian-delivered or imported status;</li>
+          <li>import approval and compliance documents, if imported;</li>
+          <li>factory specification and options;</li>
+          <li>transmission type;</li>
+          <li>paint and interior colour;</li>
+          <li>service books and invoices;</li>
+          <li>ownership history;</li>
+          <li>accident, repair or insurance history;</li>
+          <li>PPSR and registration status;</li>
+          <li>warranty status, if relevant;</li>
+          <li>photos of exterior, interior, engine bay, wheels, tyres and underbody;</li>
+          <li>photos of books, manuals, keys, tools and accessories;</li>
+          <li>details of modifications, paintwork or repairs;</li>
+          <li>preferred sale or lending timeframe.</li>
+        </ul>
+        <p>For high-value vehicles, physical inspection is usually required before relying on a final number.</p>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes owners make</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Assuming the badge protects the value</div><p>A strong marque helps, but the market pays for the exact car.</p></div>
+          <div class="mistake"><div class="mistake-h">Using the highest online listing</div><p>Asking prices are not sale prices. The highest public listing is often not the market.</p></div>
+          <div class="mistake"><div class="mistake-h">Ignoring Australian delivery status</div><p>For many buyers, Australian-delivered history improves confidence. Imported cars can still be valuable, but the documentation needs to be strong.</p></div>
+          <div class="mistake"><div class="mistake-h">Forgetting PPSR and title risk</div><p>Finance, written-off history, stolen status or inconsistent identifiers can materially affect saleability.</p></div>
+          <div class="mistake"><div class="mistake-h">Overvaluing options</div><p>Expensive options when new do not always add value later. Some personal specifications can reduce buyer demand.</p></div>
+          <div class="mistake"><div class="mistake-h">Servicing or modifying before asking advice</div><p>The wrong repair, repaint, modification or cosmetic change can reduce originality and value.</p></div>
+          <div class="mistake"><div class="mistake-h">Applying overseas data without adjustment</div><p>US, UK, European and Japanese auction results need to be adjusted for currency, freight, tax, import approval, compliance, right-hand-drive demand and Australian buyer depth.</p></div>
+          <div class="mistake"><div class="mistake-h">Choosing the wrong sale channel</div><p>A rare Ferrari, Porsche GT car, Lamborghini special series or McLaren LT may suit specialist consignment or auction. A standard modern luxury car may be better suited to a direct dealer offer.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist before requesting an assessment</h2>
+        <div class="checklist">
+          {[
+            "Clear exterior photos in natural light",
+            "Interior photos",
+            "Engine bay photos",
+            "Undercarriage photos, where available",
+            "Odometer photo",
+            "VIN or chassis information",
+            "Service book and invoices",
+            "Ownership history",
+            "Import and compliance documents, if relevant",
+            "PPSR certificate",
+            "Accident or repair history",
+            "Registration details",
+            "Finance or encumbrance status",
+            "Factory specification sheet, if available",
+            "Manuals, spare keys and accessories",
+            "Warranty details, if applicable",
+            "Notes on modifications",
+            "Preferred timeframe for sale or lending assessment",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <div class="src-label">Australian market and regulation</div>
+        <ol class="src-list">
+          <li><a class="body-link" href="https://www.aada.asn.au/new-vehicle-sales-2025/" target="_blank" rel="noopener noreferrer">Australian Automotive Dealer Association — New Vehicle Sales 2025</a></li>
+          <li><a class="body-link" href="https://www.infrastructure.gov.au/infrastructure-transport-vehicles/vehicles/importing-road-vehicle-australia" target="_blank" rel="noopener noreferrer">Department of Infrastructure — Importing a road vehicle into Australia</a></li>
+          <li><a class="body-link" href="https://www.ato.gov.au/businesses-and-organisations/small-business-newsroom/changes-to-car-thresholds-from-1-july" target="_blank" rel="noopener noreferrer">Australian Taxation Office — Luxury Car Tax thresholds for 2025-26</a></li>
+          <li><a class="body-link" href="https://www.nvesregulator.gov.au/what-new-vehicle-efficiency-standard" target="_blank" rel="noopener noreferrer">New Vehicle Efficiency Standard Regulator — What is the New Vehicle Efficiency Standard?</a></li>
+        </ol>
+        <div class="src-label">Collector-car market data</div>
+        <ol class="src-list" start="5">
+          <li><a class="body-link" href="https://www.classic.com/insights/2025-half-time-report/" target="_blank" rel="noopener noreferrer">CLASSIC.COM — 2025 Half-Time Report</a></li>
+          <li><a class="body-link" href="https://www.classic.com/insights/hagerty-2025-market-in-4-charts/" target="_blank" rel="noopener noreferrer">CLASSIC.COM and Hagerty — 6 months of the 2025 market in 4 charts</a></li>
+          <li><a class="body-link" href="https://www.knightfrank.com.au/blog/2026/04/24/luxury-investment-market-stabilises-as-collectors-pivot-to-rarity-and-provenance-knight-franks-the" target="_blank" rel="noopener noreferrer">Knight Frank Australia — Luxury investment market stabilises as collectors pivot to rarity and provenance</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as luxury cars, fine watches, jewellery, art and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential vehicle assessment</p>
+      <h2 class="art-cta-h2">Want to understand what your car may be worth today?</h2>
+      <p class="art-cta-lead">
+        Submit your vehicle details for private review. An ALYRA specialist will assess marque, model,
+        specification, kilometres, condition, documentation, Australian delivery status and market
+        demand, then respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential assessment</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap, .art-figure figcaption { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+  .art-h3 { font: 600 22px/1.32 var(--font-display); color: var(--ink); margin: 48px 0 14px; padding-top: 26px; border-top: 1px solid var(--border); display: flex; gap: 18px; align-items: center; }
+  .art-h3--plain { border-top: none; padding-top: 0; margin: 28px 0 10px; font-size: 19px; }
+  .fnum { font: 700 32px/1 var(--font-display); color: var(--gold); flex: none; font-variant-numeric: tabular-nums; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .art-figure { margin: 46px 0; padding: 0; }
+  .art-figure-frame { border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-figure-frame img { display: block; width: 100%; height: clamp(220px, 30vw, 340px); object-fit: cover; }
+  .art-figure figcaption { margin-top: 12px; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

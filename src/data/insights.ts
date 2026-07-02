@@ -2,9 +2,10 @@
  * Insights (editorial) data.
  *
  * `FEATURED` is a fully written article with a real page at
- * /insights/<slug>/. `POSTS` are upcoming articles shown on the index; they
- * have no body yet, so the index renders them as "Coming soon" cards rather
- * than dead links. To publish one, give it a `slug` + body and add a page.
+ * /insights/<slug>/. `POSTS` are shown on the index grid: entries with a
+ * `slug` are published (the card links to /insights/<slug>/); entries without
+ * one render as "Coming soon" cards rather than dead links. To publish one,
+ * add a page under src/pages/insights/ and set its `slug` here.
  */
 
 import type { ImageMetadata } from "astro";
@@ -37,6 +38,8 @@ export interface InsightCard {
   readTime: string;
   image: ImageMetadata;
   imageAlt: string;
+  /** Set once the article page exists at /insights/<slug>/ — the index then links the card. */
+  slug?: string;
 }
 
 /** Filter chips shown on the index ("All" is prepended in the UI). */
@@ -66,7 +69,7 @@ export const POSTS: InsightCard[] = [
   { category: "Art", title: "Lending against blue-chip art without selling the work.", excerpt: "Provenance, catalogue raisonné status and market depth all shape how much capital a painting can responsibly secure.", date: "28 May 2026", readTime: "8 min read", image: fineArt, imageAlt: "Framed fine artwork" },
   { category: "Market", title: "The case for liquidity without giving up ownership.", excerpt: "Selling is final. Borrowing against an asset keeps the upside in your hands while solving a timing problem.", date: "21 May 2026", readTime: "5 min read", image: valuationImg, imageAlt: "Editorial still life of a high-value asset" },
   { category: "Gold", title: "Gold and bullion as collateral: a practical guide.", excerpt: "Bars, coins and allocated holdings each behave differently as security. What to expect from valuation to custody.", date: "14 May 2026", readTime: "6 min read", image: goldBullion, imageAlt: "Investment-grade gold bars" },
-  { category: "Cars", title: "Which marques actually hold their value.", excerpt: "Rarity, originality and documented history separate a collector car from a depreciating asset. A specialist view.", date: "7 May 2026", readTime: "7 min read", image: classicCars, imageAlt: "Classic car detail" },
+  { slug: "which-prestige-car-marques-hold-value-australia", category: "Cars", title: "Which prestige car marques actually hold their value in Australia in 2026.", excerpt: "Ferrari and Porsche lead the conversation, but the badge is only the beginning. Model, specification, kilometres, documentation and sale channel decide the real number.", date: "2 Jul 2026", readTime: "10 min read", image: classicCars, imageAlt: "Classic car detail" },
   { category: "Jewellery", title: "Signed jewellery and important stones: where price lives.", excerpt: "A signature, a certificate and a cut can matter as much as carat weight. How provenance translates into a loan figure.", date: "30 Apr 2026", readTime: "5 min read", image: jewellery, imageAlt: "Diamond ring" },
   { category: "Market", title: "Inside a private valuation appointment.", excerpt: "What happens when a specialist assesses your asset — from authentication to the figure that anchors your offer.", date: "23 Apr 2026", readTime: "6 min read", image: specialist, imageAlt: "Specialist at a desk" },
   { category: "Watches", title: "Independents, complications and the new collector market.", excerpt: "Demand has broadened well beyond the usual references. What that means for valuation and liquidity today.", date: "16 Apr 2026", readTime: "7 min read", image: heroWatches, imageAlt: "Watch movement detail" },
