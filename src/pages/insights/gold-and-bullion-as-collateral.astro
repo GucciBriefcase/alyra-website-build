@@ -1,0 +1,683 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/gold-bullion.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "gold-and-bullion-as-collateral";
+const path = `/insights/${slug}/`;
+const title = "Gold and bullion as collateral: a practical guide | ALYRA";
+const description =
+  "Physical gold can be strong collateral, but only when purity, ownership, storage, control, valuation, liquidity and legal enforceability stack up. How lenders assess bullion, and why collateral value sits below the quoted gold price.";
+const ogImage = "/assets/og-bullion.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this guide was prepared"],
+  ["factors-table", "Collateral factors at a glance"],
+  ["spot", "Spot price vs collateral value"],
+  ["factors", "The eight factors"],
+  ["storage", "Storage and control"],
+  ["ltv", "Loan-to-value and haircuts"],
+  ["context", "2026 market context"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Can gold be used as collateral for a loan?", a: "Yes, but only where the lender is satisfied with the asset, ownership evidence, valuation, storage, control and legal enforceability. Gold that is easy to authenticate, clearly owned and securely stored is usually stronger collateral than undocumented gold held privately." },
+  { q: "Is bullion better collateral than jewellery?", a: "Usually, yes. Bullion is generally easier to value because it is assessed mainly by weight, purity and market price. Jewellery can include design, brand, stones, condition and retail markups that may not be recoverable in a forced sale." },
+  { q: "Do lenders use the spot price?", a: "They may use spot price, LBMA Gold Price or another recognised reference as a starting point, but they usually apply a discount. The lending value must reflect what can be realised after costs, risks and time-to-sale." },
+  { q: "What is a haircut?", a: "A haircut is a discount applied to the market value of collateral. It protects the lender against price falls, sale costs, verification issues and enforcement risk." },
+  { q: "Is allocated gold better than unallocated gold for collateral?", a: "Often, yes. Allocated gold is tied to specific metal, which can make ownership and enforcement clearer. Unallocated gold may still have value, but the lender must assess the provider, account terms and legal structure." },
+  { q: "Can gold stored at home be used as collateral?", a: "Possibly, but it is usually harder. The lender must consider theft risk, insurance, access, substitution risk and whether it can take control of the asset. Many lenders prefer vault-controlled bullion." },
+  { q: "Are bullion coins acceptable?", a: "They can be, especially if they are widely recognised investment coins with clear metal content and strong resale markets. However, premiums over spot may not be fully counted for lending." },
+  { q: "Should I sell gold instead of borrowing against it?", a: "That depends on your liquidity needs, tax position, market view, loan terms and risk tolerance. Borrowing allows you to retain exposure to gold, but it creates debt, interest cost and default risk. Selling removes the debt risk but gives up the asset." },
+  { q: "Can the lender sell the gold if I default?", a: "Usually, yes, if the loan and security documents give the lender that right and the legal requirements are satisfied. Borrowers should understand enforcement terms before signing." },
+  { q: "Is gold-backed borrowing low risk?", a: "Not automatically. Gold is liquid, but the borrower still faces interest cost, collateral-value risk, price movement, default risk and possible loss of the gold." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Gold and bullion as collateral" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "Gold and bullion as collateral: a practical guide",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-07-03",
+    dateModified: "2026-07-03",
+    inLanguage: "en-AU",
+    articleSection: "Gold",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Gold</span>
+      </div>
+      <h1 class="art-h1">Gold and bullion as collateral: a practical guide</h1>
+      <p class="art-lead">
+        Physical gold can be a useful private asset, but it is not automatically good collateral. This
+        guide explains how bullion is assessed for lending, including purity, ownership, storage,
+        control, valuation, liquidity, legal enforceability and sale risk.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>3 July 2026</span><span class="meta-sep" aria-hidden="true"></span><span>12 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="Investment-grade gold bullion bars" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>A specialist reviews bullion documentation, bar markings and vault records before a collateral assessment.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <p class="art-intro"><span class="dropcap">P</span>hysical gold sits in an unusual position among private assets. The market is one of the deepest in the world, the price is quoted continuously and the asset is recognised everywhere. None of that automatically makes a particular bar or coin good collateral.</p>
+        <p>When bullion is proposed as security for lending, the assessment moves quickly past the quoted price. A lender needs certainty around identity, ownership, storage, valuation, control and enforcement — and each of those can change the number.</p>
+        <p>This guide explains how that assessment works: what specialists verify, why storage and control matter, how loan-to-value discounts are applied, and why some forms of gold are easier to lend against than others.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">Gold and bullion can be used as collateral when the asset can be authenticated, legally owned, independently valued, securely controlled, insured and sold if the borrower defaults.</p>
+            <p class="answer-sub">The strongest collateral is usually investment-grade bullion with clear ownership records, reliable purity and weight evidence, acceptable storage, strong liquidity and a clean legal path for the lender to enforce security. The value used for lending is usually lower than the quoted gold price because a lender must allow for price movement, sale costs, storage, insurance, verification, legal risk and the time required to realise the asset.</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>This guide explains how gold and bullion are assessed when they are proposed as security for lending. It covers the difference between spot price and collateral value, why storage and control matter, what documentation specialists look for, how loan-to-value discounts are applied, and why some forms of gold are easier to lend against than others.</p>
+        <p>Gold is a large and liquid market, but liquidity does not make every gold item suitable collateral. The World Gold Council estimated that almost 220,000 tonnes of gold had been mined throughout history and valued the above-ground stock at about US$31 trillion at the end of 2025. <a class="cite" href="#src-1">[1]</a></p>
+        <p>That scale supports market depth. A lender still needs certainty around identity, ownership, storage, valuation, control and enforcement.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article provides general information only. It is not financial advice, legal advice, tax advice, lending advice, investment advice, insurance advice or a formal valuation.</p>
+          <p>It does not state that any particular gold bar, coin, account, certificate, exchange-traded product or bullion holding is suitable as collateral. Suitability depends on the borrower, lender, jurisdiction, documentation, asset form, storage arrangement, legal structure, market conditions and the lender's internal policy.</p>
+          <p>Anyone considering borrowing against gold should obtain appropriate legal, financial, tax and valuation advice before entering into a loan or security arrangement.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>Gold's quoted market price is only the starting point. Collateral value is usually lower than metal value.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Investment-grade bullion is usually easier to assess than jewellery, numismatic coins, scrap gold or mixed gold items.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Purity, weight, refiner, mint, serial number, bar list and storage records can matter as much as the gold itself.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A lender generally needs control over the asset, not just evidence that the borrower owns it.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Allocated storage is usually clearer for collateral purposes than unallocated exposure, because specific metal can be identified. <a class="cite" href="#src-5">[5]</a> <a class="cite" href="#src-6">[6]</a></span></div>
+          <div class="take"><span class="take-dash">—</span><span>Loan-to-value depends on verification risk, price volatility, storage, insurance, liquidity, sale costs and legal enforceability.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A gold-backed loan can still create default risk, margin-style collateral risk and loss-of-asset risk.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Physical possession without proper documentation can reduce confidence, even where the gold itself is genuine.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This guide is written for:</p>
+        <ul class="art-list">
+          <li>owners of gold bars or bullion coins considering secured lending;</li>
+          <li>private clients reviewing whether bullion can form part of an asset-backed facility;</li>
+          <li>collectors or investors comparing sale, storage and borrowing options;</li>
+          <li>advisers helping clients organise documentation for private assets;</li>
+          <li>executors or beneficiaries dealing with inherited bullion;</li>
+          <li>business owners considering whether gold holdings can support short-term liquidity.</li>
+        </ul>
+        <p>It is not written for speculative trading, leveraged gold investment or short-term price forecasting.</p>
+
+        <h2 id="method" class="anchor art-h2">How this guide was prepared</h2>
+        <p>This guide was prepared by reviewing bullion market sources, official precious-metal pricing and delivery standards, storage-provider guidance, Australian security-interest guidance, AML/CTF material relevant to bullion dealers, and practical collateral assessment factors used in private asset lending.</p>
+        <p>The source base includes LBMA guidance on Good Delivery standards, LBMA benchmark pricing information, World Gold Council research on gold market structure, Perth Mint and Royal Mint storage guidance, Australian PPSR guidance, ASIC margin-lending guidance, AUSTRAC bullion-dealer guidance, FATF gold-sector risk material and OECD responsible-mineral supply-chain guidance. <a class="cite" href="#sources">[1]–[15]</a></p>
+        <p>The article focuses on realisable collateral value: the amount a lender may reasonably rely on after authenticity, ownership, storage, market depth, sale route, price risk and enforcement risk are considered.</p>
+        <p>In private asset assessment, the most common mistake is treating the current gold price as the amount that can safely be borrowed. A more reliable approach starts with the bullion itself, then asks whether the lender can verify it, control it, insure it, value it and sell it if necessary.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Collateral factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Assessment layer</th><th>What is reviewed</th><th>Why it matters</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Asset identity</td><td>Bar, coin, refiner, mint, serial number, denomination, product type</td><td>Confirms exactly what the collateral is.</td></tr>
+              <tr><td class="tcell-head">Metal content</td><td>Weight, purity, assay, fine gold content</td><td>Determines metal value before discounts.</td></tr>
+              <tr><td class="tcell-head">Market standard</td><td>Recognised refinery, recognised mint, LBMA Good Delivery status where relevant</td><td>Improves confidence and liquidity.</td></tr>
+              <tr><td class="tcell-head">Ownership</td><td>Receipts, invoices, custodian statements, estate records, company or trust records</td><td>Confirms the borrower has rights in the asset.</td></tr>
+              <tr><td class="tcell-head">Storage</td><td>Home safe, bank vault, private vault, depository, allocated or unallocated account</td><td>Affects control, insurance and enforcement.</td></tr>
+              <tr><td class="tcell-head">Lender control</td><td>Possession, vault transfer, blocked account, security agreement, custodian acknowledgement</td><td>Determines whether the lender can realise the asset if needed.</td></tr>
+              <tr><td class="tcell-head">Valuation basis</td><td>LBMA Gold Price, spot price, dealer bid, mint buyback price, currency conversion</td><td>Establishes the reference figure before deductions.</td></tr>
+              <tr><td class="tcell-head">Haircut</td><td>Discount to market value</td><td>Protects against price movement, sale costs and execution risk.</td></tr>
+              <tr><td class="tcell-head">Liquidity</td><td>Dealer market, wholesale market, resale channel, sale timeframe</td><td>Determines how quickly the gold can be converted to cash.</td></tr>
+              <tr><td class="tcell-head">Legal position</td><td>Security interest, title, jurisdiction, insolvency risk, competing claims</td><td>Determines enforceability.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="spot" class="anchor art-h2">Why quoted gold price is not the same as collateral value</h2>
+        <blockquote class="pull">The gold price is not the loan value.</blockquote>
+        <p>The quoted gold price tells you what gold is trading for in the market. Collateral value asks a narrower question: what amount can a lender prudently rely on if it needs to recover money from that specific asset?</p>
+        <p>A collateral assessment may start with:</p>
+        <ul class="art-list">
+          <li>fine gold weight;</li>
+          <li>purity;</li>
+          <li>current gold reference price;</li>
+          <li>currency conversion;</li>
+          <li>dealer bid price;</li>
+          <li>storage and release costs;</li>
+          <li>insurance;</li>
+          <li>verification cost;</li>
+          <li>sale channel;</li>
+          <li>legal enforcement cost;</li>
+          <li>time-to-sale;</li>
+          <li>price volatility buffer.</li>
+        </ul>
+        <p>A simple framework is:</p>
+        <div class="formula">
+          <p>Gold content × market reference price = gross metal value.</p>
+          <p>Gross metal value minus lender haircut, costs and risk allowance = collateral value.</p>
+        </div>
+        <p>The haircut is the lender's discount to protect against adverse movement or practical difficulty. Gold is generally liquid, but it is still a price-sensitive asset. A lender may need to sell during a weaker market, pay sale fees, use a dealer bid rather than a headline price, and convert currency.</p>
+        <p>The LBMA Gold Price is set twice daily in auctions independently operated and administered by ICE Benchmark Administration, commencing at 10:30 and 15:00 London time. LBMA describes its precious-metal price benchmarks as global benchmark prices for unallocated gold, silver, platinum and palladium delivered in London. <a class="cite" href="#src-2">[2]</a></p>
+        <p>That makes the benchmark important, but it does not remove the need for a lender-specific collateral discount.</p>
+
+        <h2 id="factors" class="anchor art-h2">The eight factors that matter most</h2>
+
+        <h3 class="art-h3"><span class="fnum">01</span>Form of gold</h3>
+        <p>Not all gold is assessed in the same way.</p>
+        <p>The cleanest form for collateral is usually investment-grade bullion: recognised bars or coins with known weight, purity and market acceptance. Standard bars and widely traded bullion coins are easier to value than jewellery, scrap gold or collectible coins.</p>
+        <p>A one-kilogram gold bar from a recognised refiner is a different collateral asset from a box of mixed jewellery, even if the gross metal value appears similar. The bar is easier to identify, assay, store, insure and sell. Jewellery may include craftsmanship value, gemstones, wear, unknown alloys and resale uncertainty. Numismatic coins may carry collector value, but that value can be harder to realise quickly.</p>
+        <p>For lending purposes, simplicity often improves collateral quality.</p>
+
+        <h3 class="art-h3"><span class="fnum">02</span>Purity, weight and assay</h3>
+        <p>Gold collateral depends on fine gold content, not appearance.</p>
+        <p>Specialists usually want to confirm:</p>
+        <ul class="art-list">
+          <li>gross weight;</li>
+          <li>purity or fineness;</li>
+          <li>fine gold weight;</li>
+          <li>mint or refinery;</li>
+          <li>serial number where relevant;</li>
+          <li>bar markings;</li>
+          <li>assay certificate if available;</li>
+          <li>packaging or tamper-evident seal;</li>
+          <li>whether the item has been independently tested.</li>
+        </ul>
+        <p>For institutional bullion markets, LBMA Good Delivery standards are important because they create consistency around bars used in the Loco London market. LBMA states that only gold and silver bars meeting its Good Delivery standards are acceptable in settlement of a Loco London contract, and that its rules cover specification standards, assay, purity, weight, handling and stacking. <a class="cite" href="#src-3">[3]</a></p>
+        <p>COMEX gold futures rules provide another example of market standardisation. CME's Chapter 113 rules state that deliverable gold must be 100 troy ounces with a 5% weight tolerance, assay to at least 995 fineness, come from an Exchange-approved brand, and carry required bar information such as weight, fineness, bar number and brand mark. <a class="cite" href="#src-4">[4]</a></p>
+        <p>Not every private bullion item needs to be an LBMA Good Delivery bar or COMEX-deliverable bar. Smaller bars and coins can still be acceptable to a lender. But the further an item is from a recognised market standard, the more verification work is usually required.</p>
+
+        <h3 class="art-h3"><span class="fnum">03</span>Recognised refiner or mint</h3>
+        <p>The market places more confidence in bullion from recognised refiners, mints and dealers.</p>
+        <p>This does not mean unfamiliar bullion is worthless. It means the lender may need more evidence before relying on it. A recognised refiner, serialised bar, clear chain of custody and reputable storage record all reduce uncertainty.</p>
+        <p>LBMA's Good Delivery framework is one example of how the wholesale market standardises confidence in physical bars. LBMA says its rules set out Good Delivery administration and specification standards for gold and silver bars traded in the Loco London precious-metals market. <a class="cite" href="#src-3">[3]</a></p>
+        <p>For private clients, this can matter in practical ways. A lender may be comfortable with bullion purchased from and stored with a major mint or vaulting provider, but less comfortable with loose bars purchased years ago with no invoice and stored at home.</p>
+        <p>The gold may be genuine in both cases. The collateral quality may still differ.</p>
+
+        <h3 class="art-h3"><span class="fnum">04</span>Ownership and title</h3>
+        <p>A lender must know that the borrower has the right to pledge the gold.</p>
+        <p>Ownership evidence may include:</p>
+        <ul class="art-list">
+          <li>purchase invoices;</li>
+          <li>dealer receipts;</li>
+          <li>custodian statements;</li>
+          <li>bar lists;</li>
+          <li>vault account statements;</li>
+          <li>estate documents;</li>
+          <li>company asset registers;</li>
+          <li>trust documents;</li>
+          <li>settlement records;</li>
+          <li>import or customs records where relevant.</li>
+        </ul>
+        <p>Ownership can be more complicated than it first appears. Gold may be jointly owned, held by a company, held by a trust, inherited but not yet transferred, pledged already, stored under another person's name, or subject to dispute.</p>
+        <p>For a lender, the key question is not simply "does the borrower have the gold?" It is "can the borrower legally grant security over it, and can the lender enforce that security?"</p>
+        <p>In Australia, the PPSR is the public register used for security interests in personal property. PPSR guidance states that a registration must accurately describe the personal property over which a security interest is claimed, and that doing this correctly helps reduce the risk that the registration is not enforceable. <a class="cite" href="#src-7">[7]</a></p>
+        <p>The legal position will differ by jurisdiction. Proper legal advice is essential.</p>
+
+        <h3 class="art-h3"><span class="fnum">05</span>Storage and control</h3>
+        <p>Storage is often the deciding factor in whether bullion can be used as practical collateral.</p>
+        <p>A borrower may own gold, but if the lender cannot control it, the gold may not be useful security. Control can be achieved in different ways, depending on the facility:</p>
+        <ul class="art-list">
+          <li>transfer to the lender's vault;</li>
+          <li>transfer to an approved custodian;</li>
+          <li>blocked or pledged depository account;</li>
+          <li>custodian acknowledgement;</li>
+          <li>security agreement over specific metal;</li>
+          <li>possession by the secured party;</li>
+          <li>documented control arrangement.</li>
+        </ul>
+        <p>Home-stored gold can be difficult. It may be genuine, but the lender has to consider theft risk, insurance, access, substitution risk and enforcement. A borrower could lose it, move it, sell it or mix it with other assets before default is resolved.</p>
+        <p>Vaulted bullion is usually easier to manage, but the details matter. Perth Mint describes three storage options: allocated, pool allocated and unallocated. It says allocated bars have title attached to specific bars and are removed from working inventory. <a class="cite" href="#src-5">[5]</a></p>
+        <p>The Royal Mint describes fully allocated storage as coins and bars held specifically on behalf of each client, with each item linked to the client's account by serial number and location. <a class="cite" href="#src-6">[6]</a></p>
+        <p>For collateral, allocated and specifically identifiable metal is often easier to pledge than a general unallocated claim, although lender policy will determine what is acceptable.</p>
+
+        <h3 class="art-h3"><span class="fnum">06</span>Valuation basis</h3>
+        <p>Gold can be valued several ways.</p>
+        <p>A specialist may consider:</p>
+        <ul class="art-list">
+          <li>LBMA Gold Price;</li>
+          <li>live spot price;</li>
+          <li>dealer bid price;</li>
+          <li>mint buyback price;</li>
+          <li>wholesale bullion price;</li>
+          <li>currency-adjusted price;</li>
+          <li>bar or coin premium;</li>
+          <li>fabrication cost;</li>
+          <li>sale spread;</li>
+          <li>storage release fees.</li>
+        </ul>
+        <p>For collateral, the valuation basis should be explicit. A lender should not rely on a retail asking price for a bullion coin if the likely realisation route is sale to a dealer at bid. The correct reference is the amount likely to be realised, not the amount a buyer might pay in an ideal retail transaction.</p>
+        <p>This is especially important for coins and small bars. They may trade above spot when purchased, but that premium may not be fully recoverable on sale.</p>
+
+        <h3 class="art-h3"><span class="fnum">07</span>Market liquidity and sale channel</h3>
+        <p>Gold is liquid in a general sense, but individual realisation still depends on channel.</p>
+        <p>Possible sale channels include:</p>
+        <ul class="art-list">
+          <li>bullion dealer buyback;</li>
+          <li>mint buyback;</li>
+          <li>wholesale bullion sale;</li>
+          <li>refinery sale;</li>
+          <li>auction for rare coins;</li>
+          <li>private sale;</li>
+          <li>custodian-assisted sale.</li>
+        </ul>
+        <p>For standard bullion, a dealer, mint or wholesale sale is usually more practical than auction. Auction may suit rare coins, historical pieces or collector material, but most bullion collateral is assessed on metal value and ease of conversion to cash.</p>
+        <p>World Gold Council research supports gold's broad liquidity. Its 2025 HQLA analysis said gold trades more than US$120 billion per day on average in the over-the-counter market alone, and that gold's spreads remained narrow or normalised quickly during periods of market stress. <a class="cite" href="#src-11">[11]</a></p>
+        <p>Strong market depth helps, but lenders still assess the specific sale path. A recognised bar in approved vault storage can usually be sold more predictably than undocumented mixed gold in private possession.</p>
+
+        <h3 class="art-h3"><span class="fnum">08</span>Legal, regulatory and compliance risk</h3>
+        <p>Collateral only works if it can be enforced.</p>
+        <p>A lender will usually consider:</p>
+        <ul class="art-list">
+          <li>who owns the gold;</li>
+          <li>where it is located;</li>
+          <li>which law governs the loan;</li>
+          <li>whether a security interest must be registered;</li>
+          <li>whether the lender has possession or control;</li>
+          <li>whether any competing claims exist;</li>
+          <li>what happens if the borrower becomes insolvent;</li>
+          <li>how the gold can be sold after default;</li>
+          <li>whether sale proceeds can be applied to the debt.</li>
+        </ul>
+        <p>Compliance also matters. AUSTRAC provides dedicated guidance for bullion dealers and their AML/CTF obligations. <a class="cite" href="#src-8">[8]</a> FATF has identified vulnerabilities in gold and the gold market for money-laundering and terrorist-financing risk. <a class="cite" href="#src-9">[9]</a> OECD guidance provides step-by-step due-diligence recommendations for companies in mineral supply chains, including steps intended to help avoid contributing to conflict through mineral or metal purchasing decisions. <a class="cite" href="#src-10">[10]</a></p>
+        <p>This does not mean ordinary bullion holdings are suspicious. It means lenders and dealers may need to verify identity, ownership, source of funds, source of wealth, responsible sourcing and transaction purpose before accepting or realising bullion.</p>
+        <p>This is where gold-backed borrowing differs from simply owning gold. The borrower is not only dealing with an asset value question. They are entering a legal and financial arrangement that can result in the gold being sold if obligations are not met.</p>
+
+        <h2 id="storage" class="anchor art-h2">Storage and control: the practical issue many owners underestimate</h2>
+        <blockquote class="pull">Many owners focus on the gold price. Lenders focus on control.</blockquote>
+        <p>A lender may ask:</p>
+        <ul class="art-list">
+          <li>Where is the gold now?</li>
+          <li>Who has access to it?</li>
+          <li>Is it insured?</li>
+          <li>Is it allocated to specific bars?</li>
+          <li>Can the custodian confirm the holding?</li>
+          <li>Can the borrower withdraw it without lender consent?</li>
+          <li>Can the lender sell it after default?</li>
+          <li>Are storage fees current?</li>
+          <li>Is the gold in the same jurisdiction as the loan?</li>
+          <li>Is the gold subject to sanctions, import restrictions, AML concern or ownership dispute?</li>
+        </ul>
+        <p>A gold-backed loan is easier to structure when the gold can be held in a controlled environment with a recognised vault, clear title and a documented security arrangement. It is harder when the asset is informal, undocumented or physically accessible only to the borrower.</p>
+
+        <h2 id="ltv" class="anchor art-h2">Loan-to-value and haircuts</h2>
+        <p>A loan-to-value ratio compares the loan amount with the assessed value of the collateral.</p>
+        <p>For example, if gold is assessed at $100,000 and the lender advances $60,000, the loan-to-value is 60%.</p>
+        <p>But the assessed value is not always the same as the headline metal value. A lender may first apply a collateral value calculation, then lend only a percentage of that figure.</p>
+        <p>Haircuts may reflect:</p>
+        <ul class="art-list">
+          <li>gold price volatility;</li>
+          <li>foreign exchange risk;</li>
+          <li>verification uncertainty;</li>
+          <li>dealer spread;</li>
+          <li>storage cost;</li>
+          <li>insurance cost;</li>
+          <li>legal enforcement cost;</li>
+          <li>time needed to sell;</li>
+          <li>borrower risk;</li>
+          <li>loan term;</li>
+          <li>asset concentration;</li>
+          <li>jurisdictional risk.</li>
+        </ul>
+        <p>There is no universal safe loan-to-value for gold. A strong borrower with allocated bullion in approved vault storage may receive different treatment from a borrower offering home-stored bars with incomplete paperwork.</p>
+        <p>Borrowers should also understand margin-style collateral risk. If the collateral value falls, a lender may require repayment, additional collateral or partial sale depending on the loan terms. ASIC states that margin-lending regulation applies to providers and advisers for margin-lending facilities, while CommSec explains that a drop in the lending value of collateral may require a borrower to reduce gearing at short notice. <a class="cite" href="#src-12">[12]</a> <a class="cite" href="#src-13">[13]</a></p>
+        <p>A gold-backed facility is not risk-free simply because the collateral is gold.</p>
+
+        <h2 id="context" class="anchor art-h2">2026 market context</h2>
+        <p>Gold's recent market behaviour reinforces why collateral assessments should allow for volatility.</p>
+        <p>The World Gold Council reported that total gold demand in 2025, including OTC, exceeded 5,000 tonnes for the first time and reached US$555 billion in value. It also reported 53 new all-time highs in the LBMA PM gold price during 2025. <a class="cite" href="#src-14">[14]</a></p>
+        <p>The same source reported that global gold ETF holdings grew by 801 tonnes in 2025, while bar and coin buying reached a 12-year high. <a class="cite" href="#src-14">[14]</a></p>
+        <p>By 2026, volatility had increased. World Gold Council analysis published in April 2026 stated that gold's volatility had "markedly increased" and that bid-ask spreads had risen since 2024, while the market still offered sizable liquidity through record trading volumes and two-way market activity. <a class="cite" href="#src-15">[15]</a></p>
+        <p>For collateral purposes, this matters more than the direction of the price. A lender is not only asking whether gold is valuable. It is asking whether the loan can survive adverse price movement before the asset is sold.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists usually ask for first</h2>
+        <p>Before giving a serious collateral indication, a specialist will usually ask for:</p>
+        <ul class="art-list">
+          <li>type of gold: bar, coin, account, certificate or other holding;</li>
+          <li>mint or refiner;</li>
+          <li>weight and purity;</li>
+          <li>serial numbers and bar list;</li>
+          <li>photos of all sides of the bar or coin;</li>
+          <li>purchase invoices and receipts;</li>
+          <li>assay certificates;</li>
+          <li>storage statements;</li>
+          <li>custodian name and location;</li>
+          <li>whether the holding is allocated or unallocated;</li>
+          <li>insurance details;</li>
+          <li>ownership structure;</li>
+          <li>whether the gold is already pledged;</li>
+          <li>preferred loan amount;</li>
+          <li>preferred loan term;</li>
+          <li>jurisdiction of borrower and asset;</li>
+          <li>whether physical inspection or vault confirmation is possible.</li>
+        </ul>
+        <p>A desktop estimate can be useful, but a lender should not rely on final numbers without proper verification.</p>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes owners make</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Treating spot price as borrowing capacity</div><p>Spot value is not the same as loan value. Lenders discount collateral to allow for risk, costs and market movement.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming all gold is equal</div><p>A recognised bullion bar, a proof coin, a sovereign, a necklace and scrap gold can all contain gold, but they are not the same collateral asset.</p></div>
+          <div class="mistake"><div class="mistake-h">Ignoring storage</div><p>Gold in a home safe may be valuable, but it may not provide the lender with enough control.</p></div>
+          <div class="mistake"><div class="mistake-h">Relying on weak paperwork</div><p>A genuine bar with no invoice, no bar list and no custody record may still require additional verification before it can be accepted.</p></div>
+          <div class="mistake"><div class="mistake-h">Confusing allocated and unallocated holdings</div><p>Allocated metal is generally tied to specific metal. Unallocated metal may represent a general entitlement to metal rather than ownership of specific bars. That distinction can matter in secured lending. <a class="cite" href="#src-5">[5]</a> <a class="cite" href="#src-6">[6]</a></p></div>
+          <div class="mistake"><div class="mistake-h">Borrowing too close to market value</div><p>High leverage can create pressure if the gold price falls or the lender changes the lending ratio.</p></div>
+          <div class="mistake"><div class="mistake-h">Forgetting legal enforcement</div><p>A security arrangement that looks simple commercially may still require legal documentation, registration, possession or custodian acknowledgement.</p></div>
+          <div class="mistake"><div class="mistake-h">Using the wrong sale assumption</div><p>Retail asking prices, collectible premiums and replacement values may not reflect what a lender could realise quickly after default.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist before requesting a collateral assessment</h2>
+        <div class="checklist">
+          {[
+            "Clear photos of the bullion",
+            "Weight and purity details",
+            "Mint, refiner and serial numbers",
+            "Purchase invoices or dealer receipts",
+            "Assay certificates, where available",
+            "Vault or custodian statements",
+            "Allocated or unallocated storage confirmation",
+            "Bar list or account statement",
+            "Insurance details",
+            "Evidence of ownership structure",
+            "Details of any existing finance or pledge",
+            "Location of the gold",
+            "Preferred loan amount",
+            "Preferred loan term",
+            "Reason for borrowing",
+            "Legal entity or person that will borrow",
+            "Confirmation of whether physical inspection or vault confirmation is possible",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <ol class="src-list">
+          <li id="src-1"><a class="body-link" href="https://www.gold.org/goldhub/research/market-primer/gold-market-primer-market-size-and-structure" target="_blank" rel="noopener noreferrer">World Gold Council — Gold Market Primer: Market Size and Structure</a></li>
+          <li id="src-2"><a class="body-link" href="https://www.lbma.org.uk/prices-and-data/lbma-precious-metal-prices" target="_blank" rel="noopener noreferrer">LBMA — Precious Metal Prices</a></li>
+          <li id="src-3"><a class="body-link" href="https://www.lbma.org.uk/good-delivery/good-delivery-rules-and-governance" target="_blank" rel="noopener noreferrer">LBMA — Good Delivery Rules and Governance</a></li>
+          <li id="src-4"><a class="body-link" href="https://www.cmegroup.com/content/dam/cmegroup/rulebook/COMEX/1a/113.pdf" target="_blank" rel="noopener noreferrer">CME Group — COMEX Chapter 113 Gold Futures Contract Rules</a></li>
+          <li id="src-5"><a class="body-link" href="https://www.perthmint.com/invest/information-about-gold-and-silver-storage/storage-options/" target="_blank" rel="noopener noreferrer">Perth Mint — Storage Options for Gold, Silver and Platinum</a></li>
+          <li id="src-6"><a class="body-link" href="https://www.royalmint.com/faqs/storage/what-is-the-allocated-storage-for-coins-and-bars/" target="_blank" rel="noopener noreferrer">Royal Mint — Allocated Storage for Coins and Bars</a></li>
+          <li id="src-7"><a class="body-link" href="https://www.ppsr.gov.au/registering/you-create-registration/collateral-type-and-class" target="_blank" rel="noopener noreferrer">Australian PPSR — Collateral Type and Class Guidance</a></li>
+          <li id="src-8"><a class="body-link" href="https://www.austrac.gov.au/industry-and-business/your-industry/bullion-dealers" target="_blank" rel="noopener noreferrer">AUSTRAC — Bullion Dealers Guidance</a></li>
+          <li id="src-9"><a class="body-link" href="https://www.fatf-gafi.org/en/publications/Methodsandtrends/Ml-tf-risks-and-vulnerabilities-gold.html" target="_blank" rel="noopener noreferrer">FATF — Money Laundering and Terrorist Financing Risks and Vulnerabilities Associated with Gold</a></li>
+          <li id="src-10"><a class="body-link" href="https://www.oecd.org/en/publications/oecd-due-diligence-guidance-for-responsible-supply-chains-of-minerals-from-conflict-affected-and-high-risk-areas_9789264252479-en.html" target="_blank" rel="noopener noreferrer">OECD — Due Diligence Guidance for Responsible Supply Chains of Minerals from Conflict-Affected and High-Risk Areas</a></li>
+          <li id="src-11"><a class="body-link" href="https://www.gold.org/goldhub/gold-focus/2025/06/you-asked-we-answered-does-gold-qualify-hqla-under-basel-iii" target="_blank" rel="noopener noreferrer">World Gold Council — Does Gold Qualify as an HQLA under Basel III?</a></li>
+          <li id="src-12"><a class="body-link" href="https://asic.gov.au/for-finance-professionals/afs-licensees/applying-for-and-managing-an-afs-licence/licensing-certain-service-providers/margin-lending/" target="_blank" rel="noopener noreferrer">ASIC — Margin Lending</a></li>
+          <li id="src-13"><a class="body-link" href="https://static.commsec.com.au/support/help-centre/Margin-lending/risks-of-margin-lending.html" target="_blank" rel="noopener noreferrer">CommSec — What Are the Risks of Borrowing to Invest?</a></li>
+          <li id="src-14"><a class="body-link" href="https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2025" target="_blank" rel="noopener noreferrer">World Gold Council — Gold Demand Trends: Q4 and Full Year 2025</a></li>
+          <li id="src-15"><a class="body-link" href="https://www.gold.org/goldhub/gold-focus/2026/04/you-asked-we-answered-has-golds-performance-structurally-changed" target="_blank" rel="noopener noreferrer">World Gold Council — Has Gold's Performance Structurally Changed?</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine watches, luxury goods, bullion and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, legal enforceability, likely sale channel and time-to-sale rather than quoted market price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential bullion assessment</p>
+      <h2 class="art-cta-h2">Want to understand what your bullion may support today?</h2>
+      <p class="art-cta-lead">
+        Submit your bullion details for private review. An ALYRA specialist will assess form, purity,
+        weight, documentation, storage arrangement, ownership and market conditions, then respond
+        confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential assessment</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap, .art-figure figcaption { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+  .art-h3 { font: 600 22px/1.32 var(--font-display); color: var(--ink); margin: 48px 0 14px; padding-top: 26px; border-top: 1px solid var(--border); display: flex; gap: 18px; align-items: center; }
+  .fnum { font: 700 32px/1 var(--font-display); color: var(--gold); flex: none; font-variant-numeric: tabular-nums; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .formula { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: 22px 26px; margin: 0 0 26px; }
+  .formula p { font: 500 17px/1.55 var(--font-display); color: var(--ink); margin: 0 0 12px; }
+  .formula p:last-child { margin: 0; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; }
+  .cite:hover { color: var(--ink); }
+  .takeaways .cite { color: var(--gold); }
+  .takeaways .cite:hover { color: var(--text-on-dark); }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>
