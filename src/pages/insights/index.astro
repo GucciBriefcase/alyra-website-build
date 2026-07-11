@@ -199,7 +199,7 @@ const schema = [
 
   /* Grid */
   .ins-grid-wrap { padding: clamp(44px, 5vw, 64px) var(--section-x) clamp(64px, 8vw, 96px); }
-  .ins-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
+  .ins-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 28px; }
   .post-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
   .post-card[hidden] { display: none; }
   .post-card--link { text-decoration: none; color: inherit; transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
