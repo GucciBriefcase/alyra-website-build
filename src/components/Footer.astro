@@ -267,6 +267,11 @@ const att = SITE.attribution;
     .footer-brand { grid-column: 1 / -1; }
     .footer-col { border-left: 0; padding-left: 0; }
     .footer-cards { grid-template-columns: 1fr; }
+    /* Comfortable tap targets on touch screens: same visual rhythm (12px gap
+       becomes padding), but each link's hit area grows to ~40px. */
+    .col-links { gap: 0; }
+    .col-links .foot-link { padding: 11px 0; }
+    .footer-legal-links .foot-link { padding: 12px 2px; }
   }
   @media (max-width: 480px) {
     .footer-cols { grid-template-columns: 1fr; }

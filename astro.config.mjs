@@ -27,6 +27,20 @@ export default defineConfig({
         !/\/loans\/high-value-watches\/|\/loans\/classic-luxury-cars\/|\/insights\/what-determines-fine-watch-value-2026\//.test(
           page
         ),
+      // lastmod for dated editorial pages only (matches each article's
+      // schema dateModified — update both together when an article changes).
+      // Evergreen pages carry no lastmod rather than a fake uniform date.
+      serialize(item) {
+        const lastmod = {
+          "/insights/what-determines-fine-watch-value/": "2026-07-11",
+          "/insights/gold-and-bullion-as-collateral/": "2026-07-11",
+          "/insights/which-prestige-car-marques-hold-value-australia/": "2026-07-11",
+          "/insights/how-much-can-i-borrow-against-a-rolex-australia/": "2026-07-11",
+          "/insights/how-watch-service-history-affects-your-loan-offer/": "2026-07-11",
+        }[new URL(item.url).pathname];
+        if (lastmod) item.lastmod = lastmod;
+        return item;
+      },
     }),
   ],
   build: {
