@@ -1,0 +1,456 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/watch-service-hero.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "how-watch-service-history-affects-your-loan-offer";
+const path = `/insights/${slug}/`;
+const title = "How watch service history affects your loan offer | ALYRA";
+const description =
+  "Documented, authorised servicing can strengthen a watch loan offer — but not always. See how service history is actually weighed before a figure is set.";
+const ogImage = "/assets/og-watch-service.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["one-input", "One input, not the whole picture"],
+  ["helps", "When servicing helps"],
+  ["hurts", "When servicing hurts"],
+  ["independent", "Independent vs authorised"],
+  ["missing", "Incomplete or missing records"],
+  ["offer", "How this fits your offer"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Does servicing my watch increase its loan value?", a: "Not automatically. Documented, authorised servicing generally supports confidence in a modern watch's mechanical condition, which can help. On vintage or collectible references, servicing that replaces original parts can reduce recognised value even with full paperwork, so the effect depends on the watch and the work performed." },
+  { q: "What is a Rolex Service Card?", a: "A Rolex Service Card is documentation provided when a watch is serviced at an official Rolex Service Centre, confirming the work was carried out to Rolex's standards and carrying an international two-year guarantee on the service performed." },
+  { q: "Will independent servicing disqualify my watch from a loan?", a: "No. Independent servicing does not disqualify a watch. It means the watch will not carry a manufacturer service guarantee, so a specialist will typically place more weight on physical inspection and any documentation you can provide about the work performed." },
+  { q: "Should I service my vintage watch before requesting a valuation?", a: "Not without advice first. For vintage and collectible pieces, servicing decisions can affect originality and collectability, and the wrong decision can reduce value. It is best to ask a specialist before authorising any work." },
+  { q: "What if I have no service records at all?", a: "It is not disqualifying. A specialist will assess the watch's current mechanical condition and running accuracy through inspection, and any older receipts, appraisals or photos you can provide will still support the assessment." },
+  { q: "Does a recent service guarantee my watch will run reliably during the loan term?", a: "No. A recent service supports confidence in the watch's current condition, but it is not a guarantee against future mechanical issues. Custody and insurance arrangements during a loan term are confirmed separately before any funds are advanced." },
+  { q: "Does replacing a battery or strap count as servicing that affects value?", a: "Minor, reversible items such as a strap are generally treated differently to movement servicing or replaced dials, hands or cases. A specialist assesses what was actually changed rather than treating all maintenance the same way." },
+  { q: "Should I disclose independent servicing even if I'm worried it will hurt my offer?", a: "Yes. A specialist assessment is based on the watch's actual condition and history, and accurate disclosure allows a fair assessment. Withholding information does not improve a loan offer and can complicate the assessment process." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Service history and loan offers" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "How watch service history affects your loan offer",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-07-11",
+    dateModified: "2026-07-11",
+    inLanguage: "en-AU",
+    articleSection: "Watches",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Watches</span>
+      </div>
+      <h1 class="art-h1">How watch service history affects your loan offer</h1>
+      <p class="art-lead">
+        Documented, authorised servicing can strengthen an offer — but servicing that replaced original
+        parts can quietly cut it. How a specialist actually weighs the record before a figure is set.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>11 July 2026</span><span class="meta-sep" aria-hidden="true"></span><span>8 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="A watchmaker servicing a luxury watch movement on a workbench" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>Service history is read alongside condition and originality — never in isolation.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <p class="art-intro"><span class="dropcap">A</span> service record feels like it should only ever help. In practice, service history moves a loan offer in both directions — and on some watches, the wrong service is the single most expensive decision an owner ever makes.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">Service history affects a loan offer in both directions. Documented, authorised servicing generally supports confidence in a watch's mechanical condition, which can support a stronger loan offer, particularly for modern watches.</p>
+            <p class="answer-sub">But servicing that has replaced original parts, especially on vintage or collectible references, can reduce recognised value even with full paperwork. What matters most is the combination of genuine mechanical condition, originality and documentation — not the paperwork alone.</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>This guide explains specifically how service history is weighed when a specialist sets a loan amount against a watch. It builds on ALYRA's existing guide to <a class="body-link" href="/insights/what-determines-fine-watch-value/">how fine watch value is assessed</a>, but focuses on the lending decision itself: what documentation a specialist actually asks for, when service history helps, when it can quietly work against you, and what to do if your records are incomplete.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your watch is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>Service history is one input into a loan offer, not the whole picture — mechanical condition and originality carry at least as much weight.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Documented, authorised servicing generally supports confidence in a modern watch's reliability and can support a stronger offer.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A Rolex Service Card, carrying an international two-year guarantee on the work performed, is a recognised form of documentation for modern pieces.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>On vintage or collectible references, servicing that replaced original dials, hands, bezels or movement parts can reduce recognised value, even with full paperwork.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Independent servicing does not disqualify a watch from a loan, but it removes the manufacturer-backed documentation a specialist would otherwise rely on.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Missing or incomplete service records are not disqualifying on their own — they simply shift more weight onto physical inspection.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A watch that has never needed servicing is not automatically a stronger loan candidate than one with a clean, documented service history.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This guide is for owners considering a loan against a watch who have questions about how much their service records — or the absence of them — will matter. It is most relevant to those with a mix of authorised and independent servicing, or with vintage pieces where servicing decisions are more delicate.</p>
+        <p>It is not a substitute for a formal specialist assessment.</p>
+
+        <h2 id="method" class="anchor art-h2">How this guide was prepared</h2>
+        <p>This guide was prepared by reviewing ALYRA's own published valuation-factor framework, official manufacturer servicing and guarantee information, and current Swiss watch industry and secondary-market reporting on how documentation affects buyer and lender confidence. <a id="cite-all" class="cite" href="#sources">[1]–[4]</a></p>
+        <p>It is general market information, not a valuation or credit decision — a final loan amount is only confirmed after a specialist assessment of the actual watch.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Service situation</th><th>What it signals</th><th>Effect on loan consideration</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Authorised service, fully documented (modern watch)</td><td>Confirms mechanical condition to manufacturer standard</td><td>Generally supports confidence and liquidity.</td></tr>
+              <tr><td class="tcell-head">Authorised service, fully documented (vintage watch)</td><td>Depends on whether original parts were replaced</td><td>Positive if originality preserved; can reduce value if not.</td></tr>
+              <tr><td class="tcell-head">Independent service, documented</td><td>Work performed is known, but no manufacturer guarantee attached</td><td>Neutral to slightly cautious; inspection weighted more heavily.</td></tr>
+              <tr><td class="tcell-head">Independent service, undocumented</td><td>Work performed cannot be verified</td><td>Cautious; specialist inspection required before any figure.</td></tr>
+              <tr><td class="tcell-head">No service history / unknown</td><td>Mechanical condition unverified on paper</td><td>Assessed primarily on physical inspection and testing.</td></tr>
+              <tr><td class="tcell-head">Recent service immediately before enquiry</td><td>Confirms current mechanical state at time of assessment</td><td>Can support confidence, but is not a guarantee of reliability through the loan term.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="one-input" class="anchor art-h2">Why service history is only one input</h2>
+        <p>A loan offer is built from several factors together — brand and reference, physical condition, originality, documentation, provenance and market demand, as set out in ALYRA's guide to how fine watch value is assessed. Service history sits inside that picture; it does not override it.</p>
+        <p>A perfectly serviced watch with weak market demand or replaced original parts will not out-value a lightly-worn example with a clean, original build and strong demand.</p>
+        <blockquote class="pull">The question is never simply "is it serviced" — it is what the servicing tells a specialist about the watch.</blockquote>
+
+        <h2 id="helps" class="anchor art-h2">When documented servicing helps</h2>
+        <p>For modern watches, recent authorised servicing is generally a positive signal. It confirms the movement has been checked, adjusted and, where necessary, repaired to manufacturer standard. Rolex's own Service Card, issued after work at an official Rolex Service Centre, carries an international two-year guarantee covering the service performed. <a id="cite-4" class="cite" href="#src-4">[4]</a></p>
+        <p>That kind of documentation reassures a specialist — and, eventually, any future buyer if the watch ever needed to be sold to recover a loan — that the watch is in known mechanical condition, which can shorten the time needed for physical inspection and support a more confident offer.</p>
+
+        <h2 id="hurts" class="anchor art-h2">When servicing can quietly hurt the number</h2>
+        <p>On vintage and collectible references, the position is more delicate. Collectors and specialists often prize originality — the original dial, hands, bezel and case finish — over a mechanically perfect but altered example.</p>
+        <p>A well-intentioned service that replaces a faded dial or worn bezel to "make the watch look new" can be the single biggest value-reducing event in a vintage watch's life, even though the watch now runs better than before. Over-polishing during a service, which softens original case lines and edges, is a related and common issue that specialists look for.</p>
+        <p>Full paperwork does not offset this — it simply documents when the change happened.</p>
+
+        <h2 id="independent" class="anchor art-h2">Independent versus authorised service</h2>
+        <p>Independent servicing does not disqualify a watch from consideration. It is typically more affordable and, with a reputable independent watchmaker, can be entirely competent work. What it does not carry is a manufacturer guarantee or service card, so a specialist will place more weight on physical inspection and on any documentation you can provide about what was actually done.</p>
+        <p>For modern watches still within a warranty or service-guarantee window, this can matter for how confidently a specialist can rely on paperwork alone. For vintage watches, the position can reverse: a specialist independent watchmaker experienced with period-correct parts is sometimes preferred by collectors over a generic modern factory service that swaps components for current-production parts.</p>
+        <p>Neither path is automatically right or wrong — what matters is disclosing which one applies.</p>
+
+        <h2 id="missing" class="anchor art-h2">What if your records are incomplete or missing</h2>
+        <p>Incomplete records are common and are not disqualifying on their own. Where a full service history is not available, a specialist will rely more heavily on physical inspection — the watch's running accuracy, case and movement wear, and any visible signs of past repair.</p>
+        <p>Older receipts, prior insurance appraisals, or even photographs showing the watch's condition over time can still support the assessment, even if they fall short of a complete manufacturer record. It is worth gathering whatever partial documentation exists rather than assuming that an incomplete history rules a watch out.</p>
+
+        <h2 id="offer" class="anchor art-h2">How this fits into your loan offer</h2>
+        <p>A loan amount is set against a watch's realisable market value, and service history is one of the inputs a specialist weighs when forming a view of that value — alongside brand, reference, condition, originality, provenance and demand.</p>
+        <p>It is assessed as part of the same specialist review that leads to a written loan offer, covering the loan amount, fees, interest, repayment terms, redemption rights, and what happens if the loan is not repaid, before anything proceeds. If a loan does proceed, the watch is documented and held securely for the agreed term, and is at risk if repayment obligations are not met.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>Do you have a Rolex Service Card, or equivalent manufacturer service documentation? — confirms authorised work and any active service guarantee;</li>
+          <li>Was any servicing done independently, and if so, do you have receipts or notes on what was done? — helps assess whether original parts were affected;</li>
+          <li>Have any parts been replaced — dial, hands, bezel, crystal, crown or bracelet links? — directly affects originality assessment, especially for vintage pieces;</li>
+          <li>When was the watch last serviced, and is it currently running accurately? — indicates current mechanical condition and any near-term servicing need;</li>
+          <li>Do you have older receipts, appraisals or photos showing the watch's condition over time? — partial documentation still supports the assessment even without a full record;</li>
+          <li>Is the watch still within a manufacturer warranty or service guarantee period? — an active guarantee can support confidence in mechanical reliability.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Assuming any service record automatically increases loan value</div><p>Context matters more than the mere existence of a record.</p></div>
+          <div class="mistake"><div class="mistake-h">Servicing a vintage watch to "make it look new" right before a valuation</div><p>This can reduce collectability by removing original parts or patina — the opposite of the intended effect.</p></div>
+          <div class="mistake"><div class="mistake-h">Withholding service history because it was done independently</div><p>A specialist would rather assess accurate information than an incomplete or misleading history.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming no service history rules out a loan</div><p>Inspection can substitute for paperwork, so it is worth enquiring regardless.</p></div>
+          <div class="mistake"><div class="mistake-h">Not disclosing a known mechanical issue before assessment</div><p>Unresolved issues are better disclosed upfront than found during inspection.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist before enquiring</h2>
+        <div class="checklist">
+          {[
+            "Locate any manufacturer service card or documentation",
+            "Note whether servicing was authorised or independent",
+            "List any parts known to have been replaced",
+            "Confirm the date of last service and current running condition",
+            "Gather older receipts, appraisals or photos if records are partial",
+            "Check whether a manufacturer guarantee is still active",
+            "Be ready to disclose any known mechanical issues honestly",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <div class="src-label">Industry and market data</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.fhs.swiss/eng/statistics.html" target="_blank" rel="noopener noreferrer">Federation of the Swiss Watch Industry — Watch industry statistics</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.deloitte.com/global/en/Industries/consumer/perspectives/swiss-watch-industry-study.html" target="_blank" rel="noopener noreferrer">Deloitte — Swiss Watch Industry Study 2025</a></li>
+          <li id="src-3"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://watchcharts.com/watches/brand_index/rolex" target="_blank" rel="noopener noreferrer">WatchCharts — Rolex Market Index</a></li>
+        </ol>
+        <div class="src-label">Manufacturer documentation</div>
+        <ol class="src-list" start="4">
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="https://www.rolex.com/watch-care-and-service/rolex-service-card" target="_blank" rel="noopener noreferrer">Rolex — Servicing your Rolex: The Rolex Service Card</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine watches, luxury goods and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Not sure how your watch's service history affects its loan potential?</h2>
+      <p class="art-cta-lead">
+        Submit your watch details for private review. An ALYRA specialist will assess condition,
+        documentation and market demand, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap, .art-figure figcaption { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+  .art-h3 { font: 600 22px/1.32 var(--font-display); color: var(--ink); margin: 48px 0 14px; padding-top: 26px; border-top: 1px solid var(--border); display: flex; gap: 18px; align-items: center; }
+  .art-h3--plain { border-top: none; padding-top: 0; margin: 28px 0 10px; font-size: 19px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

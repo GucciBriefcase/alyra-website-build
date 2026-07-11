@@ -1,0 +1,477 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/rolex-loan-hero.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "how-much-can-i-borrow-against-a-rolex-australia";
+const path = `/insights/${slug}/`;
+const title = "How much can I borrow against a Rolex in Australia? | ALYRA";
+const description =
+  "There's no fixed Rolex loan figure. See how market value, condition, documentation and ALYRA's $50,000 minimum shape a realistic loan amount in 2026.";
+const ogImage = "/assets/og-rolex-loan.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["fixed", "Why there's no fixed number"],
+  ["ltv", "Market value to loan figure"],
+  ["floor", "The $50,000 floor"],
+  ["market", "How the market moves the numbers"],
+  ["levers", "What moves the figure"],
+  ["process", "Enquiry to funded loan"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Does every Rolex qualify for a loan with ALYRA?", a: "Not automatically. Eligibility depends on the watch's condition, documentation, authenticity and realisable market value, and ALYRA lends from $50,000 to $5,000,000. A single common steel sports Rolex may not reach that minimum alone, though it may be considered as part of a larger submission." },
+  { q: "Why is $50,000 the minimum loan amount?", a: "ALYRA's lending range is set at $50,000 to $5,000,000, reflecting the private, specialist-led nature of the service. This means it generally suits significant single pieces or combined submissions rather than lower-value individual items." },
+  { q: "Can I combine several watches to reach the loan minimum?", a: "Yes. A collection of watches, or a watch combined with other eligible assets such as jewellery, art or gold bullion, can be submitted together and assessed as a combined value, though each item is still individually assessed for condition, authenticity and demand." },
+  { q: "Does the Rolex price correction since 2022 affect my loan amount?", a: "It can. Secondary-market data shows many steel sports references trading below their 2022 peaks, which can reduce the recognised collateral value of those specific models even as the broader market has recovered ground. The Datejust collection and some vintage references have performed more strongly over the same period." },
+  { q: "Do box and papers increase my loan amount?", a: "They support confidence in the watch's history and can improve liquidity, but they do not create value on their own. Condition, originality and genuine market demand for that specific reference matter more to the final figure." },
+  { q: "Is a Rolex loan the same as a pawn loan?", a: "ALYRA provides loans secured against pledged goods under Queensland's pawnbroking laws, which is the same broad legal basis as a pawn loan, but the process is private, specialist-led, and designed for high-value assets rather than walk-in pawnbroking." },
+  { q: "How is a loan amount different from insurance value?", a: "Insurance value is typically set at replacement cost, which can be close to RRP. A loan amount is based on realisable market value — what the watch could reasonably achieve if it needed to be sold — which for many references is materially lower than insurance value." },
+  { q: "How quickly can I get an indication of my loan amount?", a: "A specialist can often give an initial indication from clear photos and documentation, but a firm loan offer requires a full assessment. ALYRA typically responds to enquiries within one business day." },
+  { q: "What happens if I can't repay the loan?", a: "Your watch is held as security for the loan and is at risk if you do not meet your repayment obligations. Fees, notices, redemption rights and next steps are disclosed in your loan offer before you proceed." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Borrowing against a Rolex" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "How much can I borrow against a Rolex in Australia?",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-07-11",
+    dateModified: "2026-07-11",
+    inLanguage: "en-AU",
+    articleSection: "Watches",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Watches</span>
+      </div>
+      <h1 class="art-h1">How much can I borrow against a Rolex in Australia?</h1>
+      <p class="art-lead">
+        There is no fixed figure. A loan amount against a Rolex is calculated from realisable market
+        value, condition and documentation — and shaped by ALYRA's $50,000 to $5,000,000 lending range.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>11 July 2026</span><span class="meta-sep" aria-hidden="true"></span><span>10 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="A Rolex watch being reviewed by a specialist against paperwork, representing a private asset assessment" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>A loan figure starts with the watch itself — reference, condition, documentation and current demand.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <p class="art-intro"><span class="dropcap">A</span> Rolex is one of the most liquid luxury assets an Australian owner can hold — but that does not translate into a fixed borrowing figure. The number depends on which Rolex, in what condition, with what history, and in what market.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">There is no fixed amount you can borrow against a Rolex. The figure is calculated from the watch's realisable market value, its condition and documentation, and ALYRA's lending range of $50,000 to $5,000,000.</p>
+            <p class="answer-sub">In practice, a single everyday steel sports Rolex rarely reaches ALYRA's minimum on its own — the service is better suited to a rare or precious-metal reference, an exceptional vintage piece, or a collection of watches (or watches plus other eligible assets) with a combined value that supports a loan of at least $50,000.</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>This guide explains how a loan amount against a Rolex is actually worked out in Australia, rather than quoting a single figure that would not hold up in practice. It covers why ALYRA's $50,000 minimum matters more than most owners expect, how the correction in steel sports Rolex prices since 2022 is affecting recognised collateral value, and what typically pushes a loan figure up or down. It is written for owners weighing up a private loan against one exceptional Rolex, or a small watch collection, rather than a sale.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your watch is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>A Rolex loan amount is calculated from realisable market value, condition and documentation — not from the RRP or an online listing price.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>ALYRA's lending range starts at $50,000, so a single common steel sports Rolex will usually not qualify for a stand-alone loan.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Rare references, precious-metal models, complications and exceptional vintage pieces are more likely to support a stand-alone loan.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A collection of watches, or a watch combined with other eligible assets, can reach the $50,000 floor even when no single piece does alone.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Steel sports Rolex prices remain below their 2022 peaks, which affects the recognised collateral value of some of the most commonly owned references — even as the broader market has recovered ground over the past year.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>The Datejust collection and some vintage references have performed more strongly into 2026 and can support relatively firmer recognised value.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Full box, papers and service history support confidence in a figure, but do not override condition, originality or genuine buyer demand.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This guide is for owners of one exceptional Rolex, or a small collection of Rolex and other luxury watches, who are considering a confidential loan rather than a sale. It is most relevant to those whose watch, or combined watches, could realistically be worth $50,000 or more, since that is ALYRA's minimum loan size.</p>
+        <p>It is not a substitute for a formal specialist assessment, and it is not written for a single watch whose realistic market value sits well under $50,000.</p>
+
+        <h2 id="method" class="anchor art-h2">How this guide was prepared</h2>
+        <p>This guide was prepared by reviewing current Rolex secondary-market data and reporting, general industry practice around loan-to-value approaches used by specialist asset lenders, and the regulatory framework that governs pawnbroking and lending against pledged goods in Queensland. <a id="cite-all" class="cite" href="#sources">[1]–[6]</a></p>
+        <p>It draws on ALYRA's own published guidance on <a class="body-link" href="/insights/what-determines-fine-watch-value/">how fine watch value is assessed</a> and applies that specifically to the question of loan size. It is general market information, not a valuation, a loan offer, or credit advice — a final loan amount is only confirmed after a specialist assessment of the actual watch.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Reference / model tier</th><th>2026 market behaviour</th><th>Effect on loan consideration</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Steel sports (Submariner, Daytona, GMT-Master II)</td><td>Prices remain below 2022 peaks despite a recovering broader market</td><td>Recognised value lower than at the 2022 peak; still generally liquid.</td></tr>
+              <tr><td class="tcell-head">Precious-metal sports and dress models</td><td>Less exposed to the swings seen in steel sports references</td><td>Can support a higher recognised value where properly documented.</td></tr>
+              <tr><td class="tcell-head">Vintage and mid-size references (e.g. the Datejust collection)</td><td>Among the stronger-performing segments into 2026</td><td>Firmer recognised collateral value, condition-dependent.</td></tr>
+              <tr><td class="tcell-head">Rare, limited or complicated references</td><td>Value driven by rarity and documented provenance rather than brand alone</td><td>Assessed individually; strong documentation matters more.</td></tr>
+              <tr><td class="tcell-head">Documentation (box, papers, service history)</td><td>Not model-specific</td><td>Supports confidence and liquidity; does not create value on its own.</td></tr>
+              <tr><td class="tcell-head">Single watch vs. a collection</td><td>Not model-specific</td><td>Determines whether combined value reaches ALYRA's $50,000 minimum.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="fixed" class="anchor art-h2">Why there is no fixed number</h2>
+        <p>A Rolex does not have one value — it has several, depending on who is buying, how quickly, and through what sale channel. ALYRA's published guide to how fine watch value is assessed explains this in full, and the same logic applies here.</p>
+        <p>For lending purposes, the figure that matters is realisable market value: what a serious buyer would pay for that specific watch, in that specific condition, through a realistic sale channel. A loan amount is then set against that figure, not against RRP, insurance value, or an optimistic online listing.</p>
+        <blockquote class="pull">Two Rolex watches of the same reference can support meaningfully different loan amounts.</blockquote>
+        <p>Two watches of the same reference, in different condition or with different documentation, can support meaningfully different loan amounts — which is why any fixed "Rolex loan figure" quoted online should be treated with caution.</p>
+
+        <h2 id="ltv" class="anchor art-h2">From market value to a loan figure</h2>
+        <p>Once a watch's realisable value is assessed, a specialist lender recognises a portion of that value as loan security rather than lending against the full figure. This is standard practice across specialist asset lending, and it exists to protect both the lender and the client if the watch ever needs to be sold to recover the loan.</p>
+        <p>The exact proportion varies by lender, asset type, documentation and market conditions, and ALYRA does not publish a fixed percentage because it depends on individual assessment. What matters for an owner is that the number that counts is a proportion of realisable value — not of RRP, insurance value, or an online asking price.</p>
+
+        <h2 id="floor" class="anchor art-h2">Why $50,000 is the practical floor</h2>
+        <p>ALYRA lends from $50,000 to $5,000,000. That threshold matters more for a single Rolex than most owners expect. Based on current secondary-market data, many steel sports references — the most commonly owned Rolex models — trade well under $50,000 even in strong condition, particularly since the correction from the market's 2022 peak. <a id="cite-5" class="cite" href="#src-5">[5]</a> <a id="cite-6" class="cite" href="#src-6">[6]</a></p>
+        <p>That does not mean these watches have no place at ALYRA; it means they are more likely to feature as part of a broader submission — several watches, a mix of watches and jewellery, or a watch alongside another eligible asset — than to support a loan on their own. Rarer references, precious-metal sports models, and strong vintage examples are more likely to reach the $50,000 floor individually.</p>
+
+        <h2 id="market" class="anchor art-h2">How the market is moving the numbers</h2>
+        <p>Steel sports Rolex references went through a meaningful correction after the speculative peak of 2022, with prices on models such as the Daytona and Submariner still sitting well below those highs — even though the broader Rolex market has recovered ground over the past year. <a class="cite" href="#src-5">[5]</a> <a class="cite" href="#src-6">[6]</a> Over the same period, the Datejust collection has been among the stronger-performing segments. <a class="cite" href="#src-5">[5]</a></p>
+        <p>Timing matters here: a specialist assessment reflects the market at the time of enquiry, not historical peak prices, so the same watch can support a different loan figure today than it might have at the top of the market.</p>
+
+        <h2 id="levers" class="anchor art-h2">What moves the figure</h2>
+        <h3 class="art-h3 art-h3--plain">What pushes a loan figure up</h3>
+        <ul class="art-list">
+          <li>a rare, discontinued or unusual dial variant of an otherwise common reference;</li>
+          <li>complete, verified documentation — box, papers, warranty card and service history;</li>
+          <li>recent authorised servicing that has not compromised originality;</li>
+          <li>strong, demonstrable current demand for that specific reference;</li>
+          <li>verified provenance, such as notable ownership or a documented history;</li>
+          <li>submission as part of a larger, multi-asset assessment that reaches deeper into ALYRA's lending range.</li>
+        </ul>
+        <h3 class="art-h3 art-h3--plain">What pulls a loan figure down</h3>
+        <ul class="art-list">
+          <li>a common, current-production steel sports reference in an oversupplied secondary-market segment;</li>
+          <li>replaced or non-original parts, including dials, hands or bracelets;</li>
+          <li>missing box, papers or service records where they matter for that specific reference;</li>
+          <li>unresolved condition issues, including case or dial wear and mechanical concerns;</li>
+          <li>unclear or undocumented ownership history;</li>
+          <li>a single lower-value piece submitted alone, under ALYRA's $50,000 minimum.</li>
+        </ul>
+
+        <h2 id="process" class="anchor art-h2">From enquiry to a funded loan</h2>
+        <p>The process starts with a private enquiry: photos, the reference and any documents are reviewed confidentially, and ALYRA confirms whether the watch, or watches, may be suitable for assessment. A specialist then reviews condition, documents, value and market demand.</p>
+        <p>If the watch is approved, a written offer is provided showing the loan amount, fees, interest, repayment terms, redemption rights, and what happens if the loan is not repaid, before anything proceeds. Once accepted, the watch is documented and held securely for the agreed loan term, and returned once the loan is repaid under the agreed terms.</p>
+        <p>Funding is not guaranteed, and a specialist typically responds to enquiries within one business day. If a loan proceeds, your watch is held as security and is at risk if you do not meet your repayment obligations.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>reference number and model — confirms exactly which watch it is and its typical market position;</li>
+          <li>serial number, where appropriate — supports authentication and originality checks;</li>
+          <li>clear photos of the case, dial, bracelet or strap, and caseback — allows an initial assessment before physical inspection;</li>
+          <li>box, papers, warranty card and service records — supports confidence in the watch's history and liquidity;</li>
+          <li>whether it is a single watch or part of a larger collection — determines whether the $50,000 minimum can realistically be reached;</li>
+          <li>any known repairs, replacement parts or servicing — affects originality, and therefore recognised value;</li>
+          <li>preferred loan amount and timeframe — helps a specialist confirm early whether the figure is realistic before a full assessment.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Treating the RRP or an online listing as the loan amount</div><p>Completed sales and realistic buyer demand matter far more than the highest asking price seen online.</p></div>
+          <div class="mistake"><div class="mistake-h">Expecting a single everyday steel sports Rolex to reach $50,000 alone</div><p>Most will need to be part of a larger submission to meet ALYRA's minimum.</p></div>
+          <div class="mistake"><div class="mistake-h">Not mentioning it is part of a wider collection</div><p>Leaving this out can understate what is actually achievable.</p></div>
+          <div class="mistake"><div class="mistake-h">Servicing or replacing parts before asking for advice</div><p>The wrong decision can reduce originality and value, especially on vintage pieces.</p></div>
+          <div class="mistake"><div class="mistake-h">Pricing off the 2022 peak</div><p>Many steel sports references are worth meaningfully less than they were at the top of the market, even after the past year's recovery.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist before enquiring</h2>
+        <div class="checklist">
+          {[
+            "Reference and serial number noted",
+            "Clear natural-light photos of the case, dial, bracelet and caseback",
+            "Box, papers and warranty card located",
+            "Service history and any repair records gathered",
+            "A note of other watches or assets to include in the same submission",
+            "A realistic view of current secondary-market data for your reference",
+            "Preferred loan amount and timeframe considered",
+            "Questions ready about fees, interest, terms and redemption rights",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <div class="src-label">Regulation and licensing</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.qld.gov.au/law/laws-regulated-industries-and-accountability/queensland-laws-and-regulations/regulated-industries-and-licensing/regulated-industries-licensing-and-legislation/second-hand-dealing-and-pawnbroking-industry-regulation/get-a-second-hand-dealing-or-pawnbroking-licence" target="_blank" rel="noopener noreferrer">Queensland Government — Second-hand dealing and pawnbroking licence</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.legislation.qld.gov.au/view/html/inforce/current/act-2003-073" target="_blank" rel="noopener noreferrer">Second-hand Dealers and Pawnbrokers Act 2003 (Qld)</a></li>
+          <li id="src-3"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.asic.gov.au/regulatory-resources/credit/credit-general-conduct-obligations/national-credit-code/" target="_blank" rel="noopener noreferrer">ASIC — National Credit Code</a></li>
+          <li id="src-4"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.asic.gov.au/for-finance-professionals/credit-licensees/do-you-need-a-credit-licence/faqs-does-the-credit-legislation-apply/" target="_blank" rel="noopener noreferrer">ASIC — FAQs: Does the credit legislation apply?</a></li>
+        </ol>
+        <div class="src-label">Secondary-market data</div>
+        <ol class="src-list" start="5">
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="https://watchcharts.com/watches/brand_index/rolex" target="_blank" rel="noopener noreferrer">WatchCharts — Rolex Market Index</a></li>
+          <li id="src-6"><a class="src-back" href="#cite-6" aria-label="Back to citation 6 in text">↑</a> <a class="body-link" href="https://www.bobswatches.com/rolex-market-report" target="_blank" rel="noopener noreferrer">Bob's Watches — Rolex Watch Market Report</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine watches, luxury goods and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Want to know what your Rolex, or your collection, could support?</h2>
+      <p class="art-cta-lead">
+        Submit your watch details for private review. An ALYRA specialist will assess condition,
+        documentation and market demand, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap, .art-figure figcaption { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+  .art-h3 { font: 600 22px/1.32 var(--font-display); color: var(--ink); margin: 48px 0 14px; padding-top: 26px; border-top: 1px solid var(--border); display: flex; gap: 18px; align-items: center; }
+  .art-h3--plain { border-top: none; padding-top: 0; margin: 28px 0 10px; font-size: 19px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

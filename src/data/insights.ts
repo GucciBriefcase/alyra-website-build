@@ -12,7 +12,6 @@ import type { ImageMetadata } from "astro";
 
 // Content images optimised at build time via astro:assets.
 import heroWatchesPatek from "../assets/images/hero-watches-patek.jpg";
-import fineWatches from "../assets/images/fine-watches.jpg";
 import fineArt from "../assets/images/fine-art.jpg";
 import valuationImg from "../assets/images/valuation.jpg";
 import goldBullion from "../assets/images/gold-bullion.jpg";
@@ -21,6 +20,8 @@ import jewellery from "../assets/images/jewellery.jpg";
 import specialist from "../assets/images/specialist.jpg";
 import heroWatches from "../assets/images/hero-watches.jpg";
 import loanrangeFineart from "../assets/images/loanrange-fineart.jpg";
+import rolexLoanHero from "../assets/images/rolex-loan-hero.jpg";
+import watchServiceHero from "../assets/images/watch-service-hero.jpg";
 
 export type InsightCategory =
   | "Watches"
@@ -65,7 +66,8 @@ export const FEATURED: InsightCard & { slug: string } = {
 };
 
 export const POSTS: InsightCard[] = [
-  { category: "Watches", title: "Why service history quietly moves a watch valuation.", excerpt: "A complete service record does more than reassure a buyer — it can change the realisable figure outright. Here is how we weigh it.", date: "4 Jun 2026", readTime: "6 min read", image: fineWatches, imageAlt: "Fine watch on a workbench" },
+  { slug: "how-much-can-i-borrow-against-a-rolex-australia", category: "Watches", title: "How much can I borrow against a Rolex in Australia?", excerpt: "There is no fixed figure. Realisable market value, condition, documentation and ALYRA's $50,000 minimum decide what a Rolex — or a collection — can actually support.", date: "11 Jul 2026", readTime: "10 min read", image: rolexLoanHero, imageAlt: "A Rolex watch reviewed by a specialist against paperwork" },
+  { slug: "how-watch-service-history-affects-your-loan-offer", category: "Watches", title: "How watch service history affects your loan offer.", excerpt: "Documented, authorised servicing can strengthen an offer — but replacing original parts can quietly cut it. How a specialist actually weighs the record.", date: "11 Jul 2026", readTime: "8 min read", image: watchServiceHero, imageAlt: "A watchmaker servicing a luxury watch movement on a workbench" },
   { category: "Art", title: "Lending against blue-chip art without selling the work.", excerpt: "Provenance, catalogue raisonné status and market depth all shape how much capital a painting can responsibly secure.", date: "28 May 2026", readTime: "8 min read", image: fineArt, imageAlt: "Framed fine artwork" },
   { category: "Market", title: "The case for liquidity without giving up ownership.", excerpt: "Selling is final. Borrowing against an asset keeps the upside in your hands while solving a timing problem.", date: "21 May 2026", readTime: "5 min read", image: valuationImg, imageAlt: "Editorial still life of a high-value asset" },
   { slug: "gold-and-bullion-as-collateral", category: "Gold", title: "Gold and bullion as collateral: a practical guide.", excerpt: "Physical gold can be a useful private asset, but it is not automatically good collateral. How bullion is assessed — purity, ownership, storage, control, valuation, liquidity and enforceability.", date: "3 Jul 2026", readTime: "12 min read", image: goldBullion, imageAlt: "Investment-grade gold bullion bars" },
