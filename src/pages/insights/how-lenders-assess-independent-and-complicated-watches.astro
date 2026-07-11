@@ -1,0 +1,545 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/hero-watches.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "how-lenders-assess-independent-and-complicated-watches";
+const path = `/insights/${slug}/`;
+const title = "How lenders assess independent and complicated watches | ALYRA";
+const description =
+  "How independent and complicated watches are assessed as loan collateral — reference-level demand, originality, serviceability, condition and recoverable value.";
+const ogImage = "/assets/og-watches.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["market", "A broader but selective market"],
+  ["tests", "Five tests shape the decision"],
+  ["reference", "Reference comes before brand"],
+  ["price", "Price is not recoverable value"],
+  ["complications", "Complications and serviceability"],
+  ["condition", "Condition, originality, provenance"],
+  ["comparison", "Same maker, different collateral"],
+  ["process", "From enquiry to decision"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Can I borrow against an independent watch without selling it?", a: "Potentially. A watch-secured loan may provide liquidity without an immediate sale. Ownership, possession and permitted use depend on the security, custody, insurance and movement terms. Approval still depends on the borrower, the exact watch, the evidence file and the proposed transaction." },
+  { q: "How do lenders decide how much an independent or complicated watch can support?", a: "There is no universal percentage. At ALYRA, the assessment starts with relevant completed sales, then adjusts for the exact reference, condition, originality, provenance and serviceability, deducts likely realisation costs and allows for time and market depth. ALYRA then applies its own advance, concentration and credit policy; other lenders may use different policies." },
+  { q: "What is an independent watchmaker?", a: "The term generally describes a maker operating outside the major watch groups, but it covers a wide range from established manufactures to very small ateliers. Independence alone does not establish value or liquidity. Production history, collector demand, reference-level sales, service continuity and the authority of the maker's records remain important." },
+  { q: "Do complications always make a watch more valuable?", a: "No. A complication is a function beyond telling the time, such as a chronograph, annual calendar, world time, perpetual calendar or minute repeater. It may add technical interest and scarcity, but condition, functionality, service cost, parts access and buyer demand determine whether it adds recoverable value." },
+  { q: "Are box and papers essential for watch-backed lending?", a: "Not in every case, especially for older watches, but they can materially improve verification and marketability. ALYRA may also rely on invoices, archive extracts, maker confirmation, service records and specialist inspection. An incomplete file usually means more due diligence and a wider uncertainty allowance." },
+  { q: "Does polishing reduce a watch's lending value?", a: "It can. Polishing may remove metal, soften case lines or alter original finishes, while dial repainting or replacement parts can reduce collector interest. The effect depends on the reference, the quality and extent of the work, and how much originality the relevant buyer market expects." },
+  { q: "Can a unique or prototype watch be good collateral?", a: "Possibly, but uniqueness can make valuation harder because there may be no repeatable comparable sales. Strong provenance, maker confirmation and broad specialist interest may help, while one charity or celebrity result may not be reproducible. A lender may therefore require a larger uncertainty margin despite the watch's importance." },
+  { q: "Why does serviceability matter for independent watches?", a: "A buyer needs confidence that the watch can be maintained and repaired. Some makers require official service routes or tightly control parts and warranty work. Long turnaround times, limited capacity or uncertain support can reduce net proceeds and the number of willing buyers." },
+  { q: "Can I keep a pledged watch at home or wear it?", a: "At ALYRA, custody and use arrangements are transaction-specific; other lenders may differ. Some structures require specialist storage, while others may allow approved home custody or limited wear subject to insurance, security, inspection and movement controls. The arrangement should be agreed before the security documents are signed." },
+  { q: "Can I travel overseas with a pledged watch?", a: "Only if the security documents and insurance permit it and any border requirements are met. Some watch straps are made from reptile leather covered by CITES, and permits or supporting documentation may be required for international movement. Planned travel or consignment should be disclosed before documentation is finalised." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Independent and complicated watches" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "How lenders assess independent and complicated watches",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-07-12",
+    dateModified: "2026-07-12",
+    inLanguage: "en-AU",
+    articleSection: "Watches",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      url: absoluteUrl("/about/"),
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="Close-up of a gem-set gold Patek Philippe Nautilus" ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Watches</span>
+      </div>
+      <h1 class="art-h1">How lenders assess independent and complicated watches</h1>
+      <p class="art-lead">
+        Independent makers, dress watches and complications now attract a wider collector base. For
+        collateral purposes, demand still has to be proven at the exact reference and configuration level.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>12 July 2026</span><span class="meta-sep" aria-hidden="true"></span><span>11 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="Four gem-set Patek Philippe and Audemars Piguet watches, including an openworked tourbillon, in a collector's travel case" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>Collector demand has broadened — but liquidity is still proven one reference at a time.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
+        <p class="art-intro"><span class="dropcap">T</span>he collector market has moved well beyond a short list of steel sports references. Independents, dress watches and complications now draw serious money — but a famous maker's record result says very little about what an ordinary example could actually support as collateral.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">Demand has broadened beyond the usual steel sports references, with survey and marketplace data showing stronger interest in pre-owned, dress and design-led watches — but liquidity remains selective at maker, reference and configuration level.</p>
+            <p class="answer-sub">ALYRA's assessment focuses on the exact watch: its configuration, completed sales, buyer depth, condition, originality, provenance, serviceability and custody, with allowances for likely costs, time and uncertainty. A famous maker or record result does not guarantee an advance; the borrower, repayment source and transaction are assessed separately.</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>Collector attention has expanded beyond a small group of steel sports references. The change creates more evidence for selected independent makers, neo-vintage pieces, dress watches and modern complications, while increasing the gap between exceptional examples and ordinary ones. This article uses a five-part identity–originality–depth–serviceability–control framework to explain how market evidence informs a conservative view of recoverable value, and includes a worked hypothetical comparison. ALYRA's <a class="body-link" href="/loans/luxury-watches/">luxury watch lending page</a> sets out how a loan itself proceeds end to end.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, legal opinion, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your watch is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>Demand has broadened across some pre-owned and design-led segments, but liquidity remains selective at maker, model, reference and configuration level.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A maker's reputation or a headline auction record does not establish a repeatable collateral value for another watch.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Exact identity matters: reference, serial and movement numbers, production period, dial, case material, complication and accessories can change the relevant comparable set.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Complications can increase scarcity and collector appeal, but their collateral relevance depends on function, service route, cost, parts access and buyer depth.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Condition and originality often matter more than cosmetic newness; polishing, replacement parts or dial work can reduce collector demand.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Serviceability is a core consideration for some independents; manufacturer policies differ, and the authorised route, parts supply and expected turnaround may be narrower than for a large manufacture.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>The most controllable factor for an owner is the quality of the evidence file: complete title, provenance, box and papers, service records, photographs, insurance and custody details can narrow avoidable uncertainty.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This article is for collectors, estates and family offices considering a loan secured by an independent, neo-vintage or complicated watch. It is most useful where the owner wants to compare secured borrowing with a sale, consignment or another source of liquidity and needs to understand why some unusual references are financeable while others remain difficult to value.</p>
+        <p>It is not a substitute for watch-specific inspection, valuation, legal due diligence or credit assessment.</p>
+
+        <h2 id="method" class="anchor art-h2">How this was prepared</h2>
+        <p>This article was prepared from current Swiss watch-industry data, secondary-market reports, auction results and collecting guidance, manufacturer information, and Australian legal and border guidance. <a id="cite-all" class="cite" href="#sources">[1]–[19]</a> Chrono24 and WatchCharts are commercial datasets and are used as directional evidence rather than complete measures of the global market; Phillips and Christie's results describe their own auction activity.</p>
+        <p>The article adds ALYRA's identity–originality–depth–serviceability–control framework and a hypothetical comparison to show how public evidence may be applied. It does not disclose ALYRA's confidential credit policy; actual decisions require watch-specific inspection, valuation, legal due diligence and credit assessment.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Factor</th><th>Evidence ALYRA's assessment considers</th><th>Typical effect on the assessment</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Identity and configuration</td><td>Maker, model, reference, case and movement numbers, production year, edition number, dial, case material, bracelet or strap, and complication.</td><td>Precise identification defines the comparable set; ambiguity or mixed components can stop the assessment.</td></tr>
+              <tr><td class="tcell-head">Condition and originality</td><td>Case geometry, polishing, dial, hands, luminous material, movement, replaced parts, damage, moisture and functional testing.</td><td>Original, well-preserved examples usually support stronger collector demand; undocumented changes widen uncertainty.</td></tr>
+              <tr><td class="tcell-head">Provenance and completeness</td><td>Invoice, warranty card, certificate, archive extract, box, accessories, service history and any notable ownership history.</td><td>A coherent file can support ownership and resale confidence; authenticity still requires reference- and object-specific verification.</td></tr>
+              <tr><td class="tcell-head">Comparable sales</td><td>Recent completed transactions for the same or closely related reference, adjusted for configuration, condition, geography and venue.</td><td>Several relevant completed sales support a defensible range. Asking prices and isolated records are contextual rather than conclusive evidence.</td></tr>
+              <tr><td class="tcell-head">Market depth</td><td>Sale frequency, number of credible buyers, geographic demand, dealer and auction participation, price dispersion and time to sell.</td><td>Broader, repeatable demand supports liquidity; thin, concentrated or event-driven markets require a larger uncertainty allowance.</td></tr>
+              <tr><td class="tcell-head">Complication and serviceability</td><td>Function test, service records, authorised repair route, parts availability, expected cost and turnaround, and maker continuity.</td><td>Complications increase technical complexity. Uncertain service access, cost, timing or maker support can reduce collateral suitability.</td></tr>
+              <tr><td class="tcell-head">Custody, insurance and security</td><td>Approved storage, insurance, inspection rights, object identification, movement controls and security documentation.</td><td>Inadequate custody, insurance or access arrangements may reduce or prevent an advance. Security documentation is assessed under the personal property securities framework.</td></tr>
+              <tr><td class="tcell-head">Cross-border constraints</td><td>Planned travel or sale route, customs requirements and documentation for straps made from regulated wildlife materials.</td><td>Permit or documentation issues can delay movement or narrow the buyer pool.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="market" class="anchor art-h2">A broader but selective market</h2>
+        <p>The secondary watch market is no longer defined only by a short list of steel sports references. Deloitte reported that 40% of surveyed Generation Z respondents intended to buy a pre-owned watch within the following 12 months. <a id="cite-1" class="cite" href="#src-1">[1]</a> Separately, Chrono24's own 2025 marketplace data showed growth in slimmer, dressier designs, rectangular cases and moon-phase watches. <a id="cite-3" class="cite" href="#src-3">[3]</a> <a id="cite-4" class="cite" href="#src-4">[4]</a> These signals point to broader interest, but neither source establishes that every unusual watch is liquid.</p>
+        <p>The wider industry backdrop remained mixed. The Federation of the Swiss Watch Industry reported that 2025 exports declined 1.7% to CHF25.6 billion, with steady demand in the highest price segments but weakness across most products. <a id="cite-2" class="cite" href="#src-2">[2]</a> In ALYRA's view, that mixed backdrop increases the importance of object-level quality, originality and buyer depth.</p>
+        <p>At the top end, Phillips reported US$113.8 million of sales and a 99% sell-through rate across its own spring 2025 watch season, while a unique F.P.Journe made for Francis Ford Coppola sold for US$10.8 million later that year. <a id="cite-5" class="cite" href="#src-5">[5]</a> <a id="cite-6" class="cite" href="#src-6">[6]</a> Christie's separately presented a 160-watch collection spanning 47 brands and independent makers. <a id="cite-8" class="cite" href="#src-8">[8]</a> These auction-house examples demonstrate attention at the market's apex, not broad reference-level liquidity; unique provenance, rarity and sale theatre make record results poor direct comparables for an ordinary example.</p>
+
+        <h2 id="tests" class="anchor art-h2">Five tests shape the decision</h2>
+        <p>ALYRA does not assess "independent watchmaking" or "complications" in the abstract. It assesses one identifiable watch and the uncertainty around selling it. For this article, that assessment is organised into five linked tests: identity, originality, depth, serviceability and control.</p>
+        <p>Identity asks exactly what the watch is. Originality asks whether the case, dial, hands, movement and other components remain consistent with that identity. Depth asks how many credible buyers and completed transactions support a realistic exit. Serviceability asks who can maintain the watch, at what likely cost and within what timeframe. Control asks whether ownership, custody, insurance and security arrangements can be enforced.</p>
+        <p>The tests are cumulative. A rare watch can fail if its configuration cannot be verified; a perfectly documented watch can support little capital if there are no repeatable sales; and a valuable complication can be unsuitable if a major service is overdue and the repair route is uncertain. ALYRA also assesses the borrower, repayment source and transaction, so collateral quality is necessary but not sufficient.</p>
+
+        <h2 id="reference" class="anchor art-h2">Reference comes before brand</h2>
+        <p>ALYRA's initial asset review begins with maker, model, reference, case and movement numbers, production period, edition number, case material, dial, bracelet or strap, and every complication. Small differences can separate a standard production watch from a rare series, a later service configuration or a watch assembled from components that did not leave the manufacture together.</p>
+        <p>Comparable sales should therefore be reference-level wherever possible. A result for another model by the same maker may say little about the subject watch. WatchCharts' proprietary 2025 data showed materially different price paths within Patek Philippe: Aquanaut and Nautilus collections rose while Grand Complications, Calatrava and Complications collections fell over the period measured. <a id="cite-19" class="cite" href="#src-19">[19]</a> The data is directional rather than a complete market measure, but it illustrates how brand-level strength can conceal weak or volatile reference-level demand.</p>
+        <p>For some independent makers, production is very limited and model details can change during a production run. The file should distinguish early and later movements, dial executions, case sizes, subscription or boutique series, unique commissions and factory modifications. ALYRA may seek direct confirmation from the maker, an archive extract, a certificate or specialist inspection before relying on the stated configuration.</p>
+        <blockquote class="pull">Brand-level strength can conceal weak or volatile reference-level demand — the comparable set has to match the watch.</blockquote>
+
+        <h2 id="price" class="anchor art-h2">Price is not recoverable value</h2>
+        <p>A watch can carry several defensible numbers at once. Retail price describes the primary market; a dealer asking price is an offer; an insurance figure serves a risk-transfer purpose; an auction estimate is prepared for a particular sale; and a realised price may include buyer's premium and exceptional competitive bidding. These numbers are not interchangeable.</p>
+        <p>For secured lending, ALYRA's collateral analysis begins by establishing a range from relevant completed sales, adjusting for the subject watch's condition, originality, provenance and completeness, deducting likely selling, authentication, transport, storage, insurance, service and legal costs, and then allowing for time and uncertainty. The result is an estimate of net recoverable value, not a prediction of the next headline result. This is an editorial description of the factors considered, not a published formula or a promise of a particular advance.</p>
+        <p>A single record can sometimes increase uncertainty rather than reduce it. The F.P.Journe FFC result combined a unique prototype, a celebrated owner and a major auction setting. <a class="cite" href="#src-6">[6]</a> Unless the subject watch shares the same features, the result is evidence of interest in the maker at the market's apex, not a direct benchmark. ALYRA does not apply one universal loan-to-value percentage to every independent or complicated watch.</p>
+
+        <h2 id="complications" class="anchor art-h2">Complications and serviceability</h2>
+        <p>In watchmaking, a complication is a mechanical function beyond telling the time. Examples include annual calendars, chronographs, dual time zones and world-time displays; grand complications include technically demanding combinations such as minute repeaters and perpetual calendars. <a id="cite-12" class="cite" href="#src-12">[12]</a> <a id="cite-13" class="cite" href="#src-13">[13]</a> Complications can increase historical importance, scarcity and collector interest, but they also create more points of functional and service risk.</p>
+        <p>ALYRA would normally seek evidence that every function operates correctly and that the watch has been inspected by an appropriate specialist. The service file should address when the movement was last overhauled, who performed the work, which parts were replaced, whether the case or dial was altered, what faults remain and what the next service is likely to cost — how that record is weighed is covered in ALYRA's guide to <a class="body-link" href="/insights/how-watch-service-history-affects-your-loan-offer/">how service history affects a loan offer</a>. Setting tools, correctors, original components and technical accessories can also affect marketability.</p>
+        <p>Serviceability is especially important for independent makers. F.P.Journe's Patrimoine programme highlights original case and movement condition and supplies a new warranty on qualifying watches, while MB&amp;F states that maintenance and repairs for its watches must be carried out through official channels for warranty purposes. <a id="cite-14" class="cite" href="#src-14">[14]</a> <a id="cite-15" class="cite" href="#src-15">[15]</a> These are maker-specific examples, not a rule for every independent, but they show why an authorised route, complete documentation and continuing access to the maker can support buyer confidence.</p>
+        <p>The converse is also true. A highly complicated watch may require a lengthy and expensive return to a small atelier, specialist parts or the involvement of the original watchmaker. The collateral assessment may require a larger cost and time allowance where the service route is narrow, the maker no longer supports the reference, or the watch depends heavily on one individual's expertise. Technical prestige does not automatically produce liquidity.</p>
+
+        <h2 id="condition" class="anchor art-h2">Condition, originality and provenance</h2>
+        <p>Condition is not the same as cosmetic newness. Sotheby's describes condition as central to collecting, and Christie's notes that polishing, repainting luminous material or replacing original components can reduce value. <a id="cite-9" class="cite" href="#src-9">[9]</a> <a id="cite-11" class="cite" href="#src-11">[11]</a> A sharp, honestly worn case may be preferable to a highly polished case with altered geometry, just as an aged original dial may be preferable to a cleaner replacement.</p>
+        <p>Depending on the watch, ALYRA may require a specialist inspection covering the case, bezel, crystal, dial, hands, luminous material, crown, pushers, bracelet, clasp, movement, engravings and evidence of water or impact damage. For a complicated watch, the inspection may also test calendar changes, chronograph operation, striking quality, power reserve and any specialised display. An attractive exterior cannot compensate for a movement requiring major work.</p>
+        <p>Phillips identifies rarity, condition and provenance as auction-result factors. <a id="cite-10" class="cite" href="#src-10">[10]</a> For ALYRA's review, useful records may include the original invoice, warranty card, certificate, archive extract, fitted box, setting tools, spare bracelet links, service records and correspondence with the maker. Together, these records can support verification and resale confidence while reducing the number of unanswered questions.</p>
+        <p>Box and papers are not an automatic requirement for every vintage or independent watch, and their absence does not prove a problem. Their value depends on age, rarity and the availability of alternative evidence. What matters is whether the available evidence can establish ownership, authenticity, configuration and a credible sale description without relying on unsupported statements.</p>
+
+        <h2 id="comparison" class="anchor art-h2">Same maker, different collateral</h2>
+        <p>Consider two hypothetical watches by the same respected independent maker. Both had similar original retail prices, but the evidence around them is different. This comparison is illustrative only and does not imply a lending ratio or outcome.</p>
+        <div class="compare">
+          <div class="compare-item">
+            <div class="compare-h">Watch A — a narrow range</div>
+            <p>A recognised reference in its original configuration, with matching case and movement records, a complete certificate and box, a recent manufacturer service, multiple completed sales across recognised venues, and approved insurance and custody. Those facts do not guarantee approval, but they allow the lender to identify the watch, estimate service exposure and form a narrower range of plausible net proceeds.</p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-h">Watch B — wide uncertainty</div>
+            <p>An unusual early execution with incomplete papers, a polished case, replacement hands, an overdue complicated service and one celebrity or charity result as its main comparison. Its exotic-leather strap also lacks the documentation needed for planned cross-border movement. <a id="cite-18" class="cite" href="#src-18">[18]</a> The watch may be more interesting to a specialist collector, yet the lender faces wider uncertainty about configuration, cost, buyer depth and time to sale. The result may be a lower collateral assessment, additional due diligence or no acceptable lending case.</p>
+          </div>
+        </div>
+
+        <h2 id="process" class="anchor art-h2">From enquiry to decision</h2>
+        <p>ALYRA's indicative assessment process usually moves through seven stages. The sequence can overlap and may vary by transaction, but each stage answers a different risk question.</p>
+        <ol class="art-list">
+          <li><strong>Initial eligibility review</strong> — identify the maker, model, reference, approximate value, requested amount, ownership structure and transaction purpose.</li>
+          <li><strong>Evidence collection</strong> — gather purchase and title records, serial and movement details, box and papers, archive or maker confirmation, service history, photographs, insurance and current-location information.</li>
+          <li><strong>Watch-specific inspection and valuation</strong> — verify the configuration and functionality, then analyse relevant completed sales rather than the maker or category in general.</li>
+          <li><strong>Legal and due-diligence review</strong> — confirm ownership and authority, search for existing security interests where appropriate, and assess any cross-border or regulated-material issue. <a id="cite-16" class="cite" href="#src-16">[16]</a> <a id="cite-17" class="cite" href="#src-17">[17]</a> <a class="cite" href="#src-18">[18]</a></li>
+          <li><strong>Collateral-control design</strong> — agree possession or approved storage, insurance, inspection rights, permitted use and movement, and treatment of service or insurance proceeds.</li>
+          <li><strong>Credit assessment and documentation</strong> — assess the borrower, repayment source, purpose, term and transaction risks as well as the watch.</li>
+          <li><strong>Decision and conditions</strong> — set any acceptable amount and conditions using the watch's assessed recoverable value, ALYRA's concentration limits and credit policy. Better documentation can narrow avoidable uncertainty, but approval, timing and terms remain transaction-specific.</li>
+        </ol>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>Who legally owns the watch, and which documents prove the purchase or transfer? — ALYRA must confirm that the borrower can grant security and that no undisclosed party has a better claim;</li>
+          <li>What are the exact maker, model, reference, case number, movement number, production year and edition number? — precise identity determines which sales are genuinely comparable and how the watch should be described;</li>
+          <li>Is the case, dial, hands, movement, bracelet and clasp original to the watch? — polishing, replacement parts or mixed components can materially change collector demand and value;</li>
+          <li>Which box, papers, certificates, archive extracts, invoices and service records accompany it? — completeness can support ownership, authenticity, configuration and buyer confidence;</li>
+          <li>Which completed sales are genuinely comparable, and how broad is the buyer pool? — a famous maker or isolated record does not establish repeatable liquidity for another reference;</li>
+          <li>When was the watch last serviced, by whom, what was replaced and who can service it now? — complicated and independent watches can carry substantial cost, delay and parts-availability risk;</li>
+          <li>Do all complications function correctly, and is an independent inspection available? — a visually attractive watch may still require major mechanical work that reduces net proceeds;</li>
+          <li>Where will the watch be kept, what insurance is in place, is overseas movement planned, and what is the repayment source? — control, CITES documentation, transaction purpose and repayment capacity are separate parts of the decision.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Treating maker popularity as reference liquidity</div><p>Demand for one model, dial or period may not transfer to another watch by the same name.</p></div>
+          <div class="mistake"><div class="mistake-h">Anchoring on retail price, dealer asking price or a record auction result</div><p>Each number serves a different purpose and may exclude realisation costs or exceptional provenance.</p></div>
+          <div class="mistake"><div class="mistake-h">Polishing or servicing the watch before taking specialist advice</div><p>Well-intended work can remove original finishes or replace components that collectors value.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming a complication always adds collateral value</div><p>Technical complexity can increase desirability, but it can also increase service cost, turnaround time and functional risk.</p></div>
+          <div class="mistake"><div class="mistake-h">Providing only the watch and not the evidence file</div><p>Missing invoices, certificates, spare bracelet links, tools, service records or maker correspondence can create avoidable uncertainty.</p></div>
+          <div class="mistake"><div class="mistake-h">Moving, consigning or exporting the watch without checking first</div><p>Acting outside the security documents can breach agreed controls or create permit issues for regulated wildlife products such as exotic-leather straps.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist before enquiring</h2>
+        <div class="checklist">
+          {[
+            "Collect the purchase invoice, bill of sale, estate document, trust record or other evidence of legal ownership",
+            "Record the exact maker, model, reference, case number, movement number, production year and edition number",
+            "Photograph the dial, case, case-back, movement if safely accessible, clasp, hallmarks, serials, engravings and all accessories",
+            "List every known replacement, repair, polish, dial intervention, bracelet change or factory modification",
+            "Gather the warranty card, certificate, archive extract, box, setting tools, spare links, straps and correspondence with the maker",
+            "Obtain the most recent service invoice and an estimate for any outstanding work from an appropriate authorised or specialist watchmaker",
+            "Compile completed sales for the same reference or closest valid alternatives and explain every adjustment",
+            "Provide current storage, insurance, inspection and planned-use or movement details",
+            "Check whether any strap or accessory contains CITES-regulated material before planned international movement",
+            "Define the amount and term sought and identify a realistic repayment source that does not depend on a forced sale of the watch",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <div class="src-label">Industry and market data</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-1" aria-label="Back to citation 1 in text">↑</a> <a class="body-link" href="https://www.deloitte.com/ch/en/about/press-room/swiss-watch-industry-study-2025.html" target="_blank" rel="noopener noreferrer">Deloitte Switzerland — Swiss Watch Industry Study 2025</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-2" aria-label="Back to citation 2 in text">↑</a> <a class="body-link" href="https://www.fhs.swiss/file/8081/communique_250112_e.pdf" target="_blank" rel="noopener noreferrer">Federation of the Swiss Watch Industry — Swiss watch exports in 2025</a></li>
+          <li id="src-3"><a class="src-back" href="#cite-3" aria-label="Back to citation 3 in text">↑</a> <a class="body-link" href="https://about.chrono24.com/en/press/2025-Watch-Market-Review-Stability-Returns-Speculation-Fades-and-%22Elegance%22-Becomes-the-New-Driver-of-Growth" target="_blank" rel="noopener noreferrer">Chrono24 — 2025 Watch Market Review</a></li>
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="https://about.chrono24.com/en/press/Secondary-Watch-Market-Report-H1-2025" target="_blank" rel="noopener noreferrer">Chrono24 — Secondary Watch Market Report H1 2025</a></li>
+        </ol>
+        <div class="src-label">Auction and collecting guidance</div>
+        <ol class="src-list" start="5">
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="https://www.phillips.com/article/159851339/phillips-watches-spring-2025-auction-season-results" target="_blank" rel="noopener noreferrer">Phillips — Spring 2025 Watch Auction Season Results</a></li>
+          <li id="src-6"><a class="src-back" href="#cite-6" aria-label="Back to citation 6 in text">↑</a> <a class="body-link" href="https://www.phillips.com/press/release/the-new-york-watch-auction-xiii-achieves-435-million-the-highest-total-for-a-watch-auction-in-us-history" target="_blank" rel="noopener noreferrer">Phillips — The New York Watch Auction: XIII results</a></li>
+          <li id="src-7"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.christies.com/en/stories/the-independent-watchmakers-you-need-to-know-fbd3dd7ca9564d22b9ffae65b773d28b" target="_blank" rel="noopener noreferrer">Christie's — Independent watchmakers: the names you need to know</a></li>
+          <li id="src-8"><a class="src-back" href="#cite-8" aria-label="Back to citation 8 in text">↑</a> <a class="body-link" href="https://press.christies.com/stories-in-time-a-collection-of-exceptional-watches/" target="_blank" rel="noopener noreferrer">Christie's — Stories in Time: A Collection of Exceptional Watches</a></li>
+          <li id="src-9"><a class="src-back" href="#cite-9" aria-label="Back to citation 9 in text">↑</a> <a class="body-link" href="https://www.sothebys.com/en/articles/collectors-guide-to-watch-condition" target="_blank" rel="noopener noreferrer">Sotheby's — A Collector's Guide to Assessing Watch Condition</a></li>
+          <li id="src-10"><a class="src-back" href="#cite-10" aria-label="Back to citation 10 in text">↑</a> <a class="body-link" href="https://www.phillips.com/article/50413076/provenance-and-why-it-matters" target="_blank" rel="noopener noreferrer">Phillips — Provenance and Why it Matters</a></li>
+          <li id="src-11"><a class="src-back" href="#cite-11" aria-label="Back to citation 11 in text">↑</a> <a class="body-link" href="https://www.christies.com/en/stories/how-to-store-and-maintain-your-watch-6582e6e51f984e2fb1ac226197d7d653" target="_blank" rel="noopener noreferrer">Christie's — How to store and maintain your watch</a></li>
+        </ol>
+        <div class="src-label">Manufacturer information</div>
+        <ol class="src-list" start="12">
+          <li id="src-12"><a class="src-back" href="#cite-12" aria-label="Back to citation 12 in text">↑</a> <a class="body-link" href="https://www.patek.com/en/collection/complications" target="_blank" rel="noopener noreferrer">Patek Philippe — Complications Collection</a></li>
+          <li id="src-13"><a class="src-back" href="#cite-13" aria-label="Back to citation 13 in text">↑</a> <a class="body-link" href="https://www.patek.com/en/collection/grand-complications" target="_blank" rel="noopener noreferrer">Patek Philippe — Grand Complications Collection</a></li>
+          <li id="src-14"><a class="src-back" href="#cite-14" aria-label="Back to citation 14 in text">↑</a> <a class="body-link" href="https://www.fpjourne.com/en/patrimoine" target="_blank" rel="noopener noreferrer">F.P.Journe — Patrimoine Service</a></li>
+          <li id="src-15"><a class="src-back" href="#cite-15" aria-label="Back to citation 15 in text">↑</a> <a class="body-link" href="https://www.mbandf.com/warranty" target="_blank" rel="noopener noreferrer">MB&amp;F — International Warranty and Service</a></li>
+        </ol>
+        <div class="src-label">Australian law and border guidance</div>
+        <ol class="src-list" start="16">
+          <li id="src-16"><a class="src-back" href="#cite-16" aria-label="Back to citation 16 in text">↑</a> <a class="body-link" href="https://www.legislation.gov.au/C2009A00130/latest" target="_blank" rel="noopener noreferrer">Federal Register of Legislation — Personal Property Securities Act 2009</a></li>
+          <li id="src-17"><a class="src-back" href="#cite-17" aria-label="Back to citation 17 in text">↑</a> <a class="body-link" href="https://www.ppsr.gov.au/registering" target="_blank" rel="noopener noreferrer">Personal Property Securities Register — Registering</a></li>
+          <li id="src-18"><a class="src-back" href="#cite-18" aria-label="Back to citation 18 in text">↑</a> <a class="body-link" href="https://www.dcceew.gov.au/environment/wildlife-trade/non-commerical/travellers-shoppers" target="_blank" rel="noopener noreferrer">DCCEEW — Travellers and online shoppers (CITES)</a></li>
+        </ol>
+        <div class="src-label">Secondary-market data</div>
+        <ol class="src-list" start="19">
+          <li id="src-19"><a class="src-back" href="#cite-19" aria-label="Back to citation 19 in text">↑</a> <a class="body-link" href="https://watchcharts.com/articles/p/8823/september-2025-watch-market-update" target="_blank" rel="noopener noreferrer">WatchCharts — September 2025 Watch Market Update</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine watches, luxury goods and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Considering liquidity against an independent or complicated watch?</h2>
+      <p class="art-cta-lead">
+        Submit the watch's details for private review. An ALYRA specialist will assess configuration,
+        market evidence, condition and documentation, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 26px; }
+  .compare-item { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 3px; padding: 22px 24px; }
+  .compare-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 10px; }
+  .compare-item p { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .toc-mobile { display: block; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>
