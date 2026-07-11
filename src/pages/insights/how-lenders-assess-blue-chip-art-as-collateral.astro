@@ -1,0 +1,539 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/loanrange-fineart.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "how-lenders-assess-blue-chip-art-as-collateral";
+const path = `/insights/${slug}/`;
+const title = "How lenders assess blue-chip art as collateral | ALYRA";
+const description =
+  "How lenders assess blue-chip paintings as loan collateral — provenance, authentication, market depth, condition and recoverable value, without requiring a sale.";
+const ogImage = "/assets/og-fineart.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["tests", "Three tests shape the decision"],
+  ["price", "Price is not collateral value"],
+  ["provenance", "Provenance and title"],
+  ["catalogue", "Catalogue status"],
+  ["depth", "Market depth"],
+  ["condition", "Condition and control"],
+  ["comparison", "Same artist, different collateral"],
+  ["process", "From enquiry to decision"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Can I borrow against a painting without selling it?", a: "Potentially. An art-secured loan can provide liquidity while the owner retains the painting, subject to a security interest and agreed custody, insurance, inspection and movement conditions. Approval still depends on the borrower, the work, the evidence file and the proposed transaction." },
+  { q: "How do lenders decide how much blue-chip art can support?", a: "There is no universal percentage. A lender estimates net recoverable value from relevant completed sales, adjusts for the specific work, deducts likely realisation costs and allows for time, market depth and uncertainty. It then applies its own advance, concentration and credit policy, so the result is normally below an optimistic asking, insurance or auction figure." },
+  { q: "What counts as blue-chip art?", a: "“Blue-chip” generally describes artists and works with sustained recognition, recurring demand and an established resale market. It is not a legal classification or a guarantee of liquidity. The specific painting's period, medium, subject, quality, provenance, condition and buyer pool remain decisive." },
+  { q: "Does a catalogue raisonné entry guarantee acceptance?", a: "No. A catalogue raisonné entry can materially support attribution because such projects aim to establish reliable lists and histories of an artist's authentic works. The lender will still review title, provenance, condition, market evidence and the authority and scope of the publication or archive." },
+  { q: "Can a painting with gaps in provenance be used as collateral?", a: "Possibly, but the gaps must be explained and assessed. Missing periods can raise questions about authenticity, title, theft, restitution, consignment or lawful export, so additional records or specialist research may be required. An unresolved material risk may reduce the collateral assessment or make the work unacceptable." },
+  { q: "Does restoration reduce a painting's lending value?", a: "Not automatically. Appropriate, well-documented treatment may preserve a work, while extensive, unstable or undisclosed intervention can reduce buyer confidence or increase costs. A current specialist condition report and treatment history are more useful than a simple statement that the painting has been “restored”." },
+  { q: "Can I keep a pledged painting at home?", a: "Custody arrangements vary by lender and transaction. Some structures require specialist storage; others may permit continued display subject to approved insurance, security, environmental, inspection and movement controls. The arrangement should be agreed before the documents are signed." },
+  { q: "What documents are usually needed for an art-backed loan?", a: "Typical documents include proof of ownership, a provenance chronology, catalogue raisonné or authentication material, high-resolution images, a current condition report, relevant sale evidence, insurance details and storage information. Corporate, trust, estate and identity documents may also be required depending on the owner and transaction." },
+  { q: "Can a pledged Australian painting be moved overseas?", a: "Only if the security documents permit the movement and all legal requirements are met. Certain Australian protected objects require an export permit, and the official assessment process can take many months. Planned cross-border movement should be disclosed before the loan is documented." },
+  { q: "How long does an art-backed lending assessment take?", a: "There is no fixed timeframe. A well-documented painting with clear title, recognised attribution, useful comparables and a current condition report is generally easier to assess than a work requiring provenance research, technical analysis or legal review. Timing also depends on valuation access, custody arrangements, credit assessment and document negotiation." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Blue-chip art as collateral" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "How lenders assess blue-chip art as collateral",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-07-12",
+    dateModified: "2026-07-12",
+    inLanguage: "en-AU",
+    articleSection: "Art",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      url: absoluteUrl("/about/"),
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="A gilt-framed oil painting of horses crossing a river" ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Art</span>
+      </div>
+      <h1 class="art-h1">How lenders assess blue-chip art as collateral</h1>
+      <p class="art-lead">
+        A significant painting can support liquidity without being sold — but only after it passes
+        three tests. How identity, liquidity and control turn market evidence into a lending decision.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>12 July 2026</span><span class="meta-sep" aria-hidden="true"></span><span>11 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="A framed nineteenth-century oil painting of a moonlit harbour scene" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>A lender underwrites the specific painting — not the artist's name in the abstract.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
+        <p class="art-intro"><span class="dropcap">A</span> famous name on the frame feels like it should settle the question. In practice, a lender assessing a blue-chip painting is not underwriting the artist at all — it is underwriting one specific object, and the uncertainty around selling that object if it ever had to.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">Lenders do not start with a universal loan-to-value percentage. They identify and verify the exact work, estimate likely net sale proceeds from relevant completed transactions, and adjust for condition, market depth, costs, time and uncertainty.</p>
+            <p class="answer-sub">Provenance, clean title, catalogue raisonné or other authentication status, custody and insurance determine how confidently that recoverable value can be supported. The borrower, repayment source and transaction are assessed separately, so strong collateral does not guarantee approval or a particular advance.</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>Art-secured lending can provide liquidity without an immediate sale of the painting. The core assessment can be organised into three tests: identity (what the work is and who owns it), liquidity (how and to whom it could be sold), and control (how it will be protected and made available if required). This article explains how those tests turn market evidence into a conservative view of recoverable value, and includes a worked hypothetical comparison. ALYRA's <a class="body-link" href="/loans/fine-art/">fine art lending page</a> sets out how a loan itself proceeds end to end.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, legal opinion, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your artwork is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>"Blue-chip" describes a market profile, not an automatic lending category; the specific work must still pass identity, liquidity and control checks.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>There is no universal loan-to-value percentage for art; lenders focus on plausible net recoverable proceeds rather than purchase price, insurance value or an asking price.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Provenance documents the ownership history, while clean title addresses whether the borrower can legally grant security; both matter.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Catalogue raisonné inclusion can strengthen attribution, but it does not replace provenance, condition, title or object-level inspection.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Market depth is shown by relevant, repeatable transactions and a credible buyer pool, not by the artist's single highest auction result.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Condition, restoration, storage, insurance and movement restrictions affect saleability, costs and the lender's ability to control the collateral.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>The most controllable factor for an owner is the quality of the evidence file: complete records narrow uncertainty, although they never guarantee approval.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This article is for collectors, estates and family offices considering a loan secured by a significant painting. It is most useful where the work has an observable secondary market and the owner wants to compare secured borrowing with a sale, consignment or another source of liquidity.</p>
+        <p>It is not a substitute for object-specific valuation, legal due diligence or credit assessment.</p>
+
+        <h2 id="method" class="anchor art-h2">How this was prepared</h2>
+        <p>This article was prepared from current art-market data, international valuation standards, provenance and catalogue raisonné resources, conservation guidance, stolen-art databases, Australian legislation and regulator guidance. <a id="cite-all" class="cite" href="#sources">[1]–[16]</a> It adds an original identity–liquidity–control framework and a hypothetical comparison to show how public evidence is applied.</p>
+        <p>It does not describe ALYRA's confidential credit policy; actual decisions require object-specific valuation, legal due diligence and credit assessment.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Factor</th><th>Evidence a lender examines</th><th>Typical effect on collateral assessment</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Object identity</td><td>Exact artist, title, date, medium, dimensions, signature, labels and images.</td><td>Precise identification supports valuation, insurance and enforceable security; ambiguity can stop the assessment.</td></tr>
+              <tr><td class="tcell-head">Ownership and provenance</td><td>Invoices, bills of sale, estate or trust records, published history and object labels.</td><td>A coherent chain supports title and authenticity; unexplained gaps increase legal and research risk.</td></tr>
+              <tr><td class="tcell-head">Attribution and catalogue status</td><td>Catalogue raisonné entry, foundation or estate archive, expert opinion and technical analysis.</td><td>Authoritative evidence can narrow attribution uncertainty; weak or conflicting evidence can reduce value or eligibility.</td></tr>
+              <tr><td class="tcell-head">Comparable sales</td><td>Recent completed sales for genuinely similar works, adjusted for period, medium, size, subject and condition.</td><td>Several relevant transactions support a defensible range; distant or cherry-picked records create false precision.</td></tr>
+              <tr><td class="tcell-head">Market depth</td><td>Frequency of trade, number of credible buyers, venue quality, price consistency and alternative sale routes.</td><td>Broader demand supports confidence; thin or concentrated markets require a larger uncertainty margin.</td></tr>
+              <tr><td class="tcell-head">Condition and restoration</td><td>Current specialist condition report, treatment records and high-resolution images.</td><td>Stable, disclosed condition supports saleability; serious damage or undocumented intervention can reduce proceeds.</td></tr>
+              <tr><td class="tcell-head">Custody and insurance</td><td>Approved location, security, insurance, inspection rights and movement controls.</td><td>Reliable control reduces loss, substitution and access risk; weak arrangements may reduce or prevent an advance.</td></tr>
+              <tr><td class="tcell-head">Legal and export constraints</td><td>Security documents, PPSR approach, existing interests and cultural-property checks.</td><td>Competing claims or export restrictions can delay or limit realisation and may require legal advice.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="tests" class="anchor art-h2">Three tests shape the decision</h2>
+        <p>A lender is not underwriting an artist's name in the abstract. It is underwriting a specific object and the uncertainty around selling that object. A useful way to organise the assessment is through three linked tests: identity, liquidity and control.</p>
+        <p>Identity asks whether the work can be precisely identified, attributed and legally pledged. Liquidity asks whether there are relevant completed sales, credible venues and a sufficiently broad buyer pool to support an estimate of net proceeds. Control asks whether the same work can be insured, inspected, protected from unauthorised movement and made available if enforcement becomes necessary.</p>
+        <p>The tests are cumulative. A highly marketable painting may still be unsuitable if title is disputed; a well-documented work may support little capital if the buyer market is thin. The lender also assesses the borrower, repayment source and proposed transaction, so the collateral analysis is necessary but not sufficient.</p>
+
+        <h2 id="price" class="anchor art-h2">Price is not collateral value</h2>
+        <p>A painting can carry several defensible numbers at the same time. The purchase price records a past transaction; a dealer asking price is an offer; an insurance figure may reflect replacement or agreed-value considerations; and an auction estimate is prepared for a particular sale strategy and excludes some transaction costs. International Valuation Standards require the basis, intended use, data and reporting of a valuation to be clear. <a id="cite-2" class="cite" href="#src-2">[2]</a> <a id="cite-9" class="cite" href="#src-9">[9]</a> These numbers are not interchangeable.</p>
+        <p>For secured lending, the analytical sequence is: establish a range from relevant completed sales; adjust for the specific work's period, medium, size, subject, provenance and condition; deduct likely selling, transport, storage, insurance, conservation and legal costs; then allow for time, volatility and uncertainty. The result is an estimate of net recoverable value, not a promise of a sale price.</p>
+        <p>The lender then applies its own concentration, advance and credit policy. This is why there is no universal loan-to-value percentage. A recent, repeatable sale of a genuinely comparable work can be more useful than an artist's record, a gallery asking price or an insurance schedule.</p>
+        <blockquote class="pull">The question is never what the artist's record is — it is what this painting could realistically net, and how sure anyone can be of that.</blockquote>
+
+        <h2 id="provenance" class="anchor art-h2">Provenance supports title and identity</h2>
+        <p>Provenance is the documented history of an artwork's ownership and movement. The Getty Provenance Index enables researchers to trace ownership through records such as dealer stock books, sales catalogues and collection files. <a id="cite-3" class="cite" href="#src-3">[3]</a> Provenance can support attribution and market acceptance, but it is not the same as legal title.</p>
+        <p>As a practical matter, evidence tends to carry more weight when it is contemporaneous and independently verifiable. Primary transfer documents such as invoices, bills of sale, estate papers or trust records usually carry more weight than an owner's recollection. Published auction or exhibition records, dealer stock books, labels, stamps, customs documents and collection inventories can corroborate the chain.</p>
+        <p>A gap is not automatically fatal, but an unexplained gap can raise questions about authenticity, theft, restitution, consignment or lawful export. Searches of the Art Loss Register and INTERPOL's Stolen Works of Art Database are established due-diligence tools; neither search replaces legal and provenance review. <a id="cite-6" class="cite" href="#src-6">[6]</a> <a id="cite-7" class="cite" href="#src-7">[7]</a></p>
+        <p>In Australia, a security interest is an interest in personal property that secures payment or performance of an obligation, and registrations on the PPSR provide public notice of security interests. <a id="cite-12" class="cite" href="#src-12">[12]</a> <a id="cite-13" class="cite" href="#src-13">[13]</a> <a id="cite-14" class="cite" href="#src-14">[14]</a> The lender must still confirm ownership, authority and any existing pledge, lien, consignment, estate or family claim. The correct documentation and registration approach is transaction-specific and may require legal advice.</p>
+
+        <h2 id="catalogue" class="anchor art-h2">Catalogue status supports attribution</h2>
+        <p>A catalogue raisonné is a scholarly project that aims to establish a reliable list of an artist's authentic works, together with chronology and usually provenance, bibliographic and exhibition histories. <a id="cite-4" class="cite" href="#src-4">[4]</a> A catalogue may cover only particular media, periods or bodies of work, so its scope must be checked before drawing conclusions.</p>
+        <p>A matching entry number and description can make a painting easier to identify and compare with recognised examples. Authentication is broader than a catalogue search: it may combine provenance research, visual examination, scientific analysis and expert opinion. <a id="cite-5" class="cite" href="#src-5">[5]</a> Where no catalogue exists, a lender may seek an artist foundation or estate archive, a recognised specialist opinion or technical evidence.</p>
+        <p>Absence from a catalogue does not automatically establish that a work is inauthentic. The project may be incomplete, closed, limited in scope or still in preparation. Even so, absence creates an additional question to resolve. A certificate is only as useful as the authority of its issuer and the precision of its wording; no catalogue entry or certificate cures defective title, weak provenance or poor condition.</p>
+
+        <h2 id="depth" class="anchor art-h2">Market depth determines liquidity</h2>
+        <p>Market depth is the capacity of a market to absorb a work without depending on one buyer or one unusually favourable sale. A lender examines the frequency and relevance of completed transactions, the number and quality of sale venues, the breadth of the buyer pool, price consistency and the availability of more than one credible exit route.</p>
+        <p>A deep market offers several useful comparisons across recognised venues. A thin market can contain spectacular records but few repeatable transactions, long gaps between sales or heavy dependence on a small group of collectors. The lender therefore tests how sharply prices change with period, medium, subject, size, provenance and condition rather than relying on the artist's name alone. <a id="cite-8" class="cite" href="#src-8">[8]</a> <a class="cite" href="#src-9">[9]</a></p>
+        <p>The 2026 Art Basel and UBS report estimated global art-market sales at US$59.6 billion in 2025, up 4% year on year, with public auction sales up 9%. It also described the recovery as uneven, with growth concentrated at the high end. <a id="cite-1" class="cite" href="#src-1">[1]</a> That is useful market context, but it does not value an individual painting; the relevant artist, segment and work still need separate analysis.</p>
+
+        <h2 id="condition" class="anchor art-h2">Condition and control affect recovery</h2>
+        <p>A condition report is a written description of an artwork's physical state and may address damage, fading, restoration and repairs. <a id="cite-10" class="cite" href="#src-10">[10]</a> Conservators document and analyse materials, manufacturing methods, condition and treatment history. <a id="cite-11" class="cite" href="#src-11">[11]</a> Restoration is not automatically negative; the key questions are its extent, quality, stability and disclosure, and whether buyers would price the work differently.</p>
+        <p>The collateral file should identify the work through artist, title, date, medium, dimensions, signature, labels, inventory numbers and detailed images of the front, reverse and frame. Custody arrangements may involve specialist storage or continued display, subject to agreed insurance, security, environmental, inspection and movement conditions. Any planned exhibition, treatment, consignment or relocation should be disclosed before documentation is finalised.</p>
+        <p>Security documentation and any PPSR registration should match the transaction and the identified work. Cross-border movement can also affect the exit analysis: certain Australian protected objects require an export permit, and the official process can take many months. <a id="cite-15" class="cite" href="#src-15">[15]</a> <a id="cite-16" class="cite" href="#src-16">[16]</a> A restriction that narrows access to international buyers or delays transport may reduce flexibility even when the domestic market remains viable.</p>
+
+        <h2 id="comparison" class="anchor art-h2">Same artist, different collateral</h2>
+        <p>Consider two hypothetical paintings by the same established artist. Both have similar insurance values, but the evidence around them is different. This comparison is illustrative only and does not imply a lending ratio or outcome.</p>
+        <div class="compare">
+          <div class="compare-item">
+            <div class="compare-h">Work A — a narrow range</div>
+            <p>A complete purchase and ownership file, a continuous published provenance, a matching catalogue raisonné entry, a current condition report, several recent sales from the same period and series, and approved storage and insurance. Those facts do not guarantee approval, but they allow the lender to identify the object, test the attribution and estimate a narrower range of plausible net proceeds.</p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-h">Work B — wide uncertainty</div>
+            <p>Only a recent invoice, a long unexplained provenance gap, no confirmed catalogue status, an old condition report and one distant record price as its main comparison. The artist may be equally famous, yet the lender faces wider uncertainty about identity, title, saleability and costs. The result may be a lower collateral assessment, additional due diligence, different custody requirements or no acceptable lending case.</p>
+          </div>
+        </div>
+
+        <h2 id="process" class="anchor art-h2">From enquiry to decision</h2>
+        <p>A well-run assessment usually moves through seven stages. The sequence can overlap, but each stage answers a different risk question.</p>
+        <ol class="art-list">
+          <li><strong>Initial eligibility review</strong> — identify the artist, work type, approximate value, requested amount, ownership structure and transaction purpose.</li>
+          <li><strong>Evidence collection</strong> — gather title, provenance, catalogue or authentication records, condition information, images, insurance and current-location details.</li>
+          <li><strong>Object-specific valuation</strong> — analyse relevant completed sales and other credible market evidence, adjusting for the precise work rather than the artist in general.</li>
+          <li><strong>Legal and due-diligence review</strong> — test ownership, authority, existing interests, stolen-art databases and any cultural-property or export constraints.</li>
+          <li><strong>Collateral-control design</strong> — agree object identification, possession or storage, insurance, inspection rights, permitted movement and treatment of insurance proceeds.</li>
+          <li><strong>Credit assessment and documentation</strong> — assess the borrower, repayment source, purpose, term and transaction risks as well as the painting.</li>
+          <li><strong>Decision and conditions</strong> — set any acceptable amount and conditions using the lender's collateral value, concentration limits and credit policy. Approval, timing and terms remain transaction-specific.</li>
+        </ol>
+        <p>The owner can improve the quality and efficiency of the review by preparing a coherent evidence file before approaching a lender. Better documentation narrows avoidable uncertainty; it does not remove market, legal or credit risk and it does not guarantee an advance.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>Who is the legal owner, and which documents prove the chain of title? — the lender must confirm that the borrower can grant security and that no undisclosed party has a better claim;</li>
+          <li>What are the exact artist, title, date, medium, dimensions, signature, labels and current location? — precise identification is essential for valuation, insurance, security documentation and later verification;</li>
+          <li>Is the work included in a catalogue raisonné, foundation archive or recognised authentication record? — authoritative evidence can reduce attribution uncertainty, but its scope and wording must be checked;</li>
+          <li>Where are the gaps in provenance, and what evidence supports each transfer? — gaps can expose authenticity, theft, restitution, consignment or export issues;</li>
+          <li>Which completed sales are genuinely comparable, and why? — period, medium, size, subject, provenance and condition determine whether a transaction is useful evidence;</li>
+          <li>Has the painting been damaged, restored or treated, and is there a current specialist condition report? — condition affects saleability, conservation cost, transport and buyer confidence;</li>
+          <li>Where will the work be kept, what insurance is in place, and is any movement or export planned? — the lender needs reliable control and must understand any legal or practical limit on realisation;</li>
+          <li>What amount and term are sought, and what is the expected repayment source? — the painting is only one part of the decision; the transaction must also be supportable from a credit and repayment perspective.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Asking for a percentage before establishing the work</div><p>A headline loan-to-value ratio is meaningless until identity, title, market evidence and condition are tested.</p></div>
+          <div class="mistake"><div class="mistake-h">Treating an insurance value, asking price or auction record as collateral value</div><p>Each number answers a different question and may exclude realisation costs.</p></div>
+          <div class="mistake"><div class="mistake-h">Relying on a signature or informal certificate alone</div><p>Attribution usually requires a wider file including provenance, recognised scholarship, object inspection and, where necessary, technical analysis.</p></div>
+          <div class="mistake"><div class="mistake-h">Waiting until an application to assemble provenance</div><p>Missing invoices, estate papers, catalogue references or prior reports can create avoidable delay and uncertainty.</p></div>
+          <div class="mistake"><div class="mistake-h">Minimising damage or restoration</div><p>Undisclosed treatment can damage credibility and may be priced more severely than stable, professionally documented conservation.</p></div>
+          <div class="mistake"><div class="mistake-h">Moving, consigning, treating or exporting the work without checking first</div><p>Acting outside the security documents or permit requirements can breach agreed controls or restrict the lender's rights.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist before enquiring</h2>
+        <div class="checklist">
+          {[
+            "Collect the purchase invoice, bill of sale, estate document, trust record or other evidence of legal ownership",
+            "Record the exact artist, title, date, medium, dimensions, signature, labels, stamps and inventory numbers",
+            "Prepare a chronological provenance list and attach the document supporting each transfer",
+            "Locate the catalogue raisonné entry, foundation archive number, certificate or recognised expert opinion, if one exists",
+            "Obtain current high-resolution images of the front, reverse, frame, labels, inscriptions and signature",
+            "Arrange a recent condition report and gather all conservation, restoration and treatment records",
+            "Compile relevant completed sales and explain why each is comparable; separate them from asking prices and record results",
+            "Provide current storage, security, insurance, inspection and planned-movement details",
+            "Disclose every pledge, lien, consignment, dispute, estate issue, restitution concern and possible export restriction",
+            "Define the amount and term sought and identify a realistic repayment source that does not depend on a forced sale of the painting",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <div class="src-label">Market data and valuation standards</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-1" aria-label="Back to citation 1 in text">↑</a> <a class="body-link" href="https://www.artbasel.com/stories/the-art-basel-and-ubs-global-art-market-report-2026" target="_blank" rel="noopener noreferrer">Art Basel and UBS — Global Art Market Report 2026</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-2" aria-label="Back to citation 2 in text">↑</a> <a class="body-link" href="https://ivsc.org/standards/" target="_blank" rel="noopener noreferrer">International Valuation Standards Council — Standards</a></li>
+        </ol>
+        <div class="src-label">Provenance, authentication and due diligence</div>
+        <ol class="src-list" start="3">
+          <li id="src-3"><a class="src-back" href="#cite-3" aria-label="Back to citation 3 in text">↑</a> <a class="body-link" href="https://www.getty.edu/databases-tools-and-technologies/provenance/" target="_blank" rel="noopener noreferrer">Getty Research Institute — Getty Provenance Index</a></li>
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="https://www.catalogueraisonne.org/about/" target="_blank" rel="noopener noreferrer">Catalogue Raisonné Scholars Association — About</a></li>
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="https://www.christies.com/en/help/auction-help-library/how-auction-houses-authenticate-artwork" target="_blank" rel="noopener noreferrer">Christie's — How auction houses authenticate artwork</a></li>
+          <li id="src-6"><a class="src-back" href="#cite-6" aria-label="Back to citation 6 in text">↑</a> <a class="body-link" href="https://www.artloss.com/faqs/" target="_blank" rel="noopener noreferrer">Art Loss Register — FAQs</a></li>
+          <li id="src-7"><a class="src-back" href="#cite-7" aria-label="Back to citation 7 in text">↑</a> <a class="body-link" href="https://www.interpol.int/Crimes/Cultural-heritage-crime/Stolen-Works-of-Art-Database" target="_blank" rel="noopener noreferrer">INTERPOL — Stolen Works of Art Database</a></li>
+        </ol>
+        <div class="src-label">Auction and condition guidance</div>
+        <ol class="src-list" start="8">
+          <li id="src-8"><a class="src-back" href="#cite-8" aria-label="Back to citation 8 in text">↑</a> <a class="body-link" href="https://www.christies.com/en/help/auction-help-library/how-do-auction-houses-work" target="_blank" rel="noopener noreferrer">Christie's — How auction houses work</a></li>
+          <li id="src-9"><a class="src-back" href="#cite-9" aria-label="Back to citation 9 in text">↑</a> <a class="body-link" href="https://www.christies.com/en/help/glossary" target="_blank" rel="noopener noreferrer">Christie's — Auction terminology</a></li>
+          <li id="src-10"><a class="src-back" href="#cite-10" aria-label="Back to citation 10 in text">↑</a> <a class="body-link" href="https://www.christies.com/en/help/auction-help-library/what-are-condition-reports" target="_blank" rel="noopener noreferrer">Christie's — What are condition reports?</a></li>
+          <li id="src-11"><a class="src-back" href="#cite-11" aria-label="Back to citation 11 in text">↑</a> <a class="body-link" href="https://nga.gov.au/art-artists/research-archives/conservation/" target="_blank" rel="noopener noreferrer">National Gallery of Australia — Conservation</a></li>
+        </ol>
+        <div class="src-label">Australian law and regulation</div>
+        <ol class="src-list" start="12">
+          <li id="src-12"><a class="src-back" href="#cite-12" aria-label="Back to citation 12 in text">↑</a> <a class="body-link" href="https://www.legislation.gov.au/C2009A00130/latest" target="_blank" rel="noopener noreferrer">Federal Register of Legislation — Personal Property Securities Act 2009</a></li>
+          <li id="src-13"><a class="src-back" href="#cite-13" aria-label="Back to citation 13 in text">↑</a> <a class="body-link" href="https://www.ppsr.gov.au/registering" target="_blank" rel="noopener noreferrer">Personal Property Securities Register — Registering</a></li>
+          <li id="src-14"><a class="src-back" href="#cite-14" aria-label="Back to citation 14 in text">↑</a> <a class="body-link" href="https://www.asic.gov.au/for-business-and-companies/companies/deregistered-company-property/security-interest/" target="_blank" rel="noopener noreferrer">ASIC — Security interest</a></li>
+          <li id="src-15"><a class="src-back" href="#cite-15" aria-label="Back to citation 15 in text">↑</a> <a class="body-link" href="https://www.arts.gov.au/what-we-do/cultural-heritage/movable-cultural-heritage/exporting-cultural-property-australia" target="_blank" rel="noopener noreferrer">Office for the Arts — Exporting cultural property from Australia</a></li>
+          <li id="src-16"><a class="src-back" href="#cite-16" aria-label="Back to citation 16 in text">↑</a> <a class="body-link" href="https://www.legislation.gov.au/F2018L01710/latest" target="_blank" rel="noopener noreferrer">Federal Register of Legislation — Protection of Movable Cultural Heritage Regulations 2018</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine art, fine watches and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, legal enforceability, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Considering liquidity against a significant painting?</h2>
+      <p class="art-cta-lead">
+        Submit the work's details for private review. An ALYRA specialist will assess provenance,
+        market evidence, condition and documentation, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 26px; }
+  .compare-item { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 3px; padding: 22px 24px; }
+  .compare-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 10px; }
+  .compare-item p { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .toc-mobile { display: block; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

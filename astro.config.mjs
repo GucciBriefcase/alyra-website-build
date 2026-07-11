@@ -37,6 +37,7 @@ export default defineConfig({
           "/insights/which-prestige-car-marques-hold-value-australia/": "2026-07-11",
           "/insights/how-much-can-i-borrow-against-a-rolex-australia/": "2026-07-11",
           "/insights/how-watch-service-history-affects-your-loan-offer/": "2026-07-11",
+          "/insights/how-lenders-assess-blue-chip-art-as-collateral/": "2026-07-12",
         }[new URL(item.url).pathname];
         if (lastmod) item.lastmod = lastmod;
         return item;
