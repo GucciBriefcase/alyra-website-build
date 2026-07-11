@@ -68,6 +68,7 @@ const schema = [
       "@type": "Person",
       name: "Eden John",
       jobTitle: "Asset Specialist",
+      url: absoluteUrl("/about/"),
       worksFor: { "@id": absoluteUrl("/") + "#organization" },
     },
     publisher: { "@id": absoluteUrl("/") + "#organization" },
@@ -133,6 +134,14 @@ const schema = [
       </aside>
 
       <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
         <p class="art-intro"><span class="dropcap">A</span> service record feels like it should only ever help. In practice, service history moves a loan offer in both directions — and on some watches, the wrong service is the single most expensive decision an owner ever makes.</p>
 
         <section id="answer" class="anchor">
@@ -211,7 +220,7 @@ const schema = [
 
         <h2 id="offer" class="anchor art-h2">How this fits into your loan offer</h2>
         <p>A loan amount is set against a watch's realisable market value, and service history is one of the inputs a specialist weighs when forming a view of that value — alongside brand, reference, condition, originality, provenance and demand.</p>
-        <p>It is assessed as part of the same specialist review that leads to a written loan offer, covering the loan amount, fees, interest, repayment terms, redemption rights, and what happens if the loan is not repaid, before anything proceeds. If a loan does proceed, the watch is documented and held securely for the agreed term, and is at risk if repayment obligations are not met.</p>
+        <p>It is assessed as part of the same specialist review that leads to a written loan offer, covering the loan amount, fees, interest, repayment terms, redemption rights, and what happens if the loan is not repaid, before anything proceeds. If a loan does proceed, the watch is documented and held securely for the agreed term, and is at risk if repayment obligations are not met. ALYRA's <a class="body-link" href="/loans/luxury-watches/">luxury watch lending page</a> sets out the full process end to end.</p>
 
         <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
         <ul class="art-list">
@@ -428,8 +437,17 @@ const schema = [
   .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
   .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
 
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
   @media (max-width: 960px) {
     .toc-rail { display: none; }
+    .toc-mobile { display: block; }
     .art-grid { grid-template-columns: 1fr; }
     .checklist { grid-template-columns: 1fr; }
   }

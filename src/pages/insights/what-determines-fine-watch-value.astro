@@ -12,7 +12,7 @@ const slug = "what-determines-fine-watch-value";
 const path = `/insights/${slug}/`;
 const title = "What actually determines the value of a fine watch in 2026 | ALYRA";
 const description =
-  "An asset specialist explains how a fine watch's realisable value is assessed in 2026 — across brand, reference, condition, originality, documentation, provenance, service history, market demand and sale channel.";
+  "How a fine watch's realisable value is assessed in 2026 — brand, reference, condition, originality, documentation, provenance, demand and sale channel.";
 const ogImage = "/assets/og-watches.jpg";
 
 const toc = [
@@ -65,6 +65,7 @@ const schema = [
       "@type": "Person",
       name: "Eden John",
       jobTitle: "Asset Specialist",
+      url: absoluteUrl("/about/"),
       worksFor: { "@id": absoluteUrl("/") + "#organization" },
     },
     publisher: { "@id": absoluteUrl("/") + "#organization" },
@@ -131,6 +132,14 @@ const schema = [
       </aside>
 
       <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
         <p class="art-intro"><span class="dropcap">A</span> fine watch can be worth a great deal — or far less than its owner imagines. The difference rarely comes down to brand alone. It is decided by condition, originality, documentation, demand and the way the watch is eventually sold.</p>
 
         <section id="answer" class="anchor">
@@ -167,7 +176,7 @@ const schema = [
           <li>owners considering selling a fine watch;</li>
           <li>collectors reviewing the value of a watch portfolio;</li>
           <li>beneficiaries or executors dealing with inherited watches;</li>
-          <li>clients considering whether a fine watch may be relevant to a private asset assessment;</li>
+          <li>clients considering whether a fine watch may be relevant to a <a class="body-link" href="/loans/luxury-watches/">private asset assessment</a>;</li>
           <li>people comparing dealer offers, auction estimates or online asking prices.</li>
         </ul>
         <p>It is not a substitute for physical inspection, authentication, movement review, legal advice, tax advice, insurance advice or a formal written valuation.</p>
@@ -505,8 +514,17 @@ const schema = [
   .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
   .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
 
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
   @media (max-width: 960px) {
     .toc-rail { display: none; }
+    .toc-mobile { display: block; }
     .art-grid { grid-template-columns: 1fr; }
     .checklist { grid-template-columns: 1fr; }
   }

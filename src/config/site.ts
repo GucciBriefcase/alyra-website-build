@@ -80,9 +80,9 @@ export const SITE = {
 
   // ---- Default metadata ----------------------------------------------------
   defaultTitle:
-    "ALYRA — Private Asset-Based Lending | Loans Against Watches, Jewellery, Art & Gold",
+    "Private Loans Against Watches, Jewellery, Art & Gold | ALYRA",
   defaultDescription:
-    "ALYRA provides discreet private loans from $50,000 to $5 million secured against high-value watches, jewellery, diamonds, fine art, classic cars and gold bullion. Keep your asset — access funds confidentially. Australia-wide enquiries.",
+    "Discreet private loans from $50,000 to $5 million secured against fine watches, jewellery, art, cars and gold bullion. Keep your asset. Australia-wide.",
   /** Default Open Graph / social share image (relative to site root). */
   defaultOgImage: "/assets/og-image.jpg",
   locale: "en-AU",

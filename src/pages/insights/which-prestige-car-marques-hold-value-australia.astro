@@ -10,9 +10,9 @@ import specialistImg from "../../assets/images/specialist.jpg";
 
 const slug = "which-prestige-car-marques-hold-value-australia";
 const path = `/insights/${slug}/`;
-const title = "Which prestige car marques actually hold their value in Australia in 2026 | ALYRA";
+const title = "Which prestige car marques hold their value in Australia | ALYRA";
 const description =
-  "Ferrari, Porsche, Lamborghini and selected prestige marques can hold value well in Australia, but the badge is only the beginning. Model, specification, kilometres, condition, documentation, Australian delivery and sale channel decide the real number.";
+  "Which prestige marques hold value in Australia — and why model, specification, kilometres, condition, documentation and sale channel decide the real number.";
 const ogImage = "/assets/og-cars.jpg";
 
 const toc = [
@@ -72,6 +72,7 @@ const schema = [
       "@type": "Person",
       name: "Eden John",
       jobTitle: "Asset Specialist",
+      url: absoluteUrl("/about/"),
       worksFor: { "@id": absoluteUrl("/") + "#organization" },
     },
     publisher: { "@id": absoluteUrl("/") + "#organization" },
@@ -138,6 +139,14 @@ const schema = [
       </aside>
 
       <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
         <p class="art-intro"><span class="dropcap">I</span>n Australia, the cars most likely to retain value are not simply the most expensive or the most recognisable. The strongest examples usually combine global demand, local buyer depth, factory right-hand drive, limited supply, desirable specification, complete service records and a sale channel that reaches qualified buyers.</p>
         <p>Ferrari and Porsche usually lead the conversation. Selected models from Lamborghini, McLaren, Mercedes-AMG, Aston Martin, Rolls-Royce, Bentley and BMW M can also perform well in the right circumstances. But the badge alone does not protect value.</p>
         <p>The final number is shaped by the exact model, specification, kilometres, condition, service history, ownership history, Australian delivery status, import documentation, finance status and how quickly the owner wants to realise value.</p>
@@ -179,7 +188,7 @@ const schema = [
           <li>owners of prestige, exotic or high-end performance cars in Australia;</li>
           <li>collectors reviewing the value of a luxury car portfolio;</li>
           <li>executors or beneficiaries dealing with high-value vehicles;</li>
-          <li>private clients considering whether a vehicle may be relevant to an asset assessment;</li>
+          <li>private clients considering whether a vehicle may be relevant to an <a class="body-link" href="/loans/classic-and-luxury-cars/">asset assessment</a>;</li>
           <li>owners comparing dealer offers, auction estimates, online listings or private-sale interest;</li>
           <li>buyers trying to understand which prestige marques have stronger resale depth.</li>
         </ul>
@@ -677,8 +686,17 @@ const schema = [
   .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
   .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
 
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
   @media (max-width: 960px) {
     .toc-rail { display: none; }
+    .toc-mobile { display: block; }
     .art-grid { grid-template-columns: 1fr; }
     .checklist { grid-template-columns: 1fr; }
   }

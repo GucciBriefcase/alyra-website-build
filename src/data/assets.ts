@@ -108,6 +108,9 @@ export interface Asset {
     blurb: string;
     ctaLabel: string;
   };
+
+  /** Related Insights articles, rendered as "Related reading" on the loan page. */
+  insights?: { title: string; href: string }[];
 }
 
 export const ASSETS: Asset[] = [
@@ -189,6 +192,11 @@ export const ASSETS: Asset[] = [
       blurb: "Rolex, Patek Philippe, Audemars Piguet, Richard Mille, and other collectible watches.",
       ctaLabel: "Lending Against Watches",
     },
+    insights: [
+      { title: "How much can I borrow against a Rolex in Australia?", href: "/insights/how-much-can-i-borrow-against-a-rolex-australia/" },
+      { title: "How watch service history affects your loan offer", href: "/insights/how-watch-service-history-affects-your-loan-offer/" },
+      { title: "What actually determines the value of a fine watch in 2026", href: "/insights/what-determines-fine-watch-value/" },
+    ],
   },
 
   {
@@ -425,6 +433,9 @@ export const ASSETS: Asset[] = [
       blurb: "Selected classic, prestige, and collector vehicles, subject to title, condition, location, and custody requirements.",
       ctaLabel: "Lending Against Cars",
     },
+    insights: [
+      { title: "Which prestige car marques actually hold their value in Australia", href: "/insights/which-prestige-car-marques-hold-value-australia/" },
+    ],
   },
 
   {
@@ -500,6 +511,9 @@ export const ASSETS: Asset[] = [
       blurb: "Investment-grade bars and coins, subject to verification of weight, purity, ownership, and authenticity.",
       ctaLabel: "Lending Against Bullion",
     },
+    insights: [
+      { title: "Gold and bullion as collateral: a practical guide", href: "/insights/gold-and-bullion-as-collateral/" },
+    ],
   },
 
   {

@@ -69,6 +69,7 @@ const schema = [
       "@type": "Person",
       name: "Eden John",
       jobTitle: "Asset Specialist",
+      url: absoluteUrl("/about/"),
       worksFor: { "@id": absoluteUrl("/") + "#organization" },
     },
     publisher: { "@id": absoluteUrl("/") + "#organization" },
@@ -134,6 +135,14 @@ const schema = [
       </aside>
 
       <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
         <p class="art-intro"><span class="dropcap">A</span> Rolex is one of the most liquid luxury assets an Australian owner can hold — but that does not translate into a fixed borrowing figure. The number depends on which Rolex, in what condition, with what history, and in what market.</p>
 
         <section id="answer" class="anchor">
@@ -198,7 +207,7 @@ const schema = [
         <p>The exact proportion varies by lender, asset type, documentation and market conditions, and ALYRA does not publish a fixed percentage because it depends on individual assessment. What matters for an owner is that the number that counts is a proportion of realisable value — not of RRP, insurance value, or an online asking price.</p>
 
         <h2 id="floor" class="anchor art-h2">Why $50,000 is the practical floor</h2>
-        <p>ALYRA lends from $50,000 to $5,000,000. That threshold matters more for a single Rolex than most owners expect. Based on current secondary-market data, many steel sports references — the most commonly owned Rolex models — trade well under $50,000 even in strong condition, particularly since the correction from the market's 2022 peak. <a id="cite-5" class="cite" href="#src-5">[5]</a> <a id="cite-6" class="cite" href="#src-6">[6]</a></p>
+        <p>ALYRA <a class="body-link" href="/loans/luxury-watches/">lends from $50,000 to $5,000,000 against luxury watches</a>. That threshold matters more for a single Rolex than most owners expect. Based on current secondary-market data, many steel sports references — the most commonly owned Rolex models — trade well under $50,000 even in strong condition, particularly since the correction from the market's 2022 peak. <a id="cite-5" class="cite" href="#src-5">[5]</a> <a id="cite-6" class="cite" href="#src-6">[6]</a></p>
         <p>That does not mean these watches have no place at ALYRA; it means they are more likely to feature as part of a broader submission — several watches, a mix of watches and jewellery, or a watch alongside another eligible asset — than to support a loan on their own. Rarer references, precious-metal sports models, and strong vintage examples are more likely to reach the $50,000 floor individually.</p>
 
         <h2 id="market" class="anchor art-h2">How the market is moving the numbers</h2>
@@ -444,8 +453,17 @@ const schema = [
   .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
   .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
 
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
   @media (max-width: 960px) {
     .toc-rail { display: none; }
+    .toc-mobile { display: block; }
     .art-grid { grid-template-columns: 1fr; }
     .checklist { grid-template-columns: 1fr; }
   }

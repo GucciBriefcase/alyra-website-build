@@ -4,6 +4,11 @@
   "buildCommand": "astro build",
   "outputDirectory": "dist",
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/loans/high-value-watches/", "destination": "/loans/luxury-watches/", "permanent": true },
+    { "source": "/loans/classic-luxury-cars/", "destination": "/loans/classic-and-luxury-cars/", "permanent": true },
+    { "source": "/insights/what-determines-fine-watch-value-2026/", "destination": "/insights/what-determines-fine-watch-value/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/fonts/(.*)",

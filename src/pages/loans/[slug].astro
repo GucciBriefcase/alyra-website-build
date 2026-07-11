@@ -254,6 +254,26 @@ const crumbs = [
     white={false}
   />
 
+  <!-- ===== RELATED READING (Insights internal links) ===== -->
+  {asset.insights && asset.insights.length > 0 && (
+    <section class="section section--hairline reveal">
+      <div class="container">
+        <div class="rel-head">
+          <p class="eyebrow">Insights</p>
+          <h2 class="h2">Related reading.</h2>
+        </div>
+        <div class="read-list">
+          {asset.insights.map((i) => (
+            <a class="read-link" href={i.href}>
+              <span class="read-title">{i.title}</span>
+              <span class="arrow-link read-cta">Read the article <span class="arrow">→</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- ===== RELATED ASSETS (internal links) ===== -->
   <section class="section section--surface section--hairline reveal">
     <div class="container">
@@ -382,6 +402,13 @@ const crumbs = [
   .spec-section { max-width: 1000px; }
   .spec-head { text-align: center; margin-bottom: 40px; }
   .spec-head .eyebrow { margin-left: auto; margin-right: auto; }
+
+  /* ---- Related reading (Insights) ---- */
+  .read-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+  .read-link { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 4px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; flex-wrap: wrap; }
+  .read-title { font: 600 17px/1.4 var(--font-display); color: var(--ink); }
+  .read-link:hover .read-title { color: var(--gold-ink); }
+  .read-cta { font: 600 12.5px/1 var(--font-body); color: var(--gold-fg); flex: none; }
 
   /* ---- Related ---- */
   .rel-head { margin-bottom: 32px; }
