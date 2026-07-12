@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
 import { absoluteUrl } from "../../config/site";
 import { SITE } from "../../config/site";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
@@ -352,6 +353,8 @@ const schema = [
       </article>
     </div>
   </div>
+
+  <RelatedArticles slug={slug} />
 
   <!-- Final CTA -->
   <section class="art-cta reveal">
