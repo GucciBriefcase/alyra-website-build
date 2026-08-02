@@ -5,7 +5,7 @@ import { absoluteUrl } from "../../config/site";
 import { SITE } from "../../config/site";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { Image } from "astro:assets";
-import heroImg from "../../assets/images/hero-watches-patek2.jpg";
+import heroImg from "../../assets/images/patek-aquanaut-hero.jpg";
 import specialistImg from "../../assets/images/specialist.jpg";
 
 const slug = "how-lenders-assess-rolex-patek-philippe-richard-mille-watches-australia";
@@ -13,7 +13,7 @@ const path = `/insights/${slug}/`;
 const title = "How lenders assess Rolex, Patek Philippe and Richard Mille watches in Australia | ALYRA";
 const description =
   "Learn how ALYRA assesses Rolex, Patek Philippe and Richard Mille watches using completed sales, identity, condition, serviceability, custody and net recoverable value.";
-const ogImage = "/assets/og-watches.jpg";
+const ogImage = "/assets/og-patek-aquanaut.jpg";
 
 const toc = [
   ["answer", "Direct answer"],
@@ -90,7 +90,7 @@ const schema = [
 ];
 ---
 
-<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="Close detail of a rose-gold luxury watch dial and gem-set bezel" ogType="article" schema={schema}>
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="A white-gold Patek Philippe Aquanaut with a sapphire-set bezel and gem-set dial" ogType="article" schema={schema}>
   <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
 
   <!-- Header -->
@@ -123,7 +123,7 @@ const schema = [
 
   <!-- Hero image -->
   <div class="art-hero reveal">
-    <div class="art-hero-frame"><Image src={heroImg} alt="A rose-gold Patek Philippe Nautilus with a ruby-set bezel and integrated bracelet" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <div class="art-hero-frame"><Image src={heroImg} alt="A white-gold Patek Philippe Aquanaut with a baguette-sapphire bezel, diamond and sapphire dial, and blue rubber strap" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
     <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>Three of the most recognised names in watchmaking — assessed one reference at a time.</p>
   </div>
 

@@ -12,7 +12,7 @@ import type { ImageMetadata } from "astro";
 
 // Content images optimised at build time via astro:assets.
 import heroWatchesPatek from "../assets/images/hero-watches-patek.jpg";
-import heroWatchesPatek2 from "../assets/images/hero-watches-patek2.jpg";
+import patekAquanaut from "../assets/images/patek-aquanaut-hero.jpg";
 import fineArt from "../assets/images/fine-art.jpg";
 import valuationImg from "../assets/images/valuation.jpg";
 import goldBullion from "../assets/images/gold-bullion.jpg";
@@ -67,7 +67,7 @@ export const FEATURED: InsightCard & { slug: string } = {
 };
 
 export const POSTS: InsightCard[] = [
-  { slug: "how-lenders-assess-rolex-patek-philippe-richard-mille-watches-australia", category: "Watches", title: "How lenders assess Rolex, Patek Philippe and Richard Mille watches in Australia.", excerpt: "Established secondary markets can provide stronger completed-sale evidence, but financeability still depends on the exact watch, its condition and documentation, and the proposed legal, custody and sale structure.", date: "3 Aug 2026", readTime: "13 min read", image: heroWatchesPatek2, imageAlt: "A rose-gold Patek Philippe Nautilus with a ruby-set bezel" },
+  { slug: "how-lenders-assess-rolex-patek-philippe-richard-mille-watches-australia", category: "Watches", title: "How lenders assess Rolex, Patek Philippe and Richard Mille watches in Australia.", excerpt: "Established secondary markets can provide stronger completed-sale evidence, but financeability still depends on the exact watch, its condition and documentation, and the proposed legal, custody and sale structure.", date: "3 Aug 2026", readTime: "13 min read", image: patekAquanaut, imageAlt: "A white-gold Patek Philippe Aquanaut with a sapphire-set bezel and gem-set dial" },
   { slug: "how-lenders-assess-independent-and-complicated-watches", category: "Watches", title: "How lenders assess independent and complicated watches.", excerpt: "Independents, dress watches and complications now attract a wider collector base — but liquidity is still proven at the exact reference and configuration level, one watch at a time.", date: "12 Jul 2026", readTime: "11 min read", image: heroWatches, imageAlt: "Gem-set Patek Philippe and Audemars Piguet watches in a collector's case" },
   { slug: "how-lenders-assess-blue-chip-art-as-collateral", category: "Art", title: "How lenders assess blue-chip art as collateral.", excerpt: "There is no universal loan-to-value figure for a painting. Identity, liquidity and control — provenance, catalogue raisonné status, market depth and condition — decide what a work can responsibly secure.", date: "12 Jul 2026", readTime: "11 min read", image: fineArt, imageAlt: "Framed fine artwork" },
   { slug: "how-much-can-i-borrow-against-a-rolex-australia", category: "Watches", title: "How much can I borrow against a Rolex in Australia?", excerpt: "There is no fixed figure. Realisable market value, condition, documentation and ALYRA's $50,000 minimum decide what a Rolex — or a collection — can actually support.", date: "11 Jul 2026", readTime: "10 min read", image: rolexLoanHero, imageAlt: "A Rolex watch reviewed by a specialist against paperwork" },
