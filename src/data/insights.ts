@@ -19,7 +19,7 @@ import goldBullion from "../assets/images/gold-bullion.jpg";
 import classicCars from "../assets/images/classic-cars.jpg";
 import jewellery from "../assets/images/jewellery.jpg";
 import heroWatches from "../assets/images/hero-watches.jpg";
-import loanrangeFineart from "../assets/images/loanrange-fineart.jpg";
+import heroFineart from "../assets/images/hero-fineart.jpeg";
 import rolexLoanHero from "../assets/images/rolex-loan-hero.jpg";
 import watchServiceHero from "../assets/images/watch-service-hero.jpg";
 
@@ -66,6 +66,7 @@ export const FEATURED: InsightCard & { slug: string } = {
 };
 
 export const POSTS: InsightCard[] = [
+  { slug: "reading-an-auction-result-before-you-rely-on-it", category: "Art", title: "Reading an auction result before you rely on it.", excerpt: "A single hammer price rarely tells the whole story. Price basis, lot identity, condition, sale mechanics and bidder depth decide whether a published result is a comparable at all.", date: "3 Aug 2026", readTime: "14 min read", image: heroFineart, imageAlt: "A gilt-framed oil painting of horses crossing a river" },
   { slug: "how-lenders-assess-rolex-patek-philippe-richard-mille-watches-australia", category: "Watches", title: "How lenders assess Rolex, Patek Philippe and Richard Mille watches in Australia.", excerpt: "Established secondary markets can provide stronger completed-sale evidence, but financeability still depends on the exact watch, its condition and documentation, and the proposed legal, custody and sale structure.", date: "3 Aug 2026", readTime: "13 min read", image: patekAquanaut, imageAlt: "A white-gold Patek Philippe Aquanaut with a sapphire-set bezel and gem-set dial" },
   { slug: "how-lenders-assess-independent-and-complicated-watches", category: "Watches", title: "How lenders assess independent and complicated watches.", excerpt: "Independents, dress watches and complications now attract a wider collector base — but liquidity is still proven at the exact reference and configuration level, one watch at a time.", date: "12 Jul 2026", readTime: "11 min read", image: heroWatches, imageAlt: "Gem-set Patek Philippe and Audemars Piguet watches in a collector's case" },
   { slug: "how-lenders-assess-blue-chip-art-as-collateral", category: "Art", title: "How lenders assess blue-chip art as collateral.", excerpt: "There is no universal loan-to-value figure for a painting. Identity, liquidity and control — provenance, catalogue raisonné status, market depth and condition — decide what a work can responsibly secure.", date: "12 Jul 2026", readTime: "11 min read", image: fineArt, imageAlt: "Framed fine artwork" },
@@ -75,5 +76,4 @@ export const POSTS: InsightCard[] = [
   { slug: "gold-and-bullion-as-collateral", category: "Gold", title: "Gold and bullion as collateral: a practical guide.", excerpt: "Physical gold can be a useful private asset, but it is not automatically good collateral. How bullion is assessed — purity, ownership, storage, control, valuation, liquidity and enforceability.", date: "3 Jul 2026", readTime: "12 min read", image: goldBullion, imageAlt: "Investment-grade gold bullion bars" },
   { slug: "which-prestige-car-marques-hold-value-australia", category: "Cars", title: "Which prestige car marques actually hold their value in Australia in 2026.", excerpt: "Ferrari and Porsche lead the conversation, but the badge is only the beginning. Model, specification, kilometres, documentation and sale channel decide the real number.", date: "2 Jul 2026", readTime: "10 min read", image: classicCars, imageAlt: "Classic car detail" },
   { category: "Jewellery", title: "Signed jewellery and important stones: where price lives.", excerpt: "A signature, a certificate and a cut can matter as much as carat weight. How provenance translates into a loan figure.", date: "30 Apr 2026", readTime: "5 min read", image: jewellery, imageAlt: "Diamond ring" },
-  { category: "Art", title: "Reading an auction result before you rely on it.", excerpt: "A single hammer price rarely tells the whole story. How specialists separate signal from noise in the salesroom.", date: "9 Apr 2026", readTime: "8 min read", image: loanrangeFineart, imageAlt: "Auction room artwork" },
 ];

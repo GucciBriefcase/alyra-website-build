@@ -1,0 +1,573 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/hero-fineart.jpeg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "reading-an-auction-result-before-you-rely-on-it";
+const path = `/insights/${slug}/`;
+const title = "Reading an auction result before you rely on it | ALYRA";
+const description =
+  "A hammer price is only one data point. How ALYRA reads art auction results using price basis, exact lot identity, condition, provenance, sale mechanics, bidder depth and net recoverable value.";
+const ogImage = "/assets/og-auction-result.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["market", "An incomplete market"],
+  ["tests", "Six tests shape the reading"],
+  ["basis", "Start with the number"],
+  ["identity", "Match the object"],
+  ["condition", "Condition reports"],
+  ["estimates", "Estimates and unsold lots"],
+  ["guarantees", "Guarantees and lot symbols"],
+  ["depth", "Bid depth"],
+  ["currency", "Time, venue and currency"],
+  ["net", "Gross result to net value"],
+  ["comparison", "Same artist, different evidence"],
+  ["process", "From evidence to a decision"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Is hammer price the amount the buyer paid?", a: "Usually not. Hammer price is the accepted winning bid before the buyer's premium. The invoice can also include taxes, artist resale royalty, shipping or other charges, depending on the sale." },
+  { q: "What does “price realised” mean?", a: "Christie's defines price realised as hammer plus buyer's premium. Other houses may use different presentation conventions or add an overhead premium, so the sale-specific definition should be checked before comparison." },
+  { q: "Can I use the high estimate as market value?", a: "Not by itself. An estimate is a pre-sale opinion and excludes premium and taxes. It may guide the reserve and bidding, but it is not a completed transaction or a guarantee of value." },
+  { q: "Does a bought-in lot have an auction value?", a: "It has contextual value but no realised sale price. Bought-in or passed means bidding did not reach the reserve, so ownership did not transfer through the auction." },
+  { q: "Does a guarantee make the result unreliable?", a: "Not automatically. A guarantee protects a minimum outcome for the seller, and an irrevocable bid can ensure a sale. The result should be read with the structure disclosed and with attention to independent bidding above the protected level." },
+  { q: "Are auction condition reports enough for valuation?", a: "They are useful evidence but may not describe every fault or restoration and are not a substitute for a conservator's advice. Significant works may require current independent inspection and technical examination." },
+  { q: "How many comparables are enough?", a: "There is no universal number. Several close completed sales across an appropriate period are generally more persuasive than one record, but quality of match matters more than quantity. A specialist should explain why each result is included and how it is adjusted." },
+  { q: "Should foreign results be converted using today's exchange rate?", a: "Usually the sale-date rate is the clearest starting point for reconstructing the transaction, with any present-day conversion shown separately. CPI adjustment and currency conversion serve different purposes." },
+  { q: "Does Australia's resale royalty apply to every auction sale?", a: "No. Commercial resales of $1,000 or more must be reported, but the 5% royalty is payable only when the statutory eligibility conditions are met. The current legislation and transaction-specific liability should be checked." },
+  { q: "Can a strong auction result support an art-secured loan?", a: "It can support the valuation evidence, but it does not determine approval or amount. ALYRA separately assesses the exact artwork, title, provenance, condition, market depth, net recoverable value, custody and insurance, as well as the borrower and repayment case." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Reading an auction result" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "Reading an auction result before you rely on it",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-08-03",
+    dateModified: "2026-08-03",
+    inLanguage: "en-AU",
+    articleSection: "Art",
+    author: {
+      "@type": "Person",
+      name: "Eden John",
+      jobTitle: "Asset Specialist",
+      url: absoluteUrl("/about/"),
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="A gilt-framed oil painting of horses crossing a river" ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Art</span>
+      </div>
+      <h1 class="art-h1">Reading an auction result before you rely on it</h1>
+      <p class="art-lead">
+        A single hammer price rarely tells the whole story. How specialists separate signal from
+        noise in the salesroom — and what has to be true before a result becomes a comparable.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Eden John</span>
+            <span class="art-author-role">Asset Specialist · MBA Qualified</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>3 August 2026</span><span class="meta-sep" aria-hidden="true"></span><span>14 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="A gilt-framed impressionist oil painting of horses being led across a river" widths={[480, 768, 1080]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>One lot, one date, one published number — and a great deal the number does not say.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
+        <p class="art-intro"><span class="dropcap">A</span>n auction result is attractive because it looks like a fact: one lot, one date, one published number. Before it can carry any weight, someone has to establish which number it is, whether the lot actually sold, and whether the work in front of you is genuinely the same kind of object.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">An auction result is useful only after the reader identifies the number being reported, confirms that the lot actually sold and tests whether the subject artwork is genuinely comparable.</p>
+            <p class="answer-sub">A hammer price excludes the buyer's premium; a "price realised" commonly includes the premium but may not include taxes, artist resale royalty, shipping or other charges. An estimate is not a transaction, and a bought-in or passed lot is an unsold outcome. Specialists then compare the exact artist attribution, title, date, medium, dimensions, edition or cast, condition, restoration, provenance, literature and exhibition history <a id="cite-4" class="cite" href="#src-4">[4]</a> <a id="cite-7" class="cite" href="#src-7">[7]</a>; review guarantees, irrevocable bids and interested-party symbols <a id="cite-5" class="cite" href="#src-5">[5]</a> <a id="cite-8" class="cite" href="#src-8">[8]</a>; assess how many credible bidders supported the result; and adjust for sale date, location, currency and likely realisation costs. A record result can demonstrate demand at the top of a market without establishing a repeatable value for another work.</p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>Public auction results are visible, searchable and important, but they represent only part of the art market and can conceal material differences in the artwork and transaction. This article uses ALYRA's six-part basis–identity–condition–mechanics–depth–recovery framework to show how specialists turn a reported auction number into a cautious, evidence-based view of value and saleability. It includes a worked hypothetical comparison, Australian cost and regulatory considerations, and a practical checklist. ALYRA's <a class="body-link" href="/loans/fine-art/">fine art lending page</a> sets out how a loan itself proceeds end to end.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, legal opinion, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your artwork is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>Auction data is important but incomplete. In 2025, public auction sales represented a substantial but not exhaustive part of the global market; dealer and auction-house private sales remained material.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Always identify the price basis. Hammer price, premium-inclusive price realised, seller's net proceeds and net recoverable value are different numbers.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A passed or bought-in lot is not a completed sale. It can still indicate resistance at the reserve or estimate level, but it should not be entered as a transaction.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Artist name is not enough. Attribution wording, title, date, medium, size, edition, cast, condition, restoration and provenance define the valid comparable set.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Guarantees, irrevocable bids and interested parties can affect the financial structure and bidding path. Their presence does not invalidate a sale, but it changes how the result should be interpreted.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>One bidder above reserve and several independent bidders competing well beyond the estimate can produce the same published result but provide different evidence of market depth.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Cross-border comparisons require a consistent currency date and a separate decision about inflation. Nominal currency conversion and inflation adjustment answer different questions.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>For Australian transactions, buyer's premium, GST treatment, artist resale royalty, transport, conservation, insurance and possible export controls may change total cost or net proceeds.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>For secured lending, collateral quality and the borrower's repayment case are assessed separately. A strong auction comparable is evidence, not an automatic loan offer.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This article is for Australian collectors, estates, advisers and family offices reviewing auction evidence for a painting, sculpture, work on paper, photograph, edition or other significant artwork. It is most useful when deciding whether a result is a valid comparable for valuation, sale planning or secured borrowing, and when comparing a public auction with a dealer sale, private sale or continued ownership.</p>
+
+        <h2 id="method" class="anchor art-h2">How this was prepared</h2>
+        <p>This article was prepared from the 2026 Art Basel and UBS market report; current buyer guides, glossaries, conditions and symbol keys published by Christie's, Sotheby's and Australian auction houses; Australian resale-royalty, inflation, currency and cultural-property guidance; provenance and stolen-art resources; and ALYRA's published lending and custody information. <a id="cite-all" class="cite" href="#sources">[1]–[23]</a></p>
+        <p>Auction-house sources describe each house's own terminology and practices, which can vary by sale, location and date. Public auction results are used as transaction evidence, not as a complete measure of dealer, private-sale or off-market activity. The article adds ALYRA's basis–identity–condition–mechanics–depth–recovery framework and a hypothetical comparison. It does not disclose confidential valuation or credit policy; an actual decision requires object-specific inspection, provenance and title review, market analysis, legal due diligence and credit assessment.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Factor</th><th>Evidence ALYRA's assessment considers</th><th>Typical effect on the assessment</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Price basis</td><td>Hammer price, premium-inclusive result, taxes, artist resale royalty, post-sale price and seller's net proceeds.</td><td>Using the wrong basis creates a false comparison. ALYRA standardises results before comparing them.</td></tr>
+              <tr><td class="tcell-head">Sale status</td><td>Sold, passed, bought in, withdrawn, post-sale or private sale.</td><td>Only a completed transaction is a sale comparable. Unsold outcomes are contextual evidence, not realised prices.</td></tr>
+              <tr><td class="tcell-head">Identity and cataloguing</td><td>Artist attribution wording, title, date, medium, dimensions, edition, cast, signature, inscriptions and catalogue amendments.</td><td>A precise object match defines the valid comparable set; qualified attribution or material differences can require a substantial adjustment.</td></tr>
+              <tr><td class="tcell-head">Condition and restoration</td><td>Support, surface, structural issues, repairs, overpaint, lining, conservation history, framing and current stability.</td><td>Condition reports are useful but not exhaustive. Material treatment or unresolved condition risk can reduce demand and net proceeds.</td></tr>
+              <tr><td class="tcell-head">Provenance and title</td><td>Ownership history, invoices, estate authority, gallery and auction records, collection labels, lost-art checks and gaps.</td><td>A coherent history supports market confidence and legal due diligence; provenance is evidence to investigate, not a substitute for title verification.</td></tr>
+              <tr><td class="tcell-head">Sale mechanics</td><td>Reserve, guarantee, third-party guarantee, irrevocable bid, interested party and no-reserve status.</td><td>These arrangements can protect the seller or affect the bidding path. They should be disclosed and understood before relying on the result.</td></tr>
+              <tr><td class="tcell-head">Market depth</td><td>Number and quality of bidders, bidding increments, repeat sales, dispersion, geographic demand and time to sell.</td><td>Several relevant transactions and a broad buyer pool support repeatability; a single theatrical result requires a larger uncertainty allowance.</td></tr>
+              <tr><td class="tcell-head">Time, venue and currency</td><td>Sale date, auction location, house, sale type, currency, exchange rate and market cycle.</td><td>Results must be converted consistently and interpreted in their original market context.</td></tr>
+              <tr><td class="tcell-head">Costs and controls</td><td>Buyer's premium, seller commission, taxes, royalty, transport, conservation, insurance, storage, export permissions and secured-lending control.</td><td>Gross price is not net recoverable value. Costs, timing and movement restrictions can materially narrow proceeds or prevent an otherwise attractive exit.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="market" class="anchor art-h2">A public number, an incomplete market</h2>
+        <p>An auction result is attractive because it appears precise: one lot, one date and one published number. That precision can be misleading. The Art Basel and UBS Global Art Market Report 2026 estimated global art-market sales at US$59.6 billion in 2025. Public auction sales were US$20.7 billion, while dealer sales were US$34.8 billion and reported private sales by auction houses were just under US$4.2 billion. <a id="cite-1" class="cite" href="#src-1">[1]</a> Public results therefore reveal an important part of the market, but not the whole market, and the most visible records are not necessarily the most representative.</p>
+        <p>The 2025 auction recovery was also concentrated. Public auction sales rose 9% by value, but growth was driven by high-value lots and major collections; sales below US$50,000 declined in both value and volume. <a class="cite" href="#src-1">[1]</a> A headline record may accurately describe one exceptional transaction while saying little about ordinary works by the same artist. Specialists begin with the result, then work backwards through the object, transaction and market evidence.</p>
+
+        <h2 id="tests" class="anchor art-h2">Six tests shape the reading</h2>
+        <p>ALYRA organises the review into six linked tests. <strong>Basis</strong> asks which price is being reported. <strong>Identity</strong> asks whether the subject work and the auction lot are truly equivalent. <strong>Condition</strong> asks what physical, conservation and provenance differences affect marketability. <strong>Mechanics</strong> asks whether reserves, guarantees or interested parties shaped the transaction. <strong>Depth</strong> asks whether the result reflects repeatable demand from several credible buyers. <strong>Recovery</strong> asks what net proceeds could remain after costs, time, legal checks and sale risk.</p>
+        <p>The tests are cumulative. A genuine sale can be a poor comparable if it reports a different price basis. An exact object match can still be unreliable if it sold under exceptional provenance, charity conditions or a guarantee structure. Several apparently similar sales can require different weight if one was in the artist's dominant market and another was in a peripheral venue with limited bidding.</p>
+
+        <h2 id="basis" class="anchor art-h2">Start with the number, not the headline</h2>
+        <p>Christie's and Sotheby's define hammer price as the winning or final accepted bid before the buyer's premium. <a id="cite-2" class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-7">[7]</a> Christie's defines price realised as hammer plus buyer's premium, while Sotheby's notes that its results customarily include the hammer price plus buyer's premium and, where applicable, an overhead premium. <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-7">[7]</a> The buyer may also face taxes, artist resale royalty, shipping, storage or other charges. <a id="cite-9" class="cite" href="#src-9">[9]</a> Consequently, "sold for $1 million" can refer to materially different amounts depending on the house, location, date and publication.</p>
+        <p>The seller's position is different again. Seller's commission, agreed expenses, guarantees, advances, transport, conservation and taxes may be deducted from the gross sale. For collateral analysis, the relevant figure is neither the buyer's invoice nor the catalogue headline. It is the plausible net amount available after a realistic sale process. ALYRA therefore records each comparable with a stated basis and does not mix hammer and premium-inclusive results in one unadjusted series.</p>
+
+        <h2 id="identity" class="anchor art-h2">Match the object, not the artist name</h2>
+        <p>Artist name is the beginning of comparison, not the end. The catalogue entry should be read for attribution language, title, date, medium, support, dimensions, edition or cast, signature, inscriptions, catalogue raisonné references, provenance, exhibition history and literature. Sotheby's notes that catalogue statements about authorship, attribution, origin, date, provenance and condition can be statements of opinion, and qualified terms can carry different meanings. <a class="cite" href="#src-7">[7]</a> <a id="cite-10" class="cite" href="#src-10">[10]</a> "By", "attributed to", "studio of", "circle of" and "after" are not interchangeable.</p>
+        <p>Scale and medium can reorganise an artist's market. A monumental painting, a small work on paper, a unique sculpture and a later edition may share the artist's name while appealing to different buyers. The same is true of subject matter, period, series, image recognition and fabrication date. Specialists prefer sales of the same work type and period, then explain every departure from the subject artwork rather than averaging unlike objects — the same discipline that underpins ALYRA's guide to <a class="body-link" href="/insights/how-lenders-assess-blue-chip-art-as-collateral/">how lenders assess blue-chip art as collateral</a>.</p>
+        <blockquote class="pull">A record result can demonstrate demand at the top of a market without establishing a repeatable value for another work.</blockquote>
+
+        <h2 id="condition" class="anchor art-h2">Condition reports are evidence, not a complete diagnosis</h2>
+        <p>Condition can change both price and saleability, particularly where treatment affects the image, support, surface or future stability. Christie's states that condition reports are for guidance, may not identify every fault, restoration or alteration, and are not a substitute for professional advice from a conservator. <a id="cite-4b" class="cite" href="#src-4">[4]</a> Sotheby's similarly directs prospective bidders to investigate lots before bidding. <a class="cite" href="#src-10">[10]</a> A short catalogue note or clean photograph should not be treated as proof that a work is free from restoration or structural risk.</p>
+        <p>For a significant work, ALYRA may seek current high-resolution images, ultraviolet or technical examination where appropriate, a conservator's report, treatment history and information about frame, glazing, mounting and environmental exposure. A past result should be adjusted where the sold work was freshly conserved, had museum-standard presentation or was materially cleaner than the subject work. The reverse may apply where the comparable carried visible damage or a restrictive condition issue.</p>
+
+        <h2 id="estimates" class="anchor art-h2">Read estimates, reserves and unsold outcomes correctly</h2>
+        <p>An estimate is a specialist's pre-sale range, not a promise of value. Christie's states that estimates exclude premium and taxes and are based on condition, rarity, quality, provenance and recent comparable sales; its terms also state that an estimate is not a prediction or guarantee of the selling price. <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-4">[4]</a> A low estimate may also influence the reserve. Christie's says its reserve is confidential and at or below the low estimate; Deutscher and Hackett states a similar ceiling in its Australian guide. <a id="cite-3" class="cite" href="#src-3">[3]</a> <a id="cite-11" class="cite" href="#src-11">[11]</a> Sale-specific terms must still be checked.</p>
+        <p>If bidding does not meet reserve, the lot is passed or bought in and no sale occurs. <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-3">[3]</a> <a class="cite" href="#src-7">[7]</a> An unsold result can reveal price resistance, but it cannot be used as though a buyer paid the final bid. A withdrawn lot provides even less price evidence because withdrawal can result from title, condition, attribution, seller or strategic issues that are not public. Post-sale transactions should be identified separately because the negotiation and timing differ from the live auction.</p>
+
+        <h2 id="guarantees" class="anchor art-h2">Look behind guarantees and lot symbols</h2>
+        <p>Guarantees can secure a minimum return to the seller regardless of the auction outcome. An irrevocable bidder may commit to bid at a level that ensures the lot will sell, and may receive compensation for taking that risk. Interested parties can include beneficiaries, joint owners or people with another direct or indirect interest in the lot. <a class="cite" href="#src-5">[5]</a> <a class="cite" href="#src-8">[8]</a> These arrangements are commonly identified by symbols or saleroom announcements, and their details vary by house and jurisdiction.</p>
+        <p>A guaranteed or irrevocably bid lot remains a real transaction when the conditions are satisfied. The analytical question is different: how much independent competition existed above the protected level? If several unrelated bidders compete materially beyond the guarantee, the result can provide strong demand evidence. If the work sells to the irrevocable bidder at or near the precommitted level, it may demonstrate a secured exit for that transaction without proving broad repeatable demand.</p>
+
+        <h2 id="depth" class="anchor art-h2">Bid depth matters more than applause</h2>
+        <p>Two lots can produce the same hammer price through very different bidding paths. One may attract a single bid at reserve. Another may receive sustained competition from several collectors, advisers and institutions across phone, online and saleroom channels. Published result pages rarely disclose the full bidder count, underbidders or bidding sequence. Specialists therefore seek sale-room observations, specialist commentary and repeat transactions rather than inferring depth from the final number alone.</p>
+        <p>Sale theatre can also amplify attention. Evening sales, named collections, celebrity ownership, charity auctions and record-focused marketing can attract bidders who would not participate in an ordinary day sale. Provenance can genuinely improve desirability, but the premium must be separated from the artist's underlying market. A result attached to an exceptional collection should not be transferred automatically to a work without that history.</p>
+
+        <h2 id="currency" class="anchor art-h2">Adjust for time, venue and currency</h2>
+        <p>Art markets are segmented by geography, currency, collecting tradition, auction house and sale format. A result in New York during a major evening-sale week may not be directly reproducible in Australia. Equally, a strong Australian result for an artist with a concentrated domestic buyer base may be more relevant than a foreign sale with limited local context. Venue is not a simple hierarchy; it is evidence about where the credible buyers are likely to transact.</p>
+        <p>Cross-border results should be converted at a consistent exchange-rate date and labelled clearly. The RBA publishes daily exchange rates, but notes that its published data should not be relied on for regulatory or commercial purposes. <a id="cite-16" class="cite" href="#src-16">[16]</a> Historical comparisons may also be shown in nominal terms or adjusted for general inflation using an accepted index such as the ABS CPI. <a id="cite-15" class="cite" href="#src-15">[15]</a> Currency conversion answers "what was the foreign price in Australian dollars at that time?"; inflation adjustment asks "what is the general purchasing-power equivalent?" Neither process, by itself, updates the art market.</p>
+
+        <h2 id="net" class="anchor art-h2">From gross result to net recoverable value</h2>
+        <p>Auction houses charge buyers and sellers under sale-specific terms. Australian houses commonly define purchase price as hammer plus buyer's premium and applicable GST, while their reserve, title-transfer and shipping provisions differ. <a class="cite" href="#src-11">[11]</a> <a id="cite-12" class="cite" href="#src-12">[12]</a> In Australia, eligible commercial resales of artworks for $1,000 or more must be reported under the Resale Royalty Scheme, and a 5% royalty is payable on qualifying resales under the legislation. <a id="cite-13" class="cite" href="#src-13">[13]</a> <a id="cite-14" class="cite" href="#src-14">[14]</a> The statutory sale-price definition excludes buyer's premium and certain other tax from the royalty base. <a class="cite" href="#src-14">[14]</a> Liability and invoice treatment should be checked for the proposed transaction.</p>
+        <p>Net recoverable value may also require allowances for seller commission, marketing, photography, conservation, framing, packing, specialist transport, insurance, storage, legal review, currency exposure and time to sale. Significant Australian cultural property can require an export permit or be prohibited from export under the National Cultural Heritage Control List. <a id="cite-17" class="cite" href="#src-17">[17]</a> <a id="cite-18" class="cite" href="#src-18">[18]</a> A foreign auction result may therefore be less useful if the subject work cannot be moved to that venue promptly or lawfully.</p>
+
+        <h2 id="comparison" class="anchor art-h2">Same artist, different evidence</h2>
+        <p>Consider two hypothetical paintings by the same established Australian artist. Both have published results around A$500,000, but the evidence differs. This comparison is illustrative only and does not imply a valuation or lending ratio.</p>
+        <div class="compare">
+          <div class="compare-item">
+            <div class="compare-h">Painting A — a narrow range</div>
+            <p>A recognised subject from the artist's strongest period. The catalogue attribution is unqualified, dimensions and medium match the subject work, condition is stable, provenance runs through established galleries and a documented private collection, and several comparable paintings have sold across Australian venues. Its result is reported on a known basis and the lot attracted sustained bidding above estimate. These facts support a narrower range of plausible market and net proceeds.</p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-h">Painting B — wide uncertainty</div>
+            <p>A less typical subject with an uncertain date, a heavily restored surface and a gap in ownership history. Its principal "comparable" is a named-collection evening sale carrying a third-party guarantee, and the published figure includes buyer's premium. No other close work has sold in several years. The record may be genuine, yet the lender faces wider uncertainty about object equivalence, independent demand, treatment cost, title review and time to sale. The appropriate outcome may be a lower collateral assessment, additional due diligence or no acceptable lending case.</p>
+          </div>
+        </div>
+
+        <h2 id="process" class="anchor art-h2">From auction evidence to a lending decision</h2>
+        <p>ALYRA's indicative review generally moves through seven stages. The sequence can overlap and varies by transaction, but each stage answers a different risk question.</p>
+        <ol class="art-list">
+          <li><strong>Initial eligibility review</strong> — identify the artist, artwork type, indicative value, requested amount, owner, borrower, transaction purpose, location and proposed jurisdiction.</li>
+          <li><strong>Evidence collection</strong> — gather invoices, transfer and estate documents, catalogue records, provenance, exhibition and literature references, condition and conservation reports, photographs, dimensions, inscriptions and current insurance information.</li>
+          <li><strong>Object-specific inspection and valuation</strong> — confirm the work described, assess attribution and condition, and build a comparable set with a consistent price basis, sale status and adjustment record.</li>
+          <li><strong>Provenance, title and legal review</strong> — investigate ownership and authority, provenance gaps, lost-art databases and cultural-property issues, and consider existing security interests and the applicable personal-property-security framework. <a id="cite-19" class="cite" href="#src-19">[19]</a> <a id="cite-20" class="cite" href="#src-20">[20]</a> <a id="cite-21" class="cite" href="#src-21">[21]</a> <a id="cite-22" class="cite" href="#src-22">[22]</a></li>
+          <li><strong>Market and exit analysis</strong> — identify likely buyers, venues, sale calendar, costs, currency, transport, conservation and time-to-sale assumptions rather than relying on the most optimistic public result.</li>
+          <li><strong>Collateral control and credit assessment</strong> — document custody, insurance, inspection rights and movement controls, and assess the borrower, purpose, repayment source, term and transaction risks separately. <a id="cite-23" class="cite" href="#src-23">[23]</a></li>
+          <li><strong>Decision and conditions</strong> — determine any acceptable amount and conditions using the artwork's assessed net recoverable value, concentration limits and credit policy. Better evidence can narrow avoidable uncertainty but cannot guarantee approval, timing or terms.</li>
+        </ol>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>Which number is being quoted — hammer, price realised, total invoice, post-sale price or seller's net? — comparisons fail when different price bases are mixed;</li>
+          <li>Did the lot sell, pass, get bought in, get withdrawn or sell after auction? — only a completed transaction is a realised sale, while other outcomes provide different evidence;</li>
+          <li>Is the artist attribution unqualified, and do title, date, medium, dimensions, edition or cast match? — seemingly small catalogue differences can place works in different markets;</li>
+          <li>What condition and restoration information was available, and has the subject work changed since its sale? — condition reports are not exhaustive and treatment can materially change saleability;</li>
+          <li>What provenance, exhibition, literature and catalogue raisonné support accompanies the work? — documented history can affect both confidence and demand, while gaps require investigation;</li>
+          <li>Was the lot guaranteed, supported by an irrevocable bid or open to bidding by an interested party? — the financial structure may affect how much independent bidding the result demonstrates;</li>
+          <li>How many close results exist, over what period, in which venues and currencies? — repeatable transactions are stronger evidence than one record or one market cycle;</li>
+          <li>What costs, royalties, taxes, transport, conservation, export and custody constraints separate the headline result from net proceeds? — gross result and recoverable value are not the same.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Quoting "sold for" without stating the basis</div><p>A published figure is meaningless as a comparable until it is labelled hammer or premium-inclusive.</p></div>
+          <div class="mistake"><div class="mistake-h">Treating an estimate, reserve, bought-in bid or withdrawn lot as a completed sale</div><p>None of these transferred ownership, and each carries different evidential weight.</p></div>
+          <div class="mistake"><div class="mistake-h">Comparing by artist name alone</div><p>Attribution, period, medium, size, edition, condition and subject can place two works in entirely different markets.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming a condition report is a full conservation report</div><p>Catalogue notes and photographs do not necessarily disclose all restoration or structural risk.</p></div>
+          <div class="mistake"><div class="mistake-h">Ignoring guarantee, irrevocable-bid and interested-party symbols</div><p>A strong final price can still rest on a protected structure rather than broad independent competition.</p></div>
+          <div class="mistake"><div class="mistake-h">Using a celebrity, charity or named-collection result as an ordinary benchmark</div><p>The provenance premium has to be separated from the artist's underlying market.</p></div>
+          <div class="mistake"><div class="mistake-h">Converting foreign results at today's rate, or treating CPI as art-price appreciation</div><p>Record the sale-date rate; currency conversion and inflation adjustment answer different questions.</p></div>
+          <div class="mistake"><div class="mistake-h">Using the buyer's gross invoice as the seller's likely proceeds</div><p>Australian royalty, GST, transport, conservation and export considerations all sit between the two.</p></div>
+          <div class="mistake"><div class="mistake-h">Treating one strong comparable as sufficient for secured lending</div><p>Ownership, custody, insurance and repayment capacity are assessed separately from the artwork.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist for the reader</h2>
+        <div class="checklist">
+          {[
+            "Record the auction house, sale title, date, location, lot number and result URL",
+            "Label the figure as hammer, premium-inclusive price realised, post-sale price or another basis",
+            "Confirm the lot status: sold, passed, bought in, withdrawn or post-sale",
+            "Copy the exact attribution, title, date, medium, dimensions, edition or cast and all catalogue amendments",
+            "Obtain and review the condition report, high-resolution images and conservation information; seek independent advice for significant issues",
+            "Compile provenance, exhibition, literature and catalogue raisonné evidence and investigate gaps or lost-art concerns",
+            "Check the lot symbols and saleroom announcements for reserve, guarantee, irrevocable bid, interested party, resale right or restricted material",
+            "Identify at least several close completed sales where possible and explain every adjustment",
+            "Convert currency consistently and show nominal and inflation-adjusted comparisons separately when both are relevant",
+            "Deduct realistic commission, premium, tax, royalty, conservation, transport, insurance, storage, legal and timing allowances",
+            "Check whether Australian export controls or security documents restrict the proposed sale venue or movement",
+            "Define the purpose of the analysis — purchase, insurance, estate, sale planning or secured lending — because each requires a different value basis",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <p class="src-note">Numbered citations in the article correspond to the sources below. URLs and dated claims were checked on 3 August 2026.</p>
+        <div class="src-label">Market data</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-1" aria-label="Back to citation 1 in text">↑</a> <a class="body-link" href="https://www.artbasel.com/stories/the-art-basel-and-ubs-global-art-market-report-2026" target="_blank" rel="noopener noreferrer">Art Basel and UBS — Global Art Market Report 2026</a></li>
+        </ol>
+        <div class="src-label">Auction-house guidance</div>
+        <ol class="src-list" start="2">
+          <li id="src-2"><a class="src-back" href="#cite-2" aria-label="Back to citation 2 in text">↑</a> <a class="body-link" href="https://www.christies.com/en/help/glossary" target="_blank" rel="noopener noreferrer">Christie's — Auction glossary</a></li>
+          <li id="src-3"><a class="src-back" href="#cite-3" aria-label="Back to citation 3 in text">↑</a> <a class="body-link" href="https://www.christies.com/en/help/auction-help-library/what-is-a-reserve" target="_blank" rel="noopener noreferrer">Christie's — Reserve prices at auction</a></li>
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="https://onlineonly.christies.com/terms-and-conditions/422" target="_blank" rel="noopener noreferrer">Christie's — Online auction terms and conditions</a></li>
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="https://www.christies.com/help/buying-guide-important-information/financial-information" target="_blank" rel="noopener noreferrer">Christie's — Financial information (guarantees and irrevocable bids)</a></li>
+          <li id="src-6"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.christies.com/en/help/buying-guide/overview/" target="_blank" rel="noopener noreferrer">Christie's — How to buy at Christie's</a></li>
+          <li id="src-7"><a class="src-back" href="#cite-7" aria-label="Back to citation 7 in text">↑</a> <a class="body-link" href="https://www.sothebys.com/en/buysell/auctions.html" target="_blank" rel="noopener noreferrer">Sotheby's — Auction glossary</a></li>
+          <li id="src-8"><a class="src-back" href="#cite-8" aria-label="Back to citation 8 in text">↑</a> <a class="body-link" href="https://help.sothebys.com/en/support/solutions/articles/44002518844" target="_blank" rel="noopener noreferrer">Sotheby's — Guide for Buyers: Symbol Key</a></li>
+          <li id="src-9"><a class="src-back" href="#cite-9" aria-label="Back to citation 9 in text">↑</a> <a class="body-link" href="https://help.sothebys.com/en/support/solutions/articles/44002686902-what-is-a-buyer-s-premium-" target="_blank" rel="noopener noreferrer">Sotheby's — What is a buyer's premium?</a></li>
+          <li id="src-10"><a class="src-back" href="#cite-10" aria-label="Back to citation 10 in text">↑</a> <a class="body-link" href="https://help.sothebys.com/en/support/solutions/articles/44002518078-guide-for-buyers-global" target="_blank" rel="noopener noreferrer">Sotheby's — Guide for Buyers: Global</a></li>
+        </ol>
+        <div class="src-label">Australian sale terms, royalty and cost</div>
+        <ol class="src-list" start="11">
+          <li id="src-11"><a class="src-back" href="#cite-11" aria-label="Back to citation 11 in text">↑</a> <a class="body-link" href="https://www.deutscherandhackett.com/buying-and-selling-art-guide" target="_blank" rel="noopener noreferrer">Deutscher and Hackett — Buying and selling art guide</a></li>
+          <li id="src-12"><a class="src-back" href="#cite-12" aria-label="Back to citation 12 in text">↑</a> <a class="body-link" href="https://www.menziesartbrands.com/conditions-of-sale.html" target="_blank" rel="noopener noreferrer">Menzies — Conditions of Sale</a></li>
+          <li id="src-13"><a class="src-back" href="#cite-13" aria-label="Back to citation 13 in text">↑</a> <a class="body-link" href="https://www.arts.gov.au/funding-and-support/resale-royalty-scheme" target="_blank" rel="noopener noreferrer">Office for the Arts — Resale Royalty Scheme</a></li>
+          <li id="src-14"><a class="src-back" href="#cite-14" aria-label="Back to citation 14 in text">↑</a> <a class="body-link" href="https://www.legislation.gov.au/C2009A00125/latest" target="_blank" rel="noopener noreferrer">Federal Register of Legislation — Resale Royalty Right for Visual Artists Act 2009</a></li>
+        </ol>
+        <div class="src-label">Currency, inflation and cultural property</div>
+        <ol class="src-list" start="15">
+          <li id="src-15"><a class="src-back" href="#cite-15" aria-label="Back to citation 15 in text">↑</a> <a class="body-link" href="https://www.abs.gov.au/methodologies/consumer-price-index-australia-methodology/may-2026" target="_blank" rel="noopener noreferrer">Australian Bureau of Statistics — CPI methodology, May 2026</a></li>
+          <li id="src-16"><a class="src-back" href="#cite-16" aria-label="Back to citation 16 in text">↑</a> <a class="body-link" href="https://www.rba.gov.au/statistics/frequency/exchange-rates.html" target="_blank" rel="noopener noreferrer">Reserve Bank of Australia — Exchange Rates</a></li>
+          <li id="src-17"><a class="src-back" href="#cite-17" aria-label="Back to citation 17 in text">↑</a> <a class="body-link" href="https://www.arts.gov.au/what-we-do/cultural-heritage/movable-cultural-heritage/exporting-cultural-property-australia" target="_blank" rel="noopener noreferrer">Office for the Arts — Exporting cultural property from Australia</a></li>
+          <li id="src-18"><a class="src-back" href="#cite-18" aria-label="Back to citation 18 in text">↑</a> <a class="body-link" href="https://www.arts.gov.au/what-we-do/cultural-heritage/movable-cultural-heritage/exporting-cultural-property-australia/national-cultural-heritage-control-list" target="_blank" rel="noopener noreferrer">Office for the Arts — National Cultural Heritage Control List</a></li>
+        </ol>
+        <div class="src-label">Provenance, title and lending framework</div>
+        <ol class="src-list" start="19">
+          <li id="src-19"><a class="src-back" href="#cite-19" aria-label="Back to citation 19 in text">↑</a> <a class="body-link" href="https://www.getty.edu/museum/provenance/" target="_blank" rel="noopener noreferrer">J. Paul Getty Museum — Research on collection provenance</a></li>
+          <li id="src-20"><a class="src-back" href="#cite-20" aria-label="Back to citation 20 in text">↑</a> <a class="body-link" href="https://www.interpol.int/en/Crimes/Cultural-heritage-crime/Stolen-Works-of-Art-Database" target="_blank" rel="noopener noreferrer">INTERPOL — Stolen Works of Art Database</a></li>
+          <li id="src-21"><a class="src-back" href="#cite-21" aria-label="Back to citation 21 in text">↑</a> <a class="body-link" href="https://www.legislation.gov.au/C2009A00130/latest" target="_blank" rel="noopener noreferrer">Federal Register of Legislation — Personal Property Securities Act 2009</a></li>
+          <li id="src-22"><a class="src-back" href="#cite-22" aria-label="Back to citation 22 in text">↑</a> <a class="body-link" href="https://www.ppsr.gov.au/registering" target="_blank" rel="noopener noreferrer">Personal Property Securities Register — Registering</a></li>
+          <li id="src-23"><a class="src-back" href="#cite-23" aria-label="Back to citation 23 in text">↑</a> <a class="body-link" href="/loans/fine-art/">ALYRA — Private loans against fine art and other assets</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Eden John" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Eden John</div>
+            <div class="author-role">Asset Specialist · MBA Qualified</div>
+            <p>Eden works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine art, fine watches and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <RelatedArticles slug={slug} />
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Weighing an auction result against your own work?</h2>
+      <p class="art-cta-lead">
+        Submit the artwork's details for private review. An ALYRA specialist will assess identity,
+        comparable evidence, condition, provenance and documentation, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 26px; }
+  .compare-item { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 3px; padding: 22px 24px; }
+  .compare-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 10px; }
+  .compare-item p { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-note { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 22px; }
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .toc-mobile { display: block; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>
