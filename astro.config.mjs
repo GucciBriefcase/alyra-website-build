@@ -41,6 +41,7 @@ export default defineConfig({
           "/insights/how-lenders-assess-independent-and-complicated-watches/": "2026-07-12",
           "/insights/how-lenders-assess-rolex-patek-philippe-richard-mille-watches-australia/": "2026-08-03",
           "/insights/reading-an-auction-result-before-you-rely-on-it/": "2026-08-03",
+          "/insights/liquidity-without-giving-up-ownership/": "2026-08-03",
         }[new URL(item.url).pathname];
         if (lastmod) item.lastmod = lastmod;
         return item;
