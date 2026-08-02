@@ -18,7 +18,6 @@ import valuationImg from "../assets/images/valuation.jpg";
 import goldBullion from "../assets/images/gold-bullion.jpg";
 import classicCars from "../assets/images/classic-cars.jpg";
 import jewellery from "../assets/images/jewellery.jpg";
-import specialist from "../assets/images/specialist.jpg";
 import heroWatches from "../assets/images/hero-watches.jpg";
 import loanrangeFineart from "../assets/images/loanrange-fineart.jpg";
 import rolexLoanHero from "../assets/images/rolex-loan-hero.jpg";
@@ -76,6 +75,5 @@ export const POSTS: InsightCard[] = [
   { slug: "gold-and-bullion-as-collateral", category: "Gold", title: "Gold and bullion as collateral: a practical guide.", excerpt: "Physical gold can be a useful private asset, but it is not automatically good collateral. How bullion is assessed — purity, ownership, storage, control, valuation, liquidity and enforceability.", date: "3 Jul 2026", readTime: "12 min read", image: goldBullion, imageAlt: "Investment-grade gold bullion bars" },
   { slug: "which-prestige-car-marques-hold-value-australia", category: "Cars", title: "Which prestige car marques actually hold their value in Australia in 2026.", excerpt: "Ferrari and Porsche lead the conversation, but the badge is only the beginning. Model, specification, kilometres, documentation and sale channel decide the real number.", date: "2 Jul 2026", readTime: "10 min read", image: classicCars, imageAlt: "Classic car detail" },
   { category: "Jewellery", title: "Signed jewellery and important stones: where price lives.", excerpt: "A signature, a certificate and a cut can matter as much as carat weight. How provenance translates into a loan figure.", date: "30 Apr 2026", readTime: "5 min read", image: jewellery, imageAlt: "Diamond ring" },
-  { category: "Market", title: "Inside a private valuation appointment.", excerpt: "What happens when a specialist assesses your asset — from authentication to the figure that anchors your offer.", date: "23 Apr 2026", readTime: "6 min read", image: specialist, imageAlt: "Specialist at a desk" },
   { category: "Art", title: "Reading an auction result before you rely on it.", excerpt: "A single hammer price rarely tells the whole story. How specialists separate signal from noise in the salesroom.", date: "9 Apr 2026", readTime: "8 min read", image: loanrangeFineart, imageAlt: "Auction room artwork" },
 ];
