@@ -56,7 +56,7 @@ Single long scroll. Sections top→bottom:
 5. **Asset categories** — 3-col card grid (6 cards), each: image, title, blurb, "Lending Against X →" link.
 6. **How it works** — white bg, 4 numbered steps (01–04) + CTA + risk disclaimer.
 7. **Why ALYRA** — 4 icon features.
-8. **Valuation & specialist** — white bg, image + copy, plus a specialist bio card (Eden John).
+8. **Valuation & specialist** — white bg, image + copy, plus a specialist bio card (Elijah Turkovic).
 9. **Security & custody** — dark bg, copy + 4-step custody timeline.
 10. **Borrow or Sell** — two comparison cards (dark "Borrow"/featured + light "Sell").
 11. **FAQ** — white bg, split layout: heading/CTA left, accordion (15 Q&A) right.
