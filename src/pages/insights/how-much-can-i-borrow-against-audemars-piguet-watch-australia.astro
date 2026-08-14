@@ -1,0 +1,504 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/audemars-piguet-loan-hero.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "how-much-can-i-borrow-against-audemars-piguet-watch-australia";
+const path = `/insights/${slug}/`;
+const title = "How much can I borrow against my Audemars Piguet watch in Australia? | ALYRA";
+const description =
+  "How much can you borrow against an Audemars Piguet in Australia? ALYRA publishes a $50,000–$5 million watch-loan range, subject to individual assessment.";
+const ogImage = "/assets/og-audemars-piguet-loan.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["range", "Start with the published range"],
+  ["reference", "The exact reference matters"],
+  ["retail", "Retail price versus lending value"],
+  ["sales", "What 2026 sales show"],
+  ["condition", "Condition and documents"],
+  ["assessment", "How the assessment works"],
+  ["custody", "Custody and repayment risk"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "How much can I borrow against an Audemars Piguet in Australia?", a: "ALYRA's published luxury-watch loan range is $50,000 to $5 million, and Audemars Piguet is one of the brands it considers. The amount for your watch is not set by brand alone; it depends on the individual watch, valuation, suitability as security and approval." },
+  { q: "Can I borrow $50,000 against any Audemars Piguet?", a: "No. The $50,000 figure is the lower end of ALYRA's published luxury-watch loan range, not a guaranteed amount for every AP. ALYRA states that the amount available depends on the watch and its suitability as loan security." },
+  { q: "What percentage of my Audemars Piguet value can I borrow?", a: "As at 14 August 2026, ALYRA's public luxury-watch page does not state a fixed Audemars Piguet loan-to-value percentage. A specialist reviews the exact watch, including its reference, condition, documents, authenticity, ownership records and current demand, before any offer is made." },
+  { q: "Is a Royal Oak better security than another Audemars Piguet?", a: "There is no collection-wide rule: ALYRA states that every watch is reviewed individually. Royal Oak references span many configurations and completed 2026 auction results vary materially, so the exact reference and current market evidence matter." },
+  { q: "Can I borrow against a Royal Oak Offshore?", a: "Potentially. The Royal Oak Offshore was introduced in 1993, but any loan still depends on the individual reference, condition, documents, authenticity, market demand, valuation and approval." },
+  { q: "Can I borrow against a Code 11.59?", a: "Potentially. Code 11.59 by Audemars Piguet was revealed in 2019 and includes watches in different sizes, materials and complications. As with any AP, the lender needs to assess the exact watch rather than the collection name alone." },
+  { q: "Do I need the box and papers for an Audemars Piguet loan?", a: "Not always. ALYRA states that box and papers can help establish authenticity and value and can support stronger terms, but they are not always essential. If they are missing, it can still be worth submitting the watch for assessment." },
+  { q: "Does service history affect the loan amount?", a: "Service history is one of the factors ALYRA lists in its specialist assessment, but it does not determine the loan by itself. The lender considers it together with the reference, condition, originality, documents, rarity, demand, ownership and authenticity." },
+  { q: "Do I keep ownership of my Audemars Piguet during the loan?", a: "Yes. ALYRA states that you remain the owner while the watch is held as security. If the loan is repaid under the agreed terms, the watch is returned to you." },
+  { q: "What happens if I cannot repay the loan?", a: "Your watch is at risk if you do not meet the repayment obligations. ALYRA states that the relevant fees, notices, redemption rights and enforcement processes are disclosed in the written loan terms before you proceed." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Borrowing against an Audemars Piguet" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "How much can I borrow against my Audemars Piguet watch in Australia?",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-08-14",
+    dateModified: "2026-08-14",
+    inLanguage: "en-AU",
+    articleSection: "Watches",
+    author: {
+      "@type": "Person",
+      name: "Elijah Turkovic",
+      jobTitle: "Principal Valuation Specialist",
+      url: absoluteUrl("/about/"),
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="An Audemars Piguet Royal Oak Perpetual Calendar with a blue dial" ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Watches</span>
+      </div>
+      <h1 class="art-h1">How much can I borrow against my Audemars Piguet watch in Australia?</h1>
+      <p class="art-lead">
+        Audemars Piguet is a manufacturer, not a single market. The published loan range is the
+        starting point — the exact reference, condition, documentation and current demand decide
+        what one particular watch can support.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Elijah Turkovic</span>
+            <span class="art-author-role">Principal Valuation Specialist</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>14 August 2026</span><span class="meta-sep" aria-hidden="true"></span><span>8 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="An Audemars Piguet Royal Oak Perpetual Calendar with a blue dial and integrated bracelet" widths={[480, 768, 1080, 1600, 2400]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={78} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>One maker, many markets. The reference number is where the assessment starts.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
+        <p class="art-intro"><span class="dropcap">T</span>hree Audemars Piguet watches sold in the same Phillips auction in 2026 for US$24,130, US$60,960 and US$139,700. All three were Royal Oaks. That spread is the whole answer to why nobody can quote a figure against "an AP" before seeing the reference number.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">ALYRA publishes luxury-watch loans from $50,000 to $5 million and specifically lists Audemars Piguet among the brands it considers. That is ALYRA's overall watch-loan range, not an Audemars Piguet-specific borrowing table or a guaranteed minimum. <a id="cite-1" class="cite" href="#src-1">[1]</a></p>
+            <p class="answer-sub">As at 14 August 2026, ALYRA does not publish a fixed Audemars Piguet loan-to-value percentage on its luxury-watch page; the amount available is determined after specialist assessment of the exact watch, including its reference, condition, originality, documents, service history, rarity, demand, ownership records and authenticity. <a class="cite" href="#src-1">[1]</a></p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>How much you can borrow against an Audemars Piguet depends on the individual watch rather than the brand name alone. ALYRA lists Audemars Piguet among the collectible watch brands it considers and publishes an overall watch-loan range of $50,000 to $5 million, subject to the watch's value and suitability as loan security. <a class="cite" href="#src-1">[1]</a> The assessment considers the reference, condition, originality, documentation, service history, rarity, current demand, ownership and authenticity. <a class="cite" href="#src-1">[1]</a></p>
+        <p>Three completed 2026 Phillips results show why exact reference and configuration matter: Audemars Piguet watches in the same New York sale sold for materially different amounts. <a id="cite-9" class="cite" href="#src-9">[9]</a> <a id="cite-10" class="cite" href="#src-10">[10]</a> <a id="cite-11" class="cite" href="#src-11">[11]</a> Those auction prices are market evidence only, not loan offers or valuations for another watch. ALYRA's <a class="body-link" href="/loans/luxury-watches/">luxury watch lending page</a> sets out how a loan itself proceeds end to end.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, legal opinion, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your watch is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>ALYRA's published luxury-watch loan range is $50,000 to $5 million, and Audemars Piguet is specifically listed among the brands it considers.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>The published range is not an Audemars Piguet-specific borrowing table and does not guarantee a minimum loan for any particular watch.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>As at 14 August 2026, ALYRA's public watch-lending page does not state a fixed Audemars Piguet loan-to-value percentage; each watch is reviewed individually.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>The exact model and reference, condition, originality, box and papers, service history, rarity, current demand, ownership records and authenticity all form part of the assessment.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Retail price and online asking prices do not, by themselves, determine the loan amount; ALYRA assesses current value and suitability as security.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>If a loan proceeds, the watch is held as security in secure custody and returned after repayment under the agreed terms; the watch is at risk if repayment obligations are not met.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This article is for Australian owners of Audemars Piguet watches who are considering a secured loan instead of selling the watch. It is aimed at owners who want a realistic explanation of what determines the borrowing amount before they submit an enquiry.</p>
+
+        <h2 id="method" class="anchor art-h2">How this was prepared</h2>
+        <p>This article was checked against ALYRA's public watch-lending, valuation and custody pages, official Audemars Piguet collection pages, and completed 2026 Phillips auction records. <a id="cite-all" class="cite" href="#sources">[1]–[11]</a></p>
+        <p>Auction results are used only to demonstrate market variation; they are not valuations or loan-to-value guides for another watch. The information was checked on 14 August 2026 and is general information, not financial, legal, credit or valuation advice.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Factor</th><th>Why it matters</th><th>Effect on assessment</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Model and reference</td><td>Identifies the exact watch and the relevant market.</td><td>ALYRA states that sought-after references typically support the strongest terms.</td></tr>
+              <tr><td class="tcell-head">Overall condition</td><td>ALYRA lists overall condition as a separate watch-assessment factor.</td><td>Condition is reviewed as part of the individual assessment.</td></tr>
+              <tr><td class="tcell-head">Originality</td><td>ALYRA lists originality as a separate watch-assessment factor.</td><td>It is considered together with condition, documents, rarity and demand.</td></tr>
+              <tr><td class="tcell-head">Box and papers</td><td>They can help establish authenticity and value.</td><td>They can support stronger terms but are not always essential.</td></tr>
+              <tr><td class="tcell-head">Service history</td><td>ALYRA lists service history as a separate assessment factor.</td><td>It is considered together with the other valuation factors.</td></tr>
+              <tr><td class="tcell-head">Rarity</td><td>ALYRA lists rarity as a separate watch-assessment factor.</td><td>Rarity is considered together with the other valuation factors.</td></tr>
+              <tr><td class="tcell-head">Current demand</td><td>Current demand and likely resale value are relevant to value and suitability as security.</td><td>Market evidence forms part of the individual assessment.</td></tr>
+              <tr><td class="tcell-head">Ownership and authenticity</td><td>ALYRA checks ownership records and authenticity before an offer.</td><td>Both form part of the watch's suitability assessment.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="range" class="anchor art-h2">Start with the published range</h2>
+        <p>The clearest starting point is ALYRA's published luxury-watch lending range: $50,000 to $5 million. Audemars Piguet is specifically listed among the collectible watch brands it considers. <a class="cite" href="#src-1">[1]</a></p>
+        <p>That figure should not be read as an Audemars Piguet price list. ALYRA says the amount available depends on the individual watch and its suitability as loan security, and that every watch is reviewed individually. <a class="cite" href="#src-1">[1]</a></p>
+        <p>As at 14 August 2026, ALYRA's public watch-lending page does not state a fixed Audemars Piguet loan-to-value percentage. You therefore cannot reliably take a retail price, dealer listing or auction result, multiply it by a standard percentage and know what the loan will be. A specialist assessment is required. <a class="cite" href="#src-1">[1]</a></p>
+
+        <h2 id="reference" class="anchor art-h2">The exact reference matters</h2>
+        <p>"Audemars Piguet" describes a manufacturer, not a single market. The Royal Oak, Royal Oak Offshore and Code 11.59 collections span different sizes, materials and complications. Audemars Piguet's own collection pages show that variation across the range. <a id="cite-6" class="cite" href="#src-6">[6]</a> <a id="cite-7" class="cite" href="#src-7">[7]</a> <a id="cite-8" class="cite" href="#src-8">[8]</a></p>
+        <p>For lending purposes, the reference number is more useful than a broad description such as "Royal Oak". ALYRA expressly lists model and reference as assessment factors. <a class="cite" href="#src-1">[1]</a></p>
+        <blockquote class="pull">"Audemars Piguet" describes a manufacturer, not a single market.</blockquote>
+        <p>Different Audemars Piguet references can produce very different completed-sale results. The 2026 examples below illustrate that variation, which is why the exact reference and configuration matter when selecting comparables. <a class="cite" href="#src-9">[9]</a> <a class="cite" href="#src-10">[10]</a> <a class="cite" href="#src-11">[11]</a> The same principle applies across the category — see ALYRA's guides to <a class="body-link" href="/insights/how-lenders-assess-rolex-patek-philippe-richard-mille-watches-australia/">how lenders assess Rolex, Patek Philippe and Richard Mille watches</a>.</p>
+
+        <h2 id="retail" class="anchor art-h2">Retail price versus lending value</h2>
+        <p>The amount originally paid for an AP is not the same as the amount a lender will advance against it. A retail price relates to a sale through the primary market. A dealer listing is an asking price. An auction result records a transaction in a particular market, on a particular date and under that auction house's conditions.</p>
+        <p>ALYRA's own valuation language is more relevant to the loan question: high-value assets are not assessed from a brand name or recent sale price alone. The assessment considers condition, provenance, rarity, service history, documents, market demand, likely resale value and suitability as loan security. <a id="cite-4" class="cite" href="#src-4">[4]</a></p>
+        <p>For that reason, a high asking price online should be treated as a lead for further research, not as a borrowing figure.</p>
+
+        <h2 id="sales" class="anchor art-h2">What 2026 sales show</h2>
+        <p>Completed 2026 auction results illustrate the spread within the Audemars Piguet market. In Phillips' New York Spring 2026 sale, a circa-2023 stainless-steel Royal Oak Chronograph, reference 26240ST.OO.1320ST.08, sold for US$60,960. <a class="cite" href="#src-9">[9]</a></p>
+        <p>In the same Phillips sale, a circa-2021 18K pink-gold Royal Oak Perpetual Calendar, reference 26574OR.OO.1220OR.03, sold for US$139,700. <a class="cite" href="#src-10">[10]</a> A circa-2014 18K pink-gold and black-ceramic Royal Oak Offshore, reference 26401RO.OO.A002CA.01, sold for US$24,130. <a class="cite" href="#src-11">[11]</a></p>
+        <p>These completed sale prices come from the same Phillips New York Spring 2026 sale but represent different references, materials, complications and ages. They do not show what ALYRA would lend against those watches; they show why a lender needs the exact watch and current comparable evidence. <a class="cite" href="#src-9">[9]</a> <a class="cite" href="#src-10">[10]</a> <a class="cite" href="#src-11">[11]</a></p>
+
+        <h2 id="condition" class="anchor art-h2">Condition and documents matter</h2>
+        <p>ALYRA lists overall condition, originality, box and papers, service history, ownership records and authenticity among the factors reviewed for a watch loan. <a class="cite" href="#src-1">[1]</a></p>
+        <p>Box and papers can help establish authenticity and value and may support stronger terms, although ALYRA states that they are not always essential. <a class="cite" href="#src-1">[1]</a> If papers have been lost, the watch can still be submitted for assessment on its own merits. <a class="cite" href="#src-1">[1]</a></p>
+        <p>Service history is one of ALYRA's stated assessment factors. If you have service invoices or other records, include them with the enquiry rather than assuming a service automatically changes the loan amount. <a class="cite" href="#src-1">[1]</a> <a id="cite-2" class="cite" href="#src-2">[2]</a> ALYRA's guide to <a class="body-link" href="/insights/how-watch-service-history-affects-your-loan-offer/">how service history affects a loan offer</a> sets out how that record is weighed.</p>
+
+        <h2 id="assessment" class="anchor art-h2">How the assessment works</h2>
+        <p>For a first review, ALYRA asks for clear, natural-light photos, key details and any documents available. It also asks for the preferred loan amount and timeframe where known. <a class="cite" href="#src-2">[2]</a></p>
+        <p>A specialist then reviews the watch's condition, documents, value, authenticity and market demand. If the application is approved, the written offer sets out the loan amount, fees, interest, repayment terms and redemption rights before the borrower proceeds. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-2">[2]</a></p>
+        <p>Funding is not guaranteed. ALYRA states on both its How It Works and valuation pages that loans remain subject to asset type, valuation, approval, custody, documentation and agreed terms. <a class="cite" href="#src-2">[2]</a> <a id="cite-5" class="cite" href="#src-5">[5]</a></p>
+
+        <h2 id="custody" class="anchor art-h2">Custody and repayment risk</h2>
+        <p>If a loan proceeds, ALYRA states that the watch is documented, photographed and held in secure custody for the agreed term. Insurance may apply subject to policy terms, asset approval, valuation limits and custody conditions. <a id="cite-3" class="cite" href="#src-3">[3]</a></p>
+        <p>The borrower remains the owner while ALYRA holds the watch as security, and the watch is returned after the loan is repaid in accordance with the agreed terms. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-3">[3]</a></p>
+        <p>If repayment obligations are not met, the watch is at risk. ALYRA states that fees, notices, redemption rights and enforcement processes are disclosed in the written loan terms before you proceed. <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-3">[3]</a></p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>What is the exact Audemars Piguet reference? — ALYRA lists model and reference as assessment factors; the reference identifies the specific watch to be assessed;</li>
+          <li>Do you have the box, warranty card or other papers? — box and papers can help establish authenticity and value but are not always essential;</li>
+          <li>What ownership or purchase records do you have? — ALYRA asks for ownership records and any available receipts or papers as part of the assessment;</li>
+          <li>What is the watch's current condition? — overall condition is one of ALYRA's stated assessment factors, so note any known wear, damage or mechanical issues;</li>
+          <li>Has the watch been serviced? — service history is one of the factors ALYRA reviews;</li>
+          <li>Have any parts been replaced or modified? — this can be relevant to the originality and authenticity checks;</li>
+          <li>How much do you want to borrow and for how long? — ALYRA asks for the preferred amount and timeframe so the request can be considered against the asset assessment.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Treating the $50,000 minimum as a guarantee</div><p>ALYRA publishes an overall watch-loan range, but the amount available still depends on the individual watch and approval.</p></div>
+          <div class="mistake"><div class="mistake-h">Using a dealer asking price as the loan value</div><p>An asking price is not evidence of a completed sale and does not establish the lender's assessment of value or suitability as security.</p></div>
+          <div class="mistake"><div class="mistake-h">Describing the watch only as "an AP" or "a Royal Oak"</div><p>A collection name does not identify the specific reference needed for assessment and meaningful comparison.</p></div>
+          <div class="mistake"><div class="mistake-h">Failing to disclose missing papers, replacement parts or known condition issues</div><p>These are relevant because ALYRA reviews documents, condition, originality and authenticity.</p></div>
+          <div class="mistake"><div class="mistake-h">Comparing unlike auction results</div><p>A stainless-steel chronograph, a pink-gold perpetual calendar and a pink-gold/black-ceramic Royal Oak Offshore are different assets; auction results must be matched carefully to the watch being assessed.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist for the reader</h2>
+        <div class="checklist">
+          {[
+            "Find the exact Audemars Piguet reference number",
+            "Take clear, natural-light photographs of the watch from multiple angles",
+            "Gather the box, warranty card, certificates, receipts and other papers you still have",
+            "Gather service invoices or other service records, if available",
+            "Note any known replacement or aftermarket components",
+            "Record any material scratches, dents, damage or mechanical issues you know about",
+            "Decide the amount you want to borrow and your preferred timeframe",
+            "Read the written offer, including the loan amount, fees, interest, repayment terms and redemption rights, before proceeding",
+            "Make sure you understand that the watch is at risk if repayment obligations are not met",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <p class="src-note">Numbered citations in the article correspond to the sources below. Checked 14 August 2026.</p>
+        <div class="src-label">ALYRA</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-1" aria-label="Back to citation 1 in text">↑</a> <a class="body-link" href="/loans/luxury-watches/">ALYRA — Loans against luxury watches</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-2" aria-label="Back to citation 2 in text">↑</a> <a class="body-link" href="/how-it-works/">ALYRA — How it works</a></li>
+          <li id="src-3"><a class="src-back" href="#cite-3" aria-label="Back to citation 3 in text">↑</a> <a class="body-link" href="/security-and-custody/">ALYRA — Security and custody</a></li>
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="/">ALYRA — Private asset-based lending</a></li>
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="/valuation/">ALYRA — Request a confidential valuation</a></li>
+        </ol>
+        <div class="src-label">Audemars Piguet</div>
+        <ol class="src-list" start="6">
+          <li id="src-6"><a class="src-back" href="#cite-6" aria-label="Back to citation 6 in text">↑</a> <a class="body-link" href="https://www.audemarspiguet.com/en/collections/royal-oak-collection" target="_blank" rel="noopener noreferrer">Audemars Piguet — Royal Oak Collection</a></li>
+          <li id="src-7"><a class="src-back" href="#cite-7" aria-label="Back to citation 7 in text">↑</a> <a class="body-link" href="https://www.audemarspiguet.com/en/collections/royal-oak-offshore-collection" target="_blank" rel="noopener noreferrer">Audemars Piguet — Royal Oak Offshore Collection</a></li>
+          <li id="src-8"><a class="src-back" href="#cite-8" aria-label="Back to citation 8 in text">↑</a> <a class="body-link" href="https://www.audemarspiguet.com/en/collections/code-11-59-collection" target="_blank" rel="noopener noreferrer">Audemars Piguet — Code 11.59 Collection</a></li>
+        </ol>
+        <div class="src-label">Completed auction results</div>
+        <ol class="src-list" start="9">
+          <li id="src-9"><a class="src-back" href="#cite-9" aria-label="Back to citation 9 in text">↑</a> <a class="body-link" href="https://www.phillips.com/detail/audemars-piguet/229652" target="_blank" rel="noopener noreferrer">Phillips — Royal Oak Chronograph ref. 26240ST.OO.1320ST.08, Spring 2026</a></li>
+          <li id="src-10"><a class="src-back" href="#cite-10" aria-label="Back to citation 10 in text">↑</a> <a class="body-link" href="https://www.phillips.com/detail/audemars-piguet/229940" target="_blank" rel="noopener noreferrer">Phillips — Royal Oak Perpetual Calendar ref. 26574OR.OO.1220OR.03, Spring 2026</a></li>
+          <li id="src-11"><a class="src-back" href="#cite-11" aria-label="Back to citation 11 in text">↑</a> <a class="body-link" href="https://www.phillips.com/detail/audemars-piguet/231502" target="_blank" rel="noopener noreferrer">Phillips — Royal Oak Offshore ref. 26401RO.OO.A002CA.01, Spring 2026</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Elijah Turkovic" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Elijah Turkovic</div>
+            <div class="author-role">Principal Valuation Specialist</div>
+            <p>Elijah works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine watches, jewellery and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <RelatedArticles slug={slug} />
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Want to know what your Audemars Piguet could support?</h2>
+      <p class="art-cta-lead">
+        Submit the watch's reference and details for private review. An ALYRA specialist will assess
+        condition, documentation and market evidence, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-note { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 22px; }
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .toc-mobile { display: block; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

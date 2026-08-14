@@ -23,6 +23,7 @@ import heroFineart from "../assets/images/hero-fineart.jpeg";
 import argylePinkDiamonds from "../assets/images/argyle-pink-diamonds-hero.jpg";
 import richardMilleLoan from "../assets/images/richard-mille-loan-hero.jpg";
 import goldBullionLoan from "../assets/images/gold-bullion-loan-hero.jpg";
+import audemarsPiguetLoan from "../assets/images/audemars-piguet-loan-hero.jpg";
 import rolexLoanHero from "../assets/images/rolex-loan-hero.jpg";
 import watchServiceHero from "../assets/images/watch-service-hero.jpg";
 
@@ -69,6 +70,7 @@ export const FEATURED: InsightCard & { slug: string } = {
 };
 
 export const POSTS: InsightCard[] = [
+  { slug: "how-much-can-i-borrow-against-audemars-piguet-watch-australia", category: "Watches", title: "How much can I borrow against my Audemars Piguet watch in Australia?", excerpt: "Three Royal Oaks in one 2026 Phillips sale went for US$24,130, US$60,960 and US$139,700. Why the reference number, not the brand, sets the number.", date: "14 Aug 2026", readTime: "8 min read", image: audemarsPiguetLoan, imageAlt: "An Audemars Piguet Royal Oak Perpetual Calendar with a blue dial" },
   { slug: "how-much-can-i-borrow-against-my-gold-bullion-australia", category: "Gold", title: "How much can I borrow against my gold bullion in Australia?", excerpt: "Spot price, collateral value and loan amount are three different numbers. How a lender moves from a dated market reference to an indicative advance.", date: "14 Aug 2026", readTime: "9 min read", image: goldBullionLoan, imageAlt: "Four one-kilogram fine gold bars held in white cotton gloves" },
   { slug: "how-much-can-i-borrow-against-richard-mille-watch-australia", category: "Watches", title: "How much can I borrow against my Richard Mille watch in Australia?", excerpt: "No fixed figure and no universal percentage. The exact reference, condition, documentation and buyer depth decide what a particular Richard Mille can support.", date: "14 Aug 2026", readTime: "9 min read", image: richardMilleLoan, imageAlt: "A carbon-cased Richard Mille skeletonised tourbillon chronograph" },
   { slug: "lending-against-argyle-pink-diamonds", category: "Jewellery", title: "Lending against Argyle pink diamonds.", excerpt: "The mine has closed and the supply is finite — but a lender still assesses one stone at a time. What has to be established about identity, colour, documentation and demand.", date: "14 Aug 2026", readTime: "9 min read", image: argylePinkDiamonds, imageAlt: "Argyle pink, purple and blue diamonds arranged on pink silk" },
