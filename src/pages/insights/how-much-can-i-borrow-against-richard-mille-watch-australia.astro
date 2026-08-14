@@ -1,0 +1,527 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/richard-mille-loan-hero.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "how-much-can-i-borrow-against-richard-mille-watch-australia";
+const path = `/insights/${slug}/`;
+const title = "How much can I borrow against my Richard Mille watch in Australia? | ALYRA";
+const description =
+  "ALYRA offers $50,000–$5 million loans against eligible luxury watches. A Richard Mille loan amount depends on reference, condition, documents and demand.";
+const ogImage = "/assets/og-richard-mille-loan.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["no-fixed", "Why there is no fixed number"],
+  ["price", "Price, value and loan amount"],
+  ["references", "References differ sharply"],
+  ["auctions", "Auction results in context"],
+  ["market", "Market conditions in 2026"],
+  ["moves", "What moves the loan figure"],
+  ["process", "From enquiry to funded loan"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "How much can I borrow against a Richard Mille in Australia?", a: "There is no standard amount. ALYRA publishes a luxury-watch loan range of $50,000 to $5 million, but the amount available for a particular Richard Mille depends on the exact watch, its value, condition, authenticity, documents, ownership records, market demand and the proposed transaction. A specialist assessment is required before a firm amount can be offered." },
+  { q: "What percentage of my Richard Mille's value can I borrow?", a: "ALYRA does not publish a fixed loan-to-value percentage for every watch. Its published approach starts with relevant completed sales and watch-specific factors, then considers an acceptable lending amount for the proposed transaction." },
+  { q: "Can I borrow against any Richard Mille watch?", a: "Not automatically. Richard Mille is among the luxury-watch brands ALYRA considers, but eligibility and terms depend on the individual watch, valuation, authenticity, condition, documents, ownership records, demand, custody and approval." },
+  { q: "Does the original Richard Mille retail price determine my loan?", a: "No. Retail price is background information, but ALYRA's collateral analysis focuses on current, defensible market evidence and estimated net recoverable value for the actual watch. Asking prices, insurance values, auction estimates and auction results serve different purposes and should not be treated automatically as the borrowing amount." },
+  { q: "Do box and papers increase how much I can borrow?", a: "They can strengthen verification and marketability, but they do not automatically increase the loan amount. ALYRA states that box and papers can help establish authenticity and value and can support stronger terms, although they are not always essential." },
+  { q: "Does servicing affect my Richard Mille's value?", a: "It can. Richard Mille says its warranty records include servicing history and advises regular servicing. Service history can help establish maintenance, replacement work and the future service route, which may affect marketability and valuation uncertainty." },
+  { q: "Can aftermarket diamonds reduce my Richard Mille loan value?", a: "They can. Richard Mille warns that unauthorised modifications, including third-party case or dial work, can void warranty coverage and compromise authenticity. The lending effect depends on the particular modification, disclosure, originality and buyer demand." },
+  { q: "Can I keep wearing my Richard Mille during the loan?", a: "Under ALYRA's published process, an accepted watch is held in secure custody for the agreed loan term and returned after repayment under the agreed terms." },
+  { q: "How quickly can I find out what my Richard Mille could support?", a: "ALYRA states that a specialist typically responds to watch enquiries within one business day. That is a response target, not a guarantee of approval, valuation completion or funding time; timing depends on the watch, documents, valuation, custody and approval requirements." },
+  { q: "What happens if I cannot repay a loan secured by my Richard Mille?", a: "Your watch is at risk if you do not meet the repayment obligations. ALYRA states that the consequences of non-repayment are set out in the written loan terms before you proceed." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Borrowing against a Richard Mille" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "How much can I borrow against my Richard Mille watch in Australia?",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-08-14",
+    dateModified: "2026-08-14",
+    inLanguage: "en-AU",
+    articleSection: "Watches",
+    author: {
+      "@type": "Person",
+      name: "Elijah Turkovic",
+      jobTitle: "Principal Valuation Specialist",
+      url: absoluteUrl("/about/"),
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="A rose-gold Richard Mille skeleton watch on a black rubber strap" ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Watches</span>
+      </div>
+      <h1 class="art-h1">How much can I borrow against my Richard Mille watch in Australia?</h1>
+      <p class="art-lead">
+        There is no fixed figure and no universal percentage. The exact reference, condition,
+        documentation and current buyer depth decide what a particular Richard Mille can support —
+        not the retail price and not a record auction result.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Elijah Turkovic</span>
+            <span class="art-author-role">Principal Valuation Specialist</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>14 August 2026</span><span class="meta-sep" aria-hidden="true"></span><span>9 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="A rose-gold Richard Mille skeletonised wristwatch on a black rubber strap" widths={[480, 768, 1080, 1600]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={78} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>The badge sets the conversation. The reference sets the number.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
+        <p class="art-intro"><span class="dropcap">I</span>t is the first question almost every owner asks, and the honest answer is that nobody can give a figure before seeing the watch. Two Richard Milles with near-identical online asking prices can support materially different assessments — because the assessment is not about the brand.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">There is no fixed amount or universal percentage you can borrow against a Richard Mille watch. ALYRA's published luxury-watch loan range is $50,000 to $5 million, but the amount available for a particular watch depends on the exact model and reference, condition, documents, authenticity, ownership records and current market demand. <a id="cite-1" class="cite" href="#src-1">[1]</a> ALYRA does not apply one universal loan-to-value percentage to every watch or brand. <a id="cite-2" class="cite" href="#src-2">[2]</a></p>
+            <p class="answer-sub">The $50,000 to $5 million figure is ALYRA's product range for eligible luxury-watch loans; it is not the borrowing range of every Richard Mille. A firm amount can only be offered after the specific watch and proposed transaction are assessed. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-2">[2]</a></p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>Richard Mille values can be highly reference-specific. ALYRA's collateral analysis starts with relevant completed sales, then adjusts for the exact configuration, condition, originality, documentation, service exposure, likely costs, time and market uncertainty to estimate net recoverable value. <a class="cite" href="#src-2">[2]</a> Recent Phillips results show why a brand-level number can mislead: an RM 67-02 "Alexander Zverev" sold for US$381,000 in New York, while an RM 027 "Nadal" sold for CHF952,500 in Geneva. <a id="cite-6" class="cite" href="#src-6">[6]</a> <a id="cite-7" class="cite" href="#src-7">[7]</a> Those results are market evidence for those particular watches, not borrowing benchmarks for another Richard Mille. ALYRA's <a class="body-link" href="/loans/luxury-watches/">luxury watch lending page</a> sets out how a loan itself proceeds end to end.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, legal opinion, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your watch is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>There is no universal Richard Mille loan-to-value percentage; the exact watch and proposed transaction are assessed individually.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>ALYRA publishes a loan range of $50,000 to $5 million for eligible luxury watches, including Richard Mille.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>ALYRA's collateral analysis focuses on estimated net recoverable value rather than retail price, insurance value or the highest online asking price.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>The exact reference, material, edition and configuration matter because valid comparable sales can be highly reference-specific.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Condition, authenticity, originality, service history, box and papers, ownership records and current demand can affect the assessment.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Auction results are useful market evidence, but an exceptional result should not be treated automatically as a loan value.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A firm loan amount is only available after the watch, supporting records and proposed transaction have been reviewed.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This guide is for Australian owners of Richard Mille watches who are considering using a watch as security for a secured loan rather than selling it immediately. It is most useful for owners who want to understand the difference between an asking price, market value and the amount a lender may be prepared to advance.</p>
+        <p>It is general information only and is not a watch valuation, financial advice, credit advice or legal advice. Approval, amount, fees, interest, timing and other terms remain transaction-specific. <a class="cite" href="#src-1">[1]</a></p>
+
+        <h2 id="method" class="anchor art-h2">How this was prepared</h2>
+        <p>This article was prepared from ALYRA's published lending criteria, Richard Mille manufacturer information, 2026 Phillips auction results, Federation of the Swiss Watch Industry data, Australian federal credit legislation and Queensland pawnbroking guidance. <a id="cite-all" class="cite" href="#sources">[1]–[12]</a></p>
+        <p>Auction results are market evidence, not borrowing benchmarks. Public URLs and dated claims were checked on 14 August 2026.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Factor</th><th>Why it matters</th><th>Typical effect on assessment</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Exact reference</td><td>Defines which completed sales are genuinely comparable.</td><td>Precise identification narrows the comparable set and can reduce valuation uncertainty.</td></tr>
+              <tr><td class="tcell-head">Material and edition</td><td>Richard Mille models can differ by case material, production and configuration.</td><td>Can change the relevant buyer pool and valid comparable sales.</td></tr>
+              <tr><td class="tcell-head">Condition</td><td>Wear, damage and mechanical issues can affect likely sale proceeds.</td><td>Poor or uncertain condition can reduce recognised value or require further inspection.</td></tr>
+              <tr><td class="tcell-head">Authenticity and originality</td><td>Aftermarket or unauthorised changes can affect manufacturer support and buyer demand.</td><td>Material modifications can widen verification uncertainty and reduce marketability.</td></tr>
+              <tr><td class="tcell-head">Box, papers and records</td><td>Documents can support identity, history and marketability, but they do not alone prove legal title, authenticity or original configuration.</td><td>A coherent evidence file can support a more confident assessment.</td></tr>
+              <tr><td class="tcell-head">Service history</td><td>Complex watches can involve material service cost, turnaround and parts-access risk.</td><td>Known authorised service history can reduce uncertainty, although service condition remains watch-specific.</td></tr>
+              <tr><td class="tcell-head">Completed sales</td><td>Completed transactions are stronger evidence than unsupported asking prices.</td><td>Several relevant sales can support a more defensible range.</td></tr>
+              <tr><td class="tcell-head">Buyer depth</td><td>Some references have more repeatable demand than others.</td><td>Thin, concentrated or event-driven markets require a larger uncertainty allowance.</td></tr>
+              <tr><td class="tcell-head">Ownership and custody</td><td>A lender must be satisfied about ownership and the ability to take and hold the watch as security.</td><td>Unclear ownership or unsuitable custody can delay or prevent a loan proceeding.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="no-fixed" class="anchor art-h2">Why there is no fixed number</h2>
+        <p>ALYRA does not value a Richard Mille for secured lending by applying one fixed percentage to its original retail price. Its published watch criteria require individual review of the model and reference, condition, documents, authenticity, ownership records and current market demand before an offer is made. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-2">[2]</a></p>
+        <p>ALYRA's collateral analysis begins with relevant completed sales and adjusts for the subject watch's exact configuration, condition, originality, provenance, completeness and likely service exposure. It also allows for inspection or authentication, selling and holding costs, time and market uncertainty. The result is an estimate of net recoverable value, not a prediction of the next retail listing or auction record. <a class="cite" href="#src-2">[2]</a></p>
+        <p>That is why two Richard Mille watches with similar online asking prices can still support different lending assessments. <a class="cite" href="#src-2">[2]</a> The same reasoning underpins ALYRA's guide to <a class="body-link" href="/insights/how-much-can-i-borrow-against-a-rolex-australia/">how much you can borrow against a Rolex in Australia</a>.</p>
+
+        <h2 id="price" class="anchor art-h2">Price, value and loan amount</h2>
+        <p>Several different numbers can appear around the same watch, and they are not interchangeable. Retail price concerns the primary market; a dealer asking price is an uncompleted offer; an insurance figure is set for risk-transfer purposes; an auction estimate relates to a particular sale; and a realised auction price records the outcome for one lot and may include buyer's premium or exceptional bidding. <a class="cite" href="#src-2">[2]</a></p>
+        <blockquote class="pull">A high online listing does not establish an equivalent borrowing amount.</blockquote>
+        <p>For secured lending, the more relevant figure is estimated net recoverable value: what the lender expects could be recovered after likely costs, time and uncertainty. <a class="cite" href="#src-2">[2]</a> The loan amount is then the amount the lender is prepared to advance under the proposed terms. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-2">[2]</a></p>
+
+        <h2 id="references" class="anchor art-h2">Richard Mille references differ sharply</h2>
+        <p>The exact reference matters because Richard Mille watches can differ substantially in movement, materials, edition size and collector audience. Richard Mille describes the RM 67-02 as an automatic sports watch weighing 32 grams and using Quartz TPT, Carbon TPT and grade 5 titanium. <a id="cite-4" class="cite" href="#src-4">[4]</a></p>
+        <p>The historical RM 027 Rafael Nadal is a different proposition: Richard Mille states that the tourbillon was limited to 50 pieces and weighed less than 20 grams including the strap when introduced. <a id="cite-5" class="cite" href="#src-5">[5]</a></p>
+        <p>Those watches should not be valued from the same broad "Richard Mille" benchmark. Reference-level evidence is needed to decide which completed sales are genuinely comparable. <a class="cite" href="#src-2">[2]</a></p>
+
+        <h2 id="auctions" class="anchor art-h2">Recent auction results in context</h2>
+        <p>At Phillips' New York Watch Auction XIV on 13–14 June 2026, an RM 67-02 "Alexander Zverev" with warranty and presentation box sold for US$381,000 against an estimate of US$150,000–US$300,000. <a class="cite" href="#src-6">[6]</a> <a id="cite-8" class="cite" href="#src-8">[8]</a></p>
+        <p>At Phillips' Geneva Watch Auction XXIII on 9–10 May 2026, an RM 027 "Nadal", numbered 25 of the 50-piece edition and accompanied by warranty and presentation box, sold for CHF952,500. <a class="cite" href="#src-7">[7]</a></p>
+        <p>These results are evidence of demand for those particular watches. They do not mean an RM 67-02 supports a US$381,000 loan or an RM 027 supports a CHF952,500 loan. A realised auction price may include buyer's premium and exceptional bidding and is not automatically the same as net recoverable value. <a class="cite" href="#src-2">[2]</a></p>
+
+        <h2 id="market" class="anchor art-h2">Current market conditions in 2026</h2>
+        <p>Broader market data provides context but cannot replace reference-specific evidence. The Federation of the Swiss Watch Industry reported that Swiss watch exports declined 1.7% in 2025 to CHF25.6 billion and said the highest price segments continued to show steady demand. <a id="cite-9" class="cite" href="#src-9">[9]</a></p>
+        <p>Phillips reported that The New York Watch Auction XIV realised US$75.8 million in June 2026, with all 158 offered lots sold by lot and by value. <a class="cite" href="#src-8">[8]</a></p>
+        <p>Those figures describe different markets. For a Richard Mille owner seeking a loan, the more useful question remains how readily buyers can be found for the exact reference and at what repeatable level. <a class="cite" href="#src-2">[2]</a></p>
+
+        <h2 id="moves" class="anchor art-h2">What moves the loan figure</h2>
+        <p>A coherent evidence file can reduce avoidable uncertainty. Richard Mille states that its warranty card is paired with the watch's serial number and records purchase, servicing and warranty history. It also states that intervention or service outside its network voids the warranty and can compromise authenticity. <a id="cite-3" class="cite" href="#src-3">[3]</a></p>
+        <div class="compare">
+          <div class="compare-item">
+            <div class="compare-h">Reduces uncertainty</div>
+            <p>An accurately identified reference, manufacturer-correct configuration, appropriate condition, credible warranty and service records, evidence of ownership, useful original accessories and several recent completed sales for closely comparable watches. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-3">[3]</a></p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-h">Increases uncertainty</div>
+            <p>Uncertain authenticity, undisclosed aftermarket work, significant damage, mechanical faults, incomplete ownership evidence, dependence on one exceptional sale or very limited evidence of current buyers. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-3">[3]</a></p>
+          </div>
+        </div>
+        <p>None of these factors alone determines approval or a particular loan amount.</p>
+
+        <h2 id="process" class="anchor art-h2">From enquiry to funded loan</h2>
+        <p>ALYRA's published watch process starts with photos, key details and any available documents. A specialist then reviews the watch's condition, documents, value, authenticity and market demand before any offer is made. <a class="cite" href="#src-1">[1]</a></p>
+        <p>If approved, the client receives a written offer setting out the loan amount, fees, interest, repayment terms and redemption rights before proceeding. ALYRA also states that the consequences of non-repayment are set out in the written loan terms. The watch is held securely for the agreed term and returned after repayment under the agreed terms. <a class="cite" href="#src-1">[1]</a></p>
+        <p>Queensland guidance states that a pawnbroker licence allows a business to take an item as a pawn or pledge and lend money for profit. <a id="cite-10" class="cite" href="#src-10">[10]</a> Section 6(9) of the National Credit Code states that the Code does not apply to credit provided on pawned or pledged goods by a lawfully operating pawnbroker where the pawnbroker's only recourse on default is against those goods; sections 76–81 on unjust transactions still apply. <a id="cite-11" class="cite" href="#src-11">[11]</a> Queensland guidance also requires pawnbrokers to record pledge details including the goods, amount advanced, interest and redemption period. <a id="cite-12" class="cite" href="#src-12">[12]</a> The legal treatment of a particular transaction remains fact- and structure-specific.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>What is the exact Richard Mille reference and serial number? — precise identity determines which completed sales are genuinely comparable and helps reconcile the watch with its records;</li>
+          <li>Is it a standard model, boutique edition or limited edition? — edition details can materially change scarcity and the relevant buyer market;</li>
+          <li>Do you have the original warranty documentation? — Richard Mille links its warranty card to the serial number and service history, while ALYRA states that box and papers can support authenticity, value and stronger terms;</li>
+          <li>When was the watch last serviced, and by whom? — service history can reveal maintenance, replacement parts, technical risk and the appropriate future service route;</li>
+          <li>Has anything been changed or modified? — unauthorised changes may affect authenticity, warranty support and buyer demand;</li>
+          <li>What condition is the watch in? — damage, wear and mechanical issues can affect expected sale proceeds and may require further inspection;</li>
+          <li>What documents show ownership? — the lender needs evidence that the person offering the watch has authority to pledge it as security;</li>
+          <li>How much are you seeking and for what term? — the requested amount and term are considered against the assessed watch value and the proposed transaction, not an advertised price alone.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Using retail price as value</div><p>The amount originally paid for the watch does not establish its current net recoverable value.</p></div>
+          <div class="mistake"><div class="mistake-h">Relying on asking prices</div><p>An advertisement does not prove that a transaction will occur at that level; completed sales generally provide stronger evidence.</p></div>
+          <div class="mistake"><div class="mistake-h">Using one record auction result</div><p>An exceptional result can reflect rarity, provenance, condition and bidding competition, so it should not automatically be applied to another watch.</p></div>
+          <div class="mistake"><div class="mistake-h">Modifying the watch first</div><p>Unauthorised work can affect authenticity, manufacturer warranty and marketability.</p></div>
+          <div class="mistake"><div class="mistake-h">Leaving documentation gaps until late</div><p>Missing records do not automatically disqualify a watch, but late disclosure can increase due diligence and valuation uncertainty.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming the brand guarantees approval</div><p>Richard Mille is among the brands ALYRA considers, but approval still depends on the specific asset, evidence, custody and transaction.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist for the reader</h2>
+        <div class="checklist">
+          {[
+            "Record the exact Richard Mille model, reference and serial details",
+            "Take clear photographs of the dial, case, caseback, crown, clasp and strap; do not open the case unless an appropriate specialist does so",
+            "Locate the original warranty documents and any manufacturer correspondence",
+            "Gather purchase invoices or other documents showing ownership",
+            "Find service invoices and repair records",
+            "List any replacement parts, polishing or aftermarket modifications",
+            "Locate the original box and accessories where available",
+            "Decide approximately how much you want to borrow, the preferred term and the likely repayment source",
+            "Compare completed sales for the same reference where available; do not rely only on dealer asking prices",
+            "Review the written loan amount, fees, interest, repayment terms, redemption rights and consequences of non-repayment before proceeding",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <p class="src-note">Numbered citations in the article correspond to the sources below. Public URLs and dated claims were checked on 14 August 2026.</p>
+        <div class="src-label">ALYRA</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-1" aria-label="Back to citation 1 in text">↑</a> <a class="body-link" href="/loans/luxury-watches/">ALYRA — Loans against luxury watches</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-2" aria-label="Back to citation 2 in text">↑</a> <a class="body-link" href="/insights/how-lenders-assess-rolex-patek-philippe-richard-mille-watches-australia/">ALYRA — How lenders assess Rolex, Patek Philippe and Richard Mille watches in Australia</a></li>
+        </ol>
+        <div class="src-label">Richard Mille</div>
+        <ol class="src-list" start="3">
+          <li id="src-3"><a class="src-back" href="#cite-3" aria-label="Back to citation 3 in text">↑</a> <a class="body-link" href="https://www.richardmille.com/page/servicing" target="_blank" rel="noopener noreferrer">Richard Mille — Watch servicing</a></li>
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="https://www.richardmille.com/collections/rm-67-02-automatic-extra-flat" target="_blank" rel="noopener noreferrer">Richard Mille — RM 67-02 Automatic Winding Extra Flat</a></li>
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="https://www.richardmille.com/historical-models/rm-027-tourbillon-rafael-nadal" target="_blank" rel="noopener noreferrer">Richard Mille — RM 027 Tourbillon Rafael Nadal</a></li>
+        </ol>
+        <div class="src-label">Auction results and market data</div>
+        <ol class="src-list" start="6">
+          <li id="src-6"><a class="src-back" href="#cite-6" aria-label="Back to citation 6 in text">↑</a> <a class="body-link" href="https://www.phillips.com/detail/richard-mille/234005" target="_blank" rel="noopener noreferrer">Phillips — Richard Mille RM 67-02 "Alexander Zverev", The New York Watch Auction XIV</a></li>
+          <li id="src-7"><a class="src-back" href="#cite-7" aria-label="Back to citation 7 in text">↑</a> <a class="body-link" href="https://www.phillips.com/detail/richard-mille/230330" target="_blank" rel="noopener noreferrer">Phillips — Richard Mille RM 027 "Nadal", The Geneva Watch Auction XXIII</a></li>
+          <li id="src-8"><a class="src-back" href="#cite-8" aria-label="Back to citation 8 in text">↑</a> <a class="body-link" href="https://www.phillips.com/press/release/twice-in-six-months-phillips-shatters-record-for-the-most-successful-watch-auction-in-us-history" target="_blank" rel="noopener noreferrer">Phillips — The New York Watch Auction XIV results</a></li>
+          <li id="src-9"><a class="src-back" href="#cite-9" aria-label="Back to citation 9 in text">↑</a> <a class="body-link" href="https://www.fhs.swiss/eng/2026_01_29_statistics.html" target="_blank" rel="noopener noreferrer">Federation of the Swiss Watch Industry — Swiss watch exports in 2025</a></li>
+        </ol>
+        <div class="src-label">Australian credit and pawnbroking</div>
+        <ol class="src-list" start="10">
+          <li id="src-10"><a class="src-back" href="#cite-10" aria-label="Back to citation 10 in text">↑</a> <a class="body-link" href="https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/second-hand-dealing-and-pawnbroking-industry-regulation/get-a-second-hand-dealing-or-pawnbroking-licence" target="_blank" rel="noopener noreferrer">Queensland Government — Get a second-hand dealing or pawnbroking licence</a></li>
+          <li id="src-11"><a class="src-back" href="#cite-11" aria-label="Back to citation 11 in text">↑</a> <a class="body-link" href="https://www.legislation.gov.au/C2009A00134/latest" target="_blank" rel="noopener noreferrer">Federal Register of Legislation — National Credit Code, s 6(9)</a></li>
+          <li id="src-12"><a class="src-back" href="#cite-12" aria-label="Back to citation 12 in text">↑</a> <a class="body-link" href="https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/second-hand-dealing-and-pawnbroking-industry-regulation/legal-requirements" target="_blank" rel="noopener noreferrer">Queensland Government — Legal requirements for second-hand dealers and pawnbrokers</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Elijah Turkovic" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Elijah Turkovic</div>
+            <div class="author-role">Principal Valuation Specialist</div>
+            <p>Elijah works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as fine watches, jewellery and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <RelatedArticles slug={slug} />
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Want to know what your Richard Mille could support?</h2>
+      <p class="art-cta-lead">
+        Submit the watch's details for private review. An ALYRA specialist will assess reference,
+        condition, documentation and market evidence, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 26px; }
+  .compare-item { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 3px; padding: 22px 24px; }
+  .compare-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 10px; }
+  .compare-item p { font: 400 15px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-note { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 22px; }
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .toc-mobile { display: block; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

@@ -21,6 +21,7 @@ import jewellery from "../assets/images/jewellery.jpg";
 import heroWatches from "../assets/images/hero-watches.jpg";
 import heroFineart from "../assets/images/hero-fineart.jpeg";
 import argylePinkDiamonds from "../assets/images/argyle-pink-diamonds-hero.jpg";
+import richardMilleLoan from "../assets/images/richard-mille-loan-hero.jpg";
 import rolexLoanHero from "../assets/images/rolex-loan-hero.jpg";
 import watchServiceHero from "../assets/images/watch-service-hero.jpg";
 
@@ -67,6 +68,7 @@ export const FEATURED: InsightCard & { slug: string } = {
 };
 
 export const POSTS: InsightCard[] = [
+  { slug: "how-much-can-i-borrow-against-richard-mille-watch-australia", category: "Watches", title: "How much can I borrow against my Richard Mille watch in Australia?", excerpt: "No fixed figure and no universal percentage. The exact reference, condition, documentation and buyer depth decide what a particular Richard Mille can support.", date: "14 Aug 2026", readTime: "9 min read", image: richardMilleLoan, imageAlt: "A rose-gold Richard Mille skeleton watch on a black rubber strap" },
   { slug: "lending-against-argyle-pink-diamonds", category: "Jewellery", title: "Lending against Argyle pink diamonds.", excerpt: "The mine has closed and the supply is finite — but a lender still assesses one stone at a time. What has to be established about identity, colour, documentation and demand.", date: "14 Aug 2026", readTime: "9 min read", image: argylePinkDiamonds, imageAlt: "Argyle pink, purple and blue diamonds arranged on pink silk" },
   { slug: "liquidity-without-giving-up-ownership", category: "Market", title: "The case for liquidity without giving up ownership.", excerpt: "Selling is final. Borrowing against an asset can preserve ownership and future value exposure while solving a timing problem — but only when the costs, controls and repayment plan are credible.", date: "3 Aug 2026", readTime: "13 min read", image: valuationImg, imageAlt: "Diamond-set rose-gold Patek Philippe Aquanaut" },
   { slug: "reading-an-auction-result-before-you-rely-on-it", category: "Art", title: "Reading an auction result before you rely on it.", excerpt: "A single hammer price rarely tells the whole story. Price basis, lot identity, condition, sale mechanics and bidder depth decide whether a published result is a comparable at all.", date: "3 Aug 2026", readTime: "14 min read", image: heroFineart, imageAlt: "A gilt-framed oil painting of horses crossing a river" },
