@@ -1,0 +1,509 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/gold-bullion-loan-hero.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "how-much-can-i-borrow-against-my-gold-bullion-australia";
+const path = `/insights/${slug}/`;
+const title = "How much can I borrow against my gold bullion in Australia? | ALYRA";
+const description =
+  "ALYRA offers gold-bullion loans from $50,000 to $5 million. What you can borrow depends on verified bullion value, collateral quality and lending terms.";
+const ogImage = "/assets/og-gold-bullion-loan.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["reference", "Start with a market reference"],
+  ["price-vs-loan", "Gold price versus loan value"],
+  ["limits", "Minimum and maximum loan sizes"],
+  ["stronger", "What supports a stronger assessment"],
+  ["reduce", "What can reduce the amount"],
+  ["market", "Gold market context in 2026"],
+  ["borrow-sell", "Borrowing versus selling"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "How much can I borrow against 1kg of gold in Australia?", a: "There is no single published percentage that applies to every 1kg bar. At 11:15am on 14 August 2026, The Perth Mint showed a “Perth Mint Buys” price of $192,004.95 for a 1kg cast gold bar. If that figure were also the lender's assessed collateral value and a 60% loan-to-value ratio were applied, the arithmetic would be about $115,203. This is an illustration only: ALYRA does not publish 60% as its gold-bullion lending policy or as an expected offer." },
+  { q: "What percentage of my gold value can I borrow?", a: "ALYRA does not publish a fixed gold-bullion loan-to-value percentage. Its published process says the amount depends on the bullion and its suitability as security after checks of weight, purity, refiner, ownership, authenticity and current market pricing. The percentage and resulting amount are therefore determined by the specific assessment and written offer." },
+  { q: "Is a gold-backed loan based on the spot price?", a: "Spot price can be a starting reference, but it is not the same as the loan amount. A lender may use spot, an LBMA benchmark, a dealer bid or a mint buy price to inform market value, then apply collateral adjustments and a loan-to-value ratio." },
+  { q: "Can I borrow against Perth Mint gold bars?", a: "ALYRA says it considers recognised investment-grade bars, subject to verification and approval. The Perth Mint's 1kg cast gold bar is 99.99% pure and stamped with its mark, weight, purity, production date and serial number, but acceptance and loan amount still depend on the full assessment." },
+  { q: "Can I borrow against gold coins?", a: "Yes. ALYRA says recognised investment and collectible gold coins may be considered, subject to verification of weight, purity, condition and authenticity. Its published page says value is based on verified weight and purity with reference to current market pricing, alongside any collectible premium for recognised coins; the amount available still depends on the full assessment." },
+  { q: "Do I keep ownership of my gold while I borrow?", a: "Under ALYRA's published process, you remain the owner while the bullion is held as security, and the gold is returned after the loan is repaid under the agreed terms. The asset is nevertheless at risk if repayment obligations are not met." },
+  { q: "What purity does gold need to be for a bullion loan?", a: "ALYRA does not publish a single minimum fineness for every private bullion loan; it verifies the purity of each holding. As market references, The Perth Mint's 1kg cast bar is 99.99% pure, while LBMA Good Delivery gold bars must meet a minimum fineness of 995 parts per thousand. These are market specifications, not a published ALYRA minimum." },
+  { q: "What documents should I provide with my gold?", a: "Useful records include purchase invoices, receipts, assay certificates where available, serial numbers, bar lists and storage or custody statements. They help the lender verify identity, ownership and authenticity and can reduce the need for additional checks." },
+  { q: "What happens if the gold price falls after I take the loan?", a: "A lower gold price can reduce collateral value, but the effect on an existing loan depends on the written terms. ALYRA's general collateral guide notes that some facilities may require repayment, additional collateral or partial sale if collateral value falls, depending on the loan terms. ALYRA's public gold-bullion page does not state a standard automatic trigger, so the written provisions dealing with collateral value, repayment and default are what matter." },
+  { q: "What happens if I do not repay a gold-backed pawn loan?", a: "Your pledged gold is at risk if you do not meet the repayment obligations. For a Queensland pawn transaction, the statutory redemption period is three months from the day the property is pawned unless a longer period is agreed; after the period expires, the Act deals with unredeemed property and the circumstances in which it may be sold. Other transaction structures or jurisdictions may differ, so the written terms and applicable law matter." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Borrowing against gold bullion" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "How much can I borrow against my gold bullion in Australia?",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-08-14",
+    dateModified: "2026-08-14",
+    inLanguage: "en-AU",
+    articleSection: "Gold",
+    author: {
+      "@type": "Person",
+      name: "Elijah Turkovic",
+      jobTitle: "Principal Valuation Specialist",
+      url: absoluteUrl("/about/"),
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="Four one-kilogram fine gold bars held in white cotton gloves" ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Gold</span>
+      </div>
+      <h1 class="art-h1">How much can I borrow against my gold bullion in Australia?</h1>
+      <p class="art-lead">
+        Spot price, collateral value and loan amount are three different numbers. How a lender moves
+        from a dated market reference to an indicative advance — and why the gold price is only the
+        starting point.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Elijah Turkovic</span>
+            <span class="art-author-role">Principal Valuation Specialist</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>14 August 2026</span><span class="meta-sep" aria-hidden="true"></span><span>9 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="Four one-kilogram 999.9 fine gold cast bars, serial numbers visible, held in white cotton gloves" widths={[480, 768, 1080, 1356]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={80} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>Verified weight, purity and refiner come first. The price comes second.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
+        <p class="art-intro"><span class="dropcap">G</span>old is the one collateral class where owners usually think they already know the answer. The spot price is public, the weight is stamped on the bar, so the arithmetic looks like it should be simple. It isn't — because the number a lender can advance sits two steps below the number on the screen.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">ALYRA does not publish a fixed percentage you can borrow against gold bullion. Its published gold-bullion loan range is $50,000 to $5 million, and the amount offered depends on verified weight, purity, refiner or mint, ownership, authenticity, current market pricing and the bullion's suitability as security. <a id="cite-1" class="cite" href="#src-1">[1]</a></p>
+            <p class="answer-sub">A lender may first reduce a market reference to an assessed collateral value, then lend only a percentage of that figure. <a id="cite-9" class="cite" href="#src-9">[9]</a> As a dated reference, The Perth Mint showed a "Perth Mint Buys" price of $192,004.95 for a 1kg cast gold bar at 11:15am on 14 August 2026. <a id="cite-2" class="cite" href="#src-2">[2]</a></p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>Start with a current market reference for the bullion, not its purchase price or a headline spot quote in isolation. A lender may adjust that reference for spreads, verification, storage, insurance, legal risk and time to sell to establish collateral value, then apply a loan-to-value ratio to determine the advance. <a class="cite" href="#src-9">[9]</a> ALYRA publishes gold-bullion loans from $50,000 to $5 million, but the amount for any holding is set by the individual assessment and written offer. <a class="cite" href="#src-1">[1]</a> ALYRA's <a class="body-link" href="/loans/gold-bullion/">gold bullion lending page</a> sets out how a loan itself proceeds end to end.</p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, legal opinion, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Worked figures are illustrative only and are not a quote. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your bullion is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>ALYRA publishes gold-bullion loans from $50,000 to $5 million, but does not publish a fixed percentage you can borrow against every holding.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A credible estimate starts with verified weight, purity and a current market reference, not the price you originally paid.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Spot prices, dealer bids and mint buy prices are valuation references, not loan offers.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Recognised bars, clear refiner or mint markings, serial numbers, assay information and ownership records can reduce verification uncertainty.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>A collateral haircut and a loan-to-value ratio are different: the haircut can reduce the market reference to collateral value, while the ratio determines the advance against that assessed value.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Gold was volatile in the first half of 2026, so market-value inputs should be time-stamped and treated as indicative.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>If repayment obligations are not met, the pledged gold is at risk; the consequences depend on the written loan terms and applicable law.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This guide is for Australian owners of investment-grade gold bars or bullion coins who are considering a loan instead of an outright sale. It explains how to build an indicative scenario, what a specialist will verify and why spot price, collateral value and loan amount are three different numbers.</p>
+
+        <h2 id="method" class="anchor art-h2">How this was prepared</h2>
+        <p>This article was prepared using ALYRA's public bullion-lending pages and collateral guide, official Perth Mint, AUSTRAC and LBMA sources, World Gold Council research and Queensland pawnbroking legislation. <a id="cite-all" class="cite" href="#sources">[1]–[12]</a></p>
+        <p>The Perth Mint price snapshot used in the worked example was checked at 11:15am on 14 August 2026. Worked figures are illustrative only, not a quote, valuation or promise of approval. This is general information, not financial, legal, tax or credit advice.</p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Factor</th><th>Why it matters</th><th>Effect on indicative loan</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Current market reference</td><td>Provides a dated starting point for value.</td><td>Spot, LBMA benchmark, dealer bid or mint buy price can inform the assessment, but none is itself a loan offer.</td></tr>
+              <tr><td class="tcell-head">Fine gold content</td><td>Weight and purity determine the quantity of fine gold being valued.</td><td>More verified fine gold generally increases gross metal value.</td></tr>
+              <tr><td class="tcell-head">Refiner, mint and markings</td><td>Recognised producers and clear markings help establish identity and authenticity.</td><td>Clear refiner or mint marks, purity, serial details and assay information can reduce verification uncertainty.</td></tr>
+              <tr><td class="tcell-head">Ownership and documents</td><td>The borrower must show a clear right to pledge the bullion.</td><td>Invoices, receipts, bar lists and custody records can support verification; gaps can delay or prevent an offer.</td></tr>
+              <tr><td class="tcell-head">Storage and control</td><td>The lender needs workable control, access and secure custody arrangements.</td><td>Custody can affect verification, insurance, enforcement and execution risk.</td></tr>
+              <tr><td class="tcell-head">Form and liquidity</td><td>Standard bars and recognised bullion coins generally have clearer resale channels.</td><td>Easier realisation can support stronger collateral treatment.</td></tr>
+              <tr><td class="tcell-head">Collateral value adjustments</td><td>Haircuts, costs and risk allowances can reduce a market reference before lending.</td><td>Volatility, spreads, verification, storage, insurance, legal costs and time to sell can lower assessed collateral value.</td></tr>
+              <tr><td class="tcell-head">Loan-to-value ratio</td><td>The ratio compares the loan amount with assessed collateral value.</td><td>This is the step that converts assessed collateral value into an indicative loan amount.</td></tr>
+              <tr><td class="tcell-head">Product limits</td><td>The requested loan must fit the lender's published product range.</td><td>ALYRA publishes gold-bullion loans from $50,000 to $5 million, subject to assessment and approval.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="reference" class="anchor art-h2">Start with a market reference</h2>
+        <p>Start with a defensible market reference for the bullion. AUSTRAC defines bullion as precious metal authenticated to a specified quality and fineness and valued according to the market spot price of the contained metal. <a id="cite-3" class="cite" href="#src-3">[3]</a> ALYRA says it verifies weight, purity, refiner or mint, ownership and authenticity with reference to current market pricing before any offer is made. <a class="cite" href="#src-1">[1]</a></p>
+        <p>For a dated Australian example, The Perth Mint's page showed an AUD gold spot bid of $6,094.42 per troy ounce at 11:15am on 14 August 2026 and a "Perth Mint Buys" price of $192,004.95 for a 1kg cast gold bar. <a class="cite" href="#src-2">[2]</a> The 1kg bar is specified at 99.99% fineness and is stamped with The Perth Mint's mark, weight, purity, production month and year, and serial number. <a id="cite-4" class="cite" href="#src-4">[4]</a></p>
+        <p>Those figures are not interchangeable. The Perth Mint states that product prices are indicative and finalised at the time of trading, while its selling-to-the-Mint terms say the price it pays depends on the product and the prevailing Perth Mint spot bid less a stated percentage. <a class="cite" href="#src-2">[2]</a> <a id="cite-12" class="cite" href="#src-12">[12]</a> For a lender, a dealer or mint buy price can therefore be a more realistic sale-channel reference than a retail asking price. <a class="cite" href="#src-9">[9]</a></p>
+
+        <h2 id="price-vs-loan" class="anchor art-h2">Gold price versus loan value</h2>
+        <p>The gold price is not the loan amount. ALYRA's collateral guide separates market value, collateral value and loan-to-value. It describes collateral value as gross metal value after lender haircuts, costs and risk allowances, and loan-to-value as the loan amount divided by assessed collateral value. <a class="cite" href="#src-9">[9]</a></p>
+        <blockquote class="pull">Fine gold content × market reference = gross metal value. Less haircuts and costs = collateral value. Times the approved ratio = the indicative loan.</blockquote>
+        <p>The actual inputs and ratio are lender-specific and can vary with verification risk, storage, insurance, liquidity, loan term, asset concentration, jurisdiction and other factors. <a class="cite" href="#src-9">[9]</a></p>
+        <p>To illustrate only the final step, if a lender assessed the 1kg holding at $192,004.95 and applied a 60% loan-to-value ratio, the arithmetic would produce an indicative loan amount of about $115,203. ALYRA's collateral guide uses 60% only as an example of how loan-to-value is calculated; ALYRA does not publish 60% as its gold-bullion lending policy, and an actual offer can differ. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-9">[9]</a> The wider framework behind those adjustments is set out in ALYRA's guide to <a class="body-link" href="/insights/gold-and-bullion-as-collateral/">gold and bullion as collateral</a>.</p>
+
+        <h2 id="limits" class="anchor art-h2">Minimum and maximum loan sizes</h2>
+        <p>ALYRA publishes a gold-bullion loan range of $50,000 to $5 million. <a class="cite" href="#src-1">[1]</a> The bullion must therefore support at least the minimum advance after valuation and lending parameters are applied, and the requested amount must remain within the published product range.</p>
+        <p>A holding with a market value of $100,000 does not automatically support a $100,000 loan. The lender may recognise a lower collateral value and then lend only a percentage of that assessed value. <a class="cite" href="#src-9">[9]</a> Very large holdings are also subject to ALYRA's $5 million published maximum and the individual approval process. <a class="cite" href="#src-1">[1]</a></p>
+
+        <h2 id="stronger" class="anchor art-h2">What supports a stronger assessment</h2>
+        <p>Clear, verifiable bullion reduces uncertainty. ALYRA says recognised refiners and assayed bars typically support the strongest terms, and its assessment considers weight, purity, refiner or mint, assay and serial numbers, form, condition, market price, ownership records and authenticity. <a class="cite" href="#src-1">[1]</a></p>
+        <p>LBMA Good Delivery standards are relevant as a wholesale-market benchmark, but they should not be confused with a requirement for ordinary 1kg private bullion. LBMA Good Delivery gold bars contain roughly 10.9–13.4kg of fine gold and must have minimum fineness of 995 parts per thousand. <a id="cite-5" class="cite" href="#src-5">[5]</a> By comparison, The Perth Mint's 1kg cast bar is 99.99% pure. <a class="cite" href="#src-4">[4]</a> ALYRA's public page separately says it considers recognised bars and coins subject to verification, so a private-loan bar does not need to be an LBMA Good Delivery bar. <a class="cite" href="#src-1">[1]</a></p>
+
+        <h2 id="reduce" class="anchor art-h2">What can reduce the amount</h2>
+        <p>Missing ownership records, unfamiliar or unclear markings, uncertain authenticity, weak custody evidence or bullion that needs additional testing can increase verification work. <a class="cite" href="#src-1">[1]</a> <a class="cite" href="#src-9">[9]</a> The gold may still be genuine, but the lender may need more evidence before deciding whether to accept it and what collateral value to recognise.</p>
+        <p>Retail premiums also need care. A coin or small minted bar can cost more than its metal content at retail, while a lender is concerned with the amount that can realistically be realised through an available sale channel. <a class="cite" href="#src-9">[9]</a> The Perth Mint's separate sell and buy prices illustrate why purchase price, headline spot and realisable value can differ. <a class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-12">[12]</a></p>
+
+        <h2 id="market" class="anchor art-h2">Gold market context in 2026</h2>
+        <p>Gold entered 2026 after a record 2025. The World Gold Council reported that total gold demand, including OTC, exceeded 5,000 tonnes for the first time in 2025 and that the LBMA PM gold price set 53 new all-time highs during the year. <a id="cite-8" class="cite" href="#src-8">[8]</a></p>
+        <p>Volatility then rose sharply in the first half of 2026. The World Gold Council reported an LBMA Gold Price high of US$5,405.00 on 29 January and low of US$4,001.80 on 25 June, with spot gold's 30-day realised volatility rising above 50% before falling below 30% by 26 June. <a id="cite-11" class="cite" href="#src-11">[11]</a> Its April analysis also found that bid-ask spread widening was episodic rather than a sustained collapse in liquidity. <a id="cite-7" class="cite" href="#src-7">[7]</a> For lending, the practical point is to time-stamp the valuation rather than assume today's price will remain unchanged for the life of a loan.</p>
+
+        <h2 id="borrow-sell" class="anchor art-h2">Borrowing versus selling gold</h2>
+        <p>Borrowing and selling solve different problems. With ALYRA's published gold-bullion process, you remain the owner while the gold is held as security and it is returned once the loan is repaid under the agreed terms. <a class="cite" href="#src-1">[1]</a> An outright sale transfers ownership permanently and does not create a loan repayment obligation — a trade-off examined in ALYRA's guide to <a class="body-link" href="/insights/liquidity-without-giving-up-ownership/">liquidity without giving up ownership</a>.</p>
+        <p>Before proceeding, compare the total loan cost with the value you place on keeping the gold and read the default and redemption terms. ALYRA's public site identifies its pawnbroker licence as Queensland. <a class="cite" href="#src-1">[1]</a> For a Queensland pawn transaction, section 60 of the Second-hand Dealers and Pawnbrokers Act 2003 sets a three-month redemption period unless a longer period is agreed; section 62 deals with unredeemed property after that period. <a id="cite-10" class="cite" href="#src-10">[10]</a> Other transaction structures or jurisdictions may differ.</p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>What form of gold do you hold — cast bar, minted bar or bullion coin? — form affects verification, marketability and the likely resale channel;</li>
+          <li>Who is the refiner or mint? — recognised producers and clear markings can reduce authentication and pricing uncertainty;</li>
+          <li>What are the exact weight and purity markings? — fine gold content is the base input to the valuation;</li>
+          <li>Do you have serial numbers, assay certificates or original packaging? — these can strengthen identification and reduce verification uncertainty;</li>
+          <li>Where is the bullion held now? — custody, access and control must be workable for a secured loan;</li>
+          <li>What documents show ownership? — a lender needs evidence that the borrower has the right to pledge the gold;</li>
+          <li>Is the bullion already pledged or subject to another claim? — competing interests can affect whether the asset can be accepted as security;</li>
+          <li>How much do you want to borrow and for how long? — the requested amount and term must fit the assessed value, product range and lending parameters.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Treating the spot price as the amount you can borrow</div><p>Spot is a reference price, not a loan offer; the lender may apply collateral-value adjustments and then a loan-to-value ratio.</p></div>
+          <div class="mistake"><div class="mistake-h">Treating a worked loan-to-value ratio as a quote</div><p>A hypothetical percentage is a scenario tool, not ALYRA policy or an expected offer.</p></div>
+          <div class="mistake"><div class="mistake-h">Using the original purchase invoice as today's valuation</div><p>Gold prices and dealer spreads change, so a current valuation is more relevant.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming every gold item is assessed the same way</div><p>Standard bullion, collectible coins, jewellery and scrap have different verification and resale characteristics.</p></div>
+          <div class="mistake"><div class="mistake-h">Submitting weak ownership or authenticity records</div><p>Missing invoices, serial numbers, bar lists or assay information can delay the assessment or require additional verification.</p></div>
+          <div class="mistake"><div class="mistake-h">Ignoring the downside of non-repayment</div><p>Pledged gold is at risk if loan obligations are not met; redemption and sale rights depend on the written terms and applicable law.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist for the reader</h2>
+        <div class="checklist">
+          {[
+            "Record the exact weight, purity, refiner or mint and product type",
+            "Photograph both sides of every bar or coin and capture serial numbers clearly",
+            "Gather purchase invoices, receipts, assay certificates where available and storage statements",
+            "Check a current Australian spot bid and a realistic sale-channel price, such as a reputable bullion buy price, on the day you enquire",
+            "Separate market reference, collateral value and loan-to-value in any scenario, and label hypothetical ratios clearly rather than treating them as ALYRA policy",
+            "Confirm where the bullion is stored and whether it can be transferred into approved custody if required",
+            "Disclose any existing pledge, finance or competing claim over the bullion",
+            "Decide the amount and term you actually need before asking for a formal assessment",
+            "Read the written interest, fee, redemption and default terms before proceeding",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <p class="src-note">Numbered citations in the article correspond to the sources below. Sources checked 14 August 2026.</p>
+        <div class="src-label">ALYRA and Australian pricing</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-1" aria-label="Back to citation 1 in text">↑</a> <a class="body-link" href="/loans/gold-bullion/">ALYRA — Loans against gold bullion</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-2" aria-label="Back to citation 2 in text">↑</a> <a class="body-link" href="https://www.perthmint.com/invest/information-for-investors/metal-prices" target="_blank" rel="noopener noreferrer">The Perth Mint — Live gold, silver, platinum prices</a></li>
+        </ol>
+        <div class="src-label">Standards and benchmarks</div>
+        <ol class="src-list" start="3">
+          <li id="src-3"><a class="src-back" href="#cite-3" aria-label="Back to citation 3 in text">↑</a> <a class="body-link" href="https://www.austrac.gov.au/industry-and-business/your-industry/bullion-dealers/bullion-dealers-overview" target="_blank" rel="noopener noreferrer">AUSTRAC — Bullion dealers overview</a></li>
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="https://www.perthmint.com/shop/bullion/cast-bars/1-kilo-gold-cast-bar/" target="_blank" rel="noopener noreferrer">The Perth Mint — 1kg Gold Cast Bar</a></li>
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="https://www.lbma.org.uk/publications/good-delivery-rules/technical-specifications" target="_blank" rel="noopener noreferrer">LBMA — Good Delivery technical specifications</a></li>
+          <li id="src-6"><a class="src-back" href="#cite-all" aria-label="Back to citation in text">↑</a> <a class="body-link" href="https://www.lbma.org.uk/prices-and-data/lbma-precious-metal-prices" target="_blank" rel="noopener noreferrer">LBMA — Precious Metal Prices</a></li>
+        </ol>
+        <div class="src-label">Market research</div>
+        <ol class="src-list" start="7">
+          <li id="src-7"><a class="src-back" href="#cite-7" aria-label="Back to citation 7 in text">↑</a> <a class="body-link" href="https://www.gold.org/goldhub/gold-focus/2026/04/you-asked-we-answered-has-golds-performance-structurally-changed" target="_blank" rel="noopener noreferrer">World Gold Council — Has gold's performance structurally changed?</a></li>
+          <li id="src-8"><a class="src-back" href="#cite-8" aria-label="Back to citation 8 in text">↑</a> <a class="body-link" href="https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2025" target="_blank" rel="noopener noreferrer">World Gold Council — Gold Demand Trends: Q4 and Full Year 2025</a></li>
+        </ol>
+        <div class="src-label">Collateral framework and legislation</div>
+        <ol class="src-list" start="9">
+          <li id="src-9"><a class="src-back" href="#cite-9" aria-label="Back to citation 9 in text">↑</a> <a class="body-link" href="/insights/gold-and-bullion-as-collateral/">ALYRA — Gold and bullion as collateral: a practical guide</a></li>
+          <li id="src-10"><a class="src-back" href="#cite-10" aria-label="Back to citation 10 in text">↑</a> <a class="body-link" href="https://www.legislation.qld.gov.au/view/whole/html/inforce/current/act-2003-073" target="_blank" rel="noopener noreferrer">Queensland Government — Second-hand Dealers and Pawnbrokers Act 2003</a></li>
+        </ol>
+        <div class="src-label">Market outlook and sale terms</div>
+        <ol class="src-list" start="11">
+          <li id="src-11"><a class="src-back" href="#cite-11" aria-label="Back to citation 11 in text">↑</a> <a class="body-link" href="https://www.gold.org/goldhub/research/gold-mid-year-outlook-2026" target="_blank" rel="noopener noreferrer">World Gold Council — Gold Mid-Year Outlook 2026</a></li>
+          <li id="src-12"><a class="src-back" href="#cite-12" aria-label="Back to citation 12 in text">↑</a> <a class="body-link" href="https://www.perthmint.com/terms-and-conditions/selling-your-bullion-to-the-perth-mint/" target="_blank" rel="noopener noreferrer">The Perth Mint — Terms and Conditions for selling bullion</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Elijah Turkovic" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Elijah Turkovic</div>
+            <div class="author-role">Principal Valuation Specialist</div>
+            <p>Elijah works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as bullion, fine watches, jewellery and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <RelatedArticles slug={slug} />
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Want to know what your bullion could support?</h2>
+      <p class="art-cta-lead">
+        Submit the holding's details for private review. An ALYRA specialist will assess weight,
+        purity, refiner, documentation and custody, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-note { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 22px; }
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .toc-mobile { display: block; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>

@@ -44,6 +44,7 @@ export default defineConfig({
           "/insights/liquidity-without-giving-up-ownership/": "2026-08-03",
           "/insights/lending-against-argyle-pink-diamonds/": "2026-08-14",
           "/insights/how-much-can-i-borrow-against-richard-mille-watch-australia/": "2026-08-14",
+          "/insights/how-much-can-i-borrow-against-my-gold-bullion-australia/": "2026-08-14",
         }[new URL(item.url).pathname];
         if (lastmod) item.lastmod = lastmod;
         return item;
