@@ -1,0 +1,538 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedArticles from "../../components/RelatedArticles.astro";
+import { absoluteUrl } from "../../config/site";
+import { SITE } from "../../config/site";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
+import heroImg from "../../assets/images/argyle-pink-diamonds-hero.jpg";
+import specialistImg from "../../assets/images/specialist.jpg";
+
+const slug = "lending-against-argyle-pink-diamonds";
+const path = `/insights/${slug}/`;
+const title = "Lending against Argyle pink diamonds | ALYRA";
+const description =
+  "Argyle pink diamonds may be used as loan security. Learn how provenance, colour, grading, carat weight and market demand affect ALYRA's lending assessment.";
+const ogImage = "/assets/og-argyle-pink-diamonds.jpg";
+
+const toc = [
+  ["answer", "Direct answer"],
+  ["summary", "Summary"],
+  ["takeaways", "Key takeaways"],
+  ["audience", "Who this is for"],
+  ["method", "How this was prepared"],
+  ["factors-table", "Factors at a glance"],
+  ["provenance", "Why provenance matters"],
+  ["authentication", "Authentication before valuation"],
+  ["colour", "Colour is a key factor"],
+  ["size", "Size, clarity and cut"],
+  ["market", "Market price and lending value"],
+  ["post-mine", "The post-mine market"],
+  ["process", "How ALYRA assesses diamonds"],
+  ["custody", "Secure custody until repayment"],
+  ["ask", "What specialists ask"],
+  ["mistakes", "Common mistakes"],
+  ["checklist", "Checklist"],
+  ["faq", "FAQ"],
+  ["sources", "Sources"],
+];
+
+const faqs = [
+  { q: "Can I get a loan against an Argyle pink diamond?", a: "Potentially. ALYRA considers diamonds and high-value jewellery as security for asset-based loans. Whether a particular Argyle pink diamond is suitable depends on its authenticity, condition, valuation, documentation, market demand, custody requirements and the applicable loan terms." },
+  { q: "How much can I borrow against my Argyle pink diamond?", a: "There is no single amount that applies to every Argyle pink diamond. ALYRA assesses each eligible asset individually and provides a written loan offer only after specialist assessment, subject to valuation, approval, custody, documentation and agreed loan terms." },
+  { q: "What makes an Argyle pink diamond valuable?", a: "Important characteristics include colour, carat weight, clarity and cut, together with Argyle provenance and supporting documentation. GIA identifies colour as the dominant value factor for fancy-colour diamonds, while larger stones are generally rarer than smaller examples." },
+  { q: "How do I prove my pink diamond is from Argyle?", a: "Start with the diamond's Argyle documentation and laser inscription. Argyle's Diamond Check service is intended to confirm whether an eligible laser number corresponds with a record in the Argyle Pink Diamonds database. Argyle also operates a Gem Analysis Service for qualifying stones, although that service differs from the original Chain of Custody certification programme." },
+  { q: "Do I need a GIA report?", a: "An independent grading report can provide important information about a coloured diamond, including whether its colour is natural or treated and its colour grade and clarity. The appropriate documentation will depend on the individual stone and the information already available." },
+  { q: "Can I borrow against an Argyle pink diamond ring?", a: "Potentially. ALYRA considers jewellery, coloured stones and loose diamonds as eligible asset categories, subject to specialist assessment. The asset is reviewed for factors including condition, documents, value, authenticity and market demand." },
+  { q: "Does ALYRA hold my Argyle pink diamond during the loan?", a: "Yes. If the loan proceeds, ALYRA holds the diamond securely as security for the agreed loan term. You remain the owner of the diamond while the loan is active. Once the loan has been repaid in accordance with the agreed terms, ALYRA returns the diamond to you." },
+  { q: "Is my diamond sold while the loan is active?", a: "No public listing, auction campaign or marketplace sale is required while the loan is proceeding normally. ALYRA holds the asset as security during the loan term. The asset is at risk, however, if the repayment obligations in the loan agreement are not met." },
+  { q: "Does the closure of the Argyle mine guarantee my diamond will increase in value?", a: "No. The Argyle mine ceased production in 2020, so no new diamonds are being produced from that deposit. Mine closure does not determine the value of an individual stone; ALYRA still considers the asset itself and current market demand in its assessment." },
+  { q: "What happens when I repay the loan?", a: "Once the loan has been repaid in accordance with the agreed terms, ALYRA returns the diamond to you. You retain ownership throughout the loan while ALYRA holds the asset as security." },
+];
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights/" },
+  { name: "Argyle pink diamonds" },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(path) + "#article",
+    mainEntityOfPage: absoluteUrl(path),
+    headline: "Lending against Argyle pink diamonds",
+    description,
+    image: absoluteUrl(ogImage),
+    datePublished: "2026-08-14",
+    dateModified: "2026-08-14",
+    inLanguage: "en-AU",
+    articleSection: "Jewellery",
+    author: {
+      "@type": "Person",
+      name: "Elijah Turkovic",
+      jobTitle: "Principal Valuation Specialist",
+      url: absoluteUrl("/about/"),
+      worksFor: { "@id": absoluteUrl("/") + "#organization" },
+    },
+    publisher: { "@id": absoluteUrl("/") + "#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path={path} image={ogImage} imageAlt="A row of Argyle pink, purple and blue diamonds on pink silk" ogType="article" schema={schema}>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+  <!-- Header -->
+  <header class="art-header">
+    <div class="art-narrow">
+      <a href="/insights/" class="arrow-link art-back"><span class="arrow art-back-arrow">←</span> All insights</a>
+      <div class="art-tags">
+        <span class="art-cat">Jewellery</span>
+      </div>
+      <h1 class="art-h1">Lending against Argyle pink diamonds</h1>
+      <p class="art-lead">
+        The mine has closed and the supply is finite — but a lender still assesses one stone at a
+        time. What has to be established about identity, colour, documentation and demand before an
+        Argyle pink diamond can be considered as loan security.
+      </p>
+      <div class="art-byline">
+        <div class="art-author">
+          <Image class="art-avatar" src={specialistImg} alt="" widths={[42, 84]} sizes="42px" format="webp" quality={80} />
+          <span>
+            <span class="art-author-name">Elijah Turkovic</span>
+            <span class="art-author-role">Principal Valuation Specialist</span>
+          </span>
+        </div>
+        <span class="art-byline-sep" aria-hidden="true"></span>
+        <div class="art-dates"><span>14 August 2026</span><span class="meta-sep" aria-hidden="true"></span><span>9 min read</span></div>
+      </div>
+      <div class="art-crumbs"><Breadcrumbs items={crumbs} /></div>
+    </div>
+  </header>
+
+  <!-- Hero image -->
+  <div class="art-hero reveal">
+    <div class="art-hero-frame"><Image src={heroImg} alt="Seven Argyle diamonds in pink, purple and blue, in pear, oval, heart, round, radiant and princess cuts, arranged on pink silk" widths={[480, 768, 1080, 1536]} sizes="(max-width: 1120px) 100vw, 1080px" format="webp" quality={72} loading="eager" fetchpriority="high" /></div>
+    <p class="art-hero-cap"><span class="cap-rule" aria-hidden="true"></span>Colour, weight, clarity and cut — but provenance is what has to be established first.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="art-wrap">
+    <div class="art-grid">
+      <aside class="toc-rail">
+        <div class="toc-head">On this page</div>
+        <nav class="toc-nav" aria-label="Article sections">
+          {toc.map(([id, label]) => (
+            <a href={`#${id}`} class="toc-link" data-toc={id}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="art-body">
+        <details class="toc-mobile">
+          <summary>On this page</summary>
+          <nav aria-label="Article sections">
+            {toc.map(([id, label]) => (
+              <a href={`#${id}`}>{label}</a>
+            ))}
+          </nav>
+        </details>
+        <p class="art-intro"><span class="dropcap">A</span> closed mine makes a compelling story, and pink diamonds have one of the best. But a lender cannot advance against a story. It advances against a specific stone whose identity, colour origin, quality and documentation have each been established — and then against a realistic view of who would buy it.</p>
+
+        <section id="answer" class="anchor">
+          <div class="answer-box">
+            <div class="answer-eyebrow">Direct answer</div>
+            <p class="answer-lead">ALYRA considers diamonds and high-value jewellery as security for asset-based loans, subject to valuation, approval, documentation and agreed loan terms. An Argyle pink diamond is assessed individually, with factors such as authenticity, provenance, colour, carat weight, clarity, condition, supporting documents, market demand and likely resale value considered. <a id="cite-3" class="cite" href="#src-3">[3]</a> <a id="cite-4" class="cite" href="#src-4">[4]</a> <a id="cite-5" class="cite" href="#src-5">[5]</a> <a id="cite-14" class="cite" href="#src-14">[14]</a></p>
+            <p class="answer-sub">If a loan proceeds, the diamond is held securely by ALYRA as security during the agreed loan term. The client remains the owner, and the diamond is returned once the loan has been repaid in accordance with the agreed terms. <a id="cite-15" class="cite" href="#src-15">[15]</a></p>
+          </div>
+        </section>
+
+        <h2 id="summary" class="anchor art-h2">Summary</h2>
+        <p>Argyle pink diamonds occupy a distinctive part of the natural coloured-diamond market because of their rarity, documented provenance system and the closure of the Argyle mine in 2020. <a id="cite-1" class="cite" href="#src-1">[1]</a> <a id="cite-2" class="cite" href="#src-2">[2]</a> <a class="cite" href="#src-3">[3]</a> While the mine was operating, Argyle Pink Diamonds reports that it produced more than 90% of the world's pink-diamond supply. <a class="cite" href="#src-3">[3]</a></p>
+        <p>For lending purposes, the first task is to establish exactly what the diamond is. Argyle documentation and laser inscriptions can help establish provenance, while independent laboratory grading can identify characteristics such as natural or treated colour, colour grade and clarity. <a class="cite" href="#src-4">[4]</a> <a class="cite" href="#src-5">[5]</a> ALYRA's process begins with asset details, photographs and available documents before specialist assessment. <a id="cite-16" class="cite" href="#src-16">[16]</a></p>
+        <p>ALYRA then considers the asset's value and suitability as loan security, including its condition, documents, market demand and likely resale value. <a class="cite" href="#src-14">[14]</a> If the loan proceeds, ALYRA holds the diamond securely until repayment, after which it is returned to the owner. <a class="cite" href="#src-15">[15]</a></p>
+
+        <div class="note">
+          <div class="note-eyebrow">General information only</div>
+          <p>This article does not constitute a valuation, legal opinion, financial advice, credit advice, or a guarantee of loan approval, amount, or terms. Loan amounts depend on individual assessment, market conditions, documentation, and ALYRA's approval process.</p>
+          <p>If a loan proceeds, your diamond is held as security and is at risk if you do not meet your repayment obligations.</p>
+        </div>
+
+        <h2 id="takeaways" class="anchor art-h2">Key takeaways</h2>
+        <div class="takeaways">
+          <div class="take"><span class="take-dash">—</span><span>Genuine Argyle provenance should be verified rather than assumed from colour, purchase history or a seller description.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Argyle's Diamond Check service is intended to confirm whether an eligible laser number corresponds with a record in the Argyle Pink Diamonds database.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Independent laboratory grading can identify whether a coloured diamond's colour is natural or treated and document important quality characteristics.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Colour is the dominant value factor for fancy-colour diamonds, and relatively small differences in colour can materially affect value.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>Larger fancy-colour diamonds are generally rarer than smaller examples, all else being equal.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>ALYRA considers condition, documents, market demand and likely resale value when assessing eligible assets.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>The Argyle mine ceased production in 2020, so there is no new production from the deposit.</span></div>
+          <div class="take"><span class="take-dash">—</span><span>If a loan proceeds, ALYRA holds the diamond securely as loan security and returns it once the agreed repayment obligations have been met.</span></div>
+        </div>
+
+        <h2 id="audience" class="anchor art-h2">Who this is for</h2>
+        <p>This article is for owners of loose Argyle pink diamonds, Argyle Tender diamonds and jewellery containing authenticated Argyle diamonds who are considering borrowing against the asset.</p>
+        <p>It is particularly relevant to owners who have Argyle certificates, laser inscriptions, GIA reports, purchase records or Tender documentation and want to understand what information may be relevant to a lending assessment.</p>
+
+        <h2 id="method" class="anchor art-h2">How this was prepared</h2>
+        <p>This article draws on primary information from Argyle Pink Diamonds and Rio Tinto, grading and research material from the Gemological Institute of America, Australian regulatory information and ALYRA's published lending and custody information. <a id="cite-all" class="cite" href="#sources">[1]–[16]</a></p>
+        <p>It provides general information only. Every eligible diamond is reviewed individually, and no particular valuation, loan amount, approval or outcome is guaranteed. <a class="cite" href="#src-14">[14]</a> <a class="cite" href="#src-16">[16]</a></p>
+
+        <h2 id="factors-table" class="anchor art-h2">Factors at a glance</h2>
+        <div class="table-wrap">
+          <table class="art-table">
+            <thead><tr><th>Factor</th><th>Why it matters</th><th>Effect on assessment</th></tr></thead>
+            <tbody>
+              <tr><td class="tcell-head">Argyle provenance</td><td>Helps establish whether the diamond has recognised Argyle documentation or an identifiable record.</td><td>Provenance information forms part of identification and assessment.</td></tr>
+              <tr><td class="tcell-head">Natural colour</td><td>Natural and treated colour are materially different gemmological characteristics.</td><td>Independent identification of colour origin is important.</td></tr>
+              <tr><td class="tcell-head">Colour grade</td><td>Colour is the dominant value factor in fancy-colour diamonds.</td><td>Small colour differences can materially affect value.</td></tr>
+              <tr><td class="tcell-head">Carat weight</td><td>Larger fancy-colour diamonds are generally rarer.</td><td>Weight is considered together with colour and other characteristics.</td></tr>
+              <tr><td class="tcell-head">Clarity</td><td>Inclusions affect quality and can sometimes affect durability.</td><td>Relevant to the overall quality assessment.</td></tr>
+              <tr><td class="tcell-head">Cut and shape</td><td>Cutting style can influence how strongly colour appears face-up.</td><td>Can affect desirability and value.</td></tr>
+              <tr><td class="tcell-head">Documentation</td><td>Certificates, grading reports and provenance records assist identification and assessment.</td><td>Records assist identification and specialist assessment.</td></tr>
+              <tr><td class="tcell-head">Condition</td><td>ALYRA considers condition when reviewing eligible assets.</td><td>Condition forms part of ALYRA's assessment.</td></tr>
+              <tr><td class="tcell-head">Market demand and resale value</td><td>ALYRA considers market demand when assessing eligible assets.</td><td>Marketability forms part of the lending assessment.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="provenance" class="anchor art-h2">Why Argyle provenance matters</h2>
+        <p>Rio Tinto's Argyle diamond mine in Western Australia ceased mining on 3 November 2020 after 37 years of operation. <a class="cite" href="#src-1">[1]</a> Rio Tinto states that the mine produced more than 865 million carats of rough diamonds over its operating life. <a class="cite" href="#src-2">[2]</a></p>
+        <p>Argyle Pink Diamonds states that the mine produced more than 90% of the world's pink-diamond supply while it was operating. <a class="cite" href="#src-3">[3]</a> Its finest and rarest stones were historically selected for the Argyle Pink Diamonds Signature Tender. <a class="cite" href="#src-3">[3]</a></p>
+        <p>Because pink colour alone does not establish where a diamond came from, provenance is important. Argyle documentation, laser inscription details and other records should be checked when establishing the identity and history of a stone. <a class="cite" href="#src-4">[4]</a></p>
+
+        <h2 id="authentication" class="anchor art-h2">Authentication comes before valuation</h2>
+        <p>Argyle Pink Diamonds operates a Diamond Check service that is intended to confirm whether a submitted eligible laser number corresponds with a record in its database. <a class="cite" href="#src-4">[4]</a></p>
+        <p>Under Argyle's historical Chain of Custody Programme, qualifying diamonds were laser inscribed with a unique identification number and issued with Argyle Pink Diamonds Gem Identification and Authenticity documentation. <a class="cite" href="#src-4">[4]</a></p>
+        <p>Argyle introduced a Gem Analysis Service in January 2024 for eligible pink, red, blue and violet diamonds displaying characteristics corresponding with diamonds from the Argyle mine. Argyle states that this certification differs from the original documentation issued through its historical secure chain of custody. <a class="cite" href="#src-4">[4]</a></p>
+        <p>Independent laboratory analysis also has an important role. GIA's coloured-diamond services can report colour grade and clarity and determine whether colour is natural or treated. <a class="cite" href="#src-5">[5]</a></p>
+
+        <h2 id="colour" class="anchor art-h2">Colour is a key factor</h2>
+        <p>Fancy-colour diamonds are valued differently from colourless diamonds. GIA states that colour is the dominant value factor in fancy-colour diamonds and that even slight differences in colour can have a significant impact on value. <a id="cite-6" class="cite" href="#src-6">[6]</a></p>
+        <p>GIA evaluates coloured diamonds using attributes including hue, tone and saturation, with fancy-colour grades describing the strength and appearance of the colour. <a class="cite" href="#src-6">[6]</a> <a id="cite-7" class="cite" href="#src-7">[7]</a></p>
+        <blockquote class="pull">Even slight differences in colour can have a significant impact on value.</blockquote>
+        <p>GIA research into 1,065 pink diamonds from Argyle Tenders between 1995 and 2014 found that 95% were graded Fancy Deep, Fancy Intense or Fancy Vivid. <a class="cite" href="#src-7">[7]</a> This research relates to Tender diamonds rather than the entire production of the Argyle mine, so it should not be used to assume that every Argyle pink diamond has the same characteristics.</p>
+        <p>Whether the colour is natural is also important. Laboratory analysis can distinguish many naturally coloured diamonds from diamonds whose colour has been treated; GIA research documents sophisticated treatment of fancy pink diamonds. <a class="cite" href="#src-5">[5]</a> <a id="cite-8" class="cite" href="#src-8">[8]</a></p>
+
+        <h2 id="size" class="anchor art-h2">Size, clarity and cut</h2>
+        <p>Carat weight remains relevant. GIA notes that larger fancy-colour diamonds are generally rarer and more valuable than smaller examples, all else being equal. <a class="cite" href="#src-6">[6]</a></p>
+        <p>That does not mean weight should be considered alone. GIA identifies colour, clarity, cut and carat weight as important quality factors, while Argyle provenance and ALYRA's assessment of condition, documents, market demand and likely resale value add further information relevant to an individual lending assessment. <a class="cite" href="#src-4">[4]</a> <a class="cite" href="#src-6">[6]</a> <a class="cite" href="#src-14">[14]</a></p>
+        <p>Clarity can influence value, although GIA notes that colour is generally the dominant factor in fancy-colour diamonds. Inclusions that threaten a diamond's durability can have a more significant negative effect. <a class="cite" href="#src-6">[6]</a></p>
+        <p>Cut also matters because the size, shape and style of a fancy-colour diamond can influence the appearance and intensity of its face-up colour. <a class="cite" href="#src-6">[6]</a></p>
+
+        <h2 id="market" class="anchor art-h2">Market price and lending value</h2>
+        <p>The amount originally paid for a diamond is useful background information, but ALYRA does not assess high-value assets on a recent sale price, brand or weight alone. For jewellery and diamonds, its published assessment considers factors including stones and carat weight, cut and quality, colour and clarity, certification, condition, market demand, provenance and authenticity. <a class="cite" href="#src-14">[14]</a></p>
+        <p>This distinction matters because ALYRA assesses both the value of the asset and its suitability as loan security before making a loan offer. <a class="cite" href="#src-14">[14]</a> <a class="cite" href="#src-16">[16]</a> A purchase price, retail asking price or exceptional auction result should therefore not automatically be treated as the amount available to borrow.</p>
+        <p>Recent auction catalogues illustrate how individual characteristics are documented. In 2025, Sotheby's offered a ring set with a 1.26-carat Fancy Vivid Purplish Pink, SI2 diamond accompanied by GIA and Argyle documentation and identified as Lot 28 of the 2019 Argyle Pink Diamonds Tender. <a id="cite-10" class="cite" href="#src-10">[10]</a> Christie's has catalogued a 1.45-carat Fancy Intense Pink, SI1 diamond with an Argyle Tender document identifying it as a 2014 Tender stone. <a id="cite-11" class="cite" href="#src-11">[11]</a></p>
+        <p>These examples are not direct valuation benchmarks for another diamond; they illustrate the need to compare like with like when considering colour, weight, clarity, provenance, documentation and sale context. <a class="cite" href="#src-10">[10]</a> <a class="cite" href="#src-11">[11]</a> The same discipline applies to any published result — ALYRA's guide to <a class="body-link" href="/insights/reading-an-auction-result-before-you-rely-on-it/">reading an auction result</a> sets out what has to be true before one becomes a comparable.</p>
+
+        <h2 id="post-mine" class="anchor art-h2">The post-mine diamond market</h2>
+        <p>The closure of the Argyle mine permanently ended new diamond production from that deposit. <a class="cite" href="#src-1">[1]</a> Argyle Pink Diamonds continues to provide authentication services, including Diamond Check and Gem Analysis, for qualifying stones. <a class="cite" href="#src-4">[4]</a></p>
+        <p>Rio Tinto conducted its final Beyond Rare Tender in 2025. The collection comprised 52 lots of rare diamonds from the Argyle and Diavik operations. <a id="cite-9" class="cite" href="#src-9">[9]</a></p>
+        <p>Mine closure means there is no new production from the Argyle deposit, but it does not by itself establish the value of an individual diamond. <a class="cite" href="#src-1">[1]</a> For lending, ALYRA still assesses the asset itself, including market demand and its suitability as loan security. <a class="cite" href="#src-14">[14]</a></p>
+
+        <h2 id="process" class="anchor art-h2">How ALYRA assesses diamonds</h2>
+        <p>ALYRA lists jewellery, coloured stones and loose diamonds among the high-value physical assets that may secure an asset-based loan. <a class="cite" href="#src-14">[14]</a></p>
+        <p>The process begins with asset details, photographs and available documents. A specialist then reviews the asset's condition, documents, value, market demand and custody requirements. <a class="cite" href="#src-16">[16]</a></p>
+        <p>For an Argyle pink diamond, relevant material may include an Argyle Gem Identification and Authenticity document or Gem Analysis Report, a laser inscription or lot number, an independent grading report, Tender documentation where applicable, purchase records and proof of ownership, and information about the diamond's current condition. <a class="cite" href="#src-4">[4]</a> <a class="cite" href="#src-5">[5]</a> <a class="cite" href="#src-14">[14]</a> <a class="cite" href="#src-16">[16]</a></p>
+        <p>Where relevant, a PPSR search can identify registered security interests over personal property. Jewellery is included within the PPSR "other goods" collateral class. <a id="cite-12" class="cite" href="#src-12">[12]</a> <a id="cite-13" class="cite" href="#src-13">[13]</a></p>
+        <p>If the asset is suitable and the loan is approved, ALYRA states that the written offer sets out the loan amount, fees, interest, repayment terms, redemption rights and what happens if the loan is not repaid. <a class="cite" href="#src-16">[16]</a></p>
+
+        <h2 id="custody" class="anchor art-h2">Secure custody until repayment</h2>
+        <p>When an ALYRA loan proceeds, the asset is documented and held securely for the agreed loan term, subject to custody and insurance terms. <a class="cite" href="#src-15">[15]</a></p>
+        <p>The borrower remains the owner of the diamond. ALYRA holds it as security for the loan. Once the loan has been repaid in accordance with the agreed terms, the diamond is returned to the borrower. <a class="cite" href="#src-15">[15]</a></p>
+        <p>ALYRA states that the asset is at risk if the borrower does not meet the repayment obligations set out in the loan agreement. <a class="cite" href="#src-15">[15]</a></p>
+
+        <h2 id="ask" class="anchor art-h2">What specialists ask</h2>
+        <ul class="art-list">
+          <li>Do you have an original Argyle Pink Diamonds certificate or Gem Analysis Report? — Argyle documentation may assist in establishing the diamond's identity, provenance and grading information;</li>
+          <li>What laser inscription or Argyle lot number is on the diamond? — an eligible number can be checked against Argyle's Diamond Check database;</li>
+          <li>Is there a current independent grading report? — independent laboratory analysis can document colour origin, colour grade, clarity and other characteristics;</li>
+          <li>What is the diamond's exact carat weight and colour grade? — both are relevant to the quality and rarity of a fancy-colour diamond;</li>
+          <li>Is the diamond loose or mounted in jewellery? — the specialist needs to understand exactly what asset is being assessed and its current condition;</li>
+          <li>Has the diamond been damaged, repaired, polished or recut? — condition is one of the factors ALYRA considers when assessing an eligible asset;</li>
+          <li>Do you have purchase records or Tender documentation? — supporting documents can assist with provenance, ownership and the specialist assessment;</li>
+          <li>Is the diamond currently subject to another security arrangement? — existing registered security interests may be relevant and can be investigated through the PPSR where appropriate.</li>
+        </ul>
+
+        <h2 id="mistakes" class="anchor art-h2">Common mistakes</h2>
+        <div class="mistakes">
+          <div class="mistake"><div class="mistake-h">Assuming every pink diamond is an Argyle diamond</div><p>A diamond's colour does not by itself establish Argyle provenance; available documentation and identifying records should be checked.</p></div>
+          <div class="mistake"><div class="mistake-h">Ignoring whether the colour is natural</div><p>Laboratory testing can determine whether a coloured diamond's colour is natural or treated.</p></div>
+          <div class="mistake"><div class="mistake-h">Looking only at carat weight</div><p>Colour, clarity and cut also affect fancy-colour diamond quality and value.</p></div>
+          <div class="mistake"><div class="mistake-h">Relying only on the original purchase price</div><p>ALYRA considers the present asset, its condition, documents and market demand when making an assessment.</p></div>
+          <div class="mistake"><div class="mistake-h">Using an exceptional auction result as a direct valuation</div><p>Another diamond may differ materially in colour, size, clarity, provenance, documentation and sale context.</p></div>
+          <div class="mistake"><div class="mistake-h">Assuming mine closure guarantees future appreciation</div><p>The mine has closed, but ALYRA still assesses the individual asset and its current market demand.</p></div>
+        </div>
+
+        <h2 id="checklist" class="anchor art-h2">Checklist for the reader</h2>
+        <div class="checklist">
+          {[
+            "Locate your original Argyle Pink Diamonds documentation",
+            "Record the diamond's laser inscription or lot number",
+            "Use Argyle's Diamond Check service to check whether the number corresponds with a database record",
+            "Locate the most recent independent grading report",
+            "Gather your purchase invoice and proof of ownership",
+            "Locate any Tender or previous sale documentation",
+            "Note any damage, repair, polishing or recutting",
+            "Confirm whether another party has a registered security interest in the diamond where relevant",
+            "Take clear photographs of the diamond and supporting documents",
+            "Have the information ready when requesting an ALYRA specialist assessment",
+          ].map((item) => (
+            <div class="check"><span class="check-dash">—</span>{item}</div>
+          ))}
+        </div>
+
+        <h2 id="faq" class="anchor art-h2">Frequently asked questions</h2>
+        <div class="art-faq">
+          {faqs.map((f) => (
+            <details name="art-faq" class="art-faq-item">
+              <summary><span class="art-faq-q">{f.q}</span><span class="art-faq-sign" aria-hidden="true">+</span></summary>
+              <div class="art-faq-a"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+        <h2 id="sources" class="anchor art-h2">Sources and references</h2>
+        <p class="src-note">Numbered citations in the article correspond to the sources below. URLs and dated claims were checked on 14 August 2026.</p>
+        <div class="src-label">Mine and production</div>
+        <ol class="src-list">
+          <li id="src-1"><a class="src-back" href="#cite-1" aria-label="Back to citation 1 in text">↑</a> <a class="body-link" href="https://www.riotinto.com/en/news/releases/2020/the-iconic-argyle-diamond-mine-delivers-its-final-production" target="_blank" rel="noopener noreferrer">Rio Tinto — The iconic Argyle diamond mine delivers its final production</a></li>
+          <li id="src-2"><a class="src-back" href="#cite-2" aria-label="Back to citation 2 in text">↑</a> <a class="body-link" href="https://www.riotinto.com/products/diamonds" target="_blank" rel="noopener noreferrer">Rio Tinto — Diamonds</a></li>
+          <li id="src-3"><a class="src-back" href="#cite-3" aria-label="Back to citation 3 in text">↑</a> <a class="body-link" href="https://argylepinkdiamonds.com.au/company/" target="_blank" rel="noopener noreferrer">Argyle Pink Diamonds — Company</a></li>
+        </ol>
+        <div class="src-label">Authentication</div>
+        <ol class="src-list" start="4">
+          <li id="src-4"><a class="src-back" href="#cite-4" aria-label="Back to citation 4 in text">↑</a> <a class="body-link" href="https://argylepinkdiamonds.com.au/authentication/" target="_blank" rel="noopener noreferrer">Argyle Pink Diamonds — Gem Identification and Authenticity</a></li>
+        </ol>
+        <div class="src-label">Grading and research</div>
+        <ol class="src-list" start="5">
+          <li id="src-5"><a class="src-back" href="#cite-5" aria-label="Back to citation 5 in text">↑</a> <a class="body-link" href="https://www.gia.edu/gem-lab-service/colored-diamond" target="_blank" rel="noopener noreferrer">GIA — Natural Colored Diamond Reports &amp; Services</a></li>
+          <li id="src-6"><a class="src-back" href="#cite-6" aria-label="Back to citation 6 in text">↑</a> <a class="body-link" href="https://www.gia.edu/fancy-color-diamond-quality-factor" target="_blank" rel="noopener noreferrer">GIA — Fancy Color Diamond Quality Factors</a></li>
+          <li id="src-7"><a class="src-back" href="#cite-7" aria-label="Back to citation 7 in text">↑</a> <a class="body-link" href="https://www.gia.edu/gems-gemology/winter-2014-pink-to-red-diamonds-30th-argyle-diamond-tender" target="_blank" rel="noopener noreferrer">GIA Gems &amp; Gemology — Exceptional Pink to Red Diamonds</a></li>
+          <li id="src-8"><a class="src-back" href="#cite-8" aria-label="Back to citation 8 in text">↑</a> <a class="body-link" href="https://my.gia.edu/gems-gemology/spring-2013-labnotes-hpht-fancy-pink" target="_blank" rel="noopener noreferrer">GIA Gems &amp; Gemology — Large HPHT-Treated Fancy Pink Diamond</a></li>
+        </ol>
+        <div class="src-label">Tender and auction records</div>
+        <ol class="src-list" start="9">
+          <li id="src-9"><a class="src-back" href="#cite-9" aria-label="Back to citation 9 in text">↑</a> <a class="body-link" href="https://www.riotinto.com/news/releases/2025/rio-tinto-launches-its-final-beyond-raretm-tender-with-a-unique-collection-of-rare-pink-red-violet-yellow-and-white-diamonds" target="_blank" rel="noopener noreferrer">Rio Tinto — Final Beyond Rare Tender, 2025</a></li>
+          <li id="src-10"><a class="src-back" href="#cite-10" aria-label="Back to citation 10 in text">↑</a> <a class="body-link" href="https://www.sothebys.com/en/buy/auction/2025/high-jewelry-4/calleija-fancy-vivid-purplish-pink-diamond-and" target="_blank" rel="noopener noreferrer">Sotheby's — Calleija Fancy Vivid Purplish Pink Diamond Ring</a></li>
+          <li id="src-11"><a class="src-back" href="#cite-11" aria-label="Back to citation 11 in text">↑</a> <a class="body-link" href="https://onlineonly.christies.com/s/jewels-online-london-edit/unmounted-coloured-diamond-164/223240" target="_blank" rel="noopener noreferrer">Christie's — Unmounted Coloured Diamond</a></li>
+        </ol>
+        <div class="src-label">Australian security register</div>
+        <ol class="src-list" start="12">
+          <li id="src-12"><a class="src-back" href="#cite-12" aria-label="Back to citation 12 in text">↑</a> <a class="body-link" href="https://www.ppsr.gov.au/registering/you-create-registration/collateral-type-and-class" target="_blank" rel="noopener noreferrer">Australian Government PPSR — Collateral type and class</a></li>
+          <li id="src-13"><a class="src-back" href="#cite-13" aria-label="Back to citation 13 in text">↑</a> <a class="body-link" href="https://www.ppsr.gov.au/searching/do-individual-search" target="_blank" rel="noopener noreferrer">Australian Government PPSR — Do an individual search</a></li>
+        </ol>
+        <div class="src-label">ALYRA</div>
+        <ol class="src-list" start="14">
+          <li id="src-14"><a class="src-back" href="#cite-14" aria-label="Back to citation 14 in text">↑</a> <a class="body-link" href="/loans/jewellery-and-diamonds/">ALYRA — Loans against jewellery and diamonds</a></li>
+          <li id="src-15"><a class="src-back" href="#cite-15" aria-label="Back to citation 15 in text">↑</a> <a class="body-link" href="/security-and-custody/">ALYRA — Security and custody</a></li>
+          <li id="src-16"><a class="src-back" href="#cite-16" aria-label="Back to citation 16 in text">↑</a> <a class="body-link" href="/how-it-works/">ALYRA — How it works</a></li>
+        </ol>
+
+        <div class="author-card reveal">
+          <Image class="author-avatar" src={specialistImg} alt="Elijah Turkovic" widths={[58, 116]} sizes="58px" format="webp" quality={80} loading="lazy" />
+          <div>
+            <div class="author-eyebrow">Written by</div>
+            <div class="author-name">Elijah Turkovic</div>
+            <div class="author-role">Principal Valuation Specialist</div>
+            <p>Elijah works across private asset assessment, asset-backed finance and high-value collateral strategy, focusing on how realisable value forms in specialist markets such as diamonds, fine jewellery, fine watches and other private assets.</p>
+            <p>His approach considers liquidity, condition risk, documentation strength, likely sale channel and time-to-sale rather than advertised price alone.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <RelatedArticles slug={slug} />
+
+  <!-- Final CTA -->
+  <section class="art-cta reveal">
+    <div class="art-cta-inner">
+      <p class="eyebrow eyebrow--on-dark">Confidential valuation</p>
+      <h2 class="art-cta-h2">Considering liquidity against an Argyle pink diamond?</h2>
+      <p class="art-cta-lead">
+        Submit the diamond's details for private review. An ALYRA specialist will assess provenance,
+        grading, condition and documentation, and respond confidentially.
+      </p>
+      <a class="btn news-cta" href={`${SITE.enquiryPath}`}>Request a confidential valuation</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; }
+  .progress-bar { height: 100%; width: 0; background: var(--gold); }
+
+  .art-header { padding: calc(var(--nav-offset) + 40px) var(--section-x) 0; }
+  .art-narrow { max-width: 760px; margin: 0 auto; }
+  .art-back { font: 600 13px/1 var(--font-body); letter-spacing: .3px; color: #857f6e; margin-bottom: 30px; gap: 8px; }
+  .art-back-arrow { transition: transform .25s ease; }
+  .art-back:hover .art-back-arrow { transform: translateX(-4px); }
+  .art-tags { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .art-cat { font: 600 11px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--gold-ink); }
+  .art-h1 { font: 600 clamp(32px, 4.4vw, 52px)/1.1 var(--font-display); letter-spacing: -1.2px; margin: 0 0 24px; text-wrap: balance; }
+  .art-lead { font: 400 clamp(17px, 1.6vw, 20px)/1.6 var(--font-body); color: var(--text-muted); margin: 0 0 32px; }
+  .art-byline { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .art-author { display: flex; align-items: center; gap: 12px; }
+  .art-avatar, .author-avatar { border: 1px solid var(--border-strong); border-radius: 50%; object-fit: cover; object-position: center 22%; flex: none; }
+  .art-avatar { width: 42px; height: 42px; }
+  .art-author-name { display: block; font: 600 14px/1.3 var(--font-body); color: var(--ink); }
+  .art-author-role { display: block; font: 400 12.5px/1.3 var(--font-body); color: #857f6e; }
+  .art-byline-sep { width: 1px; height: 30px; background: var(--border); }
+  .art-dates { display: flex; align-items: center; gap: 11px; font: 500 13px/1 var(--font-body); color: #857f6e; }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: #cabf9f; }
+  .art-crumbs { margin-top: 16px; }
+
+  .art-hero { padding: clamp(36px, 4vw, 52px) var(--section-x) 0; }
+  .art-hero-frame { max-width: 1080px; margin: 0 auto; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .art-hero-frame img { display: block; width: 100%; height: clamp(260px, 42vw, 460px); object-fit: cover; }
+  .art-hero-cap { max-width: 1080px; margin: 14px auto 0; font: 400 13px/1.5 var(--font-body); color: #9a937f; display: flex; align-items: center; gap: 10px; }
+  .cap-rule { width: 18px; height: 1px; background: #c9bfa6; flex: none; }
+
+  .art-wrap { padding: clamp(44px, 5vw, 68px) var(--section-x) clamp(64px, 8vw, 96px); }
+  .art-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+
+  .toc-rail { position: sticky; top: 104px; }
+  .toc-head { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: #a59f8e; margin-bottom: 16px; }
+  .toc-nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border); }
+  .toc-link { display: block; padding: 7px 0 7px 16px; margin-left: -1px; font: 500 13px/1.35 var(--font-body); text-decoration: none; border-left: 2px solid transparent; color: #857f6e; transition: color .2s ease, border-color .2s ease; }
+  .toc-link:hover { color: var(--ink); }
+  .toc-link.is-active { font-weight: 600; color: var(--ink); border-left-color: var(--gold); }
+
+  .art-body { font: 400 18px/1.85 var(--font-body); color: #45413a; max-width: 720px; min-width: 0; }
+  .art-body p { margin: 0 0 22px; }
+  .anchor { scroll-margin-top: 104px; }
+  .art-intro { font: 400 20px/1.7 var(--font-body); color: #3a372f; margin: 0 0 32px; }
+  .dropcap { float: left; font: 600 64px/0.76 var(--font-display); color: var(--gold-ink); margin: 8px 14px 0 0; }
+
+  .answer-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 3px; padding: clamp(26px, 3vw, 34px); }
+  .answer-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 16px; }
+  .answer-lead { font: 400 20px/1.65 var(--font-body); color: #2c2a24; margin: 0 0 18px; }
+  .answer-sub { margin: 0; color: #5a5547; }
+
+  .art-h2 { font: 600 clamp(25px, 2.7vw, 31px)/1.2 var(--font-display); letter-spacing: -0.6px; color: var(--ink); margin: 54px 0 18px; }
+
+  .note { border: 1px dashed var(--border-strong); border-radius: 3px; padding: 20px 24px; margin: 0 0 26px; background: rgba(255,255,255,.3); }
+  .note-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.2px; text-transform: uppercase; color: #9a937f; margin-bottom: 10px; }
+  .note p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .note p:last-child { margin: 0; }
+
+  .takeaways { background: var(--ink); color: var(--text-on-dark); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 15px; }
+  .take { display: flex; gap: 14px; font: 400 15.5px/1.6 var(--font-body); }
+  .take-dash { color: var(--gold); flex: none; }
+
+  .art-list { margin: 0 0 22px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; margin: 0 0 26px; }
+  .art-table { border-collapse: collapse; width: 100%; min-width: 560px; font: 400 14.5px/1.55 var(--font-body); color: #45413a; }
+  .art-table th { padding: 14px 18px; font: 600 12px/1.3 var(--font-body); letter-spacing: .4px; background: var(--ink); color: var(--text-on-dark); text-align: left; }
+  .art-table td { padding: 14px 18px; border-top: 1px solid var(--border); }
+  .art-table tbody tr:nth-child(odd) { background: var(--surface); }
+  .tcell-head { font-weight: 600; color: var(--ink); }
+
+  .pull { margin: 40px 0; padding: 6px 0 6px 30px; border-left: 3px solid var(--gold); font: 500 clamp(22px, 2.7vw, 29px)/1.36 var(--font-display); color: var(--ink); letter-spacing: -0.6px; text-wrap: balance; }
+
+  .mistakes { display: flex; flex-direction: column; gap: 18px; margin: 0 0 22px; }
+  .mistake { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 20px 24px; }
+  .mistake-h { font: 600 16px/1.4 var(--font-display); color: var(--ink); margin-bottom: 6px; }
+  .mistake p { font: 400 15px/1.65 var(--font-body); color: var(--text-soft); margin: 0; }
+
+  .checklist { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(24px, 3vw, 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 13px 28px; }
+  .check { display: flex; gap: 12px; font: 400 15px/1.5 var(--font-body); color: #45413a; }
+  .check-dash { color: var(--gold-ink); flex: none; }
+
+  .art-faq { border-top: 1px solid var(--border); margin-top: 22px; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 4px; cursor: pointer; list-style: none; }
+  .art-faq-item summary::-webkit-details-marker { display: none; }
+  .art-faq-q { font: 500 17px/1.45 var(--font-display); color: var(--ink); }
+  .art-faq-sign { font: 400 24px/1 var(--font-body); color: var(--gold-ink); flex: none; transition: transform .25s ease; }
+  .art-faq-item[open] .art-faq-sign { transform: rotate(45deg); }
+  .art-faq-a p { font: 400 15.5px/1.75 var(--font-body); color: var(--text-soft); margin: 0; padding: 0 4px 24px; max-width: 620px; }
+
+  .cite { font: 600 11px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; vertical-align: super; letter-spacing: .2px; white-space: nowrap; scroll-margin-top: 104px; }
+  .cite:hover { color: var(--ink); }
+
+  .src-back { font: 600 12px/1 var(--font-body); color: var(--gold-ink); text-decoration: none; }
+  .src-back:hover { color: var(--ink); }
+
+  .src-note { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 22px; }
+  .src-label { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+  .src-list { margin: 0 0 24px; padding-left: 22px; display: flex; flex-direction: column; gap: 9px; font: 400 15px/1.55 var(--font-body); }
+  .src-list li { scroll-margin-top: 104px; }
+  .body-link { color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid #cabf9f; transition: border-color .2s ease, color .2s ease; }
+  .body-link:hover { color: var(--ink); border-color: var(--gold-ink); }
+
+  .author-card { margin: 48px 0 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: clamp(26px, 3vw, 34px); display: flex; gap: 22px; align-items: flex-start; }
+  .author-avatar { width: 58px; height: 58px; font-size: 19px; }
+  .author-eyebrow { font: 600 11px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-fg); margin-bottom: 8px; }
+  .author-name { font: 600 19px/1.3 var(--font-display); color: var(--ink); margin-bottom: 4px; }
+  .author-role { font: 500 13px/1.4 var(--font-body); color: #857f6e; margin-bottom: 14px; }
+  .author-card p { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0 0 12px; }
+  .author-card p:last-child { margin: 0; }
+
+  .art-cta { background: var(--ink); color: #f1ece1; padding: clamp(64px, 8vw, 104px) var(--section-x); text-align: center; }
+  .art-cta-inner { max-width: 680px; margin: 0 auto; }
+  .art-cta-h2 { font: 600 clamp(28px, 3.6vw, 44px)/1.12 var(--font-display); letter-spacing: -0.7px; margin: 0 0 18px; text-wrap: balance; }
+  .art-cta-lead { font: 400 17px/1.7 var(--font-body); color: var(--text-on-dark-soft); margin: 0 0 34px; }
+  .news-cta { background: var(--gold); color: var(--ink-gold-button); border: none; box-shadow: none; }
+
+  .toc-mobile { display: none; margin: 0 0 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+  .toc-mobile summary { padding: 14px 18px; font: 600 12px/1 var(--font-body); letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold-ink); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .toc-mobile summary::-webkit-details-marker { display: none; }
+  .toc-mobile summary::after { content: "+"; font: 400 20px/1 var(--font-body); }
+  .toc-mobile[open] summary::after { content: "–"; }
+  .toc-mobile nav { display: flex; flex-direction: column; padding: 0 18px 6px; }
+  .toc-mobile a { padding: 10px 0; font: 500 14px/1.4 var(--font-body); color: #857f6e; text-decoration: none; border-top: 1px solid var(--border); }
+
+  @media (max-width: 960px) {
+    .toc-rail { display: none; }
+    .toc-mobile { display: block; }
+    .art-grid { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Reading progress + TOC scroll-spy. Minimal, passive.
+  const bar = document.querySelector<HTMLElement>("[data-progress]");
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-toc]"));
+  const ids = links.map((l) => l.dataset.toc!).filter(Boolean);
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  const onScroll = () => {
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            links.forEach((l) => l.classList.toggle("is-active", l.dataset.toc === id));
+          }
+        });
+      },
+      { rootMargin: "-110px 0px -65% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
+</script>
