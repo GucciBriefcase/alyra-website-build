@@ -162,7 +162,7 @@ const schema = [
     text-decoration: none; color: inherit;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius-card);
     overflow: hidden;
     transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
   }
@@ -200,7 +200,7 @@ const schema = [
   /* Grid */
   .ins-grid-wrap { padding: clamp(44px, 5vw, 64px) var(--section-x) clamp(64px, 8vw, 96px); }
   .ins-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 28px; }
-  .post-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .post-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); overflow: hidden; }
   .post-card[hidden] { display: none; }
   .post-card--link { text-decoration: none; color: inherit; transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
   .post-card--link:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 14px 32px rgba(40,38,30,.12); }
