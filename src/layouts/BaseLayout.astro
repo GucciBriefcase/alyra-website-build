@@ -107,7 +107,14 @@ const websiteSchema = {
     )}
     {bingSiteVerification && <meta name="msvalidate.01" content={bingSiteVerification} />}
 
+    <!-- Icons are the ALYRA "A" monogram, not the wordmark: at favicon size the
+         wordmark is illegible, and Google was picking the largest raster it
+         could find for the search result. Google's favicon guidance wants a
+         square raster whose edge is a multiple of 48px, hence the 96/192 PNGs
+         alongside the SVG. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
