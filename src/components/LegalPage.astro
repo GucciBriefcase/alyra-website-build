@@ -1,11 +1,12 @@
 ---
 /**
  * Shared scaffold for the legal / regulatory pages (privacy, terms, complaints,
- * licence). Intentionally conservative: a heading, a short plain-language intro,
- * and a clear notice that the full content is being finalised ahead of launch.
+ * licence): a heading, a short plain-language intro, then page content via the
+ * slot.
  *
- * This scaffold deliberately makes NO detailed legal, regulatory, licensing or
- * custody claims — that content is pending a separate compliance review.
+ * Pages still awaiting their real content pass `noticeNoun` to show the "being
+ * finalised" notice, and make NO detailed legal, regulatory, licensing or
+ * custody claims. Pages carrying approved content (see privacy.astro) omit it.
  */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE, absoluteUrl } from "../config/site";
@@ -24,8 +25,11 @@ interface Props {
   path: string;
   /** One or more conservative intro paragraphs. */
   intro: string[];
-  /** Noun for the closing notice, e.g. "privacy policy", "terms of use". */
-  noticeNoun: string;
+  /**
+   * Noun for the "being finalised" notice, e.g. "terms of use". Omit once a
+   * page carries its real content via the slot — the notice is then suppressed.
+   */
+  noticeNoun?: string;
 }
 
 const { title, heading, crumbName, description, path, intro, noticeNoun } = Astro.props;
@@ -65,14 +69,16 @@ const schema = [
     <div class="container legal-body">
       {intro.map((p) => <p class="legal-p">{p}</p>)}
 
-      <div class="legal-notice" role="note">
-        <p class="legal-notice-title">This {noticeNoun} is being finalised.</p>
-        <p class="legal-notice-body">
-          ALYRA's full {noticeNoun} is being prepared ahead of launch and will be published on this
-          page. If you have a question in the meantime, please <a href="/contact/">contact us</a>
-          or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
-        </p>
-      </div>
+      {noticeNoun && (
+        <div class="legal-notice" role="note">
+          <p class="legal-notice-title">This {noticeNoun} is being finalised.</p>
+          <p class="legal-notice-body">
+            ALYRA's full {noticeNoun} is being prepared ahead of launch and will be published on this
+            page. If you have a question in the meantime, please <a href="/contact/">contact us</a>
+            or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+          </p>
+        </div>
+      )}
 
       <slot />
     </div>
