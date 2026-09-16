@@ -1,16 +1,129 @@
 ---
+/**
+ * Complaints — how a client raises a concern with ALYRA, what happens next,
+ * and where they can go if they remain dissatisfied. Written to match the
+ * Privacy Policy's register; privacy-specific complaints defer to that policy
+ * (section 22) rather than restating it.
+ *
+ * External-avenue wording is deliberately conditional ("may", "depending on
+ * the nature of your complaint"): ALYRA lends under Queensland pawnbroking law
+ * and this page must not imply membership of a scheme it does not belong to.
+ *
+ * `noticeNoun` is omitted so LegalPage suppresses the "being finalised" notice.
+ */
 import LegalPage from "../components/LegalPage.astro";
+import { SITE } from "../config/site";
 ---
 
 <LegalPage
   title="Complaints | ALYRA"
   heading="Complaints"
   crumbName="Complaints"
-  description="How to raise a concern or complaint with ALYRA. We aim to handle every concern privately and fairly."
+  description="How to raise a concern or complaint with ALYRA, what to expect once you do, and where you can take the matter if you remain dissatisfied."
   path="/complaints/"
-  noticeNoun="complaints process"
   intro={[
     "ALYRA aims to handle every client concern privately, fairly and promptly. If something has not met your expectations, we want to hear about it.",
     "ALYRA's full complaints process, including how to raise a concern and what to expect, is set out below.",
   ]}
-/>
+>
+  <div class="policy">
+      <p class="legal-dateline">Effective date: 16 September 2026 · Last updated: 16 September 2026</p>
+
+      <h2 class="legal-h2">1. Our approach</h2>
+      <p class="legal-p">{SITE.legalEntity} (ABN {SITE.abn}), trading as ALYRA (“ALYRA”, “we”, “us” or “our”), values the trust our clients place in us, particularly where valuable assets are involved.</p>
+      <p class="legal-p">A complaint is an expression of dissatisfaction with our services, our conduct, or the way we have handled your matter, where a response or resolution is expected. You do not need to use the word “complaint” for us to treat it as one.</p>
+      <p class="legal-p">We are committed to handling complaints:</p>
+      <ul class="legal-list">
+        <li>privately and confidentially;</li>
+        <li>fairly and with an open mind;</li>
+        <li>promptly, and in any event within the timeframes set out below;</li>
+        <li>at no cost to you; and</li>
+        <li>without any disadvantage to you for having raised the matter.</li>
+      </ul>
+
+      <h2 class="legal-h2">2. What you can raise with us</h2>
+      <p class="legal-p">You can raise a concern about any aspect of your dealings with ALYRA, including:</p>
+      <ul class="legal-list">
+        <li>an enquiry, valuation or the assessment of an asset;</li>
+        <li>the terms, administration or repayment of a loan;</li>
+        <li>fees, interest or other charges;</li>
+        <li>the custody, storage, condition or return of an asset;</li>
+        <li>redemption, notices or enforcement steps;</li>
+        <li>the conduct of our staff or a service provider acting for us;</li>
+        <li>the handling of your personal information (see section 7); or</li>
+        <li>this website or our communications.</li>
+      </ul>
+
+      <h2 class="legal-h2">3. Urgent matters</h2>
+      <p class="legal-p legal-p--em">If your concern relates to the security of an asset in our custody, a suspected unauthorised transaction, or someone you believe is impersonating ALYRA, please contact us immediately rather than waiting for the process below.</p>
+      <p class="legal-p">Mark your email “Urgent” in the subject line, or call us if a telephone number has been provided to you. We will prioritise these matters.</p>
+
+      <h2 class="legal-h2">4. How to make a complaint</h2>
+      <h3 class="legal-h3">Step 1 — Talk to us first</h3>
+      <p class="legal-p">Many concerns can be resolved quickly by the person you have been dealing with. If you are comfortable doing so, please raise the matter with them first.</p>
+      <h3 class="legal-h3">Step 2 — Contact our Complaints Officer</h3>
+      <p class="legal-p">If you would prefer not to raise the matter with the person involved, or you are not satisfied with their response, you can contact our Complaints Officer directly:</p>
+      <address class="legal-address">
+        Complaints Officer<br />
+        {SITE.legalEntity}<br />
+        ABN {SITE.abn}<br />
+        Queensland, Australia
+      </address>
+      <p class="legal-p">Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      <p class="legal-p legal-p--em">Please include “Complaint” in the subject line where practicable.</p>
+      <p class="legal-p">You can also send a message through our <a href="/contact/">Contact</a> page. If you need assistance to make a complaint — for example, because of language, disability or other circumstances — please let us know and we will arrange a suitable way for you to do so. You may ask a representative to make a complaint on your behalf; we may need to verify their authority before discussing your matter with them.</p>
+      <h3 class="legal-h3">What to include</h3>
+      <p class="legal-p">To help us look into your complaint, please tell us:</p>
+      <ul class="legal-list">
+        <li>your name and the best way to contact you;</li>
+        <li>the asset, loan or enquiry the complaint relates to, if any;</li>
+        <li>what happened, and when;</li>
+        <li>who you dealt with, if relevant;</li>
+        <li>copies of any documents or correspondence that support your complaint; and</li>
+        <li>the outcome you are seeking.</li>
+      </ul>
+
+      <h2 class="legal-h2">5. What happens next</h2>
+      <h3 class="legal-h3">Acknowledgement</h3>
+      <p class="legal-p">We will acknowledge your complaint within <strong>2 business days</strong> of receiving it, and tell you who is handling it.</p>
+      <h3 class="legal-h3">Review</h3>
+      <p class="legal-p">Your complaint will be reviewed by a person with the authority to resolve it. Where practicable, this will be someone who was not directly involved in the matter you are complaining about.</p>
+      <p class="legal-p">During the review we may:</p>
+      <ul class="legal-list">
+        <li>ask you for further information or documents;</li>
+        <li>review our records, including any recorded telephone calls;</li>
+        <li>speak with the staff or service providers involved; and</li>
+        <li>obtain independent expert input where the complaint concerns a valuation, authentication or the condition of an asset.</li>
+      </ul>
+      <h3 class="legal-h3">Response</h3>
+      <p class="legal-p">We aim to provide you with a final written response within <strong>30 days</strong> of receiving your complaint. Our response will explain what we found, the outcome, the reasons for it, and any action we propose to take.</p>
+      <p class="legal-p">If we are unable to respond within 30 days — for example, because the matter is complex or we are waiting on information from you or a third party — we will tell you why, keep you informed of progress, and let you know when you can expect a response.</p>
+      <p class="legal-p">Where we accept that something has gone wrong, we will tell you what we will do to put it right. Possible outcomes include an explanation, an apology, a correction to our records, a change to our process, or another remedy appropriate to the circumstances.</p>
+
+      <h2 class="legal-h2">6. Assets in custody during a complaint</h2>
+      <p class="legal-p">Raising a complaint does not change the terms of any loan agreement. Interest, fees and repayment dates continue to apply unless we agree otherwise in writing.</p>
+      <p class="legal-p">Where a complaint concerns a step we may be entitled to take in relation to an asset, we will consider whether it is appropriate to pause that step while the complaint is reviewed. If you are concerned about a deadline, please tell us as soon as possible.</p>
+
+      <h2 class="legal-h2">7. Privacy complaints</h2>
+      <p class="legal-p">If your complaint concerns the way we have handled your personal information, it will be handled by our Privacy Officer in accordance with section 22 of our <a href="/privacy/">Privacy Policy</a>. You can use the same contact details above; please include “Privacy” in the subject line.</p>
+      <p class="legal-p">Where the Privacy Act 1988 (Cth) applies to the matter and you remain dissatisfied after giving ALYRA a reasonable opportunity to address your complaint, you may be entitled to complain to the Office of the Australian Information Commissioner (OAIC).</p>
+
+      <h2 class="legal-h2">8. If you are not satisfied with our response</h2>
+      <p class="legal-p">If you are not satisfied with our final response, or we have not responded within the timeframes above, please tell us. We will consider whether a further internal review is appropriate.</p>
+      <p class="legal-p">Depending on the nature of your complaint, other avenues may also be available to you, including:</p>
+      <ul class="legal-list">
+        <li>the Queensland Office of Fair Trading, which administers the licensing of pawnbrokers and second-hand dealers in Queensland;</li>
+        <li>the Office of the Australian Information Commissioner (OAIC), for privacy matters where the Privacy Act 1988 (Cth) applies;</li>
+        <li>the Australian Competition and Consumer Commission (ACCC) or the relevant state or territory consumer protection agency, for consumer law matters; and</li>
+        <li>a court or tribunal with jurisdiction over the dispute.</li>
+      </ul>
+      <p class="legal-p">Which avenues apply, and any time limits, depend on the circumstances. You may wish to seek independent legal advice. Nothing on this page limits any right you have under the law.</p>
+
+      <h2 class="legal-h2">9. Confidentiality and records</h2>
+      <p class="legal-p">Information you provide in connection with a complaint is used to investigate and respond to it, and is handled in accordance with our <a href="/privacy/">Privacy Policy</a>.</p>
+      <p class="legal-p">We keep a record of complaints and their outcomes so that we can meet our legal obligations, respond to any later dispute, and improve our services. We review complaints periodically to identify where our processes can be improved.</p>
+
+      <h2 class="legal-h2">10. Changes to this process</h2>
+      <p class="legal-p">We may update this complaints process from time to time. The current version will be published on our website and identified by its effective or last-updated date.</p>
+  </div>
+</LegalPage>

@@ -1,16 +1,158 @@
 ---
+/**
+ * Terms of Use — the terms that govern use of the ALYRA website and the
+ * enquiry and confidential-valuation services offered through it. Drafted in
+ * the same plain-language register as the Privacy Policy. Loans themselves are
+ * governed by their own written agreements, not these terms.
+ *
+ * `noticeNoun` is omitted so LegalPage suppresses the "being finalised" notice.
+ */
 import LegalPage from "../components/LegalPage.astro";
+import { SITE } from "../config/site";
 ---
 
 <LegalPage
   title="Terms of Use | ALYRA"
   heading="Terms of Use"
   crumbName="Terms"
-  description="The terms that apply to use of the ALYRA website. General information only — not a loan offer or financial, legal or credit advice."
+  description="The terms that apply to use of the ALYRA website and enquiry services. General information only — not a loan offer or financial, legal or credit advice."
   path="/terms/"
-  noticeNoun="terms of use"
   intro={[
     "This website provides general information about ALYRA's private asset-based lending. It does not constitute a loan offer, or financial, legal or credit advice.",
     "Any loan would be subject to its own written agreement and terms provided to you directly. ALYRA's full terms of use for this website are set out below.",
   ]}
-/>
+>
+  <div class="policy">
+      <p class="legal-dateline">Effective date: 16 September 2026 · Last updated: 16 September 2026</p>
+
+      <h2 class="legal-h2">1. About these Terms</h2>
+      <p class="legal-p">These Terms of Use (“Terms”) apply to your access to and use of the website at alyra.com.au and any related pages, forms and content we make available through it (together, the “Website”).</p>
+      <p class="legal-p legal-p--em">By accessing or using the Website, you agree to these Terms. If you do not agree, please do not use the Website.</p>
+      <p class="legal-p">These Terms should be read together with our <a href="/privacy/">Privacy Policy</a>, which explains how we handle personal information, and our <a href="/complaints/">Complaints</a> page, which explains how to raise a concern with us.</p>
+      <p class="legal-p">These Terms govern the Website only. They do not govern any loan, valuation, custody, purchase or other transaction with ALYRA. Those arrangements are governed by the separate written agreements and documents provided to you directly (see section 5).</p>
+
+      <h2 class="legal-h2">2. Who we are</h2>
+      <p class="legal-p">The Website is operated by {SITE.legalEntity} (ABN {SITE.abn}), trading as ALYRA (“ALYRA”, “we”, “us” or “our”).</p>
+      <p class="legal-p">ALYRA provides loans to private clients secured against pledged high-value assets, under applicable pawnbroking laws. ALYRA holds a pawnbroker licence and second-hand dealer registration in {SITE.pawnbrokerLicenceJurisdiction}. Our <a href="/licence/">Licensing &amp; Registration</a> page sets out the details that apply.</p>
+
+      <h2 class="legal-h2">3. General information only</h2>
+      <p class="legal-p legal-p--em">The information on the Website is general in nature. It is provided for information purposes only and does not take into account your personal circumstances, objectives, financial situation or needs.</p>
+      <p class="legal-p">Nothing on the Website constitutes, or should be relied on as:</p>
+      <ul class="legal-list">
+        <li>financial, legal, tax, credit or investment advice;</li>
+        <li>a valuation or appraisal of any particular asset;</li>
+        <li>a recommendation that a loan or other product is suitable for you; or</li>
+        <li>a statement that any particular asset would be accepted, or that any particular amount would be lent against it.</li>
+      </ul>
+      <p class="legal-p">You should consider whether the information is appropriate to your circumstances and obtain independent professional advice before making any decision.</p>
+
+      <h2 class="legal-h2">4. No offer</h2>
+      <p class="legal-p legal-p--em">Nothing on the Website is an offer to lend, an invitation to apply for credit, or an agreement to enter into any transaction.</p>
+      <p class="legal-p">Loan amounts, ranges, loan-to-value indications, timeframes and examples shown on the Website are illustrative only. Each enquiry is assessed individually, and ALYRA may decline any enquiry at its discretion and without giving reasons.</p>
+      <p class="legal-p">Nothing on the Website creates a binding obligation on ALYRA to value, accept, lend against, purchase, hold or return any asset. Any such obligation arises only under a written agreement signed by ALYRA.</p>
+
+      <h2 class="legal-h2">5. Loans are governed by separate written terms</h2>
+      <p class="legal-p">If you proceed with a loan or other transaction, it will be governed by the written agreement and any related documents provided to you directly, which prevail over these Terms to the extent of any inconsistency.</p>
+      <p class="legal-p">Before you proceed with a loan, we will disclose to you the fees, interest, repayment terms, notices, redemption rights and enforcement processes that apply.</p>
+      <p class="legal-p legal-p--em">A loan secured against a pledged asset places that asset at risk. If you do not meet your repayment obligations, the asset may be sold in accordance with the loan agreement and applicable law.</p>
+      <p class="legal-p">Please read any agreement carefully and seek independent advice if you are unsure about any part of it.</p>
+
+      <h2 class="legal-h2">6. Enquiries and confidential valuations</h2>
+      <p class="legal-p">The Website allows you to make a general enquiry or request a confidential valuation of an asset. When you do so:</p>
+      <ul class="legal-list">
+        <li>you must provide information that is accurate, complete and not misleading;</li>
+        <li>you confirm that you own the asset, or are authorised by the owner to deal with it and to provide information about it;</li>
+        <li>you acknowledge that any indication we provide before inspecting the asset in person is preliminary and subject to physical inspection, authentication, verification of identity and ownership, and ALYRA's approval; and</li>
+        <li>you acknowledge that submitting an enquiry does not oblige ALYRA to proceed, and does not oblige you to proceed.</li>
+      </ul>
+      <p class="legal-p legal-p--em">Providing information about an asset for an enquiry or confidential valuation does not authorise ALYRA to publicly advertise, list, market or sell that asset.</p>
+      <p class="legal-p">Information you provide through the Website is handled in accordance with our <a href="/privacy/">Privacy Policy</a>.</p>
+
+      <h2 class="legal-h2">7. Eligibility</h2>
+      <p class="legal-p">To make an enquiry or transact with ALYRA you must:</p>
+      <ul class="legal-list">
+        <li>be at least 18 years of age;</li>
+        <li>have legal capacity to enter into a binding agreement;</li>
+        <li>own the relevant asset, or be authorised by its owner to deal with it; and</li>
+        <li>be able to satisfy our identity, address and ownership verification requirements, including any requirements imposed by law.</li>
+      </ul>
+      <p class="legal-p">ALYRA's services are directed at clients in Australia. We may be unable to assist if you or the asset are located outside Australia.</p>
+
+      <h2 class="legal-h2">8. Accuracy and currency of information</h2>
+      <p class="legal-p">We take reasonable care to ensure that information on the Website is accurate and current at the time of publication. However, we do not warrant that the Website is complete, accurate, current or free from error.</p>
+      <p class="legal-p">Information about loan parameters, asset classes, processes, timeframes, custody arrangements and insurance may change without notice. Where the Website describes what ALYRA “may” or “typically” does, this describes a general practice and is not a promise in relation to any particular enquiry.</p>
+      <p class="legal-p">Insurance may apply while assets are in custody, subject to policy terms, asset approval, valuation limits and custody conditions. Details will be confirmed in your written agreement.</p>
+
+      <h2 class="legal-h2">9. Intellectual property</h2>
+      <p class="legal-p">The Website and its content — including text, articles, images, photographs, graphics, layouts, the ALYRA name, monogram and logo, and the underlying code — are owned by or licensed to ALYRA and are protected by copyright, trade mark and other laws.</p>
+      <p class="legal-p">You may view, download and print content from the Website for your personal, non-commercial use in connection with considering ALYRA's services. You must not otherwise reproduce, adapt, distribute, publish, frame, scrape or commercially exploit any part of the Website without our prior written consent.</p>
+      <p class="legal-p">Nothing on the Website grants you any licence or right to use any ALYRA trade mark or branding.</p>
+
+      <h2 class="legal-h2">10. Acceptable use</h2>
+      <p class="legal-p">You must not, and must not attempt to:</p>
+      <ul class="legal-list">
+        <li>use the Website for any unlawful, fraudulent or misleading purpose;</li>
+        <li>submit an enquiry about an asset you do not own or are not authorised to deal with;</li>
+        <li>provide false identity, ownership or asset information;</li>
+        <li>interfere with the security, integrity or availability of the Website or its underlying systems;</li>
+        <li>introduce viruses, malicious code or harmful material;</li>
+        <li>use automated tools to access, scrape or index the Website other than search engines operating in accordance with our robots directives; or</li>
+        <li>impersonate ALYRA, its staff or another person.</li>
+      </ul>
+      <p class="legal-p">We may restrict, suspend or terminate your access to the Website, and decline to deal with you, if we reasonably believe you have breached these Terms.</p>
+
+      <h2 class="legal-h2">11. Security and genuine ALYRA communications</h2>
+      <p class="legal-p">Because ALYRA deals with valuable assets, clients may be targeted by people impersonating us. Please take care to confirm you are dealing with ALYRA.</p>
+      <p class="legal-p">ALYRA will never:</p>
+      <ul class="legal-list">
+        <li>ask you for a password or online banking login;</li>
+        <li>ask you to transfer money to a personal or overseas account; or</li>
+        <li>ask you to hand an asset to a courier or individual who has not been identified to you in writing by ALYRA in advance.</li>
+      </ul>
+      <p class="legal-p">Our genuine email addresses end in <strong>@alyra.com.au</strong>. If you receive a communication that claims to be from ALYRA and you are unsure, do not act on it — contact us directly through the details on our <a href="/contact/">Contact</a> page.</p>
+      <p class="legal-p">Email and other electronic communications are not always secure. Please avoid sending sensitive documents until we have confirmed the appropriate channel with you.</p>
+
+      <h2 class="legal-h2">12. Third-party websites and services</h2>
+      <p class="legal-p">The Website may contain links to websites or services operated by third parties. Those links are provided for convenience only.</p>
+      <p class="legal-p">ALYRA does not control, endorse or accept responsibility for third-party websites, their content, or their handling of your information. You access them at your own risk and should review their own terms and privacy information.</p>
+
+      <h2 class="legal-h2">13. Availability of the Website</h2>
+      <p class="legal-p">We aim to keep the Website available, but we do not guarantee that it will be available at all times, uninterrupted, secure or free from defects. We may change, suspend or discontinue any part of the Website at any time without notice.</p>
+
+      <h2 class="legal-h2">14. Liability</h2>
+      <p class="legal-p legal-p--em">Nothing in these Terms excludes, restricts or modifies any consumer guarantee, right or remedy that you have under the Australian Consumer Law or any other law that cannot lawfully be excluded, restricted or modified.</p>
+      <p class="legal-p">To the maximum extent permitted by law, ALYRA excludes all liability for any loss, damage, cost or expense (including indirect or consequential loss, and loss of profit, opportunity or data) arising out of or in connection with:</p>
+      <ul class="legal-list">
+        <li>your use of, or inability to use, the Website;</li>
+        <li>any reliance on information contained on the Website;</li>
+        <li>any preliminary indication given before an asset has been inspected and verified;</li>
+        <li>any third-party website, service or content; or</li>
+        <li>any unauthorised access to, or interference with, the Website or your communications with us.</li>
+      </ul>
+      <p class="legal-p">Where liability cannot be excluded but can be limited, ALYRA's liability is limited, at ALYRA's option, to resupplying the relevant service or paying the cost of having it resupplied.</p>
+      <p class="legal-p">This section does not limit the terms of any written loan or other agreement between you and ALYRA, which contain their own provisions about liability.</p>
+
+      <h2 class="legal-h2">15. Your responsibility</h2>
+      <p class="legal-p">You are responsible for any loss ALYRA suffers as a result of your breach of these Terms, your provision of false or misleading information, or your unlawful use of the Website, to the extent that the loss was caused by you.</p>
+
+      <h2 class="legal-h2">16. Privacy</h2>
+      <p class="legal-p">Our <a href="/privacy/">Privacy Policy</a> explains how we collect, hold, use and disclose personal information, including information provided through the Website, and how you can access or correct it or make a privacy complaint.</p>
+
+      <h2 class="legal-h2">17. Changes to these Terms</h2>
+      <p class="legal-p">We may update these Terms from time to time. The current version will be published on the Website and identified by its effective or last-updated date. Your continued use of the Website after a change takes effect constitutes acceptance of the updated Terms.</p>
+
+      <h2 class="legal-h2">18. General</h2>
+      <p class="legal-p">If any part of these Terms is found to be invalid or unenforceable, that part is severed and the remainder continues in effect. A failure by ALYRA to enforce any part of these Terms is not a waiver of that part.</p>
+      <p class="legal-p">These Terms are governed by the laws of Queensland, Australia. You submit to the non-exclusive jurisdiction of the courts of Queensland and the courts entitled to hear appeals from them.</p>
+
+      <h2 class="legal-h2">19. Contact ALYRA</h2>
+      <p class="legal-p">If you have a question about these Terms or the Website, contact:</p>
+      <address class="legal-address">
+        {SITE.legalEntity}<br />
+        ABN {SITE.abn}<br />
+        Queensland, Australia
+      </address>
+      <p class="legal-p">Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      <p class="legal-p">To raise a concern or complaint, please see our <a href="/complaints/">Complaints</a> page.</p>
+  </div>
+</LegalPage>

@@ -97,7 +97,6 @@ const schema = [
   }
 
   .legal-body { max-width: 720px; }
-  .legal-p { font: 400 16px/1.8 var(--font-body); color: var(--text-muted); margin: 0 0 18px; }
 
   .legal-notice {
     margin-top: 14px;
@@ -111,4 +110,68 @@ const schema = [
   .legal-notice-body { font: 400 14.5px/1.7 var(--font-body); color: var(--text-soft); margin: 0; }
   .legal-notice-body a { color: var(--gold-fg); text-decoration: none; border-bottom: 1px solid #c9bfa6; }
   .legal-notice-body a:hover { color: var(--gold-ink); }
+
+  /* Shared legal typography. Slotted page content carries its own page's
+     scope, so these are declared :global under .legal-body — the intro
+     paragraphs above and the per-page policy content both pick them up. */
+  .legal-body :global(.policy) { margin-top: 8px; }
+
+  .legal-body :global(.legal-dateline) {
+    font: 600 12px/1.5 var(--font-body);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 0 0 6px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .legal-body :global(.legal-h2) {
+    font: 600 clamp(21px, 2.4vw, 26px)/1.25 var(--font-display);
+    letter-spacing: -0.3px;
+    color: var(--ink);
+    margin: 46px 0 16px;
+    text-wrap: balance;
+  }
+
+  .legal-body :global(.legal-h3) {
+    font: 600 15.5px/1.5 var(--font-display);
+    color: var(--ink);
+    margin: 28px 0 10px;
+  }
+
+  .legal-body :global(.legal-p) {
+    font: 400 16px/1.8 var(--font-body);
+    color: var(--text-muted);
+    margin: 0 0 18px;
+  }
+
+  /* Key disclaimers and limits — bolded statements in the source documents. */
+  .legal-body :global(.legal-p--em) {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .legal-body :global(.legal-list) {
+    margin: 0 0 20px;
+    padding-left: 22px;
+    font: 400 16px/1.8 var(--font-body);
+    color: var(--text-muted);
+  }
+  .legal-body :global(.legal-list li) { margin-bottom: 7px; }
+  .legal-body :global(.legal-list li::marker) { color: var(--gold-ink); }
+
+  .legal-body :global(.legal-address) {
+    font: 400 16px/1.9 var(--font-body);
+    font-style: normal;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+
+  .legal-body :global(.legal-p a) {
+    color: var(--gold-fg);
+    text-decoration: none;
+    border-bottom: 1px solid #c9bfa6;
+  }
+  .legal-body :global(.legal-p a:hover) { color: var(--gold-ink); }
 </style>
