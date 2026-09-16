@@ -123,6 +123,10 @@ export const SITE = {
    * Console and Bing Webmaster Tools are verification + sitemap submission only;
    * the meta tokens below are the fallback if you don't verify via GTM/GA (Bing
    * can also import verification straight from Search Console).
+   *
+   * IndexNow (instant Bing/Yandex/Naver indexing) needs no ID here: the key is
+   * the 32-hex `<key>.txt` file in public/ and scripts/indexnow.mjs pings the
+   * API after every Vercel production build.
    */
   analytics: {
     /** Google Tag Manager container ID, e.g. "GTM-XXXXXXX". Loads GA4 + Clarity. */

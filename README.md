@@ -126,6 +126,11 @@ them up in the GTM dashboard, not in the codebase. Search Console / Bing
 verification and sitemap submission are covered in
 [`LAUNCH-CHECKLIST.md`](LAUNCH-CHECKLIST.md).
 
+IndexNow (instant indexing for Bing, Yandex, Naver etc.) is wired into the
+build: `scripts/indexnow.mjs` runs as `postbuild` and submits every sitemap URL
+to `api.indexnow.org`, but only when `VERCEL_ENV=production`. The key is the
+32-hex `<key>.txt` file in `public/`. To submit manually: `npm run indexnow`.
+
 ## Deployment (Vercel)
 
 Static build — Vercel auto-detects Astro. No adapter required while the site

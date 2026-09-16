@@ -44,6 +44,8 @@ do not carry over.
       `https://www.alyra.com.au/sitemap-index.xml`.
 - [ ] **Bing Webmaster Tools** — "Import from Google Search Console" (fastest)
       → confirm the sitemap imported.
+- [x] **IndexNow** — submitted automatically by `scripts/indexnow.mjs` on each
+      production build; Bing → IndexNow shows the submission count.
 - [ ] Optional: in GSC, URL Inspection → Request indexing for `/`, `/loans/`,
       `/valuation/`.
 

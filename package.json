@@ -7,6 +7,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/indexnow.mjs",
+    "indexnow": "node scripts/indexnow.mjs --force",
     "preview": "astro preview",
     "check": "astro check"
   },
