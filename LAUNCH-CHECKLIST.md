@@ -5,10 +5,8 @@ is already live on the Vercel deployment. Work top to bottom.
 
 ## Before launch day (any time)
 
-- [ ] **GA4 key event** — Admin → Key events → toggle `enquiry_submit` on
-      (appears up to 24 h after the first event was received).
-- [ ] **Clarity ↔ GA4 integration** — Clarity → Settings → Setup →
-      Google Analytics integration → connect to the ALYRA property.
+- [x] **GA4 key event** — `enquiry_submit` marked as a key event (16 Sep 2026).
+- [x] **Clarity ↔ GA4 integration** — connected and active.
 - [ ] **Production build check** — `npm run build` completes clean.
 - [ ] **Content sign-off** — phone number (add to `src/config/site.ts` `phone`
       or leave hidden), social profile URLs (`social:` in site.ts) if accounts

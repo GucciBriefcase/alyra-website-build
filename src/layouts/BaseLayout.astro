@@ -30,7 +30,10 @@ const { title, description, path, image, imageAlt, ogType, schema, hideMobileCta
 const sameAs = Object.values(SITE.social).filter(Boolean);
 
 // Analytics / verification (inert until IDs are set in site.ts).
-const { gtmId, googleSiteVerification, bingSiteVerification } = SITE.analytics;
+// GTM is also gated to production builds: with it in `astro dev`, every
+// localhost session showed up in GA4 and Clarity as real traffic.
+const { googleSiteVerification, bingSiteVerification } = SITE.analytics;
+const gtmId = import.meta.env.PROD ? SITE.analytics.gtmId : "";
 // GTM is deferred until after the first frame has painted: loading it eagerly
 // blocked mobile first paint for ~2s (GA4 + Clarity evaluate before render),
 // which single-handedly dropped the Lighthouse performance score to ~66.
