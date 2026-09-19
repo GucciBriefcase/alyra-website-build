@@ -108,6 +108,13 @@ export const SITE = {
    * faking a submission). See src/lib/valuation.ts for the request shape.
    */
   enquiryEndpoint: "/api/enquiry/",
+  /**
+   * Browser-side email relay used after the enquiry is stored, until a
+   * server-side mail provider is configured (RESEND_API_KEY on Vercel).
+   * FormSubmit refuses calls from Vercel's datacenter IPs with a 403, but
+   * accepts them from a visitor's browser. Set to "" once Resend is live.
+   */
+  enquiryRelayEndpoint: "https://formsubmit.co/ajax/hello@alyra.com.au",
   /** Endpoint for the Insights newsletter sign-up. Empty until connected. */
   newsletterEndpoint: "",
 

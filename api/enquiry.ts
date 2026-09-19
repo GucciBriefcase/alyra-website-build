@@ -8,14 +8,16 @@
  * enquiry is safely stored.
  *
  * Email: Resend when RESEND_API_KEY is set (from ENQUIRY_FROM, e.g.
- * "ALYRA <enquiries@alyra.com.au>" — the domain must be verified in Resend);
- * otherwise FormSubmit's AJAX API, which is the pre-existing delivery path and
- * needs no credentials.
+ * "ALYRA <enquiries@alyra.com.au>" — the domain must be verified in Resend).
+ * Without it the browser relays the enquiry to FormSubmit itself after this
+ * route answers (see src/lib/valuation.ts) — FormSubmit returns 403 to calls
+ * from Vercel's IPs, so it cannot be used from here — and the row is marked
+ * "browser-relay" because this route cannot see that hop's outcome.
  *
  * Env (Vercel → Settings → Environment Variables):
  *   DATABASE_URL     Neon pooled connection string (required)
  *   ENQUIRY_TO       recipient inbox; defaults to hello@alyra.com.au
- *   RESEND_API_KEY   optional — switches delivery from FormSubmit to Resend
+ *   RESEND_API_KEY   optional — enables server-side delivery via Resend
  *   ENQUIRY_FROM     sender for Resend; defaults to onboarding@resend.dev
  *
  * Accepts JSON (the site's fetch path) and form-encoded bodies (the no-JS
@@ -133,42 +135,6 @@ async function sendViaResend(p: Payload, id: number, page: string | null, to: st
   if (!res.ok) throw new Error(`resend ${res.status}: ${(await res.text()).slice(0, 200)}`);
 }
 
-async function sendViaFormSubmit(p: Payload, id: number, page: string | null, to: string): Promise<void> {
-  const res = await fetch(`https://formsubmit.co/ajax/${to}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      // FormSubmit records the submitting site from these, and its bot filter
-      // rejects Node's default user agent with a 403.
-      Origin: SITE_ORIGIN,
-      Referer: `${SITE_ORIGIN}${page ?? "/valuation/"}`,
-      "User-Agent": "Mozilla/5.0 (compatible; ALYRA enquiry relay; +https://www.alyra.com.au)",
-    },
-    body: JSON.stringify({
-      _subject: subjectFor(p),
-      _template: "table",
-      _replyto: p.email,
-      name: p.name,
-      email: p.email,
-      phone: p.phone,
-      assetType: p.assetType,
-      estimatedValue: p.estimatedValue,
-      location: p.location,
-      message: p.message,
-      preferredContact: p.preferredContact,
-      consent: p.consent,
-      page: page ?? "",
-      enquiryId: id,
-    }),
-  });
-  // FormSubmit answers 200 even when it refuses delivery and says so in the body.
-  const data = (await res.json().catch(() => null)) as { success?: unknown; message?: unknown } | null;
-  if (!res.ok || (data && String(data.success) === "false")) {
-    throw new Error(`formsubmit ${res.status}: ${String(data?.message ?? "").slice(0, 200)}`);
-  }
-}
-
 export async function POST(req: Request): Promise<Response> {
   const p = await readPayload(req);
   const wantsJson = (req.headers.get("accept") ?? "").includes("application/json");
@@ -209,14 +175,15 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   // The row is safe; the mail hop is best-effort and its outcome is recorded.
-  const to = process.env.ENQUIRY_TO || DEFAULT_TO;
-  let emailStatus = "sent";
-  try {
-    if (process.env.RESEND_API_KEY) await sendViaResend(p, id, page, to);
-    else await sendViaFormSubmit(p, id, page, to);
-  } catch (err) {
-    emailStatus = `failed: ${err instanceof Error ? err.message : String(err)}`.slice(0, 500);
-    console.error(`[enquiry] #${id} email failed`, err);
+  let emailStatus = "browser-relay";
+  if (process.env.RESEND_API_KEY) {
+    try {
+      await sendViaResend(p, id, page, process.env.ENQUIRY_TO || DEFAULT_TO);
+      emailStatus = "sent";
+    } catch (err) {
+      emailStatus = `failed: ${err instanceof Error ? err.message : String(err)}`.slice(0, 500);
+      console.error(`[enquiry] #${id} email failed`, err);
+    }
   }
   try {
     await sql`UPDATE enquiries SET email_status = ${emailStatus} WHERE id = ${id}`;

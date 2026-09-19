@@ -29,6 +29,7 @@ const assetOptions = [
 ];
 const contactOptions = ["Email", "Phone", "Either"];
 const endpoint = SITE.enquiryEndpoint;
+const relayEndpoint = SITE.enquiryRelayEndpoint;
 // No-JS fallback: a native form-encoded POST to the same route, which answers
 // with a redirect back to /valuation/?sent=1. (If the endpoint is ever pointed
 // back at FormSubmit, its /ajax/ path returns JSON, so use the plain path.)
@@ -40,6 +41,7 @@ const nativeAction = endpoint.replace("formsubmit.co/ajax/", "formsubmit.co/");
     class="vf-form"
     data-valuation-form
     data-endpoint={endpoint}
+    data-relay={relayEndpoint || undefined}
     method="POST"
     action={nativeAction || undefined}
     novalidate
@@ -168,6 +170,7 @@ const nativeAction = endpoint.replace("formsubmit.co/ajax/", "formsubmit.co/");
 
   document.querySelectorAll<HTMLFormElement>("[data-valuation-form]").forEach((form) => {
     const endpoint = form.dataset.endpoint || "";
+    const relayEndpoint = form.dataset.relay || "";
     const card = form.closest(".vf-card");
     const statusEl = form.querySelector<HTMLElement>("[data-form-status]");
     const successEl = card?.querySelector<HTMLElement>("[data-form-success]");
@@ -230,7 +233,7 @@ const nativeAction = endpoint.replace("formsubmit.co/ajax/", "formsubmit.co/");
       const submit = form.querySelector<HTMLButtonElement>(".vf-submit");
       if (submit) { submit.disabled = true; submit.textContent = "Sending…"; }
 
-      const result = await submitValuation(endpoint, payload);
+      const result = await submitValuation(endpoint, payload, relayEndpoint);
 
       if (submit) { submit.disabled = false; submit.textContent = "Submit Confidential Enquiry"; }
 

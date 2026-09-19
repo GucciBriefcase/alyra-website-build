@@ -21,8 +21,10 @@ CREATE TABLE IF NOT EXISTS enquiries (
   -- attribution. No IP or user agent is kept: the privacy policy doesn't
   -- promise either and they aren't needed to follow up an enquiry.
   source_page        text,
-  -- Outcome of the email hop: 'sent', or 'failed: <reason>'. Rows that are
-  -- not 'sent' need a manual follow-up — nobody was notified.
+  -- Outcome of the email hop: 'sent' (Resend), 'browser-relay' (no server
+  -- mail provider configured — the visitor's browser relayed to FormSubmit,
+  -- outcome unknown here), or 'failed: <reason>'. A 'failed' row needs a
+  -- manual follow-up — nobody was notified.
   email_status       text NOT NULL DEFAULT 'pending'
 );
 

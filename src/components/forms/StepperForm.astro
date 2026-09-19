@@ -27,6 +27,7 @@ const assetOptions = [
 const contactOptions = ["Email", "Phone", "Either"];
 const steps = ["Your asset", "Your details", "Confirm"];
 const endpoint = SITE.enquiryEndpoint;
+const relayEndpoint = SITE.enquiryRelayEndpoint;
 ---
 
 <div class="vf-card">
@@ -42,6 +43,7 @@ const endpoint = SITE.enquiryEndpoint;
     class="sf-form"
     data-stepper-form
     data-endpoint={endpoint}
+    data-relay={relayEndpoint || undefined}
     novalidate
   >
     <div class="sf-step-meta" data-step-meta>Step 1 of 3</div>
@@ -225,6 +227,7 @@ const endpoint = SITE.enquiryEndpoint;
 
   document.querySelectorAll<HTMLFormElement>("[data-stepper-form]").forEach((form) => {
     const endpoint = form.dataset.endpoint || "";
+    const relayEndpoint = form.dataset.relay || "";
     const card = form.closest(".vf-card");
     const statusEl = form.querySelector<HTMLElement>("[data-form-status]");
     const successEl = card?.querySelector<HTMLElement>("[data-form-success]");
@@ -356,7 +359,7 @@ const endpoint = SITE.enquiryEndpoint;
       }
 
       if (primaryBtn) { primaryBtn.disabled = true; primaryBtn.textContent = "Sending…"; }
-      const result = await submitValuation(endpoint, payload);
+      const result = await submitValuation(endpoint, payload, relayEndpoint);
       if (primaryBtn) { primaryBtn.disabled = false; primaryBtn.textContent = "Submit Confidential Enquiry"; }
 
       if (result.status === "ok") {
