@@ -4,6 +4,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "trailingSlash": true,
+  "regions": ["syd1"],
   "redirects": [
     { "source": "/loans/high-value-watches/", "destination": "/loans/luxury-watches/", "permanent": true },
     { "source": "/loans/classic-luxury-cars/", "destination": "/loans/classic-and-luxury-cars/", "permanent": true },

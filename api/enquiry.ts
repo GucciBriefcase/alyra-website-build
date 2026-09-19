@@ -139,9 +139,11 @@ async function sendViaFormSubmit(p: Payload, id: number, page: string | null, to
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      // FormSubmit records the submitting site from these.
+      // FormSubmit records the submitting site from these, and its bot filter
+      // rejects Node's default user agent with a 403.
       Origin: SITE_ORIGIN,
       Referer: `${SITE_ORIGIN}${page ?? "/valuation/"}`,
+      "User-Agent": "Mozilla/5.0 (compatible; ALYRA enquiry relay; +https://www.alyra.com.au)",
     },
     body: JSON.stringify({
       _subject: subjectFor(p),

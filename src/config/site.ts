@@ -102,11 +102,12 @@ export const SITE = {
   /**
    * Endpoint the valuation form posts to: the Vercel serverless route in
    * api/enquiry.ts, which stores each enquiry in Neon Postgres and then
-   * relays it to `email`. Relative, so preview deploys hit their own copy.
+   * relays it to `email`. Relative, so preview deploys hit their own copy;
+   * trailing slash because vercel.json redirects (308) to the slashed form.
    * Set to "" to disconnect (the form then says so honestly instead of
    * faking a submission). See src/lib/valuation.ts for the request shape.
    */
-  enquiryEndpoint: "/api/enquiry",
+  enquiryEndpoint: "/api/enquiry/",
   /** Endpoint for the Insights newsletter sign-up. Empty until connected. */
   newsletterEndpoint: "",
 
