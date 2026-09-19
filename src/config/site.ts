@@ -109,12 +109,13 @@ export const SITE = {
    */
   enquiryEndpoint: "/api/enquiry/",
   /**
-   * Browser-side email relay used after the enquiry is stored, until a
-   * server-side mail provider is configured (RESEND_API_KEY on Vercel).
-   * FormSubmit refuses calls from Vercel's datacenter IPs with a 403, but
-   * accepts them from a visitor's browser. Set to "" once Resend is live.
+   * Optional browser-side email relay, called after the enquiry is stored.
+   * Empty: the route emails via Resend (RESEND_API_KEY on Vercel) from
+   * enquiries@alyra.com.au. Fallback if Resend is ever unavailable: set to
+   * "https://formsubmit.co/ajax/hello@alyra.com.au" — FormSubmit refuses
+   * calls from Vercel's IPs (403) but accepts them from a visitor's browser.
    */
-  enquiryRelayEndpoint: "https://formsubmit.co/ajax/hello@alyra.com.au",
+  enquiryRelayEndpoint: "",
   /** Endpoint for the Insights newsletter sign-up. Empty until connected. */
   newsletterEndpoint: "",
 
