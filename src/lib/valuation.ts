@@ -1,11 +1,13 @@
 /**
  * Confidential-valuation enquiry — submission logic, isolated from the form UI.
  *
- * The UI (src/components/forms/ValuationForm.astro) calls `submitValuation`. To
- * connect a backend later (Astro Actions, a Vercel serverless function,
- * Formspree, Basin, HubSpot, Airtable or Google Sheets), set
- * `SITE.enquiryEndpoint` and, if needed, adjust the request shape below — the
- * form markup does not need to change.
+ * The UI (src/components/forms/ValuationForm.astro and StepperForm.astro)
+ * calls `submitValuation`, which POSTs the payload as JSON to
+ * `SITE.enquiryEndpoint` — the Vercel route in api/enquiry.ts, which writes
+ * the enquiry to Neon Postgres before relaying the email. The endpoint answers
+ * `{ ok: true, id }` or `{ ok: false, error }`. FormSubmit is still supported
+ * as an endpoint (the pre-Neon setup) so the site can fall back to it by
+ * changing the config alone.
  */
 
 export interface ValuationPayload {
@@ -109,22 +111,19 @@ export async function submitValuation(
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(body),
     });
-    if (!res.ok) {
-      return {
-        status: "error",
-        message: "Something went wrong sending your enquiry. Please try again or email us directly.",
-      };
-    }
-    // FormSubmit answers HTTP 200 even when it does NOT deliver (e.g. the
-    // recipient address hasn't clicked its activation link yet) and signals
-    // the real outcome in the body. Only an explicit `success: "false"` is a
-    // failure, so other backends without that field are unaffected.
+    // Both backends answer with a body. Our route returns `{ ok, error }` and
+    // uses real status codes; FormSubmit answers HTTP 200 even when it does
+    // NOT deliver (e.g. the recipient address hasn't clicked its activation
+    // link yet) and signals the real outcome as `success: "false"`.
     const data = await res.json().catch(() => null);
-    if (data && String(data.success) === "false") {
-      console.warn("Enquiry endpoint refused delivery:", data.message);
+    const refused = data && (data.ok === false || String(data.success) === "false");
+    if (!res.ok || refused) {
+      console.warn("Enquiry endpoint refused delivery:", data?.error ?? data?.message ?? res.status);
       return {
         status: "error",
-        message: "Something went wrong sending your enquiry. Please try again or email us directly.",
+        message:
+          (typeof data?.error === "string" && data.error) ||
+          "Something went wrong sending your enquiry. Please try again or email us directly.",
       };
     }
     return { status: "ok" };

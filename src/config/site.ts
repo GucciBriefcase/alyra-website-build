@@ -100,15 +100,13 @@ export const SITE = {
   /** Path to the dedicated confidential-valuation enquiry page. */
   enquiryPath: "/valuation/",
   /**
-   * Endpoint the valuation form posts to. Currently FormSubmit's AJAX API,
-   * which delivers submissions to the address in the URL — no account needed,
-   * but the FIRST submission triggers an activation email to that inbox which
-   * must be confirmed before deliveries start. Swap for Astro Actions, a
-   * serverless function, Formspree or Basin later without touching the form —
-   * see src/lib/valuation.ts. Set to "" to disconnect (the form then says so
-   * honestly instead of faking a submission).
+   * Endpoint the valuation form posts to: the Vercel serverless route in
+   * api/enquiry.ts, which stores each enquiry in Neon Postgres and then
+   * relays it to `email`. Relative, so preview deploys hit their own copy.
+   * Set to "" to disconnect (the form then says so honestly instead of
+   * faking a submission). See src/lib/valuation.ts for the request shape.
    */
-  enquiryEndpoint: "https://formsubmit.co/ajax/hello@alyra.com.au",
+  enquiryEndpoint: "/api/enquiry",
   /** Endpoint for the Insights newsletter sign-up. Empty until connected. */
   newsletterEndpoint: "",
 

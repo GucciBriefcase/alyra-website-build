@@ -29,8 +29,9 @@ const assetOptions = [
 ];
 const contactOptions = ["Email", "Phone", "Either"];
 const endpoint = SITE.enquiryEndpoint;
-// No-JS fallback: FormSubmit's /ajax/ endpoint returns JSON, so native POSTs
-// go to the plain endpoint, which redirects to a thank-you page instead.
+// No-JS fallback: a native form-encoded POST to the same route, which answers
+// with a redirect back to /valuation/?sent=1. (If the endpoint is ever pointed
+// back at FormSubmit, its /ajax/ path returns JSON, so use the plain path.)
 const nativeAction = endpoint.replace("formsubmit.co/ajax/", "formsubmit.co/");
 ---
 
