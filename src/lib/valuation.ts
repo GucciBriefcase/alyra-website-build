@@ -92,9 +92,14 @@ export async function submitValuation(
 
   // FormSubmit reads control fields from the body: _subject sets the email
   // subject line, _template: "table" formats the fields as a readable table.
+  // The subject carries the name and asset type so each enquiry is unique —
+  // Gmail threads identical subjects into one conversation, which hid new
+  // enquiries inside old threads.
   const body: Record<string, unknown> = { ...payload };
   if (endpoint.includes("formsubmit.co")) {
-    body._subject = "New confidential valuation enquiry — alyra.com.au";
+    const who = payload.name.trim() || "Unnamed";
+    const what = payload.assetType ? ` (${payload.assetType})` : "";
+    body._subject = `New enquiry — ${who}${what}`;
     body._template = "table";
   }
 
