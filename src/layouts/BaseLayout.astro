@@ -114,7 +114,10 @@ const websiteSchema = {
          wordmark is illegible, and Google was picking the largest raster it
          could find for the search result. Google's favicon guidance wants a
          square raster whose edge is a multiple of 48px, hence the 96/192 PNGs
-         alongside the SVG. -->
+         alongside the SVG.
+         The monogram is the real A glyph lifted from assets/alyra-wordmark.svg
+         (the same path Logo.astro draws), not a redrawn approximation — the
+         PNGs are rendered from favicon.svg, so regenerate them together. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
